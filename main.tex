@@ -1,0 +1,446 @@
+
+\documentclass[a4paper,11pt]{book}
+
+
+% lingue
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage[italian, english]{babel}
+\usepackage[babel=true]{microtype}
+
+%\usepackage{textcomp}
+
+% Margini pari
+\usepackage[a4paper
+,top=4.5cm
+,bottom=4cm
+,inner=3.5cm
+,outer=3.5cm]
+{geometry}
+
+% Margini sfasati per stampa a libro
+% \usepackage[a4paper
+% ,top=4.5cm
+% ,bottom=4cm
+% ,inner=4.25cm
+% ,outer=2.75cm
+% ]{geometry}
+
+% ams-cose
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage{mathtools, nccmath}
+\usepackage{mathrsfs} % per \mathscr
+% \usepackage{bbold}
+
+%\usepackage{tocbibind} % Per avere l'entrata "Indice" nell'indice, commentare la riga per rimuoverlo
+
+% pacchetti da template
+\usepackage{graphicx} % Pacchetto per immagini
+
+% Per produrre un pdf/a, de-commentare la prossima riga
+%\usepackage[a-1b]{pdfx}
+
+% miscellanea
+\usepackage{lipsum}
+\usepackage{enumerate}
+\usepackage{etaremune} % reverse enumerate
+\usepackage{multirow} % multirow tab cells
+%\usepackage{ebproof} % inference trees
+\usepackage{epigraph}  % quotations at the start (or end) of a chapter
+\usepackage{todonotes}
+\setuptodonotes{color=blue!30}
+\usepackage{wasysym} % some symbols such as \sqsubset, \sqsupset, \lightning , \paragraph, notes, polygons
+%\usepackage{xfrac} % split levels fractions
+
+% per i disegnetti
+\usepackage{float} % containers for things in a document that cannot be broken over a page (es. figure)
+\usepackage{pgfplots} % plots graphs ?
+\pgfplotsset{compat=1.12}
+\usepgfplotslibrary{fillbetween}
+\usepackage{subfig} % more than one image in a figure
+\usepackage{xcolor}
+
+
+% NOTE: this is "Color Blind Safe Palette of IBM Design Language v1 Color"
+\definecolor{ibmBlue}{HTML}{648fff}
+\definecolor{ibmPurple}{HTML}{785ef0}
+\definecolor{ibmMagenta}{HTML}{dc267f}
+\definecolor{ibmOrange}{HTML}{fe6100}
+\definecolor{ibmYellow}{HTML}{ffb000}
+%addition
+\definecolor{ibmGreen}{HTML}{008000}
+
+%tikz
+\usepackage{tikz}
+\usetikzlibrary{babel}
+\usetikzlibrary{cd} % tikz-cd
+\usetikzlibrary{graphs} % for simple graphs
+\usetikzlibrary{calc} % functions in tikz
+\usetikzlibrary{positioning} % position relative to other nodes
+\usetikzlibrary{shapes.geometric, shapes.misc}
+\usetikzlibrary{decorations.markings, arrows, patterns}
+\usetikzlibrary{matrix} % matrices as tikzpictures
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{fit} % ?? fitting a node so that it contains a set of coordinates.
+
+
+
+
+
+% Bibliografia da template
+\usepackage[backend=biber, style=alphabetic]{biblatex}
+\usepackage{csquotes}
+\addbibresource{references.bib}
+
+%% Libreria per indice
+\usepackage{imakeidx}
+\makeindex
+
+
+
+
+%%%%% girly environments %%%%
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable}
+\tcbuselibrary{theorems}
+\tcbuselibrary{skins}
+\usepackage{etoolbox}
+
+
+
+
+% THEOREMS ENV
+\tcbset{genericstyle/.style=
+		{enhanced, 
+		breakable, 
+		theorem style=plain, %to invert th and number use theoremstyle=change
+		colback=#1!5,
+		colframe=#1!70!black,
+		fonttitle=\bfseries,
+		coltitle=#1!60!black,
+		frame hidden,
+		arc=0mm,left=0mm, right=0mm, top=0mm, bottom=0mm, boxsep=1mm, left skip=-1mm, right skip=-1mm
+		}	
+	}
+
+\newcounter{main_counter}[chapter]
+
+% Plain thm environment
+\newcommand{\createtheoremenv}[4]{%
+    % Numbered version
+    \newtcolorbox[use counter=main_counter, number within=chapter]{#1}[1][]{
+        genericstyle={#4},
+        fonttitle=\bfseries\upshape,
+        fontupper=\itshape,
+        title=#2~\thetcbcounter\ifstrempty{##1}{}{ ##1},
+        #3
+    }%
+    % Unnumbered version  
+    \newtcolorbox{#1-}[1][]{
+        genericstyle={#4},
+        fonttitle=\bfseries\upshape,
+        fontupper=\itshape,
+        title=#2\ifstrempty{##1}{}{: ##1},
+        #3
+    }%
+}
+
+
+% create all the theorem environments
+\createtheoremenv{tcbprp}{Proposition}{}{ibmBlue}
+\createtheoremenv{tcblemma}{Lemma}{}{ibmBlue}
+\createtheoremenv{tcbthm}{Theorem}{}{ibmOrange}
+\createtheoremenv{tcbcorollary}{Corollary}{}{green}
+%\createtheoremenv{tcbteo}{Teorema}{}{green}
+%\createtheoremenv{tcbcorollario}{Corollario}{}{green}
+%\createtheoremenv{tcbitaprp}{Proposizione}{}{green}
+
+
+
+% Definition style environments (no italics)
+\newcommand{\createdefenv}[4]{%
+    % Numbered version
+    \newtcolorbox[use counter=main_counter, number within=chapter]{#1}[1][]{
+        genericstyle={#4},
+        title=#2~\thetcbcounter\ifstrempty{##1}{}{ ##1},
+        #3
+    }%
+    % Unnumbered version
+    \newtcolorbox{#1-}[1][]{
+        genericstyle={#4},
+        title=#2\ifstrempty{##1}{}{: ##1},
+        #3
+    }%
+}
+
+% create all the def environments
+\createdefenv{tcbdfn}{Definition}{}{ibmGreen}
+\createdefenv{tcbdfnx}{}{}{ibmGreen}
+\createdefenv{exercise}{Exercise}{}{green}
+%\createdefenv{tcbitadfn}{Definizione}{}{ibmGreen}
+%\createdefenv{tcbesercizio}{Esercizio}{}{green}
+
+
+% Observation/Remark style environments (italic title, no italics content)
+\newcommand{\createremarkenv}[4]{%
+    % Numbered version
+    \newtcolorbox[use counter=main_counter, number within=chapter]{#1}[1][]{
+        genericstyle={#4},
+        before skip=1pt,
+        after skip=1pt,
+        fonttitle=\itshape,
+        title=#2~\thetcbcounter\ifstrempty{##1}{}{ ##1},
+        #3
+    }%
+    % Unnumbered version
+    \newtcolorbox{#1-}[1][]{
+        genericstyle={#4},
+        before skip=1pt,
+        after skip=1pt,
+        fonttitle=\itshape,
+        title=#2\ifstrempty{##1}{}{: ##1},
+        #3
+    }%
+}
+
+%create all remark environments
+\createremarkenv{tcbosservazione}{Osservazione}{}{blue}
+\createremarkenv{tcbremark}{Remark}{}{blue}
+\createremarkenv{tcbesempio}{Esempio}{}{blue}
+\createremarkenv{tcbexample}{Example}{}{ibmBlue}
+\createremarkenv{tcbdomanda}{Domanda}{}{blue}
+
+
+
+
+%%plain
+%\newtcbtheorem[number within=section, use counter=main_counter]{tcbprp}{Proposizione}{genericstyle={green},fonttitle=\bfseries\upshape,fontupper=\itshape}{prp}
+%
+%\newtcbtheorem{tcbprp-}{Proposizione}{genericstyle={green},fonttitle=\bfseries\upshape,fontupper=\itshape}{prpno}
+%
+%\newtcbtheorem[number within=section, use counter=main_counter]{tcbengprp}{Proposition}{genericstyle={green},fonttitle=\bfseries\upshape,fontupper=\itshape}{eprp}
+%
+%\newtcbtheorem{tcbengprp-}{Proposition}{genericstyle={green},fonttitle=\bfseries\upshape,fontupper=\itshape}{eprpno}
+%
+%\newtcbtheorem[number within=section, use counter=main_counter]{tcblemma}{Lemma}{genericstyle={green},fonttitle=\bfseries\upshape,fontupper=\itshape}{lem}
+%
+%\newtcbtheorem{tcblemma-}{Lemma}{genericstyle={green},fonttitle=\bfseries\upshape,fontupper=\itshape}{lemno}
+%
+%\newtcbtheorem[number within=section, use counter=main_counter]{tcbteo}{Teorema}{genericstyle={green},fonttitle=\bfseries\upshape,fontupper=\itshape}{teo}
+%
+%\newtcbtheorem{tcbteo-}{Teorema}{genericstyle={green},fonttitle=\bfseries\upshape,fontupper=\itshape}{teono}
+%
+%\newtcbtheorem[number within=section, use counter=main_counter]{tcbthm}{Theorem}{genericstyle={ibmOrange},fonttitle=\bfseries\upshape,fontupper=\itshape}{thm}
+%
+%\newtcbtheorem{tcbthm-}{Theorem}{genericstyle={ibmOrange},fonttitle=\bfseries\upshape,fontupper=\itshape}{thmno}
+%
+%\newtcbtheorem[number within=section, use counter=main_counter]{tcbcorollario}{Corollario}{genericstyle={green},fonttitle=\bfseries\upshape,fontupper=\itshape}{cor}
+%
+%\newtcbtheorem{tcbcorollario-}{Corollario}{genericstyle={green},fonttitle=\bfseries\upshape,fontupper=\itshape}{corno}
+%
+%\newtcbtheorem[number within=section, use counter=main_counter]{tcbcorollary}{Corollary}{genericstyle={green},fonttitle=\bfseries\upshape,fontupper=\itshape}{ecor}
+%
+%\newtcbtheorem{tcbcorollary-}{Corollary}{genericstyle={green},fonttitle=\bfseries\upshape,fontupper=\itshape}{ecorno}
+%
+%
+%%definition
+%\newtcbtheorem[number within=section, use counter=main_counter]{tcbdfn}{Definizione}{genericstyle={ibmGreen}}{dfn}
+%
+%\newtcbtheorem{tcbdfn-}{Definizione}{genericstyle={green}}{dfnno}
+%
+%\newtcbtheorem[number within=section, use counter=main_counter]{tcbengdfn}{Definition}{genericstyle={ibmGreen}}{edfn}
+%
+%\newtcbtheorem{tcbengdfn-}{Definition}{genericstyle={green}}{edfnno}
+%
+%\newtcbtheorem[number within=section, use counter=main_counter]{tcbesercizio}{Esercizio}{genericstyle={green}}{es}
+%
+%\newtcbtheorem{tcbesercizio-}{Esercizio}{genericstyle={green}}{esno}
+%
+%\newtcbtheorem[number within=section, use counter=main_counter]{exercise}{Exercise}{genericstyle={green}}{enges}
+%
+%\newtcbtheorem{exercise-}{Exercise}{genericstyle={green}}{engesno}
+%
+%%definition
+%\newtcbtheorem[number within=section, use counter=main_counter]{tcbosservazione}{Osservazione}{genericstyle={blue}, before skip=1pt,after skip=1pt, fonttitle=\itshape}{oss}
+%
+%\newtcbtheorem{tcbosservazione-}{Osservazione}{genericstyle={blue}, before skip=1pt,after skip=1pt, fonttitle=\itshape}{ossno}
+%
+%\newtcbtheorem[number within=section, use counter=main_counter]{tcbremark}{Remark}{genericstyle={blue}, before skip=1pt,after skip=1pt, fonttitle=\itshape}{rem}
+%
+%\newtcbtheorem{tcbremark-}{Remark}{genericstyle={blue}, before skip=1pt,after skip=1pt, fonttitle=\itshape}{remno}
+%
+%\newtcbtheorem[number within=section, use counter=main_counter]{tcbesempio}{Esempio}{genericstyle={blue}, before skip=1pt,after skip=1pt, fonttitle=\itshape}{ex}
+%
+%\newtcbtheorem{tcbesempio-}{Esempio}{genericstyle={blue}, before skip=1pt,after skip=1pt, fonttitle=\itshape}{exno}
+%
+%\newtcbtheorem[number within=section, use counter=main_counter]{tcbexample}{Example}{genericstyle={blue}, before skip=1pt,after skip=1pt, fonttitle=\itshape}{engex}
+%
+%\newtcbtheorem{tcbexample-}{Example}{genericstyle={blue}, before skip=1pt,after skip=1pt, fonttitle=\itshape}{engexno}
+%
+%\newtcbtheorem[number within=section, use counter=main_counter]{tcbdomanda}{Domanda}{genericstyle={blue}, before skip=1pt,after skip=1pt, fonttitle=\itshape}{dom}
+%
+%\newtcbtheorem{tcbdomanda-}{Domanda}{genericstyle={blue}, before skip=1pt,after skip=1pt, fonttitle=\itshape}{domno}
+
+
+%%%% classic environments %%%%
+\usepackage{theoremref}
+%% \swapnumbers
+%% Definizione di ambienti Teorema
+%
+\numberwithin{equation}{chapter}
+%% Numerazione in capitolo
+%
+%% Ambienti in italico
+\theoremstyle{plain}
+%\newtheorem{thm}{Theorem}[chapter] % Se si vuole la numerazione in sezione, (e.g, Teorema 1.1.1), cambiare "chapter" con "section"
+%\newtheorem*{thm*}{Theorem}
+%
+\newtheorem{prp}[main_counter]{Proposition}
+\newtheorem*{prp*}{Proposition}
+%
+%\newtheorem{coroll}[prp]{Corollary}
+%\newtheorem*{coroll*}{Corollary}
+%
+%\newtheorem{lemma}[prp]{Lemma}
+%\newtheorem*{lemma*}{Lemma}
+%
+%
+%% Ambienti non in italico
+\def\th@definition{%
+  \thm@notefont{}% same as heading font
+  \normalfont % body font
+}
+\theoremstyle{definition}
+%\newtheorem*{dfn*}{Definition}
+%
+\newtheorem{dfnx}[main_counter]{}
+%
+%
+%% Ambienti in stile "Remark"
+\theoremstyle{remark}
+\newtheorem{remark}[main_counter]{Remark}
+\newtheorem*{remark*}{Remark}
+%
+\newtheorem{example}[main_counter]{Example}
+\newtheorem*{example*}{Example}
+%
+
+%\newtheorem{note}[prp]{Note}
+%\newtheorem*{note*}{Note}
+%
+%%\newtheorem{domanda}[prp]{Domanda}
+%%\newtheorem*{domanda*}{Domanda}
+%%\newtheorem{soluzione}[prp]{Soluzione}
+%%\newtheorem*{soluzione*}{Soluzione}
+%%\newtheorem{notazione}[prp]{Notazione}
+%%\newtheorem{assioma}[prp]{Assioma}
+
+
+\newenvironment{myproof}{\proof\mbox{}\\*}{\endproof}
+
+
+% definizioni
+\newcommand{\emdash}{\text{-}}
+\newcommand{\symmdiff}{\mathbin{\scriptstyle\bigtriangleup}}
+\newcommand{\Sub}{\mathrm{Sub}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\mono}{\rightarrowtail}
+\newcommand{\epi}{\twoheadrightarrow}
+\newcommand{\varx}{\mathrm{x}}		
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+% Furto da itaca.sty
+\newcommand{\cat}[1]{\mathcal{#1}}
+\newcommand{\nat}{\Rightarrow}
+\newcommand{\fun}{\longrightarrow}
+\newcommand{\const}{\text{c}}
+%\newcommand{\implies}{\Rightarrow}
+\newcommand{\whisk}{innesto\@\xspace}
+\newcommand{\zzg}{zig-zag\@\xspace}
+
+\newcommand{\xto}[1]{\xrightarrow{#1}}
+\newcommand{\xot}[1]{\xleftarrow{#1}}
+\newcommand{\xfun}[1]{\xlongrightarrow{#1}}
+\newcommand{\xnat}[1]{\xRightarrow{#1}}
+
+\newcommand{\genArrow}{\boxed{\to}}
+
+\newcommand{\singleton}{\{\bullet\}}
+
+\newcommand{\iso}{\cong}
+\newcommand{\eqv}{\simeq}
+\newcommand{\defeq}{\coloneqq}
+
+% smaller bullets
+\renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\sq}{\mathbin\square}
+\newcommand{\obj}[1]{\mathrm{Obj}({#1})}
+\newcommand{\arr}[1]{\mathrm{Arr}({#1})}
+\newcommand{\id}{\mathrm{id}}
+
+\newcommand{\moncat}{\textbf{MonCat}}
+\newcommand{\brmoncat}{\textbf{BrMonCat}}
+\newcommand{\symmoncat}{\textbf{SymMonCat}}
+\newcommand{\bord}{\textbf{Bord}(n)}
+
+
+\newcommand{\varsq}{\mathbin \boxtimes}
+\usepackage[colorlinks=true, allcolors=black]{hyperref}
+
+
+\usepackage{tikz}
+\usetikzlibrary{shadows, patterns, tqft}
+
+
+
+% ============================= BEGIN DOCUMENT ===========================================
+\begin{document}
+
+%\pagenumbering{roman}
+
+\frontmatter
+
+% Copertina in bianco e nero per la stampa su pelle (commentare le prossime due righe se non serve)
+%\input{chapters/cover_bw.tex}
+%\thispagestyle{empty}
+%\cleardoublepage
+
+% Copertina a colori
+%\input{chapters/cover.tex}
+%\thispagestyle{empty}
+%\cleardoublepage
+
+
+
+% Pagina per la dedica e/o citazioni
+
+
+% Index
+\tableofcontents
+
+\mainmatter
+
+% Introduction
+%\include{chapters/introduction.tex}
+
+% Capitolo 1
+\include{chapters/chapter1.tex}
+
+% Capitolo 2
+\include{chapters/chapter2.tex}
+
+\backmatter
+
+
+%Bibliografia
+\printbibliography[
+heading=bibintoc,
+title={Bibliography}
+]
+
+\printindex
+\end{document}
