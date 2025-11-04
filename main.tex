@@ -19,6 +19,8 @@
 ,outer=3.5cm]
 {geometry}
 
+
+
 % Margini sfasati per stampa a libro
 % \usepackage[a4paper
 % ,top=4.5cm
@@ -49,6 +51,7 @@
 %\usepackage{ebproof} % inference trees
 \usepackage{epigraph}  % quotations at the start (or end) of a chapter
 \usepackage{todonotes}
+\newcommand{\fouche}[1]{\todo[inline, caption=0,color=red!10,bordercolor=red!10]{\textbf{fouche said}: #1}}
 \setuptodonotes{color=blue!30}
 \usepackage{wasysym} % some symbols such as \sqsubset, \sqsupset, \lightning , \paragraph, notes, polygons
 %\usepackage{xfrac} % split levels fractions
@@ -428,6 +431,7 @@
 %\include{chapters/introduction.tex}
 
 % Capitolo 1
+\fouche{bla}
 \include{chapters/chapter1.tex}
 
 % Capitolo 2
