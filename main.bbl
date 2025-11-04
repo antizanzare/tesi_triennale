@@ -19,6 +19,45 @@
 
 \refsection{0}
   \datalist[entry]{anyt/global//global/global}
+    \entry{Atiyah1988}{article}{}
+      \name{author}{1}{}{%
+        {{hash=67ee9912177ae60c68f5fc393dc586be}{%
+           family={Atiyah},
+           familyi={A\bibinitperiod},
+           given={Michael\bibnamedelima F.},
+           giveni={M\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+      }
+      \list{language}{1}{%
+        {eng}%
+      }
+      \list{publisher}{1}{%
+        {Institut des Hautes Études Scientifiques}%
+      }
+      \strng{namehash}{67ee9912177ae60c68f5fc393dc586be}
+      \strng{fullhash}{67ee9912177ae60c68f5fc393dc586be}
+      \strng{bibnamehash}{67ee9912177ae60c68f5fc393dc586be}
+      \strng{authorbibnamehash}{67ee9912177ae60c68f5fc393dc586be}
+      \strng{authornamehash}{67ee9912177ae60c68f5fc393dc586be}
+      \strng{authorfullhash}{67ee9912177ae60c68f5fc393dc586be}
+      \field{labelalpha}{Ati88}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Publications Mathématiques de l'IHÉS}
+      \field{title}{Topological quantum field theory}
+      \field{volume}{68}
+      \field{year}{1988}
+      \field{pages}{175\bibrangedash 186}
+      \range{pages}{12}
+      \verb{urlraw}
+      \verb http://eudml.org/doc/104037
+      \endverb
+      \verb{url}
+      \verb http://eudml.org/doc/104037
+      \endverb
+      \keyw{topological quantum field theories; Floer/Gromov theory; holomorphic conformal field theories; Jones/Witten theory; Casson theory; Johnson theory; Thursten theory; Floer/Donaldson theory}
+    \endentry
     \entry{smooth}{book}{}
       \name{author}{1}{}{%
         {{hash=36896354ee3aedc1a13d683ea773634e}{%
