@@ -1,5 +1,5 @@
 \chapter{Bordisms and TQFTs}
-\label{chap:cob}
+\label{chap:bord}
 
 We denote with $\mathbb{R}^n$ the $n$-dimensional Euclidian space composed of all ordered $n$-tuples $(x_1,.....,x_n)$ of real numbers. 
 We denote with $\mathbb{H}^n$ the set $\{ x \in \mathbb{R}^n \colon x_n \geq 0 \}$ equipped with the topology induced by $\mathbb{R}^n$. 
@@ -333,86 +333,114 @@ Through such homeomorphism we can define a new smooth structure on $M'N'$, which
 \end{proof}
 
 \begin{tcbdfn}
-The category of oriented n-dimensional bordisms $\bord$ is defined as follows.
+The category of oriented n-dimensional bordisms $\bord{n}$ is defined as follows.
 \begin{itemize}
   \item The objects are closed oriented $(n-1)$-dimensional manifolds
-  \item For any $\Sigma_0, \Sigma_1 \in \obj{\bord}$, morphisms are the equivalence classes of bordisms $M \colon \Sigma_0 \to \Sigma_1$
+  \item For any $\Sigma_0, \Sigma_1 \in \obj{\bord{n}}$, morphisms are the equivalence classes of bordisms $M \colon \Sigma_0 \to \Sigma_1$
   \item Composition of morphisms is obtained by gluing
   \item For each object $\Sigma$, the identity map $\id_\Sigma$ is given by the bordism $\Sigma \times [0,1]$
 \end{itemize}
 \end{tcbdfn}
 
 % def disjoint union of bordisms
-\begin{dfnx}[Disjoint union of cobordisms]
-Given two bordisms $M \colon \Sigma_0 \to \Sigma_1$ and $N \colon \Sigma'_0 \to \Sigma'_1$, their disjoint union $M \amalg N$ naturally defines a bordism from $\Sigma_0 \amalg \Sigma'_0$ to $\Sigma_1 \amalg \Sigma'_1$. 
+\begin{dfnx}[Disjoint union of bordisms]
+Given two bordisms $M \colon \Sigma_0 \to \Sigma_1$ and $N \colon \Sigma'_0 \to \Sigma'_1$, their disjoint union $M \disj N$ naturally defines a bordism from $\Sigma_0 \disj \Sigma'_0$ to $\Sigma_1 \disj \Sigma'_1$. 
 This operation is precisely the coproduct in the category of smooth manifold, equipped with the unique orientation agreeing with the ones on $M$ and $N$.
 \end{dfnx}
 
 \begin{tcblemma} 
 Let $\cat{C}$ be a category that admits coproducts. 
-Then $(\cat{C}, \amalg, 0)$, where $\amalg$ denotes the coproduct and $0$ the initial object, is a monoidal category.
+Then $(\cat{C}, \disj, 0)$, where $\disj$ denotes the coproduct and $0$ the initial object, is a monoidal category.
 \end{tcblemma}
 
 %\begin{proof} \todo[inline]{is this needed?}
-%Firstly, let us prove the associativity axiom. Consider any objects $A$, $B$, $C$ in $\cat{C}$ and show that $(A \amalg B) \amalg C \iso A \amalg (B \amalg C)$.
-%We hence take the objects $(A \amalg B) \amalg C$, $A \amalg (B \amalg C)$ and the corresponding inclusion maps. By the universal property of the coproduct $A \amalg B$ we have a unique map $A \amalg B \to A \amalg (B \amalg C)$ and
+%Firstly, let us prove the associativity axiom. Consider any objects $A$, $B$, $C$ in $\cat{C}$ and show that $(A \disj B) \disj C \iso A \disj (B \disj C)$.
+%We hence take the objects $(A \disj B) \disj C$, $A \disj (B \disj C)$ and the corresponding inclusion maps. By the universal property of the coproduct $A \disj B$ we have a unique map $A \disj B \to A \disj (B \disj C)$ and
 %\[
-%by the universal property of the coproduct $(A \amalg B) \amalg C$, there exists a unique morphism $(A \amalg B) \amalg C \to A \amalg (B \amalg C)$.
-%Similarly, by the universal property of $B \amalg C$ and $A \amalg (B \amalg C)$, we have a unique morphism $A \amalg (B \amalg C) \to (A \amalg B) \amalg C$. By uniqueness of such maps we have the isomorphism we wished for.
+%by the universal property of the coproduct $(A \disj B) \disj C$, there exists a unique morphism $(A \disj B) \disj C \to A \disj (B \disj C)$.
+%Similarly, by the universal property of $B \disj C$ and $A \disj (B \disj C)$, we have a unique morphism $A \disj (B \disj C) \to (A \disj B) \disj C$. By uniqueness of such maps we have the isomorphism we wished for.
 %\[
 %\begin{tikzcd}[column sep=huge, row sep=small]
-%& A \amalg (B \amalg C) \arrow[dddd, bend left= 30, dashed] &\\
-%A \arrow[ur, tail] \arrow[dd, tail] & & B \amalg C \arrow[ul, tail] \arrow[dddl, dashed, "\exists !"] \\
+%& A \disj (B \disj C) \arrow[dddd, bend left= 30, dashed] &\\
+%A \arrow[ur, tail] \arrow[dd, tail] & & B \disj C \arrow[ul, tail] \arrow[dddl, dashed, "\exists !"] \\
 %& B \arrow[ur, tail] \arrow[dl, tail] & \\
-%A \amalg B \arrow[dashed, uuur, "\exists !"] \arrow[dr, tail] & & C \arrow[dl, tail] \arrow[uu, tail] \\
-%& (A \amalg B) \amalg C \arrow[uuuu, bend left= 30, dashed] & 
+%A \disj B \arrow[dashed, uuur, "\exists !"] \arrow[dr, tail] & & C \arrow[dl, tail] \arrow[uu, tail] \\
+%& (A \disj B) \disj C \arrow[uuuu, bend left= 30, dashed] & 
 %\end{tikzcd}
 %\]
-%We now verify the unit axiom. %What we'll prove is that $A$ satisfies the universal property of the coproducts $A \amalg 0$ and $0 \amalg A$.
-%Again in the diagram below we have that by the univ property of $0 \amalg A$ there exists a unique arrow making the diagram commute. We can show such arrow is the inverse of the inclusion (again by univ property of $0 \amalg A$)
+%We now verify the unit axiom. %What we'll prove is that $A$ satisfies the universal property of the coproducts $A \disj 0$ and $0 \disj A$.
+%Again in the diagram below we have that by the univ property of $0 \disj A$ there exists a unique arrow making the diagram commute. We can show such arrow is the inverse of the inclusion (again by univ property of $0 \disj A$)
 %\[
 %\begin{tikzcd}
-%& 0 \amalg A  \arrow[dd]& \\
+%& 0 \disj A  \arrow[dd]& \\
 %0 \arrow[ur] \arrow[dr] && A \arrow[ul] \arrow[dl, equal] \\
 %& A &
 %\end{tikzcd}
 %\]
-%Similarly, this holds when considering $A \amalg 0$.
+%Similarly, this holds when considering $A \disj 0$.
 %Having defined these isomorphisms through the universal property we can be sure the coherence axioms are satisfied too.
 %\end{proof}
 
 \begin{tcbprp}
-The category $\bord$ has a monoidal structure given by the disjoint union of manifolds (and the initial object, being the empty manifold $\varnothing$).
-%$(\bord, \amalg, \emptyset)$ is a monoidal category. (or better, is a monoidal structure on $\bord$)
+The category $\bord{n}$ has a monoidal structure given by the disjoint union of manifolds (and the initial object, being the empty manifold $\varnothing$).
+%$(\bord{n}, \disj, \emptyset)$ is a monoidal category. (or better, is a monoidal structure on $\bord{n}$)
 \end{tcbprp}
 
 \begin{tcbprp}
-Any diffeomorphism of $(n-1)$-dimensional manifolds $\Sigma_0$, $\Sigma_1$ define an equivalence class of bordisms $M \colon \Sigma_0 \to \Sigma_1$.
+Any diffeomorphism of $(n-1)$-dimensional manifolds $\Sigma_0$, $\Sigma_1$ define an equivalence class of (invertible) bordisms $M \colon \Sigma_0 \to \Sigma_1$.
 \end{tcbprp}
 
 \begin{dfnx}[The twist bordism]
-The twist diffeomorphism of manifolds $\sigma \colon \Sigma \amalg \Sigma' \to \Sigma' \amalg \Sigma$ defines a cobordism in $\bord$ which we'll denote as
-$T_{\Sigma,\Sigma'} \colon \Sigma \amalg \Sigma' \to \Sigma' \amalg \Sigma$. 
+The twist diffeomorphism of manifolds $\sigma \colon \Sigma \disj \Sigma' \to \Sigma' \disj \Sigma$ defines a cobordism in $\bord{n}$ which we'll denote as
+$T_{\Sigma,\Sigma'} \colon \Sigma \disj \Sigma' \to \Sigma' \disj \Sigma$. 
 \end{dfnx}
 
+% maybe add T natural in Bord
+
 \begin{tcbprp}
-The category $\bord$ has a symmetric monoidal structure $(\bord, \amalg, \varnothing, T)$
+The category $\bord{n}$ has a symmetric monoidal structure $(\bord{n}, \disj, \varnothing, T)$
 \end{tcbprp}
 
 \section{Topological Quantum Field Theories}
 
-\begin{tcbdfn}
-An \emph{$n$-dimensional topological quantum field theory} is a symmetric monoidal functor from $(\bord, \amalg, \varnothing, T)$ to $(\mathbf{Vect}, \otimes, \Bbbk, \sigma)$
+\begin{tcbdfn} \label{def:tqft}
+An \emph{$n$-dimensional topological quantum field theory} is a symmetric monoidal functor from $(\bord{n}, \disj, \varnothing, T)$ to $(\mathbf{Vect}, \tensor, \Bbbk, \sigma)$
 \end{tcbdfn}
 
-Historically, the first axiomatization of TQFTs appeared in the late 1980s. The first explicit set of axioms was given by Atiyah in 1988.
-Let us see how they compare with the functorial definition we just stated.
+Historically, the first explicit axiomatization of TQFTs was given by Atiyah in 1988 \cite{Atiyah1988}. 
+In the article we do not encounter the explicit notion of bordisms as we defined them. 
+We here give a slightly refined version of the original axioms, stated in terms of bordisms. \todo{debbo citare che lho presa da cocco??}
+%Let us see how they compare with the functorial definition we just stated.
 
-\begin{tcbdfn}[Atiyah's axioms of a TQFT]
-An n-dimensional topological quantm field theory consists of the following data:
+\begin{tcbdfn}[Axiomatization of a TQFT]
+An \emph{n-dimensional topological quantum field theory over a field $\Bbbk$} consists of:
 \begin{itemize}
   \item a $\Bbbk$-vector space $Z(\Sigma)$ associated to each closed oriented $(n-1)$-dimensional manifold $\Sigma$
   \item a $\Bbbk$-linear map $Z(M) \colon Z(\Sigma_0) \to Z(\Sigma_1)$ associated to each $n$-dimensional bordism $M$ from $\Sigma_0$ to $\Sigma_1$
 \end{itemize}
-
+satisfying the following axioms:
+\begin{enumerate}[{A}1]
+\item \label{tqft:a1} Two equivalent bordisms $M \iso N$ have the same image through $Z$, namely $Z(M)=Z(N)$
+\item \label{tqft:a2} The cylinder bordism $M = \Sigma \times I \colon \Sigma \to \Sigma$ is mapped to the identity
+\[ Z(\Sigma \times I) = \id_{Z(\Sigma)} \colon Z(\Sigma) \to Z(\Sigma) \]
+\item \label{tqft:a3} The gluing of two bordisms is mapped to the composition of their images, meaning that for two composable morphisms $M$, $N$, we have
+\[ Z(MN) = Z(N) \circ Z(M) \]
+\item \label{tqft:a4} The disjoint union of two bordisms is mapped to the tensor product of their images, meaning 
+\[Z(M \disj N) = Z(M) \tensor Z(N) \]
+\item \label{tqft:a5} The empty manifold $\varnothing$ is mapped to the ground field $\Bbbk$. It follows from A\ref{tqft:a2} that the empty bordism $\varnothing \times I$ is sent to the identity $\id_\Bbbk$.
+\end{enumerate}
 \end{tcbdfn}
+
+\begin{remark}
+It seems natural to interpret these axioms in the language of category theory.
+Indeed, axiom A\ref{tqft:a1} well defines a map form $\bord{n}$ to $\mathbf{Vect}_\Bbbk$ and axioms A\ref{tqft:a2} and A\ref{tqft:a3} guarantee such map is really a functor.
+Axioms A\ref{tqft:a4} and A\ref{tqft:a5} preserve the monoidal structure. To get a \emph{symmetric} monoidal functor, as defined in \ref{def:tqft}, we would have to add a sixth axiom:
+\begin{enumerate}
+  \item[(A6)] The twist bordism is mapped to the twist map of vector spaces, meaning 
+  \[ Z(T_{M,N}) = \sigma_{Z(M),Z(N)} \] 
+\end{enumerate}  
+\end{remark}
+
+\todo[inline]{we should also mention decomposition of bordism, snake lemma and dualizability somewhere}
+
+
