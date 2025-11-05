@@ -2,16 +2,55 @@
 \label{chap:bord2}
 
 \section{Generators and relations}
+orrori vari...
 
 We now consider the category $\bord{2}$.
-Recall that its objects are closed oriented 1-dimensional manifold and its arrows are the equivalence classes of oriented 2-dimensional bordisms.
+Recall that its objects are closed oriented 1-dimensional manifolds  and its arrows are the equivalence classes of oriented 2-dimensional bordisms.
 Our goal is to describe its elementary pieces and how they interact with each other. 
 To do so, we are going to define a \emph{normal form} of such bordisms, which will facilitate their comparison.
 %This construction relies on some results from Morse theory, which we now briefly recall. 
 
 We begin by adressing the existence of a bordism between closed oriented 1-dimensional manifolds.
-It is a known result that all closed connected one dimensional manifolds are diffeomorphic to a circle $\mathbb{S}^1$. 
-Any object in $\bord{2}$ is then diffeomorphic to a disjoint union of circles.
-This doesn't depend on the orientation (either clockwise or counter-clockwise) we define on the circles.
-Indeed, given two copies of $\mathbb{S}^1$ with opposite orientations, we can always define, by reflection, an orientation preserving diffeomorphism between them.
+As for the topological underlying structure, it is a known result that all closed connected one dimensional manifolds are diffeomorphic to a circle $\mathbb{S}^1$. Any object in $\bord{2}$ is then diffeomorphic to a disjoint union of circles (each with its own orientation).
+Given two 1-dimensional manifolds, $\Sigma_0$ with $m$ connected components and $\Sigma_1$ with $n$ connected components, we can define a bordism between the two by considering the 2-dimensional manifold $M$ comprising of $m+n$ "spheres with a hole".
 
+\begin{tcbprp}[Existence of 2D Bordisms]
+\label{prop:existence-2d-bordisms}
+For any two closed oriented 1-dimensional manifolds, there exists an oriented bordisms between them.
+\end{tcbprp}
+
+
+\begin{remark}
+While this result may seem straightforward in dimension 2, it is not trivial in general.
+For example, when considering oriented 0-manifolds, there exists a bordisms between two of them if and only if the "sums of the signed points" are equal between the two.
+\todo{scribbi meglio sta robaccia}
+\end{remark}
+
+As defined, the category $\bord{2}$ contains many diffeomorphic but distinct objects, which become unnecessary \todo{maybe better "redundant"??} when studying its structure. To get a more essential representation, we take its skeleton.
+
+\begin{tcbdfn}[Skeletons of a category]
+Let $\cat{C}$ be a category. A \emph{skeleton}\index{skeleton} of $\cat{C}$ is any full subcategory $\cat{S}$ such that each object of $\cat{C}$ is isomorphic in $\cat{C}$ to \emph{exactly} one object of $\cat{S}$.
+\end{tcbdfn} 
+ %(equivalentely, $\cat{A}$ is the full subcategory comprised of exactly one object from each isomorphism class)
+\begin{dfnx*}[Properties of skeletons]
+Any two skeletons $\cat{S}$, $\cat{S}'$ of the same category $\cat{C}$ are always isomorphic. We'll then speak of \emph{the} skeleton of a category.
+The inclusion $\cat{S} \hookrightarrow \cat{C}$ defines an equivalence of categories. 
+We have that two categories are equivalent if and only if their skeletons are isomorphic.
+\end{dfnx*}
+
+In the case of $\bord{2}$ we firstly need to understand how the isomorphism classes of its objects are defined.
+
+\begin{dfnx*}[Inverse bordism]
+Let $M \colon \Sigma_0 \to \Sigma_1$ be an $n$-dimensional oriented bordism. The bordism $M^{-1} \colon \Sigma_1 \to \Sigma_0$ is an inverse to $M$ if $MM^{-1}$ is the identity bordism on $\Sigma_0$ and $M^{-1}M$ is the identity bordism on $\Sigma_1$.
+\end{dfnx*}
+
+%\begin{tcblemma}
+%    Let $M \colon \Sigma_0 \to \Sigma_1$ be an invertible bordism. Then $\Sigma_0$ and $\Sigma_1$ have the same number of connected components.
+%\end{tcblemma}
+
+\begin{tcblemma}
+    Let $\Sigma_0$, $\Sigma_1$ be two closed oriented 1-dimensional manifolds. We have that $\Sigma_0$ and $\Sigma_1$ are diffeomorphic if and only if there exists an invertible morphism between them.
+\end{tcblemma}
+\todo[inline]{a me sembra una cosa un po' buttata là. andrà dimostrata...?}
+
+We hence recall that every object of $\bord{2}$ is diffeomorphic to a disjoint union of circles. We  

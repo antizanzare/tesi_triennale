@@ -287,7 +287,7 @@ This motivates the following framework: we define the bordism category by taking
 
 \begin{tcbdfn}[Equivalent bordisms]
   Let $(M, i_0, i_1)$, $(M', i'_0, i'_1)$ be two oriented bordisms, both from $\Sigma_0$ to $\Sigma_1$. 
-  We say $M$ and $M'$ are \emph{equivalent bordisms} if there exists an orientation preserving diffeomorphism $\psi \colon M \to M'$ making the following diagram commute.
+  We say $M$ and $M'$ are \emph{equivalent bordisms}\index{equivalent bordisms} if there exists an orientation preserving diffeomorphism $\psi \colon M \to M'$ making the following diagram commute.
   \[
   \begin{tikzcd}
     & M \arrow[dd, dashed, "\psi"] & \\
@@ -333,7 +333,7 @@ Through such homeomorphism we can define a new smooth structure on $M'N'$, which
 \end{proof}
 
 \begin{tcbdfn}
-The category of oriented n-dimensional bordisms $\bord{n}$ is defined as follows.
+The category of oriented n-dimensional bordisms $\bord{n}$ \index{$\bord{n}, the category of oriented n-bordisms$} is defined as follows.
 \begin{itemize}
   \item The objects are closed oriented $(n-1)$-dimensional manifolds
   \item For any $\Sigma_0, \Sigma_1 \in \obj{\bord{n}}$, morphisms are the equivalence classes of bordisms $M \colon \Sigma_0 \to \Sigma_1$
@@ -343,10 +343,10 @@ The category of oriented n-dimensional bordisms $\bord{n}$ is defined as follows
 \end{tcbdfn}
 
 % def disjoint union of bordisms
-\begin{dfnx}[Disjoint union of bordisms]
+\begin{dfnx*}[Disjoint union of bordisms]
 Given two bordisms $M \colon \Sigma_0 \to \Sigma_1$ and $N \colon \Sigma'_0 \to \Sigma'_1$, their disjoint union $M \disj N$ naturally defines a bordism from $\Sigma_0 \disj \Sigma'_0$ to $\Sigma_1 \disj \Sigma'_1$. 
 This operation is precisely the coproduct in the category of smooth manifold, equipped with the unique orientation agreeing with the ones on $M$ and $N$.
-\end{dfnx}
+\end{dfnx*}
 
 \begin{tcblemma} 
 Let $\cat{C}$ be a category that admits coproducts. 
@@ -390,10 +390,10 @@ The category $\bord{n}$ has a monoidal structure given by the disjoint union of 
 Any diffeomorphism of $(n-1)$-dimensional manifolds $\Sigma_0$, $\Sigma_1$ define an equivalence class of (invertible) bordisms $M \colon \Sigma_0 \to \Sigma_1$.
 \end{tcbprp}
 
-\begin{dfnx}[The twist bordism]
+\begin{dfnx*}[The twist bordism]
 The twist diffeomorphism of manifolds $\sigma \colon \Sigma \disj \Sigma' \to \Sigma' \disj \Sigma$ defines a cobordism in $\bord{n}$ which we'll denote as
 $T_{\Sigma,\Sigma'} \colon \Sigma \disj \Sigma' \to \Sigma' \disj \Sigma$. 
-\end{dfnx}
+\end{dfnx*}
 
 % maybe add T natural in Bord
 
@@ -404,7 +404,7 @@ The category $\bord{n}$ has a symmetric monoidal structure $(\bord{n}, \disj, \v
 \section{Topological Quantum Field Theories}
 
 \begin{tcbdfn} \label{def:tqft}
-An \emph{$n$-dimensional topological quantum field theory} is a symmetric monoidal functor from $(\bord{n}, \disj, \varnothing, T)$ to $(\mathbf{Vect}, \tensor, \Bbbk, \sigma)$
+An \emph{$n$-dimensional topological quantum field theory} \index{topological quantum field theory} is a symmetric monoidal functor from $(\bord{n}, \disj, \varnothing, T)$ to $(\mathbf{Vect}, \tensor, \Bbbk, \sigma)$
 \end{tcbdfn}
 
 Historically, the first explicit axiomatization of TQFTs was given by Atiyah in 1988 \cite{Atiyah1988}. 
@@ -413,7 +413,7 @@ We here give a slightly refined version of the original axioms, stated in terms 
 %Let us see how they compare with the functorial definition we just stated.
 
 \begin{tcbdfn}[Axiomatization of a TQFT]
-An \emph{n-dimensional topological quantum field theory over a field $\Bbbk$} consists of:
+An \emph{n-dimensional topological quantum field theory over a field $\Bbbk$} \index{topological quantum field theory} consists of:
 \begin{itemize}
   \item a $\Bbbk$-vector space $Z(\Sigma)$ associated to each closed oriented $(n-1)$-dimensional manifold $\Sigma$
   \item a $\Bbbk$-linear map $Z(M) \colon Z(\Sigma_0) \to Z(\Sigma_1)$ associated to each $n$-dimensional bordism $M$ from $\Sigma_0$ to $\Sigma_1$
