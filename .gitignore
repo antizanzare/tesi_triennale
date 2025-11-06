@@ -4,6 +4,7 @@
 *.lof
 *.log
 *.lot
+Makefile
 *.pdf
 *.fls
 *.out
