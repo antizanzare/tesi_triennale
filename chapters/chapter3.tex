@@ -53,4 +53,82 @@ Let $M \colon \Sigma_0 \to \Sigma_1$ be an $n$-dimensional oriented bordism. The
 \end{tcblemma}
 \todo[inline]{a me sembra una cosa un po' buttata là. andrà dimostrata...?}
 
-We hence recall that every object of $\bord{2}$ is diffeomorphic to a disjoint union of circles. We  
+Again, we recall that every object of $\bord{2}$ is diffeomorphic to a disjoint union of circles, where each components carries its own orientation (either clockwise or counter-clockwise). 
+However, given two copies of $\mathbb{S}^1$ with opposite orientations we can always define, by reflection, an orientation preserving diffeomorphism between them. 
+By the previous lemma this implies they belong to the same iso class.
+Therefore when defining the skeleton of $\bord{2}$, the orientation becomes irrelevant. The only invariant for an object is its number of connected components.
+
+\begin{tcbdfn}[Skeleton of $\bord{2}$]
+Let $(\mathbf{n})$ denote the disjoint union of $n$ copies of $\mathbb{S}^1$. Then the objects 
+\[
+\{(\mathbf{0}), (\mathbf{1}), (\mathbf{2}), (\mathbf{3}), \dots\} = \{\varnothing, \mathbb{S}^1, \mathbb{S}^1 \disj \mathbb{S}^1, \mathbb{S}^1 \disj \mathbb{S}^1 \disj \mathbb{S}^1, \dots\} %= \{\varnothing, \Circle, \Circle \disj \Circle, \Circle \disj \Circle \disj \Circle, \dots\}
+\]
+together with all the possible morphisms between them, form a skeleton of $\bord{2}$. By abuse of notation, from now on, we we'll refer to this category as $\bord{2}$.
+\end{tcbdfn}
+
+% mmmm
+We now analyze the morphisms in detail.
+\begin{tcbprp}
+Two diffeomorphisms from $\Sigma_0$ to $\Sigma_1$ define the same bordism equivalence class if and only if they are (smoothly) homotopic.
+\end{tcbprp}
+
+In dimension 1, the classification of diffeomorphisms up to homotopy is particularly simple. It can be proved that every orientation preserving diffeomorphism from $\mathbb{S}^1$ to $\mathbb{S}^1$ is homotopic to the identity. The only invertible 2-bordisms are then permutation bordisms
+\todo[inline]{non certa di mettere questa proposizione. rivedere e in caso definire i permutation bordisms}
+% mmmm
+
+\begin{tcbdfn}[Generators for a monoidal category]
+    A \emph{generating set} for a monoidal category $(\cat{C}, \square, I)$ is a set of arrows $S \subset \arr{\cat{C}}$ such that every arrow in $\cat{C}$ can be obtained from the ones in $S$ by composition or through the monoidal product $\square$.
+\end{tcbdfn}
+
+In the case of 2-dimensional bordisms, for example, the identity over the disjoint union of two circles ($\id_{(\mathbf{2})}$) is not a generator, since it decomposes as the disjoint union of two identities over a circle ($\id_{(\mathbf{1})}\disj\id_{(\mathbf{1})}$). On the contrary, the twist bordism $T$ cannot be described as a disjoint union of identity boridsms. The exchange of components described by the twist makes it impossible to define a diffeomorphism to the identity on $\mathbb{S}^1 \disj \mathbb{S}^1$.
+
+\begin{tcbthm}[Generators of $\bord{2}$]
+The six bordisms 
+\[
+\begin{tikzpicture}[every tqft/.style={transform shape}]
+\pic[tqft cap, rotate=90, draw, at={(0,0)},
+every outgoing lower boundary component/.style={draw},  every incoming lower boundary component/.style={dashed, draw}
+];
+\pic[tqft pair of pants, rotate=90, draw, at={(3,0)},
+every outgoing lower boundary component/.style={draw},  every incoming lower boundary component/.style={dashed, draw}
+];
+\pic[tqft cup, rotate=90, draw, at={(6,0)},
+every outgoing lower boundary component/.style={draw},  every incoming lower boundary component/.style={dashed, draw}
+];
+\pic[tqft reverse pair of pants, rotate=90, draw, at={(7,-1)},
+every outgoing lower boundary component/.style={draw},  every incoming lower boundary component/.style={dashed, draw}
+];
+\pic[tqft cylinder to prior, rotate=90, draw, at={(10,.5)},
+every outgoing lower boundary component/.style={draw},  every incoming lower boundary component/.style={dashed, draw}
+];
+\pic[tqft cylinder to next, rotate=90, draw, at={(10,-0.5)},
+every outgoing lower boundary component/.style={draw},  every incoming lower boundary component/.style={dashed, draw}
+];
+\pic[tqft cylinder, rotate=90, draw, at={(13,0)},
+every outgoing lower boundary component/.style={draw},  every incoming lower boundary component/.style={dashed, draw}
+];
+\end{tikzpicture}
+\]
+form a generating set for the monoidal category $(\bord{2}, \disj, \varnothing)$.
+\end{tcbthm}
+
+The proof of this theorem requires some Morse theory. We recall the essential tools.
+\begin{tcbdfn}[Critical points]
+    Let $M$ be a compact $n$-dimensional manifold and consider a smooth map $f \colon M \to I \subset \mathbb{R}$. A point $x \in M$ is a \emph{critical point} if the differential $df_x$ is zero. In such case, its image $f(x) \in I$ becomes a critical value.
+\end{tcbdfn}
+\begin{tcbdfn}[Non-degeneracy of critical points]
+    Let $M$ be a compact $n$-dimensional manifold. A critical point $x \in M$ is \emph{non degenerate} if the Hessian matrix has non zero determinant in some coordinates. The \emph{index} 
+\end{tcbdfn}
+\begin{tcbdfn}[Morse functions]
+    bla
+\end{tcbdfn}
+\begin{tcbthm}
+    bla bla
+\end{tcbthm}
+We now give a non rigorous sketch of the main argument.
+
+
+
+Suppose M is a smooth manifold that admits a proper smooth function
+f W M ! R with no critical points. Show that M is diffeomorphic to N R
+for some compact smooth manifold N .
