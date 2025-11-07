@@ -2,7 +2,6 @@
 \label{chap:bord2}
 
 \section{Generators and relations}
-orrori vari...
 
 We now consider the category $\bord{2}$.
 Recall that its objects are closed oriented 1-dimensional manifolds  and its arrows are the equivalence classes of oriented 2-dimensional bordisms.
@@ -12,7 +11,7 @@ To do so, we are going to define a \emph{normal form} of such bordisms, which wi
 
 We begin by adressing the existence of a bordism between closed oriented 1-dimensional manifolds.
 As for the topological underlying structure, it is a known result that all closed connected one dimensional manifolds are diffeomorphic to a circle $\mathbb{S}^1$. Any object in $\bord{2}$ is then diffeomorphic to a disjoint union of circles (each with its own orientation).
-Given two 1-dimensional manifolds, $\Sigma_0$ with $m$ connected components and $\Sigma_1$ with $n$ connected components, we can define a bordism between the two by considering the 2-dimensional manifold $M$ comprising of $m+n$ "spheres with a hole".
+Given two 1-dimensional manifolds, $\Sigma_0$ with $m$ connected components and $\Sigma_1$ with $n$ connected components, we can define a bordism between the two by considering the 2-dimensional manifold $M$ comprising of $m+n$ ``spheres with a hole''.
 
 \begin{tcbprp}[Existence of 2D Bordisms]
 \label{prop:existence-2d-bordisms}
@@ -22,7 +21,7 @@ For any two closed oriented 1-dimensional manifolds, there exists an oriented bo
 
 \begin{remark}
 While this result may seem straightforward in dimension 2, it is not trivial in general.
-For example, when considering oriented 0-manifolds, there exists a bordisms between two of them if and only if the "sums of the signed points" are equal between the two.
+For example, when considering oriented 0-manifolds, there exists a bordisms between two of them if and only if the ``sums of the signed points'' are equal between the two.
 \todo{scribbi meglio sta robaccia}
 \end{remark}
 
@@ -66,15 +65,8 @@ Let $(\mathbf{n})$ denote the disjoint union of $n$ copies of $\mathbb{S}^1$. Th
 together with all the possible morphisms between them, form a skeleton of $\bord{2}$. By abuse of notation, from now on, we we'll refer to this category as $\bord{2}$.
 \end{tcbdfn}
 
-% mmmm
 We now analyze the morphisms in detail.
-\begin{tcbprp}
-Two diffeomorphisms from $\Sigma_0$ to $\Sigma_1$ define the same bordism equivalence class if and only if they are (smoothly) homotopic.
-\end{tcbprp}
 
-In dimension 1, the classification of diffeomorphisms up to homotopy is particularly simple. It can be proved that every orientation preserving diffeomorphism from $\mathbb{S}^1$ to $\mathbb{S}^1$ is homotopic to the identity. The only invertible 2-bordisms are then permutation bordisms
-\todo[inline]{non certa di mettere questa proposizione. rivedere e in caso definire i permutation bordisms}
-% mmmm
 
 \begin{tcbdfn}[Generators for a monoidal category]
     A \emph{generating set} for a monoidal category $(\cat{C}, \square, I)$ is a set of arrows $S \subset \arr{\cat{C}}$ such that every arrow in $\cat{C}$ can be obtained from the ones in $S$ by composition or through the monoidal product $\square$.
@@ -83,7 +75,8 @@ In dimension 1, the classification of diffeomorphisms up to homotopy is particul
 In the case of 2-dimensional bordisms, for example, the identity over the disjoint union of two circles ($\id_{(\mathbf{2})}$) is not a generator, since it decomposes as the disjoint union of two identities over a circle ($\id_{(\mathbf{1})}\disj\id_{(\mathbf{1})}$). On the contrary, the twist bordism $T$ cannot be described as a disjoint union of identity boridsms. The exchange of components described by the twist makes it impossible to define a diffeomorphism to the identity on $\mathbb{S}^1 \disj \mathbb{S}^1$.
 
 \begin{tcbthm}[Generators of $\bord{2}$]
-The six bordisms 
+    \label{thm-generators}
+The six bordisms \todo[inline]{cap, pants, cocap, copants, twist, cylinder}
 \[
 \begin{tikzpicture}[every tqft/.style={transform shape}]
 \pic[tqft cap, rotate=90, draw, at={(0,0)},
@@ -112,23 +105,97 @@ every outgoing lower boundary component/.style={draw},  every incoming lower bou
 form a generating set for the monoidal category $(\bord{2}, \disj, \varnothing)$.
 \end{tcbthm}
 
-The proof of this theorem requires some Morse theory. We recall the essential tools.
-\begin{tcbdfn}[Critical points]
-    Let $M$ be a compact $n$-dimensional manifold and consider a smooth map $f \colon M \to I \subset \mathbb{R}$. A point $x \in M$ is a \emph{critical point} if the differential $df_x$ is zero. In such case, its image $f(x) \in I$ becomes a critical value.
+%The proof of this theorem relies on Morse theory. 
+%To avoid losing the main focus, we only state the main tecnichal result needed and we refer to [Hirsch] \todo{add citation} for the foundational definitions and a complete treatment of the underlying theory.
+
+
+%\begin{tcbthm}
+%    \label{thm-saddle}
+%    Let $M$ be a compact connected orientable surface with Morse function $f \colon M \to I$. 
+%    If $f$ has a unique critical point $x$, of index 1, then $M$ is diffeomorphic to the pair of pants. 
+%    If, instead, $f$ has no critical points, $M$ is equivalent to a cylinder.
+%\end{tcbthm}
+%We now give a non rigorous sketch of the main argument. By definition of symmetric monoidal category, we clearly have the identity and the twist as generating bordisms. Now, consider any bordism $M\ \colon \Sigma_0 \to \Sigma_1$. We take a Morse function $f\colon M \to [0,1]$ and a sequence of regular values $0 = r_0 \leq r_1 \leq r_2 \leq \dots \leq r_k = 1$ such that each interval $[r_i, r_{i+1}]$ contains \emph{at most} one critical value. By considering the preimages of the regular values $\Sigma_i \defeq f^{-1}(i)$ we decompose $M$ in elementary bordisms $M_{[i,i+1]} \colon \Sigma_i \to \Sigma_{i+1}$, each of which with at most one critical point.
+%We can assume (through twist and disjoint union) each of these bordisms is connected and has unique critical point $x$. The local structure of each $M_{[i,i+1]}$ is determined by the index of such critical point:
+%\begin{itemize}
+%    \item if the index is 0, $x$ is a local minimum and the bordism is a cap;
+%    \item if the index is 2, $x$ is a local maximum and the bordism is a cocap;
+%    \item if the index is 1, $x$ is a saddle and by theorem \ref{thm-saddle} the borism is a pair of pants (or a copair).
+%\end{itemize}
+
+%Having established the generators of $\bord{2}$, we now want to describe their interactions by providing a sufficient set of relations. To do so we are going to define a \emph{normal form} and define a set of relations sufficient to reduce any bordism into this standard form.
+
+The proof of this theorem relies on Morse theory, for which we refer the reader to [Hirsch, ch 6 and 9]\todo{add citation}. 
+However, in dimension 2, we can also appeal to the topological classification of surfaces, which provides a more elementary construction. 
+To avoid losing the main focus, we will follow this second approach. 
+In higher dimensions this is not possilble and we will need to rely on Morse theory.
+
+We recall the classical classification of surfaces without boundary.
+\par
+\emph{Two connected compact oriented surfaces without boundary are diffeomorphic if and only if they have the same genus (or equivalentely the same Euler characteristic).}
+\par
+Since bordisms are surfaces \emph{with} boundary we require an adapted version of the result. 
+\begin{dfnx*}[Topological calssification of surfaces with boundary]
+Two connected compact oriented surfaces with oriented boundary are diffeomorphic if and only if they have the same genus (or equivalentely the same Euler characteristic), the same number of in-boundaries and the same number of out-boundaries.
+\end{dfnx*}
+
+To keep track of such invariants we define the normal form in the following way.
+
+\begin{tcbdfn}[Normal form of connected bordisms]
+We define the normal form of a connected bordism $M \colon (\mathbf{m}) \to (\mathbf{n})$ with $g$ holes as the composition of
+\begin{itemize}
+    \item an \emph{in-part} $M_{in} \colon (\mathbf{m}) \to (\mathbf{1})$, consisting of $m-1$ copies of copair of pants $\bordcopants$. If $m = 0$, the in-part consists of a single cap $\bordcap$.
+    \item a \emph{topological part} $M_{mid} \colon (\mathbf{1}) \to (\mathbf{1})$, consisting of $g$ pair of pants and $g$ copair of pants, arranged together to define $g$ holes $\bordpants \bordcopants$.
+    \item an \emph{out-part} $M_{out} \colon (\mathbf{1}) \to (\mathbf{n})$, consisting of $n-1$ copies of pair of pants $\bordpants$. If $n = 0$, the in-part consists of a single cocap $\bordcocap$.
+\end{itemize}
 \end{tcbdfn}
-\begin{tcbdfn}[Non-degeneracy of critical points]
-    Let $M$ be a compact $n$-dimensional manifold. A critical point $x \in M$ is \emph{non degenerate} if the Hessian matrix has non zero determinant in some coordinates. The \emph{index} 
-\end{tcbdfn}
-\begin{tcbdfn}[Morse functions]
-    bla
-\end{tcbdfn}
-\begin{tcbthm}
-    bla bla
-\end{tcbthm}
-We now give a non rigorous sketch of the main argument.
+%($\bordcap$)($\bordcocap$)($\bordpants$)($\bordcopants$)($\bordcylinder$)($\bordtwist$)
+To understand how we are supposed to attach such bordisms let's see a visual example.
+\todo[inline]{addare la 'vera' decomposizione}
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[every tqft/.style={transform shape}, rotate=90]
+    \pic[name=a, 
+        tqft, 
+        incoming boundary components = 5, 
+        outgoing boundary components = 4,
+        genus = 4,
+        draw,
+        every outgoing lower boundary component/.style={draw},
+        every incoming lower boundary component/.style={dashed, draw},
+        boundary separation=1cm,
+        cobordism height=3cm,
+        offset=0.5
+    ];
+    \end{tikzpicture}
+\end{figure}
+
+\begin{tcblemma}
+    Every connected 2-dimensional bordism can be obtained through composition and disjoint union of the elementary bordisms $\bordcap$, $\bordcocap$, $\bordpants$, $\bordcopants$, $\bordcylinder$.
+\end{tcblemma}
+
+Let us now consider a non connected bordisms. While it is true that a non connected manifold is the disjoint union of connected surfaces, this fact doesn't help us in proving \ref{thm-generators}. Indeed the category of bordisms not only considers the topology of bordisms but also the permutations on the boundaries.
+The main example of this fact can be seen by considering the twist. As a smooth manifold, the twist is the disjoint union of two cylinders. However, as a bordism, it is not isomorphic to the disjoint union of two identity morphisms since it flips the two boundaries.
+This problem can be solved by introducing permutations that let us untwist the bordisms. We now describe such procedure.
+
+Let $M \colon (\mathbf{m}) \to (\mathbf{n})$ be a non connected bordism from $\Sigma_1 \disj \dots \disj \Sigma_m$ to $\Sigma'_1 \disj \dots \disj \Sigma'_n$. For simplicity we assume $M$ only has two connected components which we name $M_1$ and $M_2$. Some of the inboundaries of $M$ will then be inboundaries of $M_1$, while the others will be in boundaries of $M_2$. 
+We ``reorder'' such boundaries through a diffeomorphism $(\mathbf{m}) \to (\mathbf{m})$, which induces a bordism $S \colon (\mathbf{m}) \to (\mathbf{m})$. 
+We can now take the composition $SM$ and denote as $(SM)_1$ and $(SM)_2$ its two connected components. By construction, the in-boundary of $SM$ is exactly the disjoint union of the in-boundaries of $(SM)_1$, $(SM)_2$.
+By applying the same method to the out-boundary we get a permutation bordism $T \colon (\mathbf{n}) \to (\mathbf{n})$. 
+The composition $SMT \colon (\mathbf{m}) \to (\mathbf{n})$ is then exactly the disjoint union of its connected components.
+The intial bordism $M$ then factors as $S^{-1} (SMT) T^{-1}$, letting us state the following.
+
+\begin{tcblemma}
+Every 2-dimensional bordism factors as a permutation bordism, followed by a disjoint union of connected bordisms, followed by a permutation bordism.
+\end{tcblemma}
 
 
 
-Suppose M is a smooth manifold that admits a proper smooth function
-f W M ! R with no critical points. Show that M is diffeomorphic to N R
-for some compact smooth manifold N .
+% mmmm
+%\todo[inline]{non certa di mettere questa proposizione. rivedere e in caso definire i permutation bordisms}
+%\begin{tcbprp}
+%Two diffeomorphisms from $\Sigma_0$ to $\Sigma_1$ define the same bordism equivalence class if and only if they are (smoothly) homotopic.
+%\end{tcbprp}
+%In dimension 1, the classification of diffeomorphisms up to homotopy is particularly simple. It can be proved that every orientation preserving diffeomorphism from $\mathbb{S}^1$ to $\mathbb{S}^1$ is homotopic to the identity. The only invertible 2-bordisms are then permutation bordisms
+% mmmm
+

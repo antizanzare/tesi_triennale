@@ -394,13 +394,71 @@
 \newcommand{\disj}{\amalg}
 \newcommand{\tensor}{\otimes}
 
+\usepackage{tikz}
+\usetikzlibrary{shadows, patterns, tqft}
+
+\newcommand{\bordcap}{
+    \raisebox{-.25 ex}{
+    \begin{tikzpicture}[every tqft/.style={transform shape}, scale=0.35]
+        \pic[tqft cap, rotate=90, draw, every outgoing lower boundary component/.style={draw}];
+    \end{tikzpicture}
+    }
+}
+
+\newcommand{\bordcocap}{
+    \raisebox{-.25 ex}{
+    \begin{tikzpicture}[every tqft/.style={transform shape}, scale=0.35]
+        \pic[tqft cup, rotate=90, draw, every lower boundary component/.style={draw}];
+    \end{tikzpicture}
+    }
+}
+
+
+\newcommand{\bordpants}{
+    \raisebox{-.5 ex}{
+    \begin{tikzpicture}[every tqft/.style={transform shape}, scale=0.15]
+        \pic[tqft pair of pants, rotate=90, draw, every lower boundary component/.style={draw}];
+    \end{tikzpicture}
+    }
+}
+
+\newcommand{\bordcopants}{
+    \raisebox{-.5 ex}{
+    \begin{tikzpicture}[every tqft/.style={transform shape}]
+        \pic[tqft reverse pair of pants, rotate=90, scale=0.15, draw, every lower boundary component/.style={draw}];
+    \end{tikzpicture}
+    }
+}
+
+\newcommand{\bordcylinder}{
+    \raisebox{0 ex}{
+    \begin{tikzpicture}[every tqft/.style={transform shape}, scale=0.25]
+        \pic[tqft cylinder, rotate=90, draw, every lower boundary component/.style={draw}];
+    \end{tikzpicture}
+    }
+}
+
+
+\newcommand{\bordtwist}{%
+    \raisebox{-.5 ex}{
+    \begin{tikzpicture}[every tqft/.style={transform shape}, scale=0.2]
+    \pic[tqft cylinder to prior, rotate=90, draw, at={(10,.5)},
+every lower boundary component/.style={draw}
+];
+    \pic[tqft cylinder to next, rotate=90, draw, at={(10,-0.5)},
+every lower boundary component/.style={draw}
+];
+    \end{tikzpicture}
+   }
+}
+
+
 
 \newcommand{\varsq}{\mathbin \boxtimes}
 \usepackage[colorlinks=true, allcolors=black]{hyperref}
 
 
-\usepackage{tikz}
-\usetikzlibrary{shadows, patterns, tqft}
+
 
 
 
