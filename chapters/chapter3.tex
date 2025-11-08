@@ -1,7 +1,5 @@
-\chapter{The two dimensional case}
+\chapter{The two dimensional case: generators and relations}
 \label{chap:bord2}
-
-\section{Generators and relations}
 
 We now consider the category $\bord{2}$.
 Recall that its objects are closed oriented 1-dimensional manifolds  and its arrows are the equivalence classes of oriented 2-dimensional bordisms.
@@ -58,6 +56,7 @@ By the previous lemma this implies they belong to the same iso class.
 Therefore when defining the skeleton of $\bord{2}$, the orientation becomes irrelevant. The only invariant for an object is its number of connected components.
 
 \begin{tcbdfn}[Skeleton of $\bord{2}$]
+\label{dfn:skeleton-bord}
 Let $(\mathbf{n})$ denote the disjoint union of $n$ copies of $\mathbb{S}^1$. Then the objects 
 \[
 \{(\mathbf{0}), (\mathbf{1}), (\mathbf{2}), (\mathbf{3}), \dots\} = \{\varnothing, \mathbb{S}^1, \mathbb{S}^1 \disj \mathbb{S}^1, \mathbb{S}^1 \disj \mathbb{S}^1 \disj \mathbb{S}^1, \dots\} %= \{\varnothing, \Circle, \Circle \disj \Circle, \Circle \disj \Circle \disj \Circle, \dots\}
@@ -65,6 +64,7 @@ Let $(\mathbf{n})$ denote the disjoint union of $n$ copies of $\mathbb{S}^1$. Th
 together with all the possible morphisms between them, form a skeleton of $\bord{2}$. By abuse of notation, from now on, we we'll refer to this category as $\bord{2}$.
 \end{tcbdfn}
 
+\section{Generators}
 We now analyze the morphisms in detail.
 
 
@@ -75,8 +75,8 @@ We now analyze the morphisms in detail.
 In the case of 2-dimensional bordisms, for example, the identity over the disjoint union of two circles ($\id_{(\mathbf{2})}$) is not a generator, since it decomposes as the disjoint union of two identities over a circle ($\id_{(\mathbf{1})}\disj\id_{(\mathbf{1})}$). On the contrary, the twist bordism $T$ cannot be described as a disjoint union of identity boridsms. The exchange of components described by the twist makes it impossible to define a diffeomorphism to the identity on $\mathbb{S}^1 \disj \mathbb{S}^1$.
 
 \begin{tcbthm}[Generators of $\bord{2}$]
-    \label{thm-generators}
-The six bordisms \todo[inline]{cap, pants, cocap, copants, twist, cylinder}
+    \label{thm:generators}
+The six bordisms \todo[inline]{cap, copants, cocap, pants, twist, cylinder}
 \[
 \begin{tikzpicture}[every tqft/.style={transform shape}]
 \pic[tqft cap, rotate=90, draw, at={(0,0)},
@@ -125,28 +125,32 @@ form a generating set for the monoidal category $(\bord{2}, \disj, \varnothing)$
 
 %Having established the generators of $\bord{2}$, we now want to describe their interactions by providing a sufficient set of relations. To do so we are going to define a \emph{normal form} and define a set of relations sufficient to reduce any bordism into this standard form.
 
-The proof of this theorem relies on Morse theory, for which we refer the reader to [Hirsch, ch 6 and 9]\todo{add citation}. 
+The proof of this theorem relies on Morse theory, for which we refer the reader to  \cite[ch. 6 and 9]{hirsch}.
 However, in dimension 2, we can also appeal to the topological classification of surfaces, which provides a more elementary construction. 
 To avoid losing the main focus, we will follow this second approach. 
 In higher dimensions this is not possilble and we will need to rely on Morse theory.
 
+
+\todo[inline]{preliminary recollection of euler char and genus??}
 We recall the classical classification of surfaces without boundary.
 \par
 \emph{Two connected compact oriented surfaces without boundary are diffeomorphic if and only if they have the same genus (or equivalentely the same Euler characteristic).}
 \par
 Since bordisms are surfaces \emph{with} boundary we require an adapted version of the result. 
-\begin{dfnx*}[Topological calssification of surfaces with boundary]
+\begin{tcblemma}[Topological calssification of surfaces with boundary]
+    \label{lem:classification}
 Two connected compact oriented surfaces with oriented boundary are diffeomorphic if and only if they have the same genus (or equivalentely the same Euler characteristic), the same number of in-boundaries and the same number of out-boundaries.
-\end{dfnx*}
+\end{tcblemma}
 
 To keep track of such invariants we define the normal form in the following way.
 
 \begin{tcbdfn}[Normal form of connected bordisms]
+    \label{dfn:normal-form}
 We define the normal form of a connected bordism $M \colon (\mathbf{m}) \to (\mathbf{n})$ with $g$ holes as the composition of
 \begin{itemize}
-    \item an \emph{in-part} $M_{in} \colon (\mathbf{m}) \to (\mathbf{1})$, consisting of $m-1$ copies of copair of pants $\bordcopants$. If $m = 0$, the in-part consists of a single cap $\bordcap$.
-    \item a \emph{topological part} $M_{mid} \colon (\mathbf{1}) \to (\mathbf{1})$, consisting of $g$ pair of pants and $g$ copair of pants, arranged together to define $g$ holes $\bordpants \bordcopants$.
-    \item an \emph{out-part} $M_{out} \colon (\mathbf{1}) \to (\mathbf{n})$, consisting of $n-1$ copies of pair of pants $\bordpants$. If $n = 0$, the in-part consists of a single cocap $\bordcocap$.
+    \item an \emph{in-part} $M_{in} \colon (\mathbf{m}) \to (\mathbf{1})$, consisting of $m-1$ copies of pair of pants $\bordpants$. If $m = 0$, the in-part consists of a single cap $\bordcap$.
+    \item a \emph{topological part} $M_{mid} \colon (\mathbf{1}) \to (\mathbf{1})$, consisting of $g$ pair of copants and $g$ pair of pants, arranged together to define $g$ holes $\bordcopants \bordpants$.
+    \item an \emph{out-part} $M_{out} \colon (\mathbf{1}) \to (\mathbf{n})$, consisting of $n-1$ copies of pair of copants $\bordcopants$. If $n = 0$, the in-part consists of a single cocap $\bordcocap$.
 \end{itemize}
 \end{tcbdfn}
 %($\bordcap$)($\bordcocap$)($\bordpants$)($\bordcopants$)($\bordcylinder$)($\bordtwist$)
@@ -171,23 +175,224 @@ To understand how we are supposed to attach such bordisms let's see a visual exa
 \end{figure}
 
 \begin{tcblemma}
+    \label{lem:connected-decomposition}
     Every connected 2-dimensional bordism can be obtained through composition and disjoint union of the elementary bordisms $\bordcap$, $\bordcocap$, $\bordpants$, $\bordcopants$, $\bordcylinder$.
 \end{tcblemma}
 
-Let us now consider a non connected bordisms. While it is true that a non connected manifold is the disjoint union of connected surfaces, this fact doesn't help us in proving \ref{thm-generators}. Indeed the category of bordisms not only considers the topology of bordisms but also the permutations on the boundaries.
+Let us now consider the case of non connected bordisms. While it is true that a non connected manifold is the disjoint union of connected surfaces, this fact alone is not enough to prove theorem \ref{thm:generators}. 
+The category of bordisms considers not only the topology of bordisms but also the permutations on their boundary components.
+\par
 The main example of this fact can be seen by considering the twist. As a smooth manifold, the twist is the disjoint union of two cylinders. However, as a bordism, it is not isomorphic to the disjoint union of two identity morphisms since it flips the two boundaries.
 This problem can be solved by introducing permutations that let us untwist the bordisms. We now describe such procedure.
-
-Let $M \colon (\mathbf{m}) \to (\mathbf{n})$ be a non connected bordism from $\Sigma_1 \disj \dots \disj \Sigma_m$ to $\Sigma'_1 \disj \dots \disj \Sigma'_n$. For simplicity we assume $M$ only has two connected components which we name $M_1$ and $M_2$. Some of the inboundaries of $M$ will then be inboundaries of $M_1$, while the others will be in boundaries of $M_2$. 
-We ``reorder'' such boundaries through a diffeomorphism $(\mathbf{m}) \to (\mathbf{m})$, which induces a bordism $S \colon (\mathbf{m}) \to (\mathbf{m})$. 
-We can now take the composition $SM$ and denote as $(SM)_1$ and $(SM)_2$ its two connected components. By construction, the in-boundary of $SM$ is exactly the disjoint union of the in-boundaries of $(SM)_1$, $(SM)_2$.
-By applying the same method to the out-boundary we get a permutation bordism $T \colon (\mathbf{n}) \to (\mathbf{n})$. 
-The composition $SMT \colon (\mathbf{m}) \to (\mathbf{n})$ is then exactly the disjoint union of its connected components.
-The intial bordism $M$ then factors as $S^{-1} (SMT) T^{-1}$, letting us state the following.
-
+\par
+Let $M \colon (\mathbf{m}) \to (\mathbf{n})$ be a non connected bordism. For simplicity, assume $M$ has exactly two connected components, $M_1$ and $M_2$. The in-boundary $(\mathbf{m})$ will then be comprised of the in-boundaries of $M_1$ and $M_2$, not necessarily appearing in two distinct contiguous groups. \todo{nn mi piace la frase}
+We ``reorder'' such boundaries through a diffeomorphism $(\mathbf{m}) \to (\mathbf{m})$, which gives rise to a bordism $S \colon (\mathbf{m}) \to (\mathbf{m})$. 
+By construction, the in-boundary of the composition $SM$ is exactly the disjoint union of the in-boundaries of its connected components $(SM)_1$, $(SM)_2$.
+\par
+Applying the same method to the out-boundary we get a permutation bordism $T \colon (\mathbf{n}) \to (\mathbf{n})$ such that the composition $SMT \colon (\mathbf{m}) \to (\mathbf{n})$ is then exactly the disjoint union of the original connected components $M_1$ and $M_2$.
+The intial bordism $M$ then factors as $S^{-1} (SMT) T^{-1}$, leading to the following lemma.
+\todo[inline]{inserire pic esempio della procedura}
 \begin{tcblemma}
+    \label{lem:non-connected-decomposition}
 Every 2-dimensional bordism factors as a permutation bordism, followed by a disjoint union of connected bordisms, followed by a permutation bordism.
 \end{tcblemma}
+
+We are now ready to assemble these lemmas into a complete proof of Theorem $\ref{thm:generators}$. 
+By Lemma $\ref{lem:non-connected-decomposition}$, we can factor any bordism into two permutation bordisms and a disjoint union of connected bordism. 
+Each of these connected components, by Lemma $\ref{lem:connected-decomposition}$, can then be written in terms of the elementary bordisms $\bordcap$, $\bordcocap$, $\bordpants$, $\bordcopants$, $\bordcylinder$.
+On the other hand, permutation bordisms can be obtained through composition and disjoint union of twist bordisms $\bordtwist$ (and, again, cylinders). 
+
+
+\section{Relations}
+We descrive the interactions between the generators by giving a set of relations. 
+Their validity follows from the classification lemma \ref{lem:classification}. 
+Since the bordisms on both side of each relation have genus 0 and equal number of in and out boundaries, they are diffeomorphic hence equal in the $\bord{2}$ category.
+
+\begin{dfnx*}[Identity relations] \label{rel:id}
+    Saying the cylinder is the identity bordism in dimension 2, means that composing it with any other bordism doesn't modify such bordism.
+\end{dfnx*}
+
+\begin{dfnx*}[Handle cancellation] \label{rel:handle}
+Given a pair of pants (equivalentely a pair of copants), sewing a cap (equivalentely a cocap) on one of its legs, results in a cylinder.
+\end{dfnx*}
+\par
+\[
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, rotate=90, scale=0.4, baseline=-2pt]
+    \pic[tqft reverse pair of pants, name=a, draw, every outgoing lower boundary component/.style={draw}, anchor=outgoing boundary 1, every outgoing boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft cap, anchor=outgoing boundary 1, name=b, at=(a-incoming boundary 1), draw, every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder, anchor=outgoing boundary 1, name=c, at=(a-incoming boundary 2), draw, every lower boundary component/.style={dashed, draw}];
+\end{tikzpicture}
+= 
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, rotate=90, scale=0.4, baseline=-2pt]
+    \pic[tqft cylinder, name=a, draw, every outgoing lower boundary component/.style={draw}, every incoming lower boundary component/.style={dashed, draw}, anchor=outgoing boundary 1, every outgoing boundary component/.style={fill=gray, fill opacity=0.7}];
+\end{tikzpicture}
+=
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, rotate=90, scale=0.4, baseline=-2pt]
+    \pic[tqft reverse pair of pants, name=a, draw, every outgoing lower boundary component/.style={draw}, anchor=outgoing boundary 1, every outgoing boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft cap, anchor=outgoing boundary 1, name=b, at=(a-incoming boundary 2), draw, every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder, anchor=outgoing boundary 1, name=c, at=(a-incoming boundary 1), draw, every lower boundary component/.style={dashed, draw}];
+\end{tikzpicture}
+\hspace{3em}
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=.5}, rotate=90, scale=0.4, baseline=-2pt]
+    \pic[tqft pair of pants, name=a, draw, every lower boundary component/.style={dashed, draw}, anchor=incoming boundary 1];
+    \pic[tqft cup, anchor=incoming boundary 1, name=b, at=(a-outgoing boundary 1), draw];
+    \pic[tqft cylinder, anchor=incoming boundary 1, name=c, at=(a-outgoing boundary 2), draw, every outgoing lower boundary component/.style={draw}, every outgoing boundary component/.style={fill=gray, fill opacity=0.7}];
+\end{tikzpicture}
+= 
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, rotate=90, scale=0.4, baseline=-2pt]
+    \pic[tqft cylinder, name=a, draw, every outgoing lower boundary component/.style={draw}, every incoming lower boundary component/.style={dashed, draw}, anchor=outgoing boundary 1, every outgoing boundary component/.style={fill=gray, fill opacity=0.7}];
+\end{tikzpicture}
+=
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=.5}, rotate=90, scale=0.4, baseline=-2pt]
+    \pic[tqft pair of pants, name=a, draw, every lower boundary component/.style={dashed, draw}, anchor=incoming boundary 1];
+    \pic[tqft cup, anchor=incoming boundary 1, name=b, at=(a-outgoing boundary 2), draw];
+    \pic[tqft cylinder, anchor=incoming boundary 1, name=c, at=(a-outgoing boundary 1), draw, every outgoing lower boundary component/.style={draw}, every outgoing boundary component/.style={fill=gray, fill opacity=0.7}];
+\end{tikzpicture}
+\]    
+
+
+% \[
+% \begin{tikzpicture}[every tqft/.style={transform shape}, rotate=90, scale=0.4, baseline=-2pt]
+%     \pic[tqft reverse pair of pants, name=a, draw, every outgoing lower boundary component/.style={draw}, anchor=outgoing boundary 1];
+%     \pic[tqft cap, anchor=outgoing boundary 1, name=b, at=(a-incoming boundary 1), draw, every lower boundary component/.style={dashed, draw}];
+%     \pic[tqft cylinder, anchor=outgoing boundary 1, name=c, at=(a-incoming boundary 2), draw, every lower boundary component/.style={dashed, draw}];
+% \end{tikzpicture}
+% = 
+% \begin{tikzpicture}[every tqft/.style={transform shape}, rotate=90, scale=0.4, baseline=-2pt]
+%     \pic[tqft cylinder, name=a, draw, every outgoing lower boundary component/.style={draw}, every incoming lower boundary component/.style={dashed, draw}, anchor=outgoing boundary 1];
+% \end{tikzpicture}
+% =
+% \begin{tikzpicture}[every tqft/.style={transform shape}, rotate=90, scale=0.4, baseline=-2pt]
+%     \pic[tqft reverse pair of pants, name=a, draw, every outgoing lower boundary component/.style={draw}, anchor=outgoing boundary 1];
+%     \pic[tqft cap, anchor=outgoing boundary 1, name=b, at=(a-incoming boundary 2), draw, every lower boundary component/.style={dashed, draw}];
+%     \pic[tqft cylinder, anchor=outgoing boundary 1, name=c, at=(a-incoming boundary 1), draw, every lower boundary component/.style={dashed, draw}];
+% \end{tikzpicture}
+% \hspace{3em}
+% \begin{tikzpicture}[every tqft/.style={transform shape}, rotate=90, scale=0.4, baseline=-2pt]
+%     \pic[tqft pair of pants, name=a, draw, every lower boundary component/.style={dashed, draw}, anchor=incoming boundary 1];
+%     \pic[tqft cup, anchor=incoming boundary 1, name=b, at=(a-outgoing boundary 1), draw];
+%     \pic[tqft cylinder, anchor=incoming boundary 1, name=c, at=(a-outgoing boundary 2), draw, every outgoing lower boundary component/.style={draw}];
+% \end{tikzpicture}
+% = 
+% \begin{tikzpicture}[every tqft/.style={transform shape}, rotate=90, scale=0.4, baseline=-2pt]
+%     \pic[tqft cylinder, name=a, draw, every outgoing lower boundary component/.style={draw}, every incoming lower boundary component/.style={dashed, draw}, anchor=outgoing boundary 1];
+% \end{tikzpicture}
+% =
+% \begin{tikzpicture}[every tqft/.style={transform shape}, rotate=90, scale=0.4, baseline=-2pt]
+%     \pic[tqft pair of pants, name=a, draw, every lower boundary component/.style={dashed, draw}, anchor=incoming boundary 1];
+%     \pic[tqft cup, anchor=incoming boundary 1, name=b, at=(a-outgoing boundary 2), draw];
+%     \pic[tqft cylinder, anchor=incoming boundary 1, name=c, at=(a-outgoing boundary 1), draw, every outgoing lower boundary component/.style={draw}];
+% \end{tikzpicture}
+% \]    
+
+\begin{dfnx*}[Associativity and coassociativity] \label{rel:ass}
+    When composing two pairs of pants (equivalentely pair of copants), it doesn't matter to which leg we attach the second pair.
+\end{dfnx*}
+
+\begin{dfnx*}[Commutativity and cocommutativity] \label{rel:comm}
+    Attaching a twist to the legs of a pair of pants (equivalentely a pair of copants), gives a bordism diffeomorphic to the pair itself.
+\end{dfnx*}
+
+\begin{dfnx*}[Frobenius relation] \label{rel:frobenius}
+    We composing a pair of pants and a pair of copants, the following equivalences hold.
+\end{dfnx*}
+
+\begin{dfnx*}[Inverse of the twist]
+    The twist bordism is its own inverse, meaning that composing two twists gives an identity bordism on $(\mathbf{2})$.  
+\end{dfnx*}
+
+\begin{dfnx*}[Naturality of the twist]
+    For any pair of bordisms, the operations of applying the twist and taking the disjoint union commute, meaning that applying them in different order yields the same result.
+\end{dfnx*}
+
+To show the sufficiency of these relations we will describe a procedure that converts any connected bordism already decomposed in elementary pieces into its normal form. 
+We proceed by induction on the number of twist bordisms, starting with the base case of zero twists.
+
+Consider a decomposition of a connected surface $M$ with $m$ in-boundaries, $n$ out-boudaries and of genus $g$. Its Euler characteristic is given by
+\[
+\chi(M) = 2 - 2g - m - n
+\]
+Suppose such decomposition is comprised of $a$ pants $\bordpants$, $b$ copants $\bordcopants$, $p$ caps $\bordcap$ and $q$ cocaps $\bordcocap$. We can compute the Euler characteristic of such elementary pieces
+\[
+\chi(\bordpants) = -1 = \chi(\bordcopants) \qquad \chi(\bordcap) = 1 = \chi(\bordcocap) 
+\]
+and by additivity of the Euler characteristic, state that $\chi(M) = p + q - a - b$ and obtain
+\[
+2 - 2g - m - n = p + q - a - b
+\] 
+On the other hand we can sum the number of in boundaries and out boudaries to get
+\[
+m = 2a + b + q \qquad n = a + 2b + p \quad \Rightarrow \quad a + q + n = b + p + m
+\]
+Combining the two equations and solving for $a$ and $b$ we get 
+\[
+a = g + m - 1 + p \qquad b = g + n -1 + q
+\]
+
+Keeping in mind the definition of the normal form given in $\ref{dfn:normal-form}$, we begin by describing how to move $m-1$ copies of $\bordpants$ to the left (to form the \emph{in-part} of the normal form). To do so we use the above relations, depending on what we meet on the left of our pair of pants.
+
+If we encounter a cap on one of the legs, the \hyperlink{rel:handle}{handle cancellation relation} yelds an equivalence with a cylinder, which can hence be omitted. By assumption, this will happen exactly $p$ times, leaving us with only $g+m-1$ copies of pants.
+
+If instead we encounter a pair a copants, this can happen in two different ways:
+\[
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline]
+    \pic[tqft pair of pants, name=a, anchor=incoming boundary 1, draw, 
+    every incoming lower boundary component/.style={draw},
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft reverse pair of pants,draw, anchor=incoming boundary 1, at=(a-outgoing boundary 1),
+    every lower boundary component/.style={dashed,draw}];
+\end{tikzpicture}
+\hspace{8em}
+\begin{tikzpicture}[every tqft/.style={transform shape}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline]
+    \pic[tqft pair of pants, draw, name=a, anchor=outgoing boundary 1,
+    every incoming lower boundary component/.style={draw},
+    every outgoing lower boundary component/.style={dashed, draw},
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}, 
+    bottom color=gray, top color=white, fill opacity=0.5
+    ];
+    \pic[tqft reverse pair of pants, anchor=incoming boundary 2, at=(a-outgoing boundary 1), draw, name=b,
+    every lower boundary component/.style={dashed, draw}, 
+    bottom color=gray, top color=white, fill opacity=0.5];
+    \pic[tqft cylinder to prior, dashed, draw, anchor=outgoing boundary 1, at=(b-incoming boundary 1),
+    every incoming lower boundary component/.style={dashed,draw}
+];
+    \pic[tqft cylinder to prior, dashed, draw, anchor=incoming boundary 1, at=(a-outgoing boundary 2),
+    every outgoing lowerboundary component/.style={dashed,draw}];
+\end{tikzpicture}
+\]
+In the first case, we have no relation to apply and we produce a ``hole''. Being $M$ a surface of genus $g$, this will happen exactly $g$ times. In the second case by \hyperlink{rel:frobenius}{Frobenius relation} we can simply move $\bordpants$ to the left. 
+
+Since the first case we just treated produces a ``locked'' structure, we still have one last case to consider. If we have such structure to the left of $\bordpants$, we can use the \hyperlink{rel:ass}{associativity relation} and the \hyperlink{rel:frobenius}{Frobenius relation} to move the pair of pants to the left.
+\todo[inline]{immagine}
+
+An analogous process can be described for the copies of $\bordcopants$, of which $q$ will vanish, $g$ will lock with $g$ copies of pants and $n-1$ will move to the right to form the \emph{out-part} of the normal form. 
+
+Let us now consider a decomposition of a connected surface $M \colon (\mathbf{m}) \to (\mathbf{n})$ where twist bordisms appear. Pick any twist morphism $T$ and label its four boundaries. Without loss of generalities\footnote{Thanks to the \hyperlink{rel:id}{identity relations} we can always insert identities where needed.} we assume all pieces parallel to $T$ are cylinders. \todo{insert pic}
+Having assumed $M$ to be connected, some of these boundaries must be connected to each other. 
+
+Suppose $A$ and $C$ are connected to each other. 
+Then, to the left of the twist, we have a connected surface with at least one less twist than the original bordism $M$. 
+By induction we can assume such surface can be brought to normal form and we can hence rearrange its outpart to get the twist to align with a copy of $\bordcopants$. 
+Clearly, by \hyperlink{rel:comm}{cocommutativity}, we are able to remove the twist.
+The same argument applies when assuming $B$ and $D$ are connected.
+
+Suppose $A$ and $B$ are connected to each other and consider the (connected) surface connecting the two. 
+Having assumed all pieces parallel to the twist to be cylinders, we can disconnect such surface and separately consider the one to the left and the one to the right of the twist. 
+Again, such regions will be comprised of at least one less twist than $M$ and by induction they can be reduced to their normal forms.
+This procedure results in the following configuration.
+\todo[inline]{immagine e equivalenze}
+Through \hyperlink{rel:comm}{cocommutativity} and the \hyperlink{rel:frobenius}{Frobenius relation}, as depicted above/below \todo{fix} we are able to eliminate the twist morphism.
+
+So far, we have only considered connected surfaces. We now adress the non-connected case. As we already did when proving Lemma \ref{lem:non-connected-decomposition} we now that given any bordism $M$  we are able to define a normal form as the composition of a permutation bordism ($S^{-1}$), a disjoint union of connected components ($SMT$) and another permutation bordism ($T^{-1}$). Starting from $M$ and observing that $S^{-1}S = \id$ and $TT^{-1} = id$, we can get $M = S^{-1}SMTT^{-1}$ through the following relations:
+\todo[inline]{insert relations}
+By the preceding argument for connected surfaces we can now reduce each connected component of $SMT$ to its normal form.
+
+
+\begin{remark}[A minimal set of relations.]
+The set relation we gave is not minimal, but rather convenient. Indeed we can find some implications hold between them. 
+For example we can show that the Frobenius relation together with the handle cancellation imply associativity and coassociativity. 
+\todo[inline]{insert images}
+\end{remark}
 
 
 
