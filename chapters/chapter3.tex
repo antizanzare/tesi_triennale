@@ -1,4 +1,4 @@
-\chapter{The two dimensional case: generators and relations}
+\chapter{The two dimensional case}
 \label{chap:bord2}
 
 We now consider the category $\bord{2}$.
@@ -211,42 +211,177 @@ Since the bordisms on both side of each relation have genus 0 and equal number o
 \begin{dfnx*}[Identity relations] \label{rel:id}
     Saying the cylinder is the identity bordism in dimension 2, means that composing it with any other bordism doesn't modify such bordism.
 \end{dfnx*}
+\[
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming,rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft cylinder, draw, name=a,
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder, draw, anchor=outgoing boundary 1, at=(a-incoming boundary 1), 
+    every incoming lower boundary component/.style={draw},
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+\end{tikzpicture}
+=
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming,rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft cylinder, draw,
+    every incoming lower boundary component/.style={draw},
+    every outgoing lower boundary component/.style={dashed, draw},
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+\end{tikzpicture}
+\hspace{3em} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming,rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft cup, draw, name=a,
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder, draw, anchor=outgoing boundary 1, at=(a-incoming boundary 1), 
+    every incoming lower boundary component/.style={draw},
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+\end{tikzpicture}
+= 
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming,rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft cup, draw,
+    every incoming lower boundary component/.style={draw},
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+\end{tikzpicture}
+\hspace{3em} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming,rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft cylinder, draw, name=a,
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cap, draw, anchor=outgoing boundary 1, at=(a-incoming boundary 1)];
+\end{tikzpicture}
+=
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming,rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft cap, draw,
+    every outgoing lower boundary component/.style={dashed, draw}];
+\end{tikzpicture}
+\]
+\[
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft pair of pants, name=a, draw,
+    every incoming lower boundary component/.style={draw},
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder, draw, anchor=incoming boundary 1, at=(a-outgoing boundary 1), 
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder, draw, anchor=incoming boundary 1, at=(a-outgoing boundary 2), 
+    every lower boundary component/.style={dashed, draw}];
+\end{tikzpicture}
+=
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft pair of pants, name=a, draw,
+    every outgoing lower boundary component/.style={dashed, draw},
+    every incoming lower boundary component/.style={draw},
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+\end{tikzpicture}
+=
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft pair of pants, name=a, draw,
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder, draw, anchor=outgoing boundary 1, at=(a-incoming boundary 1),
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+\end{tikzpicture}
+\hspace{3em} %%%%%%%%%%%%%%%%%
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft reverse pair of pants, name=a, draw, anchor=outgoing boundary 1,
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder, draw, anchor=outgoing boundary 1, at=(a-incoming boundary 1),
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder, draw, anchor=outgoing boundary 1, at=(a-incoming boundary 2),
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+\end{tikzpicture}
+=
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft reverse pair of pants, draw, anchor=outgoing boundary 1,
+    every outgoing lower boundary component/.style={dashed, draw},
+    every incoming lower boundary component/.style={draw},
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+\end{tikzpicture}
+=
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft reverse pair of pants, name=a, draw, anchor=outgoing boundary 1,
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder, draw, anchor=incoming boundary 1, at=(a-outgoing boundary 1),
+    every lower boundary component/.style={dashed, draw}];
+\end{tikzpicture}
+\]
+
+\[
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline]
+    \pic[tqft cylinder to next, name=a, draw, anchor=between last incoming and last outgoing, 
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder to prior, name=b, draw, anchor=between last incoming and last outgoing, 
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder, draw, anchor=incoming boundary, at=(a-outgoing boundary),
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder, draw, anchor=incoming boundary, at=(b-outgoing boundary),
+    every lower boundary component/.style={dashed, draw}];    
+\end{tikzpicture}
+=
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline]
+    \pic[tqft cylinder to next, name=a, draw, anchor=between last incoming and last outgoing, 
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7},
+    every outgoing lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to prior, name=b, draw, anchor=between last incoming and last outgoing, 
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7},
+    every outgoing lower boundary component/.style={dashed, draw}];
+\end{tikzpicture}
+=
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline]
+    \pic[tqft cylinder to next, name=a, draw, anchor=between last incoming and last outgoing, 
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to prior, name=b, draw, anchor=between last incoming and last outgoing, 
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder, draw, anchor=outgoing boundary, at=(a-incoming boundary),
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder, draw, anchor=outgoing boundary, at=(b-incoming boundary),
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+\end{tikzpicture}
+\]
+
 
 \begin{dfnx*}[Handle cancellation] \label{rel:handle}
 Given a pair of pants (equivalentely a pair of copants), sewing a cap (equivalentely a cocap) on one of its legs, results in a cylinder.
 \end{dfnx*}
-\par
 \[
-\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, rotate=90, scale=0.4, baseline=-2pt]
-    \pic[tqft reverse pair of pants, name=a, draw, every outgoing lower boundary component/.style={draw}, anchor=outgoing boundary 1, every outgoing boundary component/.style={fill=gray, fill opacity=0.7}];
-    \pic[tqft cap, anchor=outgoing boundary 1, name=b, at=(a-incoming boundary 1), draw, every lower boundary component/.style={dashed, draw}];
-    \pic[tqft cylinder, anchor=outgoing boundary 1, name=c, at=(a-incoming boundary 2), draw, every lower boundary component/.style={dashed, draw}];
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft pair of pants, name=a, draw,
+    every incoming lower boundary component/.style={draw}, 
+    anchor=incoming boundary 1, 
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft cup, anchor=incoming boundary 1, name=b, at=(a-outgoing boundary 1), draw, every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder, anchor=incoming boundary 1, name=c, at=(a-outgoing boundary 2), draw, every lower boundary component/.style={dashed, draw}];
 \end{tikzpicture}
 = 
-\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, rotate=90, scale=0.4, baseline=-2pt]
-    \pic[tqft cylinder, name=a, draw, every outgoing lower boundary component/.style={draw}, every incoming lower boundary component/.style={dashed, draw}, anchor=outgoing boundary 1, every outgoing boundary component/.style={fill=gray, fill opacity=0.7}];
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft cylinder, name=a, draw, every incoming lower boundary component/.style={draw}, every outgoing lower boundary component/.style={dashed, draw}, anchor=outgoing boundary 1, every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
 \end{tikzpicture}
 =
-\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, rotate=90, scale=0.4, baseline=-2pt]
-    \pic[tqft reverse pair of pants, name=a, draw, every outgoing lower boundary component/.style={draw}, anchor=outgoing boundary 1, every outgoing boundary component/.style={fill=gray, fill opacity=0.7}];
-    \pic[tqft cap, anchor=outgoing boundary 1, name=b, at=(a-incoming boundary 2), draw, every lower boundary component/.style={dashed, draw}];
-    \pic[tqft cylinder, anchor=outgoing boundary 1, name=c, at=(a-incoming boundary 1), draw, every lower boundary component/.style={dashed, draw}];
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft pair of pants, name=a, draw, every incoming lower boundary component/.style={draw}, anchor=incoming boundary 1, every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft cup, anchor=incoming boundary 1, name=b, at=(a-outgoing boundary 2), draw, every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder, anchor=incoming boundary 1, name=c, at=(a-outgoing boundary 1), draw, every lower boundary component/.style={dashed, draw}];
 \end{tikzpicture}
 \hspace{3em}
-\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=.5}, rotate=90, scale=0.4, baseline=-2pt]
-    \pic[tqft pair of pants, name=a, draw, every lower boundary component/.style={dashed, draw}, anchor=incoming boundary 1];
-    \pic[tqft cup, anchor=incoming boundary 1, name=b, at=(a-outgoing boundary 1), draw];
-    \pic[tqft cylinder, anchor=incoming boundary 1, name=c, at=(a-outgoing boundary 2), draw, every outgoing lower boundary component/.style={draw}, every outgoing boundary component/.style={fill=gray, fill opacity=0.7}];
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=.5}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft reverse pair of pants, name=a, draw, every lower boundary component/.style={dashed, draw}, anchor=outgoing boundary 1];
+    \pic[tqft cap, anchor=outgoing boundary 1, name=b, at=(a-incoming boundary 1), draw];
+    \pic[tqft cylinder, anchor=outgoing boundary 1, name=c, at=(a-incoming boundary 2), draw, every incoming lower boundary component/.style={draw}, every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
 \end{tikzpicture}
 = 
-\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, rotate=90, scale=0.4, baseline=-2pt]
-    \pic[tqft cylinder, name=a, draw, every outgoing lower boundary component/.style={draw}, every incoming lower boundary component/.style={dashed, draw}, anchor=outgoing boundary 1, every outgoing boundary component/.style={fill=gray, fill opacity=0.7}];
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft cylinder, name=a, draw, every incoming lower boundary component/.style={draw}, every outgoing lower boundary component/.style={dashed, draw}, anchor=incoming boundary 1, every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
 \end{tikzpicture}
 =
-\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=.5}, rotate=90, scale=0.4, baseline=-2pt]
-    \pic[tqft pair of pants, name=a, draw, every lower boundary component/.style={dashed, draw}, anchor=incoming boundary 1];
-    \pic[tqft cup, anchor=incoming boundary 1, name=b, at=(a-outgoing boundary 2), draw];
-    \pic[tqft cylinder, anchor=incoming boundary 1, name=c, at=(a-outgoing boundary 1), draw, every outgoing lower boundary component/.style={draw}, every outgoing boundary component/.style={fill=gray, fill opacity=0.7}];
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=.5}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft reverse pair of pants, name=a, draw, every lower boundary component/.style={dashed, draw}, anchor=outgoing boundary 1];
+    \pic[tqft cap, anchor=outgoing boundary 1, name=b, at=(a-incoming boundary 2), draw];
+    \pic[tqft cylinder, anchor=outgoing boundary 1, name=c, at=(a-incoming boundary 1), draw, every incoming lower boundary component/.style={draw}, every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
 \end{tikzpicture}
 \]    
 
@@ -289,21 +424,337 @@ Given a pair of pants (equivalentely a pair of copants), sewing a cap (equivalen
     When composing two pairs of pants (equivalentely pair of copants), it doesn't matter to which leg we attach the second pair.
 \end{dfnx*}
 
+\[
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft pair of pants, draw, name=a, 
+    every incoming lower boundary component/.style={draw}, 
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft pair of pants, draw, anchor=incoming boundary, at=(a-outgoing boundary 1),
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to next, draw, anchor=incoming boundary, at=(a-outgoing boundary 2),
+    every lower boundary component/.style={dashed, draw}];
+\end{tikzpicture}
+=
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft pair of pants, draw, name=a, 
+    every incoming lower boundary component/.style={draw}, 
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft pair of pants, draw, anchor=incoming boundary, at=(a-outgoing boundary 2),
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to prior, draw, anchor=incoming boundary, at=(a-outgoing boundary 1),
+    every lower boundary component/.style={dashed, draw}];
+\end{tikzpicture}
+\hspace{3em} %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft reverse pair of pants, anchor=outgoing boundary, draw, name=a,
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft reverse pair of pants, draw, anchor=outgoing boundary, at=(a-incoming boundary 1),     
+    every incoming lower boundary component/.style={draw}, 
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder to prior, draw, anchor=outgoing boundary, at=(a-incoming boundary 2),     
+    every incoming lower boundary component/.style={draw}, 
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+\end{tikzpicture}
+=
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft reverse pair of pants, anchor=outgoing boundary, draw, name=a,
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft reverse pair of pants, draw, anchor=outgoing boundary, at=(a-incoming boundary 2),     
+    every incoming lower boundary component/.style={draw}, 
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder to next, draw, anchor=outgoing boundary, at=(a-incoming boundary 1),     
+    every incoming lower boundary component/.style={draw}, 
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+\end{tikzpicture}
+\]
+
 \begin{dfnx*}[Commutativity and cocommutativity] \label{rel:comm}
     Attaching a twist to the legs of a pair of pants (equivalentely a pair of copants), gives a bordism diffeomorphic to the pair itself.
 \end{dfnx*}
+
+\[
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft pair of pants, draw, name=a,     
+    boundary separation=1.5cm,
+    every incoming lower boundary component/.style={draw}, 
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];   
+    \pic[tqft,
+    incoming boundary components=1,
+    outgoing boundary components=1,
+    offset=-.75,
+    anchor=incoming boundary,
+    at=(a-outgoing boundary 2),
+    draw,
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft,
+    incoming boundary components=1,
+    outgoing boundary components=1,
+    offset=.75,
+    anchor=incoming boundary,
+    at=(a-outgoing boundary 1),
+    draw,
+    every lower boundary component/.style={dashed, draw}];
+\end{tikzpicture}
+=
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft pair of pants, draw, name=a,     
+    boundary separation=1.5cm,
+    every incoming lower boundary component/.style={draw}, 
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7},
+    every outgoing lower boundary component/.style={dashed, draw}]; 
+\end{tikzpicture}
+\hspace{3em}
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft reverse pair of pants, anchor=outgoing boundary, draw, name=a,     
+    boundary separation=1.5cm,
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft,
+    incoming boundary components=1,
+    outgoing boundary components=1,
+    offset=-.75,
+    anchor=outgoing boundary,
+    at=(a-incoming boundary 1),
+    draw,
+    every incoming lower boundary component/.style={draw}, 
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7},
+    every outgoing lower boundary component/.style={dashed, draw}];
+    \pic[tqft,
+    incoming boundary components=1,
+    outgoing boundary components=1,
+    offset=.75,
+    anchor=outgoing boundary,
+    at=(a-incoming boundary 2),
+    draw,
+    every incoming lower boundary component/.style={draw}, 
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7},
+    every outgoing lower boundary component/.style={dashed, draw}];
+\end{tikzpicture}
+=
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft reverse pair of pants, anchor=outgoing boundary, draw, name=a,     
+    boundary separation=1.5cm,
+    every incoming lower boundary component/.style={draw}, 
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7},
+    every outgoing lower boundary component/.style={dashed, draw}]; 
+\end{tikzpicture}
+\]
 
 \begin{dfnx*}[Frobenius relation] \label{rel:frobenius}
     We composing a pair of pants and a pair of copants, the following equivalences hold.
 \end{dfnx*}
 
+\[
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft pair of pants, name=a, draw, anchor=outgoing boundary 1,
+    every incoming lower boundary component/.style={draw}, 
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft reverse pair of pants, name=b, draw, anchor=incoming boundary 2, at=(a-outgoing boundary 1),
+    every lower boundary component/.style={dashed, draw}]; 
+    \pic[tqft cylinder to prior, draw, anchor=incoming boundary, at=(a-outgoing boundary 2),
+    every lower boundary component/.style={dashed, draw}]; 
+    \pic[tqft cylinder to prior, draw, anchor=outgoing boundary, at=(b-incoming boundary 1),
+    every incoming lower boundary component/.style={draw}, 
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}]; 
+\end{tikzpicture}
+=
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft pair of pants, name=a, draw, 
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft reverse pair of pants, draw, anchor=outgoing boundary, at=(a-incoming boundary),
+    every incoming lower boundary component/.style={draw}, 
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+\end{tikzpicture}
+=
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft pair of pants, name=a, draw, anchor=outgoing boundary 2,
+    every incoming lower boundary component/.style={draw}, 
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft reverse pair of pants, name=b, draw, anchor=incoming boundary 1, at=(a-outgoing boundary 2),
+    every lower boundary component/.style={dashed, draw}]; 
+    \pic[tqft cylinder to next, draw, anchor=incoming boundary, at=(a-outgoing boundary 1),
+    every lower boundary component/.style={dashed, draw}]; 
+    \pic[tqft cylinder to next, draw, anchor=outgoing boundary, at=(b-incoming boundary 2),
+    every incoming lower boundary component/.style={draw}, 
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}]; 
+\end{tikzpicture}
+\]
+
 \begin{dfnx*}[Inverse of the twist]
     The twist bordism is its own inverse, meaning that composing two twists gives an identity bordism on $(\mathbf{2})$.  
 \end{dfnx*}
 
+\[
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline]
+    \pic[tqft cylinder to next, name=a, draw, anchor=between last incoming and last outgoing, 
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder to prior, name=b, draw, anchor=between last incoming and last outgoing, 
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder to next, draw, anchor=incoming boundary, at=(b-outgoing boundary),
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to prior, draw, anchor=incoming boundary, at=(a-outgoing boundary),
+    every lower boundary component/.style={dashed, draw}];
+\end{tikzpicture}
+=
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline=2pt]
+ \pic[tqft cylinder, name=a, draw, anchor=incoming boundary,
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7},
+    every outgoing lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder, name=b, draw, anchor=incoming boundary, at={(-1,0)},
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7},
+    every outgoing lower boundary component/.style={dashed, draw}];
+\end{tikzpicture}
+\]
+
+
 \begin{dfnx*}[Naturality of the twist]
     For any pair of bordisms, the operations of applying the twist and taking the disjoint union commute, meaning that applying them in different order yields the same result.
 \end{dfnx*}
+
+\[
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline]
+    \pic[tqft cylinder to next, name=a, draw, anchor=between last incoming and last outgoing, 
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to prior, name=b, draw, anchor=between last incoming and last outgoing, 
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cap, draw, anchor=outgoing boundary, at=(a-incoming boundary),
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder, draw, anchor=outgoing boundary, at=(b-incoming boundary),
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+\end{tikzpicture}
+=
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline=2pt]
+ \pic[tqft cap, name=a, draw, anchor=incoming boundary,
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7},
+    every outgoing lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder, name=b, draw, anchor=incoming boundary, at={(-1,0)},
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7},
+    every outgoing lower boundary component/.style={dashed, draw}];
+\end{tikzpicture}
+\hspace{3em} %%%%%%%%%%%%%%%%%%%%
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline]
+    \pic[tqft cylinder to next, name=a, draw, anchor=between last incoming and last outgoing, 
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to prior, name=b, draw, anchor=between last incoming and last outgoing, 
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cap, draw, anchor=outgoing boundary, at=(b-incoming boundary),
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder, draw, anchor=outgoing boundary, at=(a-incoming boundary),
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+\end{tikzpicture}
+=
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline=2pt]
+ \pic[tqft cylinder, name=a, draw, anchor=incoming boundary,
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7},
+    every outgoing lower boundary component/.style={dashed, draw}];
+    \pic[tqft cap, name=b, draw, anchor=incoming boundary, at={(-1,0)},
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7},
+    every outgoing lower boundary component/.style={dashed, draw}];
+\end{tikzpicture}
+\]
+\[
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline]
+    \pic[tqft cylinder to next, name=a, draw, anchor=between last incoming and last outgoing, 
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder to prior, name=b, draw, anchor=between last incoming and last outgoing, 
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder, draw, anchor=incoming boundary, at=(a-outgoing boundary),
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cup, draw, anchor=incoming boundary, at=(b-outgoing boundary),
+    every lower boundary component/.style={dashed, draw}];
+\end{tikzpicture}
+=
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline=2pt]
+ \pic[tqft cup, name=a, draw, anchor=incoming boundary,
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7},
+    every outgoing lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder, name=b, draw, anchor=incoming boundary, at={(-1,0)},
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7},
+    every outgoing lower boundary component/.style={dashed, draw}];
+\end{tikzpicture}
+\hspace{3em} %%%%%%%%%%%%%%%%%%%%
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline]
+    \pic[tqft cylinder to next, name=a, draw, anchor=between last incoming and last outgoing, 
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder to prior, name=b, draw, anchor=between last incoming and last outgoing, 
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder, draw, anchor=incoming boundary, at=(b-outgoing boundary),
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cup, draw, anchor=incoming boundary, at=(a-outgoing boundary),
+    every lower boundary component/.style={dashed, draw}];
+\end{tikzpicture}
+=
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline=2pt]
+ \pic[tqft cylinder, name=a, draw, anchor=incoming boundary,
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7},
+    every outgoing lower boundary component/.style={dashed, draw}];
+    \pic[tqft cup, name=b, draw, anchor=incoming boundary, at={(-1,0)},
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7},
+    every outgoing lower boundary component/.style={dashed, draw}];
+\end{tikzpicture}
+\]
+\[
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft pair of pants, draw, name=a, anchor=outgoing boundary 2,
+    boundary separation=1.5cm,
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to prior, draw, anchor=outgoing boundary, at=(a-incoming boundary),
+    offset=-.625,
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder to next, name=b, dashed, draw, anchor=outgoing boundary, at={(1.5,0)},
+    fill opacity=0];
+    \pic[tqft cylinder to next, draw, anchor=outgoing boundary, at=(b-incoming boundary),
+    offset=.625,
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+\end{tikzpicture}
+=
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft pair of pants, draw, name=a, anchor=outgoing boundary 1,
+    boundary separation=1.5cm,
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder, draw, name=b, anchor=incoming boundary, at=(a-outgoing boundary 2),
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to prior, draw, name=c, anchor=incoming boundary, at=(a-outgoing boundary 1),
+    offset=-.75,
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder, dashed, draw, anchor=incoming boundary, at=(c-outgoing boundary),
+    fill opacity=0];
+    \pic[tqft cylinder to prior, draw, anchor=incoming boundary, at=(b-outgoing boundary),
+    offset=-.75,
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to prior, name=d, dashed, draw, anchor=outgoing boundary, at={(-1.5,0)},
+    fill opacity=0,
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to next, draw, name=e, anchor=incoming boundary, at=(d-outgoing boundary),
+    offset=.75,
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to next, draw, anchor=incoming boundary, at=(e-outgoing boundary),
+    offset=.75,
+    every lower boundary component/.style={dashed, draw}];
+\end{tikzpicture}
+\]
 
 To show the sufficiency of these relations we will describe a procedure that converts any connected bordism already decomposed in elementary pieces into its normal form. 
 We proceed by induction on the number of twist bordisms, starting with the base case of zero twists.
@@ -335,7 +786,7 @@ If we encounter a cap on one of the legs, the \hyperlink{rel:handle}{handle canc
 
 If instead we encounter a pair a copants, this can happen in two different ways:
 \[
-\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline]
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline]
     \pic[tqft pair of pants, name=a, anchor=incoming boundary 1, draw, 
     every incoming lower boundary component/.style={draw},
     every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
@@ -343,7 +794,7 @@ If instead we encounter a pair a copants, this can happen in two different ways:
     every lower boundary component/.style={dashed,draw}];
 \end{tikzpicture}
 \hspace{8em}
-\begin{tikzpicture}[every tqft/.style={transform shape}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline]
+\begin{tikzpicture}[every tqft/.style={transform shape}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline]
     \pic[tqft pair of pants, draw, name=a, anchor=outgoing boundary 1,
     every incoming lower boundary component/.style={draw},
     every outgoing lower boundary component/.style={dashed, draw},

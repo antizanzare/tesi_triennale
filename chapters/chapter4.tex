@@ -1,0 +1,66 @@
+\chapter{Frobenius algebras}
+\label{ch:frobenius}
+
+\section{Four equivalent characterizations}
+We begin by recalling the essential algebraic notions, which will be necessary to give a proper definition of a Frobenius algebra. 
+Through the chapter, we let $\Bbbk$ denote a field.
+
+\begin{tcbdfn}[Algebras over a field]
+    A $\Bbbk$-algebra (i.e. an algebra over a field $\Bbbk$) is a $\Bbbk$-vector space $A$ equipped with two $\Bbbk$-linear maps 
+    \[ \mu \colon A \tensor A \to \tensor A \qquad \eta \colon \Bbbk \to A  \]
+    such that the following diagrams commute.
+\[
+\begin{tikzcd}
+    & A \tensor A \tensor A \arrow[dl, "\mu \tensor \id_A", swap] \arrow[dr, "\id_A \tensor \mu"] & \\
+    A \tensor A \arrow[dr, "\mu", swap] & & A \tensor A \arrow[dl, "\mu"] \\
+    & A &
+\end{tikzcd}
+\]
+\[
+\begin{tikzcd}
+    & A \tensor A \arrow[rd, "\mu"] & & A \tensor A \arrow[ld, "\mu", swap]& \\
+    \Bbbk \tensor A \arrow[ru, "\eta \tensor \id_A"] \arrow[rr, "\pi", swap]& & A & & A \tensor \Bbbk \arrow[lu, "\id_A \tensor \eta", swap] \arrow[ll,"\pi"]  
+\end{tikzcd}
+\]
+\end{tcbdfn}
+
+This definition is equivalent to the standard notion of a (unital associative) $\Bbbk$-algebra from linear algebra: a $\Bbbk$-vector space equipped with an associative and unital bilinear product. 
+Concretely, we can see that:
+\begin{enumerate}
+    \item \emph{Distributivity} follows from requiring $\mu$ to be $\Bbbk$-linear.
+    \item \emph{Associativity} and \emph{compatibility with scalar product} follow from the two commutative diagrams.
+    \item The \emph{unit element} is defined by the image of $1 \in \Bbbk$ through $\eta$.
+\end{enumerate}
+
+
+\begin{remark}
+    It is no coincidence that these diagrams seem similar to the ones appearing at the beginning of our thesis in \ref{dfn:monoidal_category}. 
+    $\Bbbk$-algebras are indeed internal monoids in the monoidal category $(\mathbf{Vect}_\Bbbk, \tensor, \Bbbk)$, while (strict) monoidal categories are monoids in $(\mathbf{Cat}, \times, \mathbf{1})$. 
+    We'll define what this means in the next chapter. \todo{add ref to next chapter}
+\end{remark}
+
+\begin{tcbdfn}[Morphisms of $\Bbbk$-algebras]
+    
+\end{tcbdfn}
+
+\begin{tcbdfn}[Linear forms]
+\end{tcbdfn}
+
+\begin{tcbdfn}[Duals]
+\end{tcbdfn}
+
+\begin{tcbdfn}[Pairings]
+\end{tcbdfn}
+
+\begin{tcbdfn}[Non degenerate pairings]
+\end{tcbdfn}
+
+\begin{tcblemma}
+\end{tcblemma}
+
+\section{Rigorous doodles} 
+%% Alternative titolo: 
+% "Drawing conclusions"?? (ma non sto concludendo nulla)
+% "Reading between the lines"
+
+Bla bla bla

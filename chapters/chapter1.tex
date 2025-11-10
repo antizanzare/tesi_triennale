@@ -10,7 +10,7 @@ We begin by recalling some useful notions from category theory, which we will en
 
 
 
-\begin{tcbdfn}[Monoidal categories]
+\begin{tcbdfn}[Monoidal categories] \label{dfn:monoidal_category}
 A (weak) \emph{monoidal category}\index{monoidal category} is a sextuple $(\cat{C}, \sq, \eta, \alpha, l, r)$ consisting of:
 \begin{itemize}
 \item a category $\cat{C}$,
@@ -25,7 +25,7 @@ A (weak) \emph{monoidal category}\index{monoidal category} is a sextuple $(\cat{
 \end{tikzcd}
 \]
 so that $\alpha_{A,B,C} \colon (A \sq B) \sq C \overset{\cong}\to A \sq (B \sq C)$ for every $A, B, C \in \obj{\cat{C}}$
-\item and two natural isomorphisms called \emph{left} and \emph{right unitors} $l$ and $r$.
+\item and two natural isomorphisms called \emph{left} and \emph{right unitors} $l$ and $r$
 \[
 \begin{tikzcd}
 & \cat{C} \times \cat{C} \arrow[rd, "\sq"] & & \cat{C}\times \cat{C} \arrow[ld, "\sq", swap]& \\

@@ -403,7 +403,7 @@ The category $\bord{n}$ has a symmetric monoidal structure $(\bord{n}, \disj, \v
 
 \section{Topological Quantum Field Theories}
 
-\begin{tcbdfn} \label{def:tqft}
+\begin{tcbdfn} \label{dfn:tqft}
 An \emph{$n$-dimensional topological quantum field theory} \index{topological quantum field theory} is a symmetric monoidal functor from $(\bord{n}, \disj, \varnothing, T)$ to $(\mathbf{Vect}, \tensor, \Bbbk, \sigma)$
 \end{tcbdfn}
 
@@ -434,12 +434,14 @@ satisfying the following axioms:
 \begin{remark}
 It seems natural to interpret these axioms in the language of category theory.
 Indeed, axiom A\ref{tqft:a1} well defines a map form $\bord{n}$ to $\mathbf{Vect}_\Bbbk$ and axioms A\ref{tqft:a2} and A\ref{tqft:a3} guarantee such map is really a functor.
-Axioms A\ref{tqft:a4} and A\ref{tqft:a5} preserve the monoidal structure. To get a \emph{symmetric} monoidal functor, as defined in \ref{def:tqft}, we would have to add a sixth axiom:
+Axioms A\ref{tqft:a4} and A\ref{tqft:a5} preserve the monoidal structure. To get a \emph{symmetric} monoidal functor, as defined in \ref{dfn:tqft}, we would have to add a sixth axiom:
 \begin{enumerate}
   \item[(A6)] The twist bordism is mapped to the twist map of vector spaces, meaning 
   \[ Z(T_{M,N}) = \sigma_{Z(M),Z(N)} \] 
 \end{enumerate}  
 \end{remark}
+
+\todo[inline]{addare esempi !!!}
 
 \todo[inline]{we should also mention decomposition of bordism, snake lemma and dualizability somewhere}
 
