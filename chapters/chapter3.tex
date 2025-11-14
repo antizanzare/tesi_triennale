@@ -802,7 +802,10 @@ If instead we encounter a pair a copants, this can happen in two different ways:
     bottom color=gray, top color=white, fill opacity=0.5
     ];
     \pic[tqft reverse pair of pants, anchor=incoming boundary 2, at=(a-outgoing boundary 1), draw, name=b,
-    every lower boundary component/.style={dashed, draw}, 
+    incoming lower boundary component 2/.style={dashed, draw},
+    every outgoing lower boundary component/.style={dashed, draw},
+    incoming lower boundary component 1/.style={draw},
+    incoming boundary component 1/.style={fill=gray, fill opacity=0.7},  
     bottom color=gray, top color=white, fill opacity=0.5];
     \pic[tqft cylinder to prior, dashed, draw, anchor=outgoing boundary 1, at=(b-incoming boundary 1),
     every incoming lower boundary component/.style={dashed,draw}

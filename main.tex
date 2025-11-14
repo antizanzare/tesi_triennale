@@ -61,7 +61,7 @@
 \usepackage{pgfplots} % plots graphs ?
 \pgfplotsset{compat=1.12}
 \usepgfplotslibrary{fillbetween}
-\usepackage{subfig} % more than one image in a figure
+%sepackage{subfig} % more than one image in a figure
 \usepackage{xcolor}
 
 
@@ -125,6 +125,7 @@
 	}
 
 \newcounter{main_counter}[chapter]
+
 
 % Plain thm environment
 \newcommand{\createtheoremenv}[4]{%
@@ -206,11 +207,10 @@
 
 %create all remark environments
 \createremarkenv{tcbosservazione}{Osservazione}{}{blue}
-\createremarkenv{tcbremark}{Remark}{}{blue}
+\createremarkenv{tcbremark}{Remark}{}{white}
 \createremarkenv{tcbesempio}{Esempio}{}{blue}
 \createremarkenv{tcbexample}{Example}{}{ibmBlue}
 \createremarkenv{tcbdomanda}{Domanda}{}{blue}
-
 
 
 
@@ -450,8 +450,51 @@ every lower boundary component/.style={draw}
 }
 
 
+\newcommand{\copairing}{%
+    \raisebox{-.5 ex}{
+    \begin{tikzpicture}[x=0.4cm, y=0.2cm]
+    \draw[rounded corners=0.2cm] (1,1)--(0,1)--(0,0);
+    \draw[rounded corners=0.2cm] (1,-1)--(0,-1)--(0,0);
+    \draw[fill=white] (0,0) circle (2pt);   
+    \end{tikzpicture}
+   }
+}
+
+\newcommand{\varcopairing}{%
+    \raisebox{-.5 ex}{
+    \begin{tikzpicture}[x=0.4cm, y=0.2cm]
+    \draw[rounded corners=0.2cm] (1,1)--(0,1)--(0,0);
+    \draw[rounded corners=0.2cm] (1,-1)--(0,-1)--(0,0);
+    \draw[fill=white] (-.15,-.3) rectangle (.15,.3);   
+    \end{tikzpicture}
+   }
+}
+
+\newcommand{\wiremult}{%
+    \raisebox{-.5 ex}{
+    \begin{tikzpicture}[x=0.4cm, y=0.2cm]
+    \draw[rounded corners=0.2cm] (-1,1)--(0,1)--(0,0);
+    \draw[rounded corners=0.2cm] (-1,-1)--(0,-1)--(0,0);
+    \draw (0,0) -- (1,0);
+    \draw[fill=white] (0,0) circle (2pt);   
+    \end{tikzpicture}
+   }
+}
+
+\newcommand{\wirecomult}{%
+    \raisebox{-.5 ex}{
+    \begin{tikzpicture}[x=0.4cm, y=0.2cm]
+    \draw[rounded corners=0.2cm] (1,1)--(0,1)--(0,0);
+    \draw[rounded corners=0.2cm] (1,-1)--(0,-1)--(0,0);
+    \draw (0,0) -- (-1,0);
+    \draw[fill=black] (0,0) circle (2pt);   
+    \end{tikzpicture}
+   }
+}
+
 
 \newcommand{\varsq}{\mathbin \boxtimes}
+
 \usepackage[colorlinks=true, allcolors=black]{hyperref}
 
 
