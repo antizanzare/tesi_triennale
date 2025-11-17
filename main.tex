@@ -45,7 +45,8 @@
 
 % miscellanea
 \usepackage{lipsum}
-\usepackage{enumerate}
+%\usepackage{enumerate}
+\usepackage{enumitem}
 \usepackage{etaremune} % reverse enumerate
 \usepackage{multirow} % multirow tab cells
 %\usepackage{ebproof} % inference trees
@@ -99,120 +100,114 @@
 
 
 
-
-%%%%% girly environments %%%%
 \usepackage{tcolorbox}
 \tcbuselibrary{breakable}
 \tcbuselibrary{theorems}
 \tcbuselibrary{skins}
 \usepackage{etoolbox}
 
-
-
-
 % THEOREMS ENV
-\tcbset{genericstyle/.style=
-		{enhanced, 
-		breakable, 
-		theorem style=plain, %to invert th and number use theoremstyle=change
-		colback=#1!5,
-		colframe=#1!70!black,
-		fonttitle=\bfseries,
-		coltitle=#1!60!black,
-		frame hidden,
-		arc=0mm,left=0mm, right=0mm, top=0mm, bottom=0mm, boxsep=1mm, left skip=-1mm, right skip=-1mm
-		}	
-	}
-
-\newcounter{main_counter}[chapter]
-
-
-% Plain thm environment
-\newcommand{\createtheoremenv}[4]{%
-    % Numbered version
-    \newtcolorbox[use counter=main_counter, number within=chapter]{#1}[1][]{
-        genericstyle={#4},
-        fonttitle=\bfseries\upshape,
-        fontupper=\itshape,
-        title=#2~\thetcbcounter\ifstrempty{##1}{}{ ##1},
-        #3
-    }%
-    % Unnumbered version  
-    \newtcolorbox{#1-}[1][]{
-        genericstyle={#4},
-        fonttitle=\bfseries\upshape,
-        fontupper=\itshape,
-        title=#2\ifstrempty{##1}{}{: ##1},
-        #3
-    }%
-}
-
-
-% create all the theorem environments
-\createtheoremenv{tcbprp}{Proposition}{}{ibmBlue}
-\createtheoremenv{tcblemma}{Lemma}{}{ibmBlue}
-\createtheoremenv{tcbthm}{Theorem}{}{ibmOrange}
-\createtheoremenv{tcbcorollary}{Corollary}{}{green}
-%\createtheoremenv{tcbteo}{Teorema}{}{green}
-%\createtheoremenv{tcbcorollario}{Corollario}{}{green}
-%\createtheoremenv{tcbitaprp}{Proposizione}{}{green}
+% \tcbset{genericstyle/.style=
+% 		{enhanced, 
+% 		breakable, 
+% 		theorem style=plain, %to invert th and number use theoremstyle=change
+% 		colback=#1!5,
+% 		colframe=#1!70!black,
+% 		fonttitle=\bfseries,
+% 		coltitle=#1!60!black,
+% 		frame hidden,
+% 		arc=0mm,left=0mm, right=0mm, top=0mm, bottom=0mm, boxsep=1mm, left skip=-1mm, right skip=-1mm
+% 		}	
+% 	}
 
 
 
-% Definition style environments (no italics)
-\newcommand{\createdefenv}[4]{%
-    % Numbered version
-    \newtcolorbox[use counter=main_counter, number within=chapter]{#1}[1][]{
-        genericstyle={#4},
-        title=#2~\thetcbcounter\ifstrempty{##1}{}{ ##1},
-        #3
-    }%
-    % Unnumbered version
-    \newtcolorbox{#1-}[1][]{
-        genericstyle={#4},
-        title=#2\ifstrempty{##1}{}{: ##1},
-        #3
-    }%
-}
-
-% create all the def environments
-\createdefenv{tcbdfn}{Definition}{}{ibmGreen}
-\createdefenv{tcbdfnx}{}{}{ibmGreen}
-\createdefenv{exercise}{Exercise}{}{green}
-%\createdefenv{tcbitadfn}{Definizione}{}{ibmGreen}
-%\createdefenv{tcbesercizio}{Esercizio}{}{green}
+% % Plain thm environment
+% \newcommand{\createtheoremenv}[4]{%
+%     % Numbered version
+%     \newtcolorbox[use counter=main_counter, number within=chapter]{#1}[1][]{
+%         genericstyle={#4},
+%         fonttitle=\bfseries\upshape,
+%         fontupper=\itshape,
+%         title=#2~\thetcbcounter\ifstrempty{##1}{}{ ##1},
+%         #3
+%     }%
+%     % Unnumbered version  
+%     \newtcolorbox{#1-}[1][]{
+%         genericstyle={#4},
+%         fonttitle=\bfseries\upshape,
+%         fontupper=\itshape,
+%         title=#2\ifstrempty{##1}{}{: ##1},
+%         #3
+%     }%
+% }
 
 
-% Observation/Remark style environments (italic title, no italics content)
-\newcommand{\createremarkenv}[4]{%
-    % Numbered version
-    \newtcolorbox[use counter=main_counter, number within=chapter]{#1}[1][]{
-        genericstyle={#4},
-        before skip=1pt,
-        after skip=1pt,
-        fonttitle=\itshape,
-        title=#2~\thetcbcounter\ifstrempty{##1}{}{ ##1},
-        #3
-    }%
-    % Unnumbered version
-    \newtcolorbox{#1-}[1][]{
-        genericstyle={#4},
-        before skip=1pt,
-        after skip=1pt,
-        fonttitle=\itshape,
-        title=#2\ifstrempty{##1}{}{: ##1},
-        #3
-    }%
-}
-
-%create all remark environments
-\createremarkenv{tcbosservazione}{Osservazione}{}{blue}
-\createremarkenv{tcbremark}{Remark}{}{white}
-\createremarkenv{tcbesempio}{Esempio}{}{blue}
-\createremarkenv{tcbexample}{Example}{}{ibmBlue}
-\createremarkenv{tcbdomanda}{Domanda}{}{blue}
+% % create all the theorem environments
+% % \createtheoremenv{tcbprp}{Proposition}{}{ibmBlue}
+% % \createtheoremenv{tcblemma}{Lemma}{}{ibmBlue}
+% % \createtheoremenv{tcbthm}{Theorem}{}{ibmOrange}
+% %\createtheoremenv{tcbcorollary}{Corollary}{}{green}
+% %\createtheoremenv{tcbteo}{Teorema}{}{green}
+% %\createtheoremenv{tcbcorollario}{Corollario}{}{green}
+% %\createtheoremenv{tcbitaprp}{Proposizione}{}{green}
 
 
+
+% % Definition style environments (no italics)
+% \newcommand{\createdefenv}[4]{%
+%     % Numbered version
+%     \newtcolorbox[use counter=main_counter, number within=chapter]{#1}[1][]{
+%         genericstyle={#4},
+%         title=#2~\thetcbcounter\ifstrempty{##1}{}{ ##1},
+%         #3
+%     }%
+%     % Unnumbered version
+%     \newtcolorbox{#1-}[1][]{
+%         genericstyle={#4},
+%         title=#2\ifstrempty{##1}{}{: ##1},
+%         #3
+%     }%
+% }
+
+% % create all the def environments
+% % \createdefenv{tcbdfn}{Definition}{}{ibmGreen}
+% % \createdefenv{tcbdfnx}{}{}{ibmGreen}
+% % \createdefenv{exercise}{Exercise}{}{green}
+% %\createdefenv{tcbitadfn}{Definizione}{}{ibmGreen}
+% %\createdefenv{tcbesercizio}{Esercizio}{}{green}
+
+
+% % Observation/Remark style environments (italic title, no italics content)
+% \newcommand{\createremarkenv}[4]{%
+%     % Numbered version
+%     \newtcolorbox[use counter=main_counter, number within=chapter]{#1}[1][]{
+%         genericstyle={#4},
+%         before skip=1pt,
+%         after skip=1pt,
+%         fonttitle=\itshape,
+%         title=#2~\thetcbcounter\ifstrempty{##1}{}{ ##1},
+%         #3
+%     }%
+%     % Unnumbered version
+%     \newtcolorbox{#1-}[1][]{
+%         genericstyle={#4},
+%         before skip=1pt,
+%         after skip=1pt,
+%         fonttitle=\itshape,
+%         title=#2\ifstrempty{##1}{}{: ##1},
+%         #3
+%     }%
+% }
+
+% %create all remark environments
+% \createremarkenv{tcbosservazione}{Osservazione}{}{blue}
+% \createremarkenv{tcbremark}{Remark}{}{white}
+% \createremarkenv{tcbesempio}{Esempio}{}{blue}
+% \createremarkenv{tcbexample}{Example}{}{ibmBlue}
+% \createremarkenv{tcbdomanda}{Domanda}{}{blue}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%plain
 %\newtcbtheorem[number within=section, use counter=main_counter]{tcbprp}{Proposizione}{genericstyle={green},fonttitle=\bfseries\upshape,fontupper=\itshape}{prp}
@@ -282,6 +277,66 @@
 %
 %\newtcbtheorem{tcbdomanda-}{Domanda}{genericstyle={blue}, before skip=1pt,after skip=1pt, fonttitle=\itshape}{domno}
 
+
+%%%%% girly environments %%%%
+
+\newcounter{main_counter}
+\counterwithin{main_counter}{chapter}
+
+\usepackage{thmtools}
+
+% Plain theorem style environment
+% blue bg
+\declaretheoremstyle[
+headfont=\bfseries\upshape\color{ibmBlue!70!black},
+notefont=\bfseries\upshape\color{ibmBlue!70!black},
+bodyfont=\itshape,
+mdframed={backgroundcolor=ibmBlue!5,linewidth=0pt,innerleftmargin=1mm,
+innerrightmargin=1mm,
+innertopmargin=0pt,
+innerbottommargin=1mm}
+]{thmbluestyle}
+% red bg
+\declaretheoremstyle[
+headfont=\normalfont\bfseries\color{ibmOrange!70!black},
+notefont=\normalfont\bfseries\color{ibmOrange!70!black},
+bodyfont=\itshape,
+mdframed={backgroundcolor=ibmOrange!5,linewidth=0pt,innerleftmargin=1mm,
+innerrightmargin=1mm,
+innertopmargin=0pt,
+innerbottommargin=1mm}
+]{thmredstyle}
+
+\declaretheorem[name=Lemma,sibling=main_counter, style=thmbluestyle]{tcblemma}
+\declaretheorem[name=Proposition,sibling=main_counter, style=thmbluestyle]{tcbprp}
+\declaretheorem[name=Theorem,sibling=main_counter,  style=thmredstyle]{tcbthm}
+
+
+% Definition style environments (no italics)
+% green bg
+\declaretheoremstyle[
+headfont=\bfseries\color{ibmGreen!70!black},
+notefont=\bfseries\color{ibmGreen!70!black},
+mdframed={backgroundcolor=ibmGreen!5,linewidth=0pt,innerleftmargin=1mm,
+innerrightmargin=1mm,
+innertopmargin=0pt,
+innerbottommargin=1mm}
+]{defgreenstyle}
+
+\declaretheorem[name=Definition,sibling=main_counter, style=defgreenstyle]{tcbdfn}
+
+% Observation/Remark style environments (italic title, no italics content)
+
+\declaretheoremstyle[
+headfont=\upshape\color{ibmBlue!70!black},
+notefont=\upshape\color{ibmBlue!70!black},
+mdframed={backgroundcolor=ibmBlue!5,linewidth=0pt,innerleftmargin=1mm,
+innerrightmargin=1mm,
+innertopmargin=0pt,
+innerbottommargin=1mm}
+]{rmkbluestyle}
+
+\declaretheorem[name=Example,sibling=main_counter,  style=rmkbluestyle]{tcbex}
 
 %%%% classic environments %%%%
 \usepackage{theoremref}
@@ -379,6 +434,9 @@
 % smaller bullets
 \renewcommand\labelitemi{$\vcenter{\hbox{\tiny$\bullet$}}$}
 
+\renewcommand{\thefootnote}{\arabic{footnote}}
+
+
 \newcommand{\sq}{\mathbin\square}
 \newcommand{\obj}[1]{\mathrm{Obj}({#1})}
 \newcommand{\arr}[1]{\mathrm{Arr}({#1})}
@@ -470,6 +528,16 @@ every lower boundary component/.style={draw}
    }
 }
 
+
+\newcommand{\wireunit}{%
+    \raisebox{0 ex}{
+        \begin{tikzpicture}[x=0.4cm, y=0.2cm]
+            \draw (0,0)--(1,0);
+            \draw[fill=white] (0,0) circle (2pt);
+        \end{tikzpicture}
+    }
+}
+
 \newcommand{\wiremult}{%
     \raisebox{-.5 ex}{
     \begin{tikzpicture}[x=0.4cm, y=0.2cm]
@@ -479,6 +547,15 @@ every lower boundary component/.style={draw}
     \draw[fill=white] (0,0) circle (2pt);   
     \end{tikzpicture}
    }
+}
+
+\newcommand{\wirecounit}{%
+    \raisebox{0 ex}{
+        \begin{tikzpicture}[x=0.4cm, y=0.2cm]
+            \draw (0,0)--(1,0);
+            \draw[fill=black] (1,0) circle (2pt);
+        \end{tikzpicture}
+    }
 }
 
 \newcommand{\wirecomult}{%
@@ -544,6 +621,9 @@ every lower boundary component/.style={draw}
 
 % Capitolo 4
 \include{chapters/chapter4.tex}
+
+% Capitolo 5
+\include{chapters/chapter5.tex}
 
 \backmatter
 

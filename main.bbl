@@ -58,6 +58,32 @@
       \endverb
       \keyw{topological quantum field theories; Floer/Gromov theory; holomorphic conformal field theories; Jones/Witten theory; Casson theory; Johnson theory; Thursten theory; Floer/Donaldson theory}
     \endentry
+    \entry{hirsch}{book}{}
+      \name{author}{1}{}{%
+        {{hash=e2a6f20a3616ecf9daf94f7047fe667b}{%
+           family={Hirsch},
+           familyi={H\bibinitperiod},
+           given={M.W.},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer New York}%
+      }
+      \strng{namehash}{e2a6f20a3616ecf9daf94f7047fe667b}
+      \strng{fullhash}{e2a6f20a3616ecf9daf94f7047fe667b}
+      \strng{bibnamehash}{e2a6f20a3616ecf9daf94f7047fe667b}
+      \strng{authorbibnamehash}{e2a6f20a3616ecf9daf94f7047fe667b}
+      \strng{authornamehash}{e2a6f20a3616ecf9daf94f7047fe667b}
+      \strng{authorfullhash}{e2a6f20a3616ecf9daf94f7047fe667b}
+      \field{labelalpha}{Hir12}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{series}{Graduate Texts in Mathematics}
+      \field{title}{Differential Topology}
+      \field{year}{2012}
+    \endentry
     \entry{smooth}{book}{}
       \name{author}{1}{}{%
         {{hash=36896354ee3aedc1a13d683ea773634e}{%

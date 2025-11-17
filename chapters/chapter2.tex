@@ -239,7 +239,7 @@ The role of the embeddings $i_0$, $i_1$ in the above definition is to identify a
 To make this precise, we again go back to differential geometry \cite{smooth}. 
 \begin{tcbdfn}[Collars]
 Let $M$ be a manifold with boundary. 
-A neighbourhood of $\partial M$ is called a \emph{collar neighbourhood}\index{collar neighbourhood} if it is the image of a smooth embedding $\partial M \times [0, \varepsilon) \to M$, that restircts to the identification $\partial M \times \{0\} \to \partial M$.
+A neighbourhood of $\partial M$ is called a \emph{collar neighbourhood}\index{collar neighbourhood} if it is the image of a smooth embedding $\partial M \times [0, \varepsilon) \to M$, that restricts to the identification $\partial M \times \{0\} \to \partial M$.
 \end{tcbdfn}
 
 \begin{tcbthm}[Collar neighbourhood theorem]
@@ -333,7 +333,7 @@ Through such homeomorphism we can define a new smooth structure on $M'N'$, which
 \end{proof}
 
 \begin{tcbdfn}
-The category of oriented n-dimensional bordisms $\bord{n}$ \index{$\bord{n}, the category of oriented n-bordisms$} is defined as follows.
+The category of oriented n-dimensional bordisms $\bord{n}$ \index{$\bord{n}$, the category of oriented $n$-bordisms} is defined as follows.
 \begin{itemize}
   \item The objects are closed oriented $(n-1)$-dimensional manifolds
   \item For any $\Sigma_0, \Sigma_1 \in \obj{\bord{n}}$, morphisms are the equivalence classes of bordisms $M \colon \Sigma_0 \to \Sigma_1$
@@ -404,7 +404,7 @@ The category $\bord{n}$ has a symmetric monoidal structure $(\bord{n}, \disj, \v
 \section{Topological Quantum Field Theories}
 
 \begin{tcbdfn} \label{dfn:tqft}
-An \emph{$n$-dimensional topological quantum field theory} \index{topological quantum field theory} is a symmetric monoidal functor from $(\bord{n}, \disj, \varnothing, T)$ to $(\mathbf{Vect}, \tensor, \Bbbk, \sigma)$
+An \emph{$n$-dimensional topological quantum field theory} \index{topological quantum field theory} is a symmetric monoidal functor from $(\bord{n}, \disj, \varnothing, T)$ to $(\mathbf{Vect}_\Bbbk, \tensor, \Bbbk, \sigma)$
 \end{tcbdfn}
 
 Historically, the first explicit axiomatization of TQFTs was given by Atiyah in 1988 \cite{Atiyah1988}. 
@@ -419,7 +419,7 @@ An \emph{n-dimensional topological quantum field theory over a field $\Bbbk$} \i
   \item a $\Bbbk$-linear map $Z(M) \colon Z(\Sigma_0) \to Z(\Sigma_1)$ associated to each $n$-dimensional bordism $M$ from $\Sigma_0$ to $\Sigma_1$
 \end{itemize}
 satisfying the following axioms:
-\begin{enumerate}[{A}1]
+\begin{enumerate}[label=A\arabic*]
 \item \label{tqft:a1} Two equivalent bordisms $M \iso N$ have the same image through $Z$, namely $Z(M)=Z(N)$
 \item \label{tqft:a2} The cylinder bordism $M = \Sigma \times I \colon \Sigma \to \Sigma$ is mapped to the identity
 \[ Z(\Sigma \times I) = \id_{Z(\Sigma)} \colon Z(\Sigma) \to Z(\Sigma) \]
@@ -446,3 +446,15 @@ Axioms A\ref{tqft:a4} and A\ref{tqft:a5} preserve the monoidal structure. To get
 \todo[inline]{we should also mention decomposition of bordism, snake lemma and dualizability somewhere}
 
 
+\subsection{A category of n-TQFTs}
+
+Remembering how we ended our first chapter and having just seen how $n$-TQFT correspond to symmetric monoidal functors from $(\bord{n}, \disj, \varnothing, T)$ to $(\mathbf{Vect}_\Bbbk, \tensor, \Bbbk, \sigma)$, we can define a category of $n$-dimensional topological quantum field theories as follows.
+
+\begin{tcbdfn}
+  The category of $n$-dimensional TQFTs is the functor category
+  \[
+  \mathbf{nTQFT}_\Bbbk \coloneq \mathbf{SymMonCat}(\bord{n},\mathbf{Vect}_\Bbbk)
+  \]
+\end{tcbdfn}
+
+Arrows in such category will then be monoidal natural transformations between such functors. More precisely, given two $n$-dimensional TQFTs (i.e two symmetric monoidal functors $Z \colon \bord{n} \to \mathbf{Vect}_\Bbbk$, $Z' \colon \bord{n} \to \mathbf{Vect}_\Bbbk$), a natural transformation between them is then defined by $\Bbbk$-linear maps $Z(\Sigma) \to Z'(\Sigma)$ for $\Sigma$ object in $\bord{n}$.
