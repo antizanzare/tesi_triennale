@@ -15,7 +15,7 @@ A (weak) \emph{monoidal category}\index{monoidal category} is a sextuple $(\cat{
 \begin{itemize}
 \item a category $\cat{C}$,
 \item a bifuctor $\sq \colon \cat{C}\times\cat{C} \to \cat{C}$, 
-\item a functor $\eta \colon \mathbf{1} \to \cat{C}$ identifying an object $\eta(1) = I \in \obj{\cat{C}}$,
+\item a functor $\eta \colon \mathbf{1} \to \cat{C}$ identifying an object $\eta(1) = I \in \obj{\cat{C}}$\footnotemark,
 \item a natural isomorphism called \emph{associator} $\alpha$,
 \[
 \begin{tikzcd}
@@ -37,7 +37,7 @@ so that $l_A \colon I \sq A  \overset{\cong}\to A$ and $r_A \colon A \sq I  \ove
 \end{itemize}
 This maps must satisfy the so called coherence requirements, depicted in \ref{fig:coherence_pentagon} and \ref{fig:coherence_unit}, for every $A,B,C,D \in \obj{\cat{C}}$.
 \end{tcbdfn}
-
+\footnotetext{We will hence equivalentely refer to a monoidal category as $(\cat{C}, \sq, I, \alpha, l, r)$}
 \begin{figure}
 \centering
 \begin{tikzcd}[column sep=-2.5em, row sep=5em]
@@ -155,7 +155,7 @@ As the reader can imagine, working with weak monoidal categories can become a re
 The following result mitigates this difficulty, by justifying the common practice of treating all monoidal categories as strictly monoidal ones. The proof and a more in depth explanation can be found in \cite{maclane} and \cite{coherence}. 
 \end{remark}
 \fouche{eeeh non è proprio esatto secondo me che c'è una common practice of treating all monoidal categories as strictly monoidal ones; ogni categoria monoidale è equivalente a una strict, ma `equivalente' è un po' debole come concetto. La strettificazione non è proprio la stessa cosa della categoria originale. Forse è meglio dire che spesso si lavora con le categorie monoidali come se fossero strict, perché grazie al teorema di strettificazione si può fare senza perdere generalità, e che una dimostrazione che tiene conto degli assoc / unitori si può sempre `raddrizzare' a una che non li contiene.}
-\begin{tcbthm}[Strictification]\label{th:strictification}
+\begin{tcbthm}[Strictification]\label{thm:strictification}
 \emph{(See \cite{maclane}, Chapter XI, Section 3)} Every monoidal category is categorically equivalent, via strong monoidal functors, to a strict monoidal category. 
 \end{tcbthm}
 Essentially, what follows is that from now on we can assume, without loss of generalities, that monoidal categories are strict. This is possible because the equivalence provided by the above theorem ensures that all coherence diagram commute up to unique canonical isomorphism, as long as we don't require functors between such categories to be strict.
@@ -222,7 +222,7 @@ The definition implies compatibility with the unital structure:
 
 \todo[inline]{is it useful? do i need to prove it?}
 
-Again, by \ref{th:strictification}, when considering a braided monoidal categories we can restrict to the following definition.
+Again, by \ref{thm:strictification}, when considering a braided monoidal categories we can restrict to the following definition.
 
 \begin{tcbdfn}[(Semi)strict braided monoidal categories]
 A (semi)strict \emph{braided monoidal category} is a (strict) monoidal category $(\cat{C}, \sq, I)$ equipped with a natural isomorphism
