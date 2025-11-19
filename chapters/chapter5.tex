@@ -412,6 +412,7 @@ By reversing the arrows, we also give the definition of \emph{internal comonoid}
     \]
 \end{tcbdfn}
 
+\todo[inline]{Both can be grafically represented, similarly to what we did in the case of $\Bbbk$-Frobenius algebras.}
 \todo[inline]{examples: in Set Cat and Vect}
 
 As we did for monoidal categories and $\Bbbk$-algebras we are able to define morphisms between internal monoids and comonoids.
@@ -452,6 +453,12 @@ It is rather easy to check how composition of two morphisms of internal monoids 
 \todo[inline]{what are commutative internal monoids??}
 \todo[inline]{C symm mon cat implies MonC is monoidal}
 
+\begin{tcblemma}\label{lem:monoid_image}
+    The image of a monoid through a monoidal functor is a monoid 
+    \todo[inline]{scrivi bene lo statement}
+\end{tcblemma}
+
+
 We can now construct an equivalence relation in some way analogous to our main one. This will help us generalize it later on.
 
 \begin{tcbdfn}[The simplex category]
@@ -486,22 +493,475 @@ We will then have $[0] = \varnothing$, $[1] = \{0\}$, $[2] = \{0, 1\}$ and so on
 
 Similarly to the sum we are accostumed to, the ordinal sum we just defined has $[0] = \varnothing$ as the neutral element.
 
-Furthermore, we can check how this operation defines a monoidal structure $(\Delta, +, [0])$.\todo{check??} We hence investigate generators and relations starting from some known properties of $\Delta$. 
+Furthermore, we can check how this operation defines a monoidal structure $(\Delta, +, [0])$.\todo{check??} We hence investigate generators and relations starting from some known \todo{add homology reference} properties of $\Delta$\footnote{Alternatively we could completely define $\Delta$ graphically, without reliying on homology. Such approach can be found in [Kock]}. 
 
-Being $[1]$ a terminal object we have a unique arrow
+\begin{tcblemma}
+    Every arrow in $\Delta$ can be obtained as a composition of 
+    \begin{align*}
+        \delta^n_k \colon [n] & \to [n+1] \quad \text{for $k= 0, \dots n$, called \emph{(co)face maps}} \\
+        i & \mapsto 
+        \begin{cases}
+        i & \text{for } i < k \\
+        i+1 & \text{for } i \geq k 
+        \end{cases}
+    \end{align*}
+    \begin{align*}
+        \sigma^n_k \colon [n+2] & \to [n+1] \quad \text{for $k= 0, \dots n$, called \emph{(co)degeneracy maps}}\\
+        i & \mapsto
+        \begin{cases}
+            i & \text{for } i \leq k \\
+            i-1 & \text{for } i > k
+        \end{cases}
+    \end{align*}
+satisfying the so called \emph{(co)simplicial identities}.
+\begin{align}
+    \delta^{n+1}_i \circ \delta^n_j & = \delta^{n+1}_{j+1} \circ \delta^{n}_i  \quad \text{for } i \leq j \label{simp1}\\
+    \sigma^n_j \circ \sigma^{n+1}_i & = \sigma^n_i \circ \sigma^{n+1}_{j+1} \quad \text{for } i \leq j \label{simp2} \\
+    \sigma^n_j \circ \delta^{n+1}_i & = 
+    \begin{cases}
+        \delta^n_i \circ \sigma^{n-1}_{j-1} & \text{for } i < j \\
+        \id & \text{for } i=j, i = j + 1 \\
+        \delta^n_{i-1} \circ \sigma^{n-1}_j & \text{for } i > j + 1    
+    \end{cases} \label{simp3}
+\end{align}
+\end{tcblemma}
+
+But what does this lemma have to do with internal monoids? The relation between the two becomes clear when we represent the two maps and their relations graphically.
+We will represent each $[n]$ as a column of $n$ black dots, stacked one over the other from the bottom (element 0) to the top (element $n-1$). We begin by drawing the two maps defined in the above lemma for the case $n=3$, $k=2$.
+\[
+\begin{tikzpicture}[x=1cm, y=0.4cm]
+    \draw[fill=black] (0,0) circle (2pt);
+    \draw[fill=black] (0,1) circle (2pt);
+    \draw[fill=black] (0,2) circle (2pt);
+    \draw[fill=black] (1,-.5) circle (2pt);
+    \draw[fill=black] (1,.5) circle (2pt);
+    \draw[fill=black] (1,1.5) circle (2pt);
+    \draw[fill=black] (1,2.5) circle (2pt);
+    \draw (0,0) -- (1,-.5);
+    \draw (0,1) -- (1,1.5);
+    \draw (0,2) -- (1,2.5);
+    \node (a) at (-.5,1) {[3]};
+    \node (b) at (1.5,1) {[4]};
+    \node (d) at (.5,3.5) {$\delta^3_2$};
+\end{tikzpicture}
+\hspace{5em}
+\begin{tikzpicture}[x=1cm, y=0.4cm]
+    \draw[fill=black] (0,0) circle (2pt);
+    \draw[fill=black] (0,1) circle (2pt);
+    \draw[fill=black] (0,2) circle (2pt);
+    \draw[fill=black] (0,3) circle (2pt);
+    \draw[fill=black] (0,4) circle (2pt);
+    \draw[fill=black] (1,.5) circle (2pt);
+    \draw[fill=black] (1,1.5) circle (2pt);
+    \draw[fill=black] (1,2.5) circle (2pt);
+    \draw[fill=black] (1,3.5) circle (2pt);
+    \draw (0,0) -- (1,.5);
+    \draw (0,1) -- (1,1.5);
+    \draw (0,2) -- (1,1.5);
+    \draw (0,3) -- (1,2.5);
+    \draw (0,4) -- (1,3.5);
+    \node (a) at (-.5,2) {[5]};
+    \node (b) at (1.5,2) {[4]};
+    \node (s) at (.5,5) {$\sigma^3_2$};
+\end{tikzpicture}
+\]
+Then, the relations between the two can be depicted as follows.
+\begin{itemize}
+    \item We compute the first relation (\ref{simp1}) for $n=2$, $i=0$, $j=1$
+\[
+\begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline, yshift=-0.2cm]
+    \draw[fill=black] (-1,.5) circle (2pt);
+    \draw[fill=black] (0,0) circle (2pt);
+    \draw[fill=black] (0,1) circle (2pt);
+    \draw[fill=black] (1,-.5) circle (2pt);
+    \draw[fill=black] (1,.5) circle (2pt);
+    \draw[fill=black] (1,1.5) circle (2pt);
+    \draw (0,0) -- (-1,.5);
+    \draw (0,0) -- (1,.5);
+    \draw (0,1) -- (1,1.5);
+    \node (d) at (-.5,3) {$\delta_1$};
+    \node (d) at (.5,3) {$\delta_0$};
+\end{tikzpicture}
+\quad=\quad
+\begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline, yshift=-0.2cm]
+    \draw[fill=black] (-1,.5) circle (2pt);
+    \draw[fill=black] (0,0) circle (2pt);
+    \draw[fill=black] (0,1) circle (2pt);
+    \draw[fill=black] (1,-.5) circle (2pt);
+    \draw[fill=black] (1,.5) circle (2pt);
+    \draw[fill=black] (1,1.5) circle (2pt);
+    \draw (0,1) -- (-1,.5);
+    \draw (0,0) -- (1,-.5);
+    \draw (0,1) -- (1,.5);
+    \node (d) at (-.5,3) {$\delta_0$};
+    \node (d) at (.5,3) {$\delta_2$};
+\end{tikzpicture}
+\]
+    \item We compute the second relation (\ref{simp2}) for $n=i=j=0$.
+\[
+\begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw[fill=black] (0,-1) circle (2pt);
+    \draw[fill=black] (0,0) circle (2pt);
+    \draw[fill=black] (0,1) circle (2pt);
+    \draw[fill=black] (1,-.5) circle (2pt);
+    \draw[fill=black] (1,.5) circle (2pt);
+    \draw[fill=black] (2,0) circle (2pt);
+    \draw (0,-1) -- (1,-.5);
+    \draw (0,0) -- (1,-.5);
+    \draw (0,1) -- (1,.5);
+    \draw (2,0) -- (1,.5);
+    \draw (2,0) -- (1,-.5);
+    \node (d) at (.5,2.5) {$\sigma_0$};
+    \node (d) at (1.5,2.5) {$\sigma_0$};
+\end{tikzpicture}
+\quad=\quad
+\begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw[fill=black] (0,-1) circle (2pt);
+    \draw[fill=black] (0,0) circle (2pt);
+    \draw[fill=black] (0,1) circle (2pt);
+    \draw[fill=black] (1,-.5) circle (2pt);
+    \draw[fill=black] (1,.5) circle (2pt);
+    \draw[fill=black] (2,0) circle (2pt);
+    \draw (0,-1) -- (1,-.5);
+    \draw (0,0) -- (1,.5);
+    \draw (0,1) -- (1,.5);
+    \draw (2,0) -- (1,.5);
+    \draw (2,0) -- (1,-.5);
+    \node (d) at (.5,2.5) {$\sigma_1$};
+    \node (d) at (1.5,2.5) {$\sigma_0$};
+\end{tikzpicture}
+\]
+    \item And we draw four different cases for the last relation
+\[
+\begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw[fill=black] (0,-.5) circle (2pt);
+    \draw[fill=black] (0,.5) circle (2pt);
+    \draw[fill=black] (1,-1) circle (2pt);
+    \draw[fill=black] (1,0) circle (2pt);
+    \draw[fill=black] (1,1) circle (2pt);
+    \draw[fill=black] (2,-.5) circle (2pt);
+    \draw[fill=black] (2,.5) circle (2pt);
+    \draw (0,-.5) -- (1,0);
+    \draw (0,.5) -- (1,1);
+    \draw (1,-1) -- (2,-.5);
+    \draw (1,0) -- (2,.5);
+    \draw (1,1) -- (2,.5);
+    \node (d) at (.5,2.5) {$\delta_0$};
+    \node (d) at (1.5,2.5) {$\sigma_1$};
+\end{tikzpicture}
+\quad=\quad
+\begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw[fill=black] (0,-.5) circle (2pt);
+    \draw[fill=black] (0,.5) circle (2pt);
+    \draw[fill=black] (1,0) circle (2pt);
+    \draw[fill=black] (2,-.5) circle (2pt);
+    \draw[fill=black] (2,.5) circle (2pt);
+    \draw (0,-.5) -- (1,0);
+    \draw (0,.5) -- (1,0);
+    \draw (1,0) -- (2,.5);
+    \node (d) at (.5,2.5) {$\sigma_0$};
+    \node (d) at (1.5,2.5) {$\delta_0$};
+\end{tikzpicture}
+\hspace{5em}
+\begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw[fill=black] (0,-.5) circle (2pt);
+    \draw[fill=black] (0,.5) circle (2pt);
+    \draw[fill=black] (1,-1) circle (2pt);
+    \draw[fill=black] (1,0) circle (2pt);
+    \draw[fill=black] (1,1) circle (2pt);
+    \draw[fill=black] (2,-.5) circle (2pt);
+    \draw[fill=black] (2,.5) circle (2pt);
+    \draw (0,-.5) -- (1,0);
+    \draw (0,.5) -- (1,1);
+    \draw (1,-1) -- (2,-.5);
+    \draw (1,0) -- (2,-.5);
+    \draw (1,1) -- (2,.5);
+    \node (d) at (.5,2.5) {$\delta_0$};
+    \node (d) at (1.5,2.5) {$\sigma_0$};
+\end{tikzpicture}
+\quad=\quad
+\begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw[fill=black] (0,-.5) circle (2pt);
+    \draw[fill=black] (0,.5) circle (2pt);
+    \draw[fill=black] (1,-.5) circle (2pt);
+    \draw[fill=black] (1,.5) circle (2pt);
+    \draw (0,-.5) -- (1,-.5);
+    \draw (0,.5) -- (1,.5);
+    \node (d) at (.5,2.5) {$\id_{[2]}$};
+\end{tikzpicture}
+\]
+\[
+\begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw[fill=black] (0,-.5) circle (2pt);
+    \draw[fill=black] (0,.5) circle (2pt);
+    \draw[fill=black] (1,-1) circle (2pt);
+    \draw[fill=black] (1,0) circle (2pt);
+    \draw[fill=black] (1,1) circle (2pt);
+    \draw[fill=black] (2,-.5) circle (2pt);
+    \draw[fill=black] (2,.5) circle (2pt);
+    \draw (0,-.5) -- (1,-1);
+    \draw (0,.5) -- (1,1);
+    \draw (1,-1) -- (2,-.5);
+    \draw (1,0) -- (2,-.5);
+    \draw (1,1) -- (2,.5);
+    \node (d) at (.5,2.5) {$\delta_1$};
+    \node (d) at (1.5,2.5) {$\sigma_0$};
+\end{tikzpicture}
+\quad=\quad
+\begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw[fill=black] (0,-.5) circle (2pt);
+    \draw[fill=black] (0,.5) circle (2pt);
+    \draw[fill=black] (1,-.5) circle (2pt);
+    \draw[fill=black] (1,.5) circle (2pt);
+    \draw (0,-.5) -- (1,-.5);
+    \draw (0,.5) -- (1,.5);
+    \node (d) at (.5,2.5) {$\id_{[2]}$};
+\end{tikzpicture}
+\hspace{5em}
+\begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw[fill=black] (0,-.5) circle (2pt);
+    \draw[fill=black] (0,.5) circle (2pt);
+    \draw[fill=black] (1,-1) circle (2pt);
+    \draw[fill=black] (1,0) circle (2pt);
+    \draw[fill=black] (1,1) circle (2pt);
+    \draw[fill=black] (2,-.5) circle (2pt);
+    \draw[fill=black] (2,.5) circle (2pt);
+    \draw (0,-.5) -- (1,-1);
+    \draw (0,.5) -- (1,0);
+    \draw (1,-1) -- (2,-.5);
+    \draw (1,0) -- (2,-.5);
+    \draw (1,1) -- (2,.5);
+    \node (d) at (.5,2.5) {$\delta_2$};
+    \node (d) at (1.5,2.5) {$\sigma_0$};
+\end{tikzpicture}
+\quad=\quad
+\begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw[fill=black] (0,-.5) circle (2pt);
+    \draw[fill=black] (0,.5) circle (2pt);
+    \draw[fill=black] (1,0) circle (2pt);
+    \draw[fill=black] (2,-.5) circle (2pt);
+    \draw[fill=black] (2,.5) circle (2pt);
+    \draw (0,-.5) -- (1,0);
+    \draw (0,.5) -- (1,0);
+    \draw (1,0) -- (2,-.5);
+    \node (d) at (.5,2.5) {$\sigma_0$};
+    \node (d) at (1.5,2.5) {$\delta_1$};
+\end{tikzpicture}
+\]
+\end{itemize}
+
+Since $[1]$ is a terminal object in $\Delta$ we have a unique arrow
 \[ \mu^{(n)} \colon [n] \to [1] \hspace{2em} \text{for every $[n] \in \obj{\Delta}$}\]
+These arrows can be drawn as
+\[
+\mu^{(0)} = \:
+\begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw[fill=black] (1,0) circle (2pt);
+    \draw (.5,0) -- (1,0);
+%    \node (d) at (0,0) {$\varnothing$};
+\end{tikzpicture}
+\:\text{,}
+\quad 
+\mu^{(1)} = \:
+\begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw[fill=black] (0,0) circle (2pt);
+    \draw[fill=black] (1,0) circle (2pt);
+    \draw (0,0) -- (1,0);
+\end{tikzpicture}
+\:\text{,}
+\quad 
+\mu^{(2)} = \:
+\begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw[fill=black] (0,-.5) circle (2pt);
+    \draw[fill=black] (0,.5) circle (2pt);
+    \draw[fill=black] (1,0) circle (2pt);
+    \draw (0,-.5) -- (1,0);
+    \draw (0,.5) -- (1,0);
+\end{tikzpicture}
+\:\text{,}
+\quad 
+\mu^{(3)} = \:
+\begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw[fill=black] (0,-1) circle (2pt);
+    \draw[fill=black] (0,0) circle (2pt);
+    \draw[fill=black] (0,1) circle (2pt);
+    \draw[fill=black] (1,0) circle (2pt);
+    \draw (0,-1) -- (1,0);
+    \draw (0,0) -- (1,0);
+    \draw (0,1) -- (1,0);
+\end{tikzpicture}
+\:\text{, \dots}
+\]
 
-Face degeneracy generators and relations.
+We can hence rewrite the above lemma in the following way:
+\begin{tcblemma}
+The monoidal category $(\Delta, +, [0])$ is completely generated by the morphisms 
+    \[ 
+    \mu^{(0)} \colon [0] \to [1] 
+    \quad \text{and} \quad 
+    \mu^{(2)} \colon [2] \to [1] 
+    \]
+satisfying the following relations:
+\begin{itemize}
+\item identity relations 
+\[
+\begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw[fill=black] (0,-.5) circle (2pt);
+    \draw[fill=black] (0,.5) circle (2pt);
+    \draw[fill=black] (1,-.5) circle (2pt);
+    \draw[fill=black] (1,.5) circle (2pt);
+    \draw[fill=black] (2,0) circle (2pt);
+    \draw (0,-.5) -- (1,-.5);
+    \draw (0,.5) -- (1,.5);
+    \draw (1,-.5) -- (2,0);
+    \draw (1,.5) -- (2,0);
+\end{tikzpicture}
+\: = \: 
+\begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw[fill=black] (0,-.5) circle (2pt);
+    \draw[fill=black] (0,.5) circle (2pt);
+    \draw[fill=black] (1,0) circle (2pt);
+    \draw[fill=black] (2,0) circle (2pt);
+    \draw (0,-.5) -- (1,0);
+    \draw (0,.5) -- (1,0);
+    \draw (2,0) -- (1,0);
+\end{tikzpicture}
+\: = \:
+\begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw[fill=black] (0,-.5) circle (2pt);
+    \draw[fill=black] (0,.5) circle (2pt);
+    \draw[fill=black] (1,0) circle (2pt);
+    \draw (0,-.5) -- (1,0);
+    \draw (0,.5) -- (1,0);
+\end{tikzpicture}
+\hspace{3em}
+\begin{tikzpicture}
+    [x=0.8cm, y=0.4cm, baseline]
+    \draw[fill=black] (0,0) circle (2pt);
+    \draw[fill=black] (1,0) circle (2pt);
+    \draw (-.5,0) -- (1,0);
+\end{tikzpicture}
+\: = \:
+\begin{tikzpicture}
+    [x=0.8cm, y=0.4cm, baseline]
+    \draw[fill=black] (0,0) circle (2pt);
+    \draw[fill=black] (1,0) circle (2pt);
+    \draw (0,0) -- (1,0);
+\end{tikzpicture}
+\]
+\item unitality
+\[
+\begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw[fill=black] (0,.5) circle (2pt);
+    \draw[fill=black] (1,-.5) circle (2pt);
+    \draw[fill=black] (1,.5) circle (2pt);
+    \draw[fill=black] (2,0) circle (2pt);
+    \draw (.5,-.5) -- (1,-.5);
+    \draw (0,.5) -- (1,.5);
+    \draw (1,-.5) -- (2,0);
+    \draw (1,.5) -- (2,0);
+\end{tikzpicture}
+\: = \:
+\begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw[fill=black] (0,-.5) circle (2pt);
+    \draw[fill=black] (1,-.5) circle (2pt);
+    \draw[fill=black] (1,.5) circle (2pt);
+    \draw[fill=black] (2,0) circle (2pt);
+    \draw (0,-.5) -- (1,-.5);
+    \draw (.5,.5) -- (1,.5);
+    \draw (1,-.5) -- (2,0);
+    \draw (1,.5) -- (2,0);
+\end{tikzpicture}
+\: = \:
+\begin{tikzpicture}
+    [x=0.8cm, y=0.4cm, baseline]
+    \draw[fill=black] (0,0) circle (2pt);
+    \draw[fill=black] (1,0) circle (2pt);
+    \draw (0,0) -- (1,0);
+\end{tikzpicture}
+\]
+\item associativity \[
+\begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw[fill=black] (0,-1) circle (2pt);
+    \draw[fill=black] (0,0) circle (2pt);
+    \draw[fill=black] (0,1) circle (2pt);
+    \draw[fill=black] (1,-.5) circle (2pt);
+    \draw[fill=black] (1,.5) circle (2pt);
+    \draw[fill=black] (2,0) circle (2pt);
+    \draw (0,-1) -- (1,-.5);
+    \draw (0,0) -- (1,-.5);
+    \draw (0,1) -- (1,.5);
+    \draw (2,0) -- (1,.5);
+    \draw (2,0) -- (1,-.5);
+\end{tikzpicture}
+\quad=\quad
+\begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw[fill=black] (0,-1) circle (2pt);
+    \draw[fill=black] (0,0) circle (2pt);
+    \draw[fill=black] (0,1) circle (2pt);
+    \draw[fill=black] (1,-.5) circle (2pt);
+    \draw[fill=black] (1,.5) circle (2pt);
+    \draw[fill=black] (2,0) circle (2pt);
+    \draw (0,-1) -- (1,-.5);
+    \draw (0,0) -- (1,.5);
+    \draw (0,1) -- (1,.5);
+    \draw (2,0) -- (1,.5);
+    \draw (2,0) -- (1,-.5);
+\end{tikzpicture}
+\]
+\end{itemize}
+\end{tcblemma}
 
-Internal monoids. ok
-Delta category. 
-(their relation).
+These axioms carry a striking resemblance to the ones we drew above, when describing the internal monoid. We can hence state that $([1], \mu^{(0)}, \mu^{(2)})$ is a monoid in the monoidal category $(\Delta, +, [0])$. Since this monoid completely generates the whole category we have the following lemma.
+\begin{tcblemma}
+    $(\Delta, +, [0])$ is the free monoidal category on a single monoid, namely $([1], \mu^{(0)}, \mu^{(2)})$.
+\end{tcblemma}
+More is actually true. 
+
+\begin{tcbthm}
+Given a monoidal category $(\cat{C}, \sq, I)$ there is a canonical equivalence of categories
+\[
+\mathbf{MonCat}(\Delta, \cat{C}) \iso \mathbf{Mon}(\cat{C})
+\]
+\end{tcbthm}
+
+\begin{proof}
+    \todo[inline]{riscrivere tutto in modo più chiaro}
+    Given a monoidal functor $F \colon \Delta \to \cat{C}$, we can just evaluate it on the monoid $[1]$. Hence by $\ref{lem:monoid_image}$ we obtain an internal monoid $(F([1]), F(\mu^{(0)}), F(\mu^{(2)}))$ in $\cat{C}$. We now take a monoidal natural transformation $u \colon F \Rightarrow G$ and consider its component $u_{[1]} \colon F([1]) \to G([1])$, which by monoidality of $u$ determines all the other components (we'll have $u_{[2]}= u_{[1]} \sq u_{[1]}$, and so on). Now, since $u$ is also a natural transformation we have the compatibility of $u_{[1]}$ with all the maps in $\Delta$, all generated by $\mu^{(0)}$ and $\mu^{(2)}$. This implies that $u_{[1]}$ defines a morphism of internal monoids in $\cat{C}$.
+
+    Conversely, given a monoid $(M, \eta, \mu)$ in $\cat{C}$, we define a monoidal functor $\Delta \to \cat{C}$ as follows
+    \begin{align*}
+        \Delta & \to \cat{C} \\
+        ([0] \to [1]) & \mapsto (\eta \colon I \to M) \\
+        ([2] \to [1]) & \mapsto (\mu \colon M \sq M \to M)
+    \end{align*} 
+\end{proof}
+
+\begin{remark}
+\[
+\mathbf{MonCat}(\Delta^{op}, \cat{C}) \iso \mathbf{Comon}(\cat{C})
+\]
+\end{remark} 
+
+Define $\Phi$.
+We have an equivalence of categories 
+\[
+\mathbf{SymMonCat}(\Phi, \cat{C}) \iso \mathbf{cMon}(\cat{C})
+\]
+and
+\[
+\mathbf{SymMonCat}(\Phi^{op}, \cat{C}) \iso \mathbf{cComon}(\cat{C})
+\]
+
 
 
 \begin{tcbdfn}[Internal Frobenius object]
 Let $(\cat{C}, \sq, I)$ be a monoidal category.
 \end{tcbdfn}
 
-Internal Frobenius objects.
-Bord2.
-(Their relation).
+\begin{tcbthm}
+\[
+    \mathbf{SymMonCat}(\bord{2}, \cat{C}) \iso \mathbf{cFrob}(\cat{C})
+\]
+\end{tcbthm}
+
