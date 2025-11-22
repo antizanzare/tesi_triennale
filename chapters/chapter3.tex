@@ -721,8 +721,8 @@ Given a pair of pants (equivalentely a pair of copants), sewing a cap (equivalen
     offset=-.625,
     every incoming lower boundary component/.style={draw},    
     every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
-    \pic[tqft cylinder to next, name=b, dashed, draw, anchor=outgoing boundary, at={(1.5,0)},
-    fill opacity=0];
+    \pic[tqft cylinder to next, name=b, draw, anchor=outgoing boundary, at={(1.5,0)}, 
+    every lower boundary component/.style={dashed, draw}];
     \pic[tqft cylinder to next, draw, anchor=outgoing boundary, at=(b-incoming boundary),
     offset=.625,
     every incoming lower boundary component/.style={draw},    
@@ -739,14 +739,54 @@ Given a pair of pants (equivalentely a pair of copants), sewing a cap (equivalen
     \pic[tqft cylinder to prior, draw, name=c, anchor=incoming boundary, at=(a-outgoing boundary 1),
     offset=-.75,
     every lower boundary component/.style={dashed, draw}];
-    \pic[tqft cylinder, dashed, draw, anchor=incoming boundary, at=(c-outgoing boundary),
-    fill opacity=0];
+    \pic[tqft cylinder, draw, anchor=incoming boundary, at=(c-outgoing boundary), every lower boundary component/.style={dashed, draw}];
     \pic[tqft cylinder to prior, draw, anchor=incoming boundary, at=(b-outgoing boundary),
     offset=-.75,
     every lower boundary component/.style={dashed, draw}];
-    \pic[tqft cylinder to prior, name=d, dashed, draw, anchor=outgoing boundary, at={(-1.5,0)},
-    fill opacity=0,
+    \pic[tqft cylinder to prior, name=d, draw, anchor=outgoing boundary, at={(-1.5,0)},
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder to next, draw, name=e, anchor=incoming boundary, at=(d-outgoing boundary),
+    offset=.75,
     every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to next, draw, anchor=incoming boundary, at=(e-outgoing boundary),
+    offset=.75,
+    every lower boundary component/.style={dashed, draw}];
+\end{tikzpicture}
+\hspace{3em}
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft pair of pants, draw, name=a, anchor=outgoing boundary 1,
+    boundary separation=1.5cm,
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to next, draw, anchor=outgoing boundary, at=(a-incoming boundary),
+    offset=.625,
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder to prior, name=b, draw, anchor=outgoing boundary, at={(-1.5,0)}, 
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to prior, draw, anchor=outgoing boundary, at=(b-incoming boundary),
+    offset=-.625,
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+\end{tikzpicture}
+=
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft pair of pants, draw, name=a, anchor=outgoing boundary 1,
+    boundary separation=1.5cm,
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder, draw, name=b, anchor=incoming boundary, at=(a-outgoing boundary 2),
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to prior, draw, name=c, anchor=incoming boundary, at=(a-outgoing boundary 1),
+    offset=-.75,
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder, draw, anchor=incoming boundary, at=(c-outgoing boundary), every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to prior, draw, anchor=incoming boundary, at=(b-outgoing boundary),
+    offset=-.75,
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to prior, name=d, draw, anchor=outgoing boundary, at={(-1.5,0)},
+    every incoming lower boundary component/.style={draw},    
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];
     \pic[tqft cylinder to next, draw, name=e, anchor=incoming boundary, at=(d-outgoing boundary),
     offset=.75,
     every lower boundary component/.style={dashed, draw}];
