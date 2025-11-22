@@ -412,7 +412,79 @@ By reversing the arrows, we also give the definition of \emph{internal comonoid}
     \]
 \end{tcbdfn}
 
-\todo[inline]{Both can be grafically represented, similarly to what we did in the case of $\Bbbk$-Frobenius algebras.}
+Both these structures can be grafically represented, similarly to what we did in the case of $\Bbbk$-Frobenius algebras.
+
+\begin{dfnx*}[Internal monoids]
+Let $(\cat{C}, \sq, I)$ be a monoidal category. An \emph{internal comonoid} in $\cat{C}$ is an object $M$ equippped with two morphisms
+    \[ 
+    \begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw[rounded corners=0.4cm] (-1,1) -- (0,1) -- (0,0);
+    \draw[rounded corners=0.4cm] (-1,-1) -- (0,-1) -- (0,0);
+    \draw (0,0) -- (1,0);
+    \draw[fill=white] (0,0) circle (3pt);
+    \node (mu) at (0,-3) {$\mu \colon M \sq M \to M$};
+    \end{tikzpicture}
+    \hspace{3em} 
+    \begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw (0,0)--(1,0);
+    \draw[fill=white] (0,0) circle (3pt);
+    \node (eta) at (0,-3) {$\eta \colon I \to M$};
+    \end{tikzpicture}
+    \]
+such that the following relations hold
+\[
+\begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw[rounded corners=0.4cm] (-2,2) -- (-1,2) -- (-1,1);
+    \draw[rounded corners=0.4cm] (-2,0) -- (-1,0) -- (-1,1);
+    \draw[rounded corners=0.4cm] (-1,1) -- (0,1) -- (0,0);
+    \draw[rounded corners=0.4cm] (-1,-1) -- (0,-1) -- (0,0);
+    \draw (0,0) -- (1,0);
+    \draw (-1,-1) -- (-2,-1);
+    \draw[fill=white] (-1,1) circle (3pt);   
+    \draw[fill=white] (0,0) circle (3pt);  
+\end{tikzpicture}
+\quad=\quad
+\begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw[rounded corners=0.4cm] (-2,-2) -- (-1,-2) -- (-1,-1);
+    \draw[rounded corners=0.4cm] (-2,0) -- (-1,0) -- (-1,-1);
+    \draw[rounded corners=0.4cm] (-1,1) -- (0,1) -- (0,0);
+    \draw[rounded corners=0.4cm] (-1,-1) -- (0,-1) -- (0,0);
+    \draw (0,0) -- (1,0);
+    \draw (-1,1) -- (-2,1);
+    \draw[fill=white] (-1,-1) circle (3pt);   
+    \draw[fill=white] (0,0) circle (3pt);   
+\end{tikzpicture}
+\]
+
+\[
+\begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw[rounded corners=0.4cm] (-1,1) -- (0,1) -- (0,0);
+    \draw[rounded corners=0.4cm] (-1,-1) -- (0,-1) -- (0,0);
+    \draw (-1,-1) -- (-2,-1);
+    \draw (0,0) -- (1,0);
+    \draw[fill=white] (0,0) circle (3pt);
+    \draw[fill=white] (-1,1) circle (3pt);
+\end{tikzpicture}
+\quad=\quad
+\begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw (0,0) -- (1,0);    
+\end{tikzpicture}
+\quad=\quad
+\begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw[rounded corners=0.4cm] (-1,1) -- (0,1) -- (0,0);
+    \draw[rounded corners=0.4cm] (-1,-1) -- (0,-1) -- (0,0);
+    \draw (-1,1) -- (-2,1);
+    \draw (0,0) -- (1,0);
+    \draw[fill=white] (0,0) circle (3pt);
+    \draw[fill=white] (-1,-1) circle (3pt);
+\end{tikzpicture}
+\]
+\end{dfnx*}
+
+\begin{tcbex}
+An internal monoid in $(\mathbf{Set}, )$
+\end{tcbex}
+
 \todo[inline]{examples: in Set Cat and Vect}
 
 As we did for monoidal categories and $\Bbbk$-algebras we are able to define morphisms between internal monoids and comonoids.
