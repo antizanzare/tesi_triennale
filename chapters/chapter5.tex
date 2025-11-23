@@ -482,7 +482,11 @@ such that the following relations hold
 \end{dfnx*}
 
 \begin{tcbex}
-An internal monoid in $(\mathbf{Set}, )$
+An internal monoid in $(\mathbf{Set}, \disj, \varnothing)$ is a monoid. An internal comonoid in  $(\mathbf{Set}, \disj, \varnothing)$ is a comonoid.
+
+An internal monoid in $(\mathbf{Vect}_\Bbbk, \tensor, \Bbbk)$ is a $\Bbbk$-algebra. An internal comonoid in $(\mathbf{Vect}_\Bbbk, \tensor, \Bbbk)$ is a $\Bbbk$-coalgebra.
+
+An  internal monoid in $(mathbf{Cat}, \times, \mathbf{1})$, where $\mathbf{1}$ is the category with only one object, is a monoidal category. Although we have not done so, we can also define a comonoidal category, which will exactly be the comonoid in $(\mathbf{Cat}, \times, \mathbf{1})$
 \end{tcbex}
 
 \todo[inline]{examples: in Set Cat and Vect}
@@ -522,8 +526,13 @@ Let $(\cat{C}, \sq, I)$ be a monoidal category. An \emph{homomorphisms of intern
 
 It is rather easy to check how composition of two morphisms of internal monoids (resp. comonoids) is again a morphism of internal monoids (resp. comonoids). Given a monoidal category $(\cat{C}, \sq, I)$, we can define a new category $\mathbf{Mon}(\cat{C})$ where objects are internal monoids in $\cat{C}$ and arrows are the homomorphisms between them.
 
-\todo[inline]{what are commutative internal monoids??}
+
 \todo[inline]{C symm mon cat implies MonC is monoidal}
+
+\begin{tcbdfn}[Commutative internal monoids]
+Let $(M, \)$
+\end{tcbdfn}
+\todo[inline]{what are commutative internal monoids??}
 
 \begin{tcblemma}\label{lem:monoid_image}
     The image of a monoid through a monoidal functor is a monoid 
