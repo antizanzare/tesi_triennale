@@ -486,7 +486,7 @@ An internal monoid in $(\mathbf{Set}, \disj, \varnothing)$ is a monoid. An inter
 
 An internal monoid in $(\mathbf{Vect}_\Bbbk, \tensor, \Bbbk)$ is a $\Bbbk$-algebra. An internal comonoid in $(\mathbf{Vect}_\Bbbk, \tensor, \Bbbk)$ is a $\Bbbk$-coalgebra.
 
-An  internal monoid in $(mathbf{Cat}, \times, \mathbf{1})$, where $\mathbf{1}$ is the category with only one object, is a monoidal category. Although we have not done so, we can also define a comonoidal category, which will exactly be the comonoid in $(\mathbf{Cat}, \times, \mathbf{1})$
+An  internal monoid in $(\mathbf{Cat}, \times, \mathbf{1})$, where $\mathbf{1}$ is the category with only one object, is a monoidal category. Although we have not done so, we can also define a comonoidal category, which will exactly be the comonoid in $(\mathbf{Cat}, \times, \mathbf{1})$
 \end{tcbex}
 
 \todo[inline]{examples: in Set Cat and Vect}
@@ -526,11 +526,101 @@ Let $(\cat{C}, \sq, I)$ be a monoidal category. An \emph{homomorphisms of intern
 
 It is rather easy to check how composition of two morphisms of internal monoids (resp. comonoids) is again a morphism of internal monoids (resp. comonoids). Given a monoidal category $(\cat{C}, \sq, I)$, we can define a new category $\mathbf{Mon}(\cat{C})$ where objects are internal monoids in $\cat{C}$ and arrows are the homomorphisms between them.
 
+\begin{tcblemma}
+    Let $(\cat{C}, \sq, I, \beta)$ be a symmetric monoidal category. Then $\mathbf{Mon}(\cat{C})$ can be canonically equipped with a monoidal structure.
+\end{tcblemma}
 
-\todo[inline]{C symm mon cat implies MonC is monoidal}
+\begin{proof}
+    Let us take two internal monoids $(M, \mu, \eta)$, $(M', \mu', \eta')$ and define a structure of monoidal product on $M \sq M'$.
+    To do so, we define the multiplication $\mu \varsq \mu$ as $(\mu \sq \mu') \circ (\id_M \sq \beta \sq \id_{M'})$.
+    \[
+    \begin{tikzcd}
+    (M \sq M') \sq (M \sq M') \arrow[r, "\mu \varsq \mu'"] \arrow[d, "\id_M \sq \beta \sq \id_{M'}", swap] & M \sq M' \\
+    M \sq M \sq M' \sq M' \arrow[ur, "\mu \sq \mu'", swap] & 
+    \end{tikzcd}
+    \]
+    We define the unit by just taking the monoidal product $\eta \sq \eta'$ and check that $(M \sq M', \mu \varsq \mu', \eta \sq \eta')$ satisfies the internal monoid axioms.
+    To do so we can rely on a graphical representation of multiplication and unit. 
+    \[
+    \begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw (0,-3)--(1,-3);
+    \draw (0,-1)--(1,1);
+    \draw (0,1)--(1,-1);
+    \draw (0,3)--(1,3);
+    \draw[rounded corners=0.4cm] (1,3) -- (2,3) -- (2,2);
+    \draw[rounded corners=0.4cm] (1,1) -- (2,1) -- (2,2);
+    \draw[rounded corners=0.4cm] (1,-1) -- (2,-1) -- (2,-2);
+    \draw[rounded corners=0.4cm] (1,-3) -- (2,-3) -- (2,-2);
+    \draw (2,2)--(3,2);
+    \draw (2, -2)--(3,-2);
+    \draw[fill=white] (2,2) circle (3pt);
+    \draw[fill=white] (2,-2) circle (3pt);
+    \node (m) at (-1,3) {$M$};
+    \node (m) at (-1,1) {$M'$};
+    \node (m) at (-1,-1) {$M$};
+    \node (m) at (-1,-3) {$M'$};
+    \node (m) at (4,2) {$M$};
+    \node (m) at (4,-2) {$M'$};
+    \node (l) at (1.5, -5) {(multiplication)};
+    \end{tikzpicture}
+    \hspace{5em}
+    \begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
+    \draw (.5, 1)--(1,1);
+    \draw (.5, -1)--(1, -1);
+    \draw[fill=white] (.5, 1) circle (3pt);
+    \draw[fill=white] (.5, -1) circle (3pt);
+    \node (m) at (-.5,1) {$M$};
+    \node (m) at (-.5,-1) {$M'$};
+    \node (m) at (2,1) {$M$};
+    \node (m) at (2,-1) {$M'$};   
+    \node (l) at (.5, -5) {(unit)}; 
+    \end{tikzpicture}
+    \]
+
+We hence have the associativity.
+\[
+\begin{tikzpicture}[x=0.6cm, y=0.3cm, baseline]
+    \draw (0, -5)--(2,-5);
+    \draw (0,-3)--(2,-3);
+    \draw (0,-1)--(1,-1);
+    \draw (0,1)--(1,3);
+    \draw (0,3)--(1,1);
+    \draw (0, 5)--(1,5);
+    \draw[rounded corners=0.3cm] (1,5) -- (2,5) -- (2,4);
+    \draw[rounded corners=0.3cm] (1,3) -- (2,3) -- (2,4);
+    \draw[rounded corners=0.3cm] (1,1) -- (2,1) -- (2,0);
+    \draw[rounded corners=0.3cm] (1,-1) -- (2,-1) -- (2,0);
+    \draw (2,4)--(4,2);
+    \draw (2,0)--(3,0)--(4,-3);
+    \draw (2,-3)--(3,-3)--(4,0);
+    \draw (2,-5)--(4,-5);
+    \draw[rounded corners=0.3cm] (4,2) -- (5,2) -- (5,1);
+    \draw[rounded corners=0.3cm] (4,0) -- (5,0) -- (5,1);
+    \draw[rounded corners=0.3cm] (4,-3) -- (5,-3) -- (5,-4);
+    \draw[rounded corners=0.3cm] (4,-5) -- (5,-5) -- (5,-4);
+    \draw (5,1)--(6,1);
+    \draw (5,-4)--(6,-4);
+    \draw[fill=white] (2,4) circle (3pt);
+    \draw[fill=white] (2,0) circle (3pt);
+    \draw[fill=white] (5,1) circle (3pt);
+    \draw[fill=white] (5,-4) circle (3pt);
+\end{tikzpicture}
+\:=\:
+\begin{tikzpicture}[x=0.6cm, y=0.3cm, baseline]
+    \draw (0, -5)--(2,-5);
+    \draw (0,-3)--(1,-1)--(2,1);
+    \draw (0,-1)--(1,-3)--(2,-3);
+    \draw (0,1)--(1,3)--(2,3);
+    \draw (0,3)--(1,1)--(2,-1);
+    \draw (0,5)--(2,5);
+\end{tikzpicture}
+\text{etc}
+\]
+\ref{lem:monoidal-falg} \todo{da finire}
+\end{proof}
 
 \begin{tcbdfn}[Commutative internal monoids]
-Let $(M, \)$
+Let $(M, \mu)$
 \end{tcbdfn}
 \todo[inline]{what are commutative internal monoids??}
 
@@ -1296,7 +1386,7 @@ Since we are interested in symmetric monoidal categories, it makes sense to unde
 \begin{tcbthm}
     Given a monoidal category $(\cat{C}, \sq, I)$ there is a canonical equivalence of categories
 \[
-    \mathbf{SymMonCat}(\bord{2}, \cat{C}) \iso \mathbf{cFrob}(\cat{C})
+    \mathbf{SymMonCat}(\mathbf{Bord}(2), \cat{C}) \iso \mathbf{cFrob}(\cat{C})
 \]
 \end{tcbthm}
 
