@@ -336,7 +336,16 @@ innertopmargin=0pt,
 innerbottommargin=1mm}
 ]{rmkbluestyle}
 
-\declaretheorem[name=Example,sibling=main_counter,  style=rmkbluestyle]{tcbex}
+\declaretheoremstyle[
+headfont=\upshape\color{ibmYellow!70!black},
+notefont=\upshape\color{ibmYellow!70!black},
+mdframed={backgroundcolor=ibmYellow!5,linewidth=0pt,innerleftmargin=1mm,
+innerrightmargin=1mm,
+innertopmargin=0pt,
+innerbottommargin=1mm}
+]{rmkyellowstyle}
+
+\declaretheorem[name=Example,sibling=main_counter,  style=rmkyellowstyle]{tcbex}
 
 %%%% classic environments %%%%
 \usepackage{theoremref}
@@ -575,8 +584,7 @@ every lower boundary component/.style={draw}
 \usepackage[colorlinks=true, allcolors=black]{hyperref}
 
 
-
-% \includeonly{chapters/chapter5.tex, chapters/chapter4.tex}
+\includeonly{chapters/chapter2.tex}
 % ============================= BEGIN DOCUMENT ===========================================
 \begin{document}
 

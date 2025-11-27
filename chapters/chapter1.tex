@@ -6,6 +6,7 @@ We begin by recalling some useful notions from category theory, which we will en
 \section{Monoidal Categories}
 \label{sec:moncat}
 
+
 \todo[inline]{Perché servono le categorie monoidali per questo lavoro? Valutare se scriverlo qui o in introduzione.}
 
 
@@ -65,19 +66,46 @@ It is important to notice how, by definition, the naturality of such transformat
 \begin{tcbdfn}[Strict monoidal categories]
 A monoidal category is \emph{strict}\index{monoidal category!strict monoidal category} if all the natural transformations $\alpha$, $l$, $r$ are identities.
 \end{tcbdfn} 
-\fouche{Fai un po' di esempi di categorie monoidali. Il prodotto tensore su Vect, il prodotto Cartesiano su Set, etc.}
-\fouche{Per esempio la categoria [...] è strict monoidale perché [...]}
+
 We can say that a strict monoidal category is a category $\cat{C}$ equipped with an associative bifunctor $\sq \colon \cat{C} \times \cat{C} \to \cat{C}$ and an object $I \in \obj{\cat{C}}$ which is a left and a right unit for $\sq$. 
 
 %\begin{remark}
 %    Consider a monoidal category $\cat{C}$ equipped with the bifunctor $\mu \colon \cat{C} \times \cat{C} \to \cat{C}$. Its associativity will then induce functors $\mu^{(n)} \colon \cat{C}^n \to \cat{C}$. By letting $\mu^{(1)}$ be the identity functor on $\cat{C}$ and $\mu^{(0)}$ be the functor $\eta$ identifying the neautral object, we can see $\cat{C}$ as a category equipped with $(n)$-ary functors $\mu^{(n)}$ 
 %\end{remark}
 
+\begin{tcbprp}\label{prp:cartesian-monoidal}
+    Let $\cat{C}$ be a category that admits products. Then $(\cat{C}, \times, 1)$, where $\times$ denotes the product and $1$ the terminal object, is a monoidal category.
+\end{tcbprp}
+\begin{proof}
+Consider $A, B , C \in \obj{\cat{C}}$. By the universal property of the product, we are able define an isomorphism $\alpha_{A, B, C}$ between $(A \times B) \times C$ and $A \times (B \times C)$, with which we can define the \emph{associator} $\alpha$. Then, since for any $A \in \obj{\cat{C}}$ there exists a unique arrow to the terminal object $1$, we have that 
+\[
+\begin{tikzcd}
+1 & A \arrow[l, "\text{!}",swap] \arrow[r, "\id_A"] & A
+\end{tikzcd}
+\]
+defines a product for $1$ and $A$. The uniqueness of the product provides an isomorphism $1 \times A \iso A$ and, similarly, $A \times 1 \iso A$. Through such maps, we define \emph{left} and \emph{right unitors}. Using such isomorphisms one can also check that coherence holds.
+\end{proof}
+We call this structure a \emph{cartesian} monoidal category. The dual statement also holds.
+\begin{tcbprp}\label{prp:cocartesian-monoidal}
+    Let $\cat{C}$ be a category that admits coproducts. Then $(\cat{C}, +, 0)$, where $+$ denotes the coproduct and $0$ the initial object, is a monoidal category.
+\end{tcbprp}
+We call this structure a \emph{cocartesian} monoidal category.
+
+\begin{tcbex}
+    Examples of monoidal categories are:
+    \begin{itemize}
+        \item $(\mathbf{Set}, {\times}, \{\ast\})$, the cartesian monoidal category of sets and functions between them
+        \item $(\mathbf{Cat}, {\times}, \mathbf{1})$, the cartesian monoidal category of categories and functors between them
+        \item $(\Delta, {+}, [0])$, the strict cocartesian monoidal simplicial category
+        \item $(\mathbf{Vect}_\Bbbk, {\tensor}, \Bbbk)$, the monoidal category of vector spaces over the field $\Bbbk$ and linear maps between them, with the monoidal structure given by the tensor product
+    \end{itemize}
+\end{tcbex}
+
 We'd now like to define morphisms between monoidal categories as functors that preserve the monoidal structure. However we need to precise to which ``degree'' such structure needs to be preserved. 
 As for monoidal categories, the weakest definition will also be the most intricate.
-\fouche{Questo qua sotto è un funtore monoidale \emph{lax}; c'è anche la nozione di funtore \emph{oplax} dove le frecce sono tutte girate; dopo la definizione metti un esempio: [cazzopalle] è un funtore monoidale lax dalla categoria bau alla categoria miao; [pallecazzo] è oplax dalla categoria squit alla categoria muuu.}
+% \fouche{Questo qua sotto è un funtore monoidale \emph{lax}; c'è anche la nozione di funtore \emph{oplax} dove le frecce sono tutte girate; dopo la definizione metti un esempio: [cazzopalle] è un funtore monoidale lax dalla categoria bau alla categoria miao; [pallecazzo] è oplax dalla categoria squit alla categoria muuu.}
 \begin{tcbdfn}[Monoidal functors]
-    Let  $(\cat{C}, \sq, I, \alpha^\cat{C}, l^\cat{C}, r^\cat{C})$ and $(\cat{D}, \varsq , J, \alpha^\cat{D}, l^\cat{D},r^\cat{D})$ be two monoidal categories. A monoidal functor is a triple $(F, \varphi, \varepsilon)$ consisting of
+    Let $(\cat{C}, \sq, I, \alpha^\cat{C}, l^\cat{C}, r^\cat{C})$ and $(\cat{D}, \varsq , J, \alpha^\cat{D}, l^\cat{D}, r^\cat{D})$ be two (weak) monoidal categories. A monoidal functor is a triple $(F, \varphi, \varepsilon)$ consisting of
     \begin{itemize}
         \item a functor \[ F \colon \cat{C} \to \cat{D} \]
         \item a natural transformation
@@ -122,14 +150,18 @@ As for monoidal categories, the weakest definition will also be the most intrica
     for every $A,B,C \in \obj{\cat{C}}$
 \end{tcbdfn}
 
+\begin{remark}
+    This notion can be found in the literature as \emph{lax monoidal functor}. We can also define an \emph{oplax monoidal functor} between two categories $\cat{C}$ and $\cat{D}$ as a lax monoidal functor $\cat{C}^{op} \to \cat{D}^{op}$. In this case we will have natural transformations $\varphi_{A, B} \colon F(A \sq B) \to F(A) \varsq F(B)$ and $\varepsilon \colon F(I) \to J$. The idea behind these two notions is that a \emph{lax} monoidal functor is the one preserving the structure of internal monoid, while an \emph{oplax} monoidal functor preserves the internal comonoid structre. The definition of an internal monoid (resp. comonoid) will be properly given in \ref{dfn:internal-monoid} (resp. \ref{dfn:internal-comonoid}).
+\end{remark}
+
 \begin{tcbdfn}[Strong monoidal functors]
-    Let $(\cat{C}, \sq, I)$ and $(\cat{D}, \varsq , J)$ be two monoidal categories. A monoidal functor $(F, \varphi, \varepsilon)$ from $\cat{C}$ to $\cat{D}$ is \emph{strong monoidal}\index{monoidal category!strong monoidal functor} if $\varphi$ and $\varepsilon$ are isomorphism.
+    Let $(\cat{C}, \sq, I)$ and $(\cat{D}, \varsq , J)$ be two (weak) monoidal categories. A monoidal functor $(F, \varphi, \varepsilon)$ from $\cat{C}$ to $\cat{D}$ is \emph{strong monoidal}\index{monoidal category!strong monoidal functor} if $\varphi$ and $\varepsilon$ are isomorphism.
 \end{tcbdfn}
 
 We hence have $F(A) \varsq F(B) \iso F(A \sq B)$ and $J \iso F(I)$.
 
 \begin{tcbdfn}[Strict monoidal functors]
-    Let $(\cat{C}, \sq, I)$ and $(\cat{D}, \varsq , J)$ be two monoidal categories. A monoidal functor $(F, \varphi, \varepsilon)$ from $\cat{C}$ to $\cat{D}$ is \emph{strict monoidal}\index{monoidal category!strict monoidal functor} if $\varphi$ and $\varepsilon$ are identities.
+    Let $(\cat{C}, \sq, I)$ and $(\cat{D}, \varsq , J)$ be two (weak) monoidal categories. A monoidal functor $(F, \varphi, \varepsilon)$ from $\cat{C}$ to $\cat{D}$ is \emph{strict monoidal}\index{monoidal category!strict monoidal functor} if $\varphi$ and $\varepsilon$ are identities.
 \end{tcbdfn}
 
 In terms of objects and arrows we are asking that
@@ -144,22 +176,40 @@ In terms of objects and arrows we are asking that
     \]
 for every $A, B, C \in \obj{\cat{C}}$ and $f, g \in \arr{\cat{C}}$.
 
+\begin{remark}
+    Let $(\cat{C}, \times_\cat{C}, 1_\cat{C})$, $(\cat{D}, \times_\cat{D}, 1_\cat{D})$ be two cartesian monoidal categories and $F \colon \cat{C} \to \cat{D}$ a functor between them. By the universal property of the terminal object there exists a unique arrow $\varepsilon \colon F(1_\cat{C}) \to 1_\cat{D}$ and by the universal property of the product we have 
+    \[
+    \begin{tikzcd}[column sep=large]
+        F(A) & F(A) \times_\cat{D} F(B) \arrow[l, "\pi_{F(A)}", swap] \arrow[r, "\pi_{F(B)}"] & F(B) \\
+        & F(A \times_\cat{C} B) \arrow[ul, "F(\pi_A)"] \arrow[ur, "F(\pi_B)", swap] \arrow[u, dashed, "\exists !"] &
+    \end{tikzcd}    
+    \]
+    Again, by relying on universal properties we are able to prove that associativity and unitality hold. We hence have that $F \colon \cat{C} \to \cat{D}$ is \emph{oplax} monoidal without further requirements. Similarly, every functor $F \colon \cat{C}^{op} \to \cat{D}^{op}$ is automatically \emph{lax} monoidal.
 
-The composition of two monoidal functors is again a monoidal functor, and identity functors are monoidal. 
-We hence have a category $\moncat$ where objects are monoidal categories and arrows are monoidal functors. 
-There is also a full subcategory where objects are strict monoidal categories. 
-\todo[inline]{ripensare a come dire questa cosa. (come devono essere i funtori? strong?)}
+    Conversely, let $(\cat{C}, +_\cat{C}, 0_\cat{C})$, $(\cat{D}, +_\cat{D}, 0_\cat{D})$ be two cocartesian monoidal categories and $F \colon \cat{C} \to \cat{D}$ a functor between them. Then $F$ is a \emph{lax} monoidal functor. Similarly, every functor $F \colon \cat{C}^{op} \to \cat{D}^{op}$ is automatically \emph{oplax} monoidal.
+\end{remark}
+
+
+The composition of two (lax, oplax, strong, strict) monoidal functors is again a (lax, oplax, strong, strict) monoidal functor, and identity functors are monoidal. We hence have a category $\moncat_{\textup{lax}}$ where objects are (weak) monoidal categories and arrows are lax monoidal functors. Similarly $\moncat_{\textup{strong}}$ defines the category whose objects are (weak) monoidal categories and arrows are strong monoidal functors. There is also a full subcategory where objects are strict monoidal categories and arrows are strong monoidal functors. 
 
 \begin{remark}\label{rmk:strictification}
-As the reader can imagine, working with weak monoidal categories can become a really tedious process. 
-The following result mitigates this difficulty, by justifying the common practice of treating all monoidal categories as strictly monoidal ones. The proof and a more in depth explanation can be found in \cite{maclane} and \cite{coherence}. 
+As the reader can imagine, working with weak monoidal categories can become a really tedious process. The following result mitigates this difficulty, justifying working with monoidal categories \emph{as if they were strict}, forgetting about associators and unitors without losing generalities. The proof and a more in depth explanation can be found in \cite{maclane} and \cite{coherence}. 
 \end{remark}
-\fouche{eeeh non è proprio esatto secondo me che c'è una common practice of treating all monoidal categories as strictly monoidal ones; ogni categoria monoidale è equivalente a una strict, ma `equivalente' è un po' debole come concetto. La strettificazione non è proprio la stessa cosa della categoria originale. Forse è meglio dire che spesso si lavora con le categorie monoidali come se fossero strict, perché grazie al teorema di strettificazione si può fare senza perdere generalità, e che una dimostrazione che tiene conto degli assoc / unitori si può sempre `raddrizzare' a una che non li contiene.}
+% \begin{remark}\label{rmk:strictification}
+% As the reader can imagine, working with weak monoidal categories can become a really tedious process. 
+% The following result mitigates this difficulty, by justifying the common practice of treating all monoidal categories as strictly monoidal ones. The proof and a more in depth explanation can be found in \cite{maclane} and \cite{coherence}. 
+% \end{remark}
+% \fouche{eeeh non è proprio esatto secondo me che c'è una common practice of treating all monoidal categories as strictly monoidal ones; ogni categoria monoidale è equivalente a una strict, ma `equivalente' è un po' debole come concetto. La strettificazione non è proprio la stessa cosa della categoria originale. Forse è meglio dire che spesso si lavora con le categorie monoidali come se fossero strict, perché grazie al teorema di strettificazione si può fare senza perdere generalità, e che una dimostrazione che tiene conto degli assoc / unitori si può sempre `raddrizzare' a una che non li contiene.}
 \begin{tcbthm}[Strictification]\label{thm:strictification}
 \emph{(See \cite{maclane}, Chapter XI, Section 3)} Every monoidal category is categorically equivalent, via strong monoidal functors, to a strict monoidal category. 
 \end{tcbthm}
-Essentially, what follows is that from now on we can assume, without loss of generalities, that monoidal categories are strict. This is possible because the equivalence provided by the above theorem ensures that all coherence diagram commute up to unique canonical isomorphism, as long as we don't require functors between such categories to be strict.
+Essentially, what follows is that from now on we can assume, without loss of generalities, that monoidal categories \emph{are} strict. This is possible because the equivalence provided by the above theorem ensures that all coherence diagram commute up to unique canonical isomorphism, as long as we don't require functors between such categories to be strict.
 
+\todo[inline]{idee: inserire esempio costruzione tensore n esimo. inserire esempio strictificazione di Vect}
+
+% \begin{tcbex}
+%     Consider the (weak) monoidal category $(\mathbf{Vect}_\Bbbk, \tensor, \Bbbk)$. By taking 
+% \end{tcbex}
 
 \begin{tcbdfn}[Monoidal natural transformations]
     Let $(\cat{C}, \sq, I)$ and $(\cat{D}, \varsq, J)$ be two monoidal categories and let $(F, \varphi, \varepsilon)$ and $(G, \phi, e)$ be two monoidal functors from $\cat{C}$ to $\cat{D}$. A \emph{monoidal natural transformation}\index{monoidal category!monoidal natural transformation} is a natural transformation $u \colon F \to G$ such that the following diagrams commute
@@ -176,9 +226,26 @@ Essentially, what follows is that from now on we can assume, without loss of gen
     \]
     for every $A,B \in \obj{\cat{C}}$.
 \end{tcbdfn}
-\fouche{Trova degli esempi e dei controesempi. La trasformazione bau tra funtori monoidali non è monoidale; cosa significa essere una tnat monoidale se le strutture su dominio e codominio sono cartesiane?}
-Given two monoidal categories $(\cat{C}, \sq, I)$, $(\cat{D}, \varsq, J)$ we can then consider the category $\moncat(\cat{C}, \cat{D})$\index{monoidal category!monoidal functor category} where objects are monoidal functors from $\cat{C}$ to $\cat{D}$ and arrows are monoidal natural transformations between such functors.
-\fouche{Manca la definizione di cat monoidale \emph{simmetrica}. La cat simmetrica monoidale libera su un singoletto è [...]; e dopo, la categoria monoidale braidata libera su un singoletto è [...].}
+
+\begin{remark}
+    Let $(\cat{C}, \times_\cat{C}, 1_\cat{C})$, $(\cat{D}, \times_\cat{D}, 1_\cat{D})$ be two cartesian monoidal categories and let $F \colon \cat{C} \to \cat{D}$, $G \colon \cat{C} \to \cat{D}$ be two functors between them. Consider any natural transformation $u \colon F \Rightarrow G$ and the diagrams 
+    \[
+        \begin{tikzcd}
+        F(A) \times_\cat{D} F(B) \arrow[r, "u_A \times_\cat{D} u_B"]  & G(A) \times_\cat{D} G(B) \\
+        F(A \times_\cat{C} B) \arrow[u, "\varphi_{A,B}"] \arrow[r, "u_{A \times_\cat{C} B}"] & G(A \times_\cat{C} B) \arrow[u, "\phi_{A,B}"]
+    \end{tikzcd}
+    \qquad
+    \begin{tikzcd}
+        1_\cat{C} & F(1_\cat{C}) \arrow[l, "\varepsilon", swap] \arrow[d, "u_I"] \\
+        & G(1_\cat{C}) \arrow[ul, "e"]
+    \end{tikzcd}
+    \]
+    By naturality of $u$, one checks the two diagrams commute without asking further conditions to hold. We hence have that every natural transformation between two functors defined on cartesian monoidal categories are always monoidal. The same holds when the two categories are cocartesian monoidal.
+\end{remark}
+
+% \fouche{Trova degli esempi e dei controesempi. La trasformazione bau tra funtori monoidali non è monoidale; cosa significa essere una tnat monoidale se le strutture su dominio e codominio sono cartesiane?}
+% Given two monoidal categories $(\cat{C}, \sq, I)$, $(\cat{D}, \varsq, J)$ we can then consider the category $\moncat(\cat{C}, \cat{D})$\index{monoidal category!monoidal functor category} where objects are strong \todo{!!!} monoidal functors from $\cat{C}$ to $\cat{D}$ and arrows are monoidal natural transformations between such functors.
+% \fouche{Manca la definizione di cat monoidale \emph{simmetrica}. La cat simmetrica monoidale libera su un singoletto è [...]; e dopo, la categoria monoidale braidata libera su un singoletto è [...].}
 \section{Adding a twist}
 \label{sec:twist}
 
@@ -205,7 +272,7 @@ Given two monoidal categories $(\cat{C}, \sq, I)$, $(\cat{D}, \varsq, J)$ we can
 \end{tcbdfn}
 
 The definition implies compatibility with the unital structure:
-\begin{tcblemma}
+\begin{tcbprp}
     Let $(\cat{C}, \sq, I, \beta)$ be a braided monoidal category. Then the following diagrams commute for every $A \in \obj{\cat{C}}$.
     \[
     \begin{tikzcd}
@@ -218,11 +285,9 @@ The definition implies compatibility with the unital structure:
         & A &
     \end{tikzcd}
     \]
-\end{tcblemma}
+\end{tcbprp}
 
-\todo[inline]{is it useful? do i need to prove it?}
-
-Again, by \ref{thm:strictification}, when considering a braided monoidal categories we can restrict to the following definition.
+Again, by \ref{thm:strictification}, when considering braided monoidal categories we can restrict to the following definition.
 
 \begin{tcbdfn}[(Semi)strict braided monoidal categories]
 A (semi)strict \emph{braided monoidal category}\index{braided monoidal category!semistrict braided monoidal category} is a (strict) monoidal category $(\cat{C}, \sq, I)$ equipped with a natural isomorphism
