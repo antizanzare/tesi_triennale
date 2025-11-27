@@ -135,8 +135,8 @@ We are finally ready to give the following definition.
 \end{tcbdfn}
 
 \begin{example}
-Let us draw an example of a 2-dimensional bordism. We hence consider a 2-dimensional oriented manifold $M$ homeomorphic to a spere with three holes (also called a \emph{pair of pants}) and the corresponding maps $i_0$, $i_1$, defining its orientation as a bordism.
-\begin{figure}[h]
+Let us draw an example of a 2-dimensional bordism. We consider a 2-dimensional oriented manifold $M$ homeomorphic to a spere with three holes (also called a \emph{pair of pants}) and the corresponding maps $i_0$, $i_1$, defining its orientation as a bordism.
+\begin{figure}[ht]
   \centering
    \begin{tikzpicture}[every tqft/.style={transform shape}]
     \pic[name=a, tqft, offset=-0.7, incoming boundary components=1,
@@ -174,6 +174,7 @@ Let us draw an example of a 2-dimensional bordism. We hence consider a 2-dimensi
     every outgoing boundary component/.style={fill=ibmMagenta, fill opacity=.4},
     every incoming boundary component/.style={dashed, draw},
     cobordism edge/.style={draw}];
+    \node at (-4, -2) {$\mathbb{S}^1 \times [0, \varepsilon)$};
     \draw [thick, left hook->, ibmBlue] (3.5,-1) -- node [above=.5em,align=center, color=ibmBlue] {$i_1$} (2,-1);
     \pic[tqft cylinder, rotate=90, at={(4,-1.5)}, cobordism height=0.2cm, fill=ibmBlue, fill opacity=.6,
     every incoming lower boundary component/.style={dashed, draw},
@@ -187,107 +188,70 @@ Let us draw an example of a 2-dimensional bordism. We hence consider a 2-dimensi
     every outgoing boundary component/.style={draw, fill=ibmBlue, fill opacity=.4},
     every outgoing upper boundary component/.style={draw, decoration={markings, mark=at position .5 with {\arrow{>}},}, postaction=decorate},
     cobordism edge/.style={draw}];
+    \node at (4, -2.5) {$(\mathbb{S}^1 \disj \mathbb{S}^1) \times (1- \varepsilon, 1]$};
   \end{tikzpicture}
 \end{figure}
-The 
 
-By looking at the drawing we can see the reasoning behind our definition of inclusion maps. The way we chose intervals lets us say that the inclusions are both orientation preserving.
+The figure shows how this choice of intervals we made in the definition assures that the inclusion maps are both orientation preserving.
 
-  % % Example dim.2
-  % \begin{figure}[h]
-  %   \centering
-  %   \begin{tikzpicture}[every tqft/.style={transform shape}]
-  %     \pic[name=a,
-  %     tqft,
-  %     offset=-0.7,
-  %     incoming boundary components=1,
-  %     outgoing boundary components=2,
-  %     % genus=1,
-  %     draw,
-  %     at={(1,0)},
-  %     anchor=incoming boundary 1,
-  %     every outgoing lower boundary component/.style={draw},
-  %     % every incoming lower boundary component/.style={dashed,draw},
-  %     incoming upper boundary component 1/.style={decorate, decoration={markings, mark=at position .5 with {$\arrowreversed{>}$},},},
-  %     every outgoing upper boundary component/.style={decorate, decoration={markings, mark=at position .5 with {$\arrow{>}$},},},
-  %     ];
-  %     \draw[dashed] ($(a-incoming boundary 1) + (0,-0.2)$) circle [x radius=10pt, y radius=5pt];
-  %     \draw[dashed] ($(a-outgoing boundary 1) + (0.02,0.2)$) circle [x radius=10pt, y radius=5pt];
-  %     \draw[dashed] ($(a-outgoing boundary 2) + (-0.02,0.2)$) circle [x radius=10pt, y radius=5pt];
-  %     \pic[tqft,
-  %     rotate=90,
-  %     incoming boundary components=1,
-  %     outgoing boundary components=1,
-  %     cobordism height=0.2cm,
-  %     every outgoing lower boundary component/.style={draw},
-  %     every incoming lower boundary component/.style={dashed,draw},
-  %     every outgoing upper boundary component/.style={draw,
-  %       decoration={markings, mark=at position .5 with {\arrow{>}},},
-  %       postaction=decorate
-  %     }, 
-  %     every incoming upper boundary component/.style={dashed, draw,
-  %       decoration={markings, mark=at position .5 with {\arrowreversed{>}}},
-  %       postaction=decorate},
-  %     cobordism edge/.style={draw},
-  %     % every incoming upper boundary component/.style={dashed,draw},
-  %     name=a,
-  %     anchor=incoming boundary 1,
-  %     at={(5,-1)}
-  %     ];
-
-  %     \pic[tqft,
-  %     rotate=90,
-  %     incoming boundary components=1,
-  %     outgoing boundary components=1,
-  %     cobordism height=0.2cm,
-  %     every outgoing lower boundary component/.style={dashed,draw},
-  %     every incoming lower boundary component/.style={draw},
-  %     every outgoing upper boundary component/.style={dashed, draw,
-  %       decoration={markings, mark=at position .5 with {\arrow{>}},},
-  %       postaction=decorate
-  %     }, 
-  %     every incoming upper boundary component/.style={draw,
-  %       decoration={markings, mark=at position .5 with {\arrowreversed{>}}},
-  %       postaction=decorate},
-  %     cobordism edge/.style={draw},
-  %     % every incoming upper boundary component/.style={dashed,draw},
-  %     name=a,
-  %     anchor=incoming boundary 1,
-  %     at={(-4,0)}
-  %     ];
-  %     \pic[tqft,
-  %     rotate=90,
-  %     incoming boundary components=1,
-  %     outgoing boundary components=1,
-  %     cobordism height=0.2cm,
-  %     every outgoing lower boundary component/.style={dashed,draw},
-  %     every incoming lower boundary component/.style={draw},
-  %     every outgoing upper boundary component/.style={dashed, draw,
-  %       decoration={markings, mark=at position .5 with {\arrow{>}},},
-  %       postaction=decorate
-  %     }, 
-  %     every incoming upper boundary component/.style={draw,
-  %       decoration={markings, mark=at position .5 with {\arrowreversed{>}}},
-  %       postaction=decorate},
-  %     cobordism edge/.style={draw},
-  %     % every incoming upper boundary component/.style={dashed,draw},
-  %     name=a,
-  %     anchor=incoming boundary 1,
-  %     at={(-4,-2)}
-  %     ];
-  %   \end{tikzpicture}
-  % \end{figure}
-  % \todo[inline]{sistema e/o cancella questo orrore in futuro}
+We can also see that in-boundaries and out-boundaries do not depend on the orientation of the manifold $M$, but only on the two inclusion maps. For example, we could consider the same manifold $M$ and equip it with two in-boundaries and one out-boundary, as depicted below.
+\begin{figure}[H]
+  \centering
+   \begin{tikzpicture}[every tqft/.style={transform shape}]
+    \pic[name=a, tqft, offset=-0.7, incoming boundary components=1,
+    outgoing boundary components=2, anchor=between outgoing 1 and 2, at={(0,-1.5)}, 
+    every upper boundary component/.style={draw, dashed},
+    cobordism edge/.style={draw}];
+    \pic[tqft cylinder, anchor=outgoing boundary, at=(a-incoming boundary), 
+    every incoming upper boundary component/.style={draw, decoration={markings, mark=at position .5 with {\arrow{<}},}, postaction=decorate},
+    cobordism edge/.style={draw},
+    cobordism height=0.2cm, fill=ibmMagenta, fill opacity=.6];
+    \pic[tqft cylinder, anchor=incoming boundary, at=(a-outgoing boundary 1), 
+    every outgoing lower boundary component/.style={draw},
+    every outgoing upper boundary component/.style={draw, decoration={markings, mark=at position .5 with {\arrow{>}},}, postaction=decorate},    
+    every outgoing boundary component/.style={fill=ibmMagenta, fill opacity=.4},
+    cobordism edge/.style={draw},
+    cobordism height=0.2cm, fill=ibmMagenta, fill opacity=.6];
+    \pic[tqft cylinder, anchor=incoming boundary, at=(a-outgoing boundary 2), 
+    every outgoing lower boundary component/.style={draw},
+    every outgoing upper boundary component/.style={draw, decoration={markings, mark=at position .5 with {\arrow{>}},}, postaction=decorate}, 
+    every outgoing boundary component/.style={fill=ibmBlue, fill opacity=.6},
+    every outgoing boundary component/.style={fill=ibmBlue, fill opacity=.4},
+    cobordism edge/.style={draw},
+    cobordism height=0.2cm, fill=ibmBlue, fill opacity=.6];
+    \draw [thick, right hook->, ibmMagenta] (-3.5,-1) -- node [above=.5em,align=center, color=ibmMagenta] {$i_0$} (-2,-1);
+    \pic[tqft cylinder, rotate=-90, at={(-4,-.5)}, cobordism height=0.2cm,
+    every outgoing lower boundary component/.style={draw, decoration={markings, mark=at position .5 with {\arrow{<}},}, postaction=decorate},
+    every outgoing upper boundary component/.style={draw, decoration={markings, mark=at position .5 with {\arrow{>}},}, postaction=decorate},
+    fill=ibmMagenta, fill opacity=.6,
+    every outgoing boundary component/.style={fill=ibmMagenta, fill opacity=.4},
+    every incoming boundary component/.style={dashed, draw},
+    cobordism edge/.style={draw}];
+    \pic[tqft cylinder, rotate=-90, at={(-4,-1.5)}, cobordism height=0.2cm,
+    every outgoing lower boundary component/.style={draw, decoration={markings, mark=at position .5 with {\arrow{<}},}, postaction=decorate},
+    every outgoing upper boundary component/.style={draw, decoration={markings, mark=at position .5 with {\arrow{>}},}, postaction=decorate},
+    fill=ibmMagenta, fill opacity=.6,
+    every outgoing boundary component/.style={fill=ibmMagenta, fill opacity=.4},
+    every incoming boundary component/.style={dashed, draw},
+    cobordism edge/.style={draw}];
+    \node at (-4, -2.5) {$(\mathbb{S}^1 \disj \mathbb{S}^1) \times [0, \varepsilon)$};
+    \draw [thick, left hook->, ibmBlue] (3.5,-1) -- node [above=.5em,align=center, color=ibmBlue] {$i_1$} (2,-1);
+    \pic[tqft cylinder, rotate=90, at={(4,-1)}, cobordism height=0.2cm, fill=ibmBlue, fill opacity=.6,
+    every incoming lower boundary component/.style={dashed, draw},
+    every incoming upper boundary component/.style={dashed, draw, decoration={markings, mark=at position .5 with {\arrow{<}},}, postaction=decorate},
+    every outgoing boundary component/.style={draw, fill=ibmBlue, fill opacity=.4},
+    every outgoing upper boundary component/.style={draw, decoration={markings, mark=at position .5 with {\arrow{>}},}, postaction=decorate},
+    cobordism edge/.style={draw}];
+    \node at (4, -2) {$\mathbb{S}^1 \times (1- \varepsilon, 1]$};
+  \end{tikzpicture}
+\end{figure}
 \end{example}
 
-The role of the embeddings $i_0$, $i_1$ in the above definition is to identify a collar of the in-boundary and the out-boundary. To make this precise, we again go back to differential geometry \cite{smooth}.
+The role of the embeddings $i_0$, $i_1$ in the above definition is to put some sort of ``collar'' around the in-boundary and the out-boundary.
 
-\todo[inline, color=yellow]{{\bfseries Marco cattivo}: ``We again go back to differential geometry'' è un po' clumsy sec me.}
-
-\begin{tcbdfn}[Collars]
+\begin{tcbdfn}[Collars \cite{smooth}]
   Let $M$ be a manifold with boundary. A neighbourhood of $\partial M$ is called a \emph{collar neighbourhood}\index{collar neighbourhood} if it is the image of a smooth embedding $\partial M \times [0, \varepsilon) \to M$ that restricts to the identification $\partial M \times \{0\} \to \partial M$.
 \end{tcbdfn}
-
 \begin{tcbthm}[Collar neighbourhood theorem]
   Let $M$ be a smooth manifold with nonempty boundary. Then $\partial M$ has a collar neighbourhood.
 \end{tcbthm}
