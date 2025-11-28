@@ -264,14 +264,73 @@ This guarantees that the notion of an oriented bordism is well defined.
 
 \todo[inline]{add a graphical example. For reference Freed (page 10)}
 \begin{example}
-  We illustrate such procedure with the following example. Take a bordism $(X, i_0, i_1)$ from $Y_0 = \mathbb{S}^1 \disj \mathbb{S}^1$ to $Y_1 = \mathbb{S}^1$ and a bordism $(X', i'_0, i'_1)$ from $Y_1 = \mathbb{S}^1$ to $Y_2 = \mathbb{S}^1$. 
-  % \begin{figure}[H]
-  %   \centering
-  %   \begin{tikzpicture}
-  %     \pic[name=a, tqft, offset=-0.7, incoming boundary components=1,
-  %   outgoing boundary components=2];
-  %   \end{tikzpicture}
-  % \end{figure}
+  We illustrate such procedure with the following example in dimension 2. Take a bordism $(X, i_0, i_1)$ from $Y_0 = \mathbb{S}^1 \disj \mathbb{S}^1$ to $Y_1 = \mathbb{S}^1$ and a bordism $(X', i'_0, i'_1)$ from $Y_1 = \mathbb{S}^1$ to $Y_2 = \mathbb{S}^1$. 
+  \begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[every tqft/.style={transform shape}]
+      \node at (-2.2, -.35) {$X$};
+      \node at (2, 0.2) {$X'$};
+      \node at (4.25,-.35) {become};
+      \node at (8.5, -1) {$X \sqcup_{Y_1} X'$};
+      \pic[name=a, tqft, offset=0.7, incoming boundary components=2,
+      outgoing boundary components=1, 
+      rotate=90, anchor=outgoing boundary, at={(0,0)}, every upper boundary component/.style={draw, dashed},
+      cobordism edge/.style={draw}];
+      \pic[tqft cylinder, anchor=outgoing boundary, at=(a-incoming boundary 1), rotate=90,
+      every incoming upper boundary component/.style={draw},
+      cobordism edge/.style={draw},
+      cobordism height=0.2cm, fill=ibmMagenta, fill opacity=.6];
+      \pic[tqft cylinder, anchor=outgoing boundary, at=(a-incoming boundary 2), rotate=90,
+      every incoming upper boundary component/.style={draw},
+      cobordism edge/.style={draw},
+      cobordism height=0.2cm, fill=ibmMagenta, fill opacity=.6];
+      \pic[tqft cylinder, anchor=incoming boundary, at=(a-outgoing boundary), rotate=90,
+      every outgoing lower boundary component/.style={draw},
+      every outgoing upper boundary component/.style={draw},
+      every outgoing boundary component/.style={fill=ibmBlue, fill opacity=.4},
+      cobordism edge/.style={draw},
+      cobordism height=0.2cm, fill=ibmBlue, fill opacity=.6];
+      \pic[name=b, tqft cylinder, offset=.3, rotate=90, anchor=incoming boundary, at={(.6,-1.2)}, every upper boundary component/.style={draw, dashed},
+      cobordism edge/.style={draw}];
+      \pic[tqft cylinder, anchor=outgoing boundary, at=(b-incoming boundary), rotate=90,
+      every incoming upper boundary component/.style={draw},
+      cobordism edge/.style={draw},
+      cobordism height=0.2cm, fill=ibmMagenta, fill opacity=.6];
+      \pic[tqft cylinder, anchor=incoming boundary, at=(b-outgoing boundary), rotate=90,
+      every outgoing lower boundary component/.style={draw},
+      every outgoing upper boundary component/.style={draw},
+      every outgoing boundary component/.style={fill=ibmBlue, fill opacity=.4},
+      cobordism edge/.style={draw},
+      cobordism height=0.2cm, fill=ibmBlue, fill opacity=.6];
+      \pic[name=c, tqft, offset=0.7, incoming boundary components=2,
+      outgoing boundary components=1, 
+      rotate=90, anchor=outgoing boundary, at={(8,0)}, every upper boundary component/.style={draw, dashed},
+      cobordism edge/.style={draw}];
+      \pic[tqft cylinder, anchor=outgoing boundary, at=(c-incoming boundary 1), rotate=90,
+      every incoming upper boundary component/.style={draw},
+      cobordism edge/.style={draw},
+      cobordism height=0.2cm, fill=ibmMagenta, fill opacity=.6];
+      \pic[tqft cylinder, anchor=outgoing boundary, at=(c-incoming boundary 2), rotate=90,
+      every incoming upper boundary component/.style={draw},
+      cobordism edge/.style={draw},
+      cobordism height=0.2cm, fill=ibmMagenta, fill opacity=.6];
+      \pic[tqft cylinder, name=d, anchor=incoming boundary, at=(c-outgoing boundary), rotate=90,
+      every outgoing upper boundary component/.style={draw},
+      cobordism edge/.style={draw},
+      cobordism height=0.2cm];
+      \pic[tqft cylinder, name=e, anchor=incoming boundary, at=(d-outgoing boundary), rotate=90,
+      cobordism edge/.style={draw},
+      cobordism height=0.2cm];
+      \pic[name=f, tqft cylinder, offset=.3, rotate=90, anchor=incoming boundary, at=(e-outgoing boundary), every upper boundary component/.style={draw, dashed},
+      cobordism edge/.style={draw}];
+      \pic[tqft cylinder, anchor=incoming boundary, at=(f-outgoing boundary), rotate=90,
+      every outgoing lower boundary component/.style={draw},
+      every outgoing upper boundary component/.style={draw},
+      every outgoing boundary component/.style={fill=ibmBlue, fill opacity=.4},
+      cobordism edge/.style={draw},
+      cobordism height=0.2cm, fill=ibmBlue, fill opacity=.6];
+    \end{tikzpicture}
+  \end{figure}
 \end{example}
 
 \begin{remark}
