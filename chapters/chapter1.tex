@@ -18,6 +18,7 @@ A (weak) \emph{monoidal category}\index{monoidal category} is a sextuple $(\cat{
 \item a bifuctor $\sq \colon \cat{C}\times\cat{C} \to \cat{C}$, 
 \item a functor $\eta \colon \mathbf{1} \to \cat{C}$ identifying an object $\eta(1) = I \in \obj{\cat{C}}$\footnotemark,
 \item a natural isomorphism called \emph{associator} $\alpha$,
+\item \fouche{Perché a rombo, perché non semplicemente un quadrato?}
 \[
 \begin{tikzcd}
 & \cat{C} \times \cat{C} \times \cat{C}  \arrow[ld, "\sq \times \id_\cat{C}",swap] \arrow[rd,"\id_\cat{C} \times \sq"] & \\
@@ -50,7 +51,7 @@ This maps must satisfy the so called coherence requirements, depicted in \ref{fi
 \caption{Associativity coherence}
 \label{fig:coherence_pentagon}
 \end{figure}
-
+\fouche{Anche piu piccolo sto pentagono ziobon}
 \begin{figure}
 \centering
 \begin{tikzcd}
@@ -67,14 +68,14 @@ It is important to notice how, by definition, the naturality of such transformat
 A monoidal category is \emph{strict}\index{monoidal category!strict monoidal category} if all the natural transformations $\alpha$, $l$, $r$ are identities.
 \end{tcbdfn} 
 
-We can say that a strict monoidal category is a category $\cat{C}$ equipped with an associative bifunctor $\sq \colon \cat{C} \times \cat{C} \to \cat{C}$ and an object $I \in \obj{\cat{C}}$ which is a left and a right unit for $\sq$. 
+We can say that a strict monoidal category is a category $\cat{C}$ equipped with an associative bifunctor $\sq \colon \cat{C} \times \cat{C} \to \cat{C}$ and an object $I \in \obj{\cat{C}}$ which is a left and a right unit for $\sq$. In fancy words, a strict monoidal category is a (strict) monoid \emph{internal} to the category of categories and functors.
 
 %\begin{remark}
 %    Consider a monoidal category $\cat{C}$ equipped with the bifunctor $\mu \colon \cat{C} \times \cat{C} \to \cat{C}$. Its associativity will then induce functors $\mu^{(n)} \colon \cat{C}^n \to \cat{C}$. By letting $\mu^{(1)}$ be the identity functor on $\cat{C}$ and $\mu^{(0)}$ be the functor $\eta$ identifying the neautral object, we can see $\cat{C}$ as a category equipped with $(n)$-ary functors $\mu^{(n)}$ 
 %\end{remark}
 
 \begin{tcbprp}\label{prp:cartesian-monoidal}
-    Let $\cat{C}$ be a category that admits products. Then $(\cat{C}, \times, 1)$, where $\times$ denotes the product and $1$ the terminal object, is a monoidal category.
+    Let $\cat{C}$ be a category that admits products. Then $(\cat{C}, \times, 1)$, where $\times$ denotes the product and $1$ the terminal object, is a (weak) monoidal category.
 \end{tcbprp}
 \begin{proof}
 Consider $A, B , C \in \obj{\cat{C}}$. By the universal property of the product, we are able define an isomorphism $\alpha_{A, B, C}$ between $(A \times B) \times C$ and $A \times (B \times C)$, with which we can define the \emph{associator} $\alpha$. Then, since for any $A \in \obj{\cat{C}}$ there exists a unique arrow to the terminal object $1$, we have that 
@@ -84,13 +85,15 @@ Consider $A, B , C \in \obj{\cat{C}}$. By the universal property of the product,
 \end{tikzcd}
 \]
 defines a product for $1$ and $A$. The uniqueness of the product provides an isomorphism $1 \times A \iso A$ and, similarly, $A \times 1 \iso A$. Through such maps, we define \emph{left} and \emph{right unitors}. Using such isomorphisms one can also check that coherence holds.
+\fouche{Lo hai fatto? Cioè, sei capace di spiegare a parole perché il pentagono commuta? Come sono definiti associatore e unitore, è veramente naturale?}
 \end{proof}
 We call this structure a \emph{cartesian} monoidal category. The dual statement also holds.
 \begin{tcbprp}\label{prp:cocartesian-monoidal}
     Let $\cat{C}$ be a category that admits coproducts. Then $(\cat{C}, +, 0)$, where $+$ denotes the coproduct and $0$ the initial object, is a monoidal category.
 \end{tcbprp}
 We call this structure a \emph{cocartesian} monoidal category.
-
+\fouche{Una importante differenza con le cat monoidali generiche però è che `Being cartesian or cocartesian monoidal' è una proprietà, non una struttura: c'è un solo modo di avere i prodotti (soddisfare la prop univ), ma non c'è un solo modo di definire $\sq$ e $I$ (del resto, $I$ è unico up to iso quando la struttura monoidale è specificata, analogo a `l'unità di un monoide è unica'). E' uno dei primi teoremini in EGNO, la cui dimostrazione è un parto.}
+\fouche{Capisci, questo è il genere di dettagli che ti avrei fatto studiare: sono al tuo livello e sono educativi.}
 \begin{tcbex}
     Examples of monoidal categories are:
     \begin{itemize}
@@ -100,7 +103,7 @@ We call this structure a \emph{cocartesian} monoidal category.
         \item $(\mathbf{Vect}_\Bbbk, {\tensor}, \Bbbk)$, the monoidal category of vector spaces over the field $\Bbbk$ and linear maps between them, with the monoidal structure given by the tensor product
     \end{itemize}
 \end{tcbex}
-
+\fouche{$(\Delta, {+}, [0])$ non è cocartesiana; la somma ordinale non è il coprodotto, sebbene agisca come l'unione disgiunta sugli oggetti... Also: ciascuna di queste categorie monoidali ha una proprietà universale, forse sarebbe meglio menzionarla e inserire anche un esempio di $\sq$ non universale?}
 We'd now like to define morphisms between monoidal categories as functors that preserve the monoidal structure. However we need to precise to which ``degree'' such structure needs to be preserved. 
 As for monoidal categories, the weakest definition will also be the most intricate.
 % \fouche{Questo qua sotto è un funtore monoidale \emph{lax}; c'è anche la nozione di funtore \emph{oplax} dove le frecce sono tutte girate; dopo la definizione metti un esempio: [cazzopalle] è un funtore monoidale lax dalla categoria bau alla categoria miao; [pallecazzo] è oplax dalla categoria squit alla categoria muuu.}
@@ -151,7 +154,11 @@ As for monoidal categories, the weakest definition will also be the most intrica
 \end{tcbdfn}
 
 \begin{remark}
-    This notion can be found in the literature as \emph{lax monoidal functor}. We can also define an \emph{oplax monoidal functor} between two categories $\cat{C}$ and $\cat{D}$ as a lax monoidal functor $\cat{C}^{op} \to \cat{D}^{op}$. In this case we will have natural transformations $\varphi_{A, B} \colon F(A \sq B) \to F(A) \varsq F(B)$ and $\varepsilon \colon F(I) \to J$. The idea behind these two notions is that a \emph{lax} monoidal functor is the one preserving the structure of internal monoid, while an \emph{oplax} monoidal functor preserves the internal comonoid structre. The definition of an internal monoid (resp. comonoid) will be properly given in \ref{dfn:internal-monoid} (resp. \ref{dfn:internal-comonoid}).
+    This notion can be found in the literature as \emph{lax monoidal functor}. 
+    \fouche{add cit?}
+    We can also define an \emph{oplax monoidal functor} between two categories $\cat{C}$ and $\cat{D}$ as a lax monoidal functor $\cat{C}^{op} \to \cat{D}^{op}$. 
+    \fouche{no, questa non è la definizione di oplax monoidal functor: un conto è rovesciare l'ordine del prodotto $\sq$ definendo $\sq^* : \cat{C}\times\cat{C} \to \cat{C}$ come $(A,B)\mapsto B\sq A$ invece che $A\sq B$ (per esempio questi due sono diversi quando...), e un altro conto del tutto diverso è considerare la categoria $\cat{C}^{op}$ col prodotto monoidale $\sq^{op} : (\cat{C}\times\cat{C})^{op} = \cat{C}^{op} \times \cat{C}^{op} \to \cat{C}^{op}$; purtroppo c'è un clash di notazione in questo contesto, perché $(\cat{C}, \sq^*)$ consiste della bicategoria con un solo oggetto $(\Sigma\cat{C})^{1op}$ dove è stata rovesciata la direzione di composizione delle 1-celle (cioè degli oggetti di $\cat{C}$, che si compongono via $\sq$), mentre $(\cat{C}^{op}, \sq^{op})$ consiste della bicategoria con un solo oggetto $(\Sigma\cat{C})^{2op}=\Sigma(\cat{C}^{op})$ ---molto più spesso chiamata $(\Sigma\cat{C})^{co}$--- dove è stata rovesciata la direzione di composizione delle 2-celle (cioè delle frecce di $\cat{C}$). Le due non sono la stessa cosa.}
+    In this case we will have natural transformations $\varphi_{A, B} \colon F(A \sq B) \to F(A) \varsq F(B)$ and $\varepsilon \colon F(I) \to J$. The idea behind these two notions is that a \emph{lax} monoidal functor is the one preserving the structure of internal monoid, while an \emph{oplax} monoidal functor preserves the internal comonoid structre. The definition of an internal monoid (resp. comonoid) will be properly given in \ref{dfn:internal-monoid} (resp. \ref{dfn:internal-comonoid}).
 \end{remark}
 
 \begin{tcbdfn}[Strong monoidal functors]
@@ -164,7 +171,7 @@ We hence have $F(A) \varsq F(B) \iso F(A \sq B)$ and $J \iso F(I)$.
     Let $(\cat{C}, \sq, I)$ and $(\cat{D}, \varsq , J)$ be two (weak) monoidal categories. A monoidal functor $(F, \varphi, \varepsilon)$ from $\cat{C}$ to $\cat{D}$ is \emph{strict monoidal}\index{monoidal category!strict monoidal functor} if $\varphi$ and $\varepsilon$ are identities.
 \end{tcbdfn}
 
-In terms of objects and arrows we are asking that
+The conditions for a strict monoidal functor are asking that
     \[
     F (A \sq B) = F(A) \varsq F(B) \text{,} \qquad F(I) = J 
     \]
