@@ -20,10 +20,10 @@ For any two closed oriented 1-dimensional manifolds, there exists an oriented bo
 \begin{remark}
 While this result may seem straightforward in dimension 2, it is not trivial in general.
 For example, when considering oriented 0-manifolds, there exists a bordisms between two of them if and only if the ``sums of the signed points'' are equal between the two.
-\todo{scribbi meglio sta robaccia}
+Indeed, take 
 \end{remark}
 
-As defined, the category $\bord{2}$ contains many diffeomorphic but distinct objects, which become unnecessary \todo{maybe better "redundant"??} when studying its structure. To get a more essential representation, we take its skeleton.
+As defined, the category $\bord{2}$ contains many diffeomorphic but distinct objects, which become redundant when studying its structure. To get a more essential representation, we take its skeleton.
 
 \begin{tcbdfn}[Skeletons of a category]
 Let $\cat{C}$ be a category. A \emph{skeleton}\index{skeleton} of $\cat{C}$ is any full subcategory $\cat{S}$ such that each object of $\cat{C}$ is isomorphic in $\cat{C}$ to \emph{exactly} one object of $\cat{S}$.
@@ -48,11 +48,14 @@ Let $M \colon \Sigma_0 \to \Sigma_1$ be an $n$-dimensional oriented bordism. The
 \begin{tcblemma}
     Let $\Sigma_0$, $\Sigma_1$ be two closed oriented 1-dimensional manifolds. We have that $\Sigma_0$ and $\Sigma_1$ are diffeomorphic if and only if there exists an invertible morphism between them.
 \end{tcblemma}
-\todo[inline]{a me sembra una cosa un po' buttata là. andrà dimostrata...?}
+\begin{proof}
+    Given a diffeomorphism $f \colon \Sigma_0 \to \Sigma_1$ we can define an invertible bordism between the two through the cylinder construcion (i.e. by considering the bordism $\Sigma \times I$, for $\Sigma \iso \Sigma_0 \iso \Sigma_1$). 
+    To prove the converse, suppose there exists an invertible bordism $M \colon \Sigma_0 \to \Sigma_1$. To prove there exists a diffeomorphism between the two, it is enough to check they have the same number of connected components. We start with a simple case in which we assume $M$ to be connected
+\end{proof}
+\todo[inline]{sta proof è molto lunga, valutare se finirla o toglierla}
 
 Again, we recall that every object of $\bord{2}$ is diffeomorphic to a disjoint union of circles, where each components carries its own orientation (either clockwise or counter-clockwise). 
-However, given two copies of $\mathbb{S}^1$ with opposite orientations we can always define, by reflection, an orientation preserving diffeomorphism between them. 
-By the previous lemma this implies they belong to the same iso class.
+However, given two copies of $\mathbb{S}^1$ with opposite orientations we can always define, by reflection, an orientation preserving diffeomorphism between them. This implies they belong to the same iso class.
 Therefore when defining the skeleton of $\bord{2}$, the orientation becomes irrelevant. The only invariant for an object is its number of connected components.
 
 \begin{tcbdfn}[Skeleton of $\bord{2}$]
@@ -76,19 +79,19 @@ In the case of 2-dimensional bordisms, for example, the identity over the disjoi
 
 \begin{tcbthm}[Generators of $\bord{2}$]
     \label{thm:generators}
-The six bordisms \todo[inline]{cap, copants, cocap, pants, twist, cylinder}
+The six bordisms (respectively: cap, pants, cocap, copants, twist and cylinder)
 \[
 \begin{tikzpicture}[every tqft/.style={transform shape}]
 \pic[tqft cap, rotate=90, draw, at={(0,0)},
 every outgoing lower boundary component/.style={draw},  every incoming lower boundary component/.style={dashed, draw}
 ];
-\pic[tqft pair of pants, rotate=90, draw, at={(3,0)},
+\pic[tqft pair of pants, rotate=90, draw, at={(7,0)},
 every outgoing lower boundary component/.style={draw},  every incoming lower boundary component/.style={dashed, draw}
 ];
-\pic[tqft cup, rotate=90, draw, at={(6,0)},
+\pic[tqft cup, rotate=90, draw, at={(5.9,0)},
 every outgoing lower boundary component/.style={draw},  every incoming lower boundary component/.style={dashed, draw}
 ];
-\pic[tqft reverse pair of pants, rotate=90, draw, at={(7,-1)},
+\pic[tqft reverse pair of pants, rotate=90, draw, at={(3,-1)},
 every outgoing lower boundary component/.style={draw},  every incoming lower boundary component/.style={dashed, draw}
 ];
 \pic[tqft cylinder to prior, rotate=90, draw, at={(10,.5)},
@@ -131,8 +134,14 @@ To avoid losing the main focus, we will follow this second approach.
 In higher dimensions this is not possilble and we will need to rely on Morse theory.
 
 
-\todo[inline]{preliminary recollection of euler char and genus??}
-We recall the classical classification of surfaces without boundary.
+\begin{dfnx*}[A preliminary recollection: genus and Euler characteristic of a surface]
+    We recall that the \emph{genus} of a compact, connected surface is intuitively the ``number of holes''. In the case of a surface \emph{with} boundary we define its genus to be the genus of the closed surface obtained by ``sewing'' its boundary components. However, in our setting, the genus doesn't provide enough informations to be able to distinguish our surfaces (for example both the cylinder and the pair of pants will have genus 0); for this reason we consider the \emph{Euler characteristic}. We hence recall that the Euler characteristic of a surface with boundary $M$ is 
+    \[
+    \chi(M) = 2 - 2g - p
+    \]  
+    where $g$ is the genus of $M$ and $p$ the number of connected components of its boundary.
+\end{dfnx*}
+We now recall the classical classification of surfaces without boundary.
 \par
 \emph{Two connected compact oriented surfaces without boundary are diffeomorphic if and only if they have the same genus (or equivalentely the same Euler characteristic).}
 \par
@@ -154,9 +163,8 @@ We define the normal form of a connected bordism $M \colon (\mathbf{m}) \to (\ma
 \end{itemize}
 \end{tcbdfn}
 %($\bordcap$)($\bordcocap$)($\bordpants$)($\bordcopants$)($\bordcylinder$)($\bordtwist$)
-To understand how we are supposed to attach such bordisms let's see a visual example.
-\todo[inline]{addare la 'vera' decomposizione}
-\begin{figure}[h]
+To understand how we are supposed to attach such bordisms let's see a visual example. Consider a bordism with $m=5$ in-boundary components, $n=4$ out-boundary components and $g = 4$ holes.
+\begin{figure}[H]
     \centering
     \begin{tikzpicture}[every tqft/.style={transform shape}, rotate=90]
     \pic[name=a, 
@@ -173,7 +181,49 @@ To understand how we are supposed to attach such bordisms let's see a visual exa
     ];
     \end{tikzpicture}
 \end{figure}
-
+We can then decompose it to obtain its normal form as:
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[every tqft/.style={transform shape}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
+        %toppart
+        \pic[tqft reverse pair of pants, name=r1, draw];
+        \pic[tqft pair of pants, name=p1, anchor=outgoing boundary 1, at=(r1-incoming boundary 1), draw];
+        \pic[tqft reverse pair of pants, name=r2, anchor=outgoing boundary, at=(p1-incoming boundary), draw];
+        \pic[tqft pair of pants, name=p2, anchor=outgoing boundary 1, at=(r2-incoming boundary 1), draw];
+        \pic[tqft reverse pair of pants, name=r3, anchor=outgoing boundary, at=(p2-incoming boundary), draw];
+        \pic[tqft pair of pants, name=p3, anchor=outgoing boundary 1, at=(r3-incoming boundary 1), draw];
+        \pic[tqft reverse pair of pants, name=r4, anchor=outgoing boundary, at=(p3-incoming boundary), draw];
+        \pic[tqft pair of pants, name=p4, anchor=outgoing boundary 1, at=(r4-incoming boundary 1), draw];
+        %inpart
+        \pic[tqft pair of pants, name=i1, draw, bottom color=ibmYellow, top color=white, fill opacity=0.5, anchor=incoming boundary, at=(r1-outgoing boundary)];
+        \pic[tqft pair of pants, name=i2, draw, bottom color=ibmYellow, top color=white, fill opacity=0.5, anchor=incoming boundary, at=(i1-outgoing boundary 2)];
+        \pic[tqft pair of pants, name=i3, draw, bottom color=ibmYellow, top color=white, fill opacity=0.5, anchor=incoming boundary, at=(i2-outgoing boundary 2)];
+        \pic[tqft pair of pants, name=i4, draw, bottom color=ibmYellow, top color=white, fill opacity=0.5, anchor=incoming boundary, at=(i3-outgoing boundary 2)];
+        \pic[tqft pair of pants, name=i5, draw, bottom color=ibmYellow, top color=white, fill opacity=0.5, anchor=incoming boundary, at=(i4-outgoing boundary 2)];
+        \pic[tqft cylinder to prior, name=a1, draw, bottom color=ibmYellow, top color=white, fill opacity=0.5, anchor=incoming boundary, at=(i1-outgoing boundary 1)];
+        \pic[tqft cylinder to prior, name=a2, draw, bottom color=ibmYellow, top color=white, fill opacity=0.5, anchor=incoming boundary, at=(a1-outgoing boundary)];
+        \pic[tqft cylinder to prior, name=a3, draw, bottom color=ibmYellow, top color=white, fill opacity=0.5, anchor=incoming boundary, at=(a2-outgoing boundary)];
+        \pic[tqft cylinder to prior, name=a4, draw, bottom color=ibmYellow, top color=white, fill opacity=0.5, anchor=incoming boundary, at=(a3-outgoing boundary)];
+        \pic[tqft cylinder to prior, name=a5, draw, bottom color=ibmYellow, top color=white, fill opacity=0.5, anchor=incoming boundary, at=(i2-outgoing boundary 1)];
+        \pic[tqft cylinder to prior, name=a6, draw, bottom color=ibmYellow, top color=white, fill opacity=0.5, anchor=incoming boundary, at=(a5-outgoing boundary)];
+        \pic[tqft cylinder to prior, name=a7, draw, bottom color=ibmYellow, top color=white, fill opacity=0.5, anchor=incoming boundary, at=(a6-outgoing boundary)];
+        \pic[tqft cylinder to prior, name=a8, draw, bottom color=ibmYellow, top color=white, fill opacity=0.5, anchor=incoming boundary, at=(i3-outgoing boundary 1)];
+        \pic[tqft cylinder to prior, name=a9, draw, bottom color=ibmYellow, top color=white, fill opacity=0.5, anchor=incoming boundary, at=(a8-outgoing boundary)];
+        \pic[tqft cylinder to prior, name=a10, draw, bottom color=ibmYellow, top color=white, fill opacity=0.5, anchor=incoming boundary, at=(i4-outgoing boundary 1)];
+        %outpart
+        \pic[tqft reverse pair of pants, name=o1, draw, bottom color=ibmBlue, top color=white, fill opacity=0.5, anchor=outgoing boundary, at=(p4-incoming boundary)];
+        \pic[tqft reverse pair of pants, draw, name=o2, bottom color=ibmBlue, top color=white, fill opacity=0.5, anchor=outgoing boundary, at=(o1-incoming boundary 2)];
+        \pic[tqft reverse pair of pants, draw, name=o3, bottom color=ibmBlue, top color=white, fill opacity=0.5, anchor=outgoing boundary, at=(o2-incoming boundary 2)];
+        \pic[tqft reverse pair of pants, draw, name=o4, bottom color=ibmBlue, top color=white, fill opacity=0.5, anchor=outgoing boundary, at=(o3-incoming boundary 2), every incoming boundary component/.style={draw, fill=ibmBlue, fill opacity=0.7}];
+        \pic[tqft cylinder to next, draw, name=b1, bottom color=ibmBlue, top color=white, fill opacity=0.5, anchor=outgoing boundary, at=(o1-incoming boundary 1)];
+        \pic[tqft cylinder to next, draw, name=b2, bottom color=ibmBlue, top color=white, fill opacity=0.5, anchor=outgoing boundary, at=(b1-incoming boundary)];
+        \pic[tqft cylinder to next, draw, name=b3, bottom color=ibmBlue, top color=white, fill opacity=0.5, anchor=outgoing boundary, at=(b2-incoming boundary), every incoming boundary component/.style={draw, fill=ibmBlue, fill opacity=0.7}];
+        \pic[tqft cylinder to next, draw, name=b4, bottom color=ibmBlue, top color=white, fill opacity=0.5, anchor=outgoing boundary, at=(o2-incoming boundary 1)];
+        \pic[tqft cylinder to next, draw, name=b5, bottom color=ibmBlue, top color=white, fill opacity=0.5, anchor=outgoing boundary, at=(b4-incoming boundary), every incoming boundary component/.style={draw, fill=ibmBlue, fill opacity=0.7}];
+        \pic[tqft cylinder to next, draw, name=b6, bottom color=ibmBlue, top color=white, fill opacity=0.5, anchor=outgoing boundary, at=(o3-incoming boundary 1), every incoming boundary component/.style={draw, fill=ibmBlue, fill opacity=0.7}];
+    \end{tikzpicture}
+\end{figure}
+%bottom color=gray, top color=white, fill opacity=0.5
 \begin{tcblemma}
     \label{lem:connected-decomposition}
     Every connected 2-dimensional bordism can be obtained through composition and disjoint union of the elementary bordisms $\bordcap$, $\bordcocap$, $\bordpants$, $\bordcopants$, $\bordcylinder$.
@@ -191,7 +241,59 @@ By construction, the in-boundary of the composition $SM$ is exactly the disjoint
 \par
 Applying the same method to the out-boundary we get a permutation bordism $T \colon (\mathbf{n}) \to (\mathbf{n})$ such that the composition $SMT \colon (\mathbf{m}) \to (\mathbf{n})$ is then exactly the disjoint union of the original connected components $M_1$ and $M_2$.
 The intial bordism $M$ then factors as $S^{-1} (SMT) T^{-1}$, leading to the following lemma.
-\todo[inline]{inserire pic esempio della procedura}
+
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}[every tqft/.style={transform shape}, tqft/view from=incoming, tqft/boundary separation=1.25cm, tqft/cobordism height=4cm, rotate=-90, scale=0.75, baseline=-2pt]
+        \pic[tqft,
+        incoming boundary components = 4, 
+        skip incoming boundary components={2},
+        outgoing boundary components = 1,
+        offset=1,
+        anchor=outgoing boundary,
+        draw,
+        bottom color=ibmYellow, top color=white, fill opacity=0.5, every incoming boundary component/.style={draw, fill=ibmYellow, fill opacity=0.7}];
+        \pic[tqft,
+        incoming boundary components = 1, 
+        outgoing boundary components = 3, 
+        skip outgoing boundary components={2},
+        anchor=outgoing boundary 1, 
+        at={(-1.25,0)},
+        offset=-1,
+        draw,
+        bottom color=ibmBlue, top color=white, fill opacity=0.5, every incoming boundary component/.style={draw, fill=ibmBlue, fill opacity=0.7}];
+        \node at (.7, 4.5) {$\iso$};
+        \pic[tqft, name=b,
+        incoming boundary components = 3, 
+        outgoing boundary components = 1,
+        offset=1,
+        anchor=outgoing boundary 1,
+        at={(1.25, 7)},
+        draw,
+        bottom color=ibmYellow, top color=white, fill opacity=0.5];
+        \pic[tqft, name=a,
+        incoming boundary components = 1, 
+        outgoing boundary components = 2, 
+        anchor=outgoing boundary 2, 
+        at={(0, 7)},
+        draw,
+        bottom color=ibmBlue, top color=white, fill opacity=0.5];
+        \pic[tqft cylinder to next, cobordism height=2cm, offset=1, anchor=incoming boundary, at=(a-outgoing boundary 2), bottom color=ibmBlue, top color=white, fill opacity=0.5,
+        draw];
+        \pic[tqft cylinder, cobordism height=2cm, anchor=incoming boundary, at=(a-outgoing boundary 1), bottom color=ibmBlue, top color=white, fill opacity=.5, draw];
+        \pic[tqft cylinder to prior, cobordism height=2cm, offset=-1, anchor=outgoing boundary, at=(a-incoming boundary), bottom color=ibmBlue, top color=white, fill opacity=0.5,
+        draw, every incoming boundary component/.style={draw, fill=ibmBlue, fill opacity=0.7}];
+        \pic[tqft cylinder to prior, cobordism height=2cm, offset=-1, anchor=incoming boundary, at=(b-outgoing boundary), bottom color=ibmYellow, top color=white, fill opacity=0.5,
+        draw];
+        \pic[tqft cylinder to next, cobordism height=2cm, offset=1, anchor=outgoing boundary, at=(b-incoming boundary 1), bottom color=ibmYellow, top color=white, fill opacity=.5, draw, every incoming boundary component/.style={draw, fill=ibmYellow, fill opacity=0.7}];
+        \pic[tqft cylinder, cobordism height=2cm, anchor=outgoing boundary, at=(b-incoming boundary 2), bottom color=ibmYellow, top color=white, fill opacity=.5, draw, every incoming boundary component/.style={draw, fill=ibmYellow, fill opacity=0.7}];
+        \pic[tqft cylinder, cobordism height=2cm, anchor=outgoing boundary, at=(b-incoming boundary 3), bottom color=ibmYellow, top color=white, fill opacity=.5, draw, every incoming boundary component/.style={draw, fill=ibmYellow, fill opacity=0.7}];
+        \draw[{Bar[]}-{Bar[]}] (3.5,5) -- node[below=1mm] {$S^{-1}$} (3.5, 7);
+        \draw[{Bar[]}-{Bar[]}] (3.5,7) -- node[below=2mm] {$SMT$} (3.5, 11);
+        \draw[{Bar[]}-{Bar[]}] (3.5,11) -- node[below=1mm] {$T^{-1}$} (3.5, 13);
+    \end{tikzpicture}
+    \caption{An illustration of the procedure used to prove Lemma~\ref{lem:non-connected-decomposition}. The two connected components $M_1$, $M_2$ are depicted in different colors.}
+\end{figure}
 \begin{tcblemma}
     \label{lem:non-connected-decomposition}
 Every 2-dimensional bordism factors as a permutation bordism, followed by a disjoint union of connected bordisms, followed by a permutation bordism.
@@ -796,6 +898,104 @@ Given a pair of pants (equivalentely a pair of copants), sewing a cap (equivalen
 \end{tikzpicture}
 \]
 
+\[
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft reverse pair of pants, draw, name=a,
+    anchor=incoming boundary 2,    
+    boundary separation=1.5cm,
+    every incoming boundary component/.style={draw, fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder to next, draw, anchor =incoming boundary, at=(a-outgoing boundary), offset=.625, every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to prior, name=b, draw, anchor=incoming boundary, at={(1.5,0)}, 
+    every incoming boundary component/.style={draw, fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder to prior, draw, anchor=incoming boundary, at=(b-outgoing boundary), offset=-.625, every lower boundary component/.style={dashed, draw}];
+\end{tikzpicture}
+=
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline=-2pt]
+\pic[tqft reverse pair of pants, draw, name=a, anchor=incoming boundary 1,
+    boundary separation=1.5cm,
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder, draw, name=b, anchor=outgoing boundary, at=(a-incoming boundary 2),
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to next, draw, name=c, anchor=outgoing boundary, at=(a-incoming boundary 1),
+    offset=.75,
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder, draw, anchor=outgoing boundary, at=(c-incoming boundary), every incoming boundary component/.style={draw, fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder to next, draw, anchor=outgoing boundary, at=(b-incoming boundary),
+    offset=.75,
+    every incoming boundary component/.style={draw, fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder to next, name=d, draw, anchor=incoming boundary, at={(-1.5,0)},
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to prior, draw, name=e, anchor=outgoing boundary, at=(d-incoming boundary),
+    offset=-.75,
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to prior, draw, anchor=outgoing boundary, at=(e-incoming boundary),
+    offset=-.75,
+    every incoming boundary component/.style={draw, fill=gray, fill opacity=0.7}];
+\end{tikzpicture}
+\hspace{3em}
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft reverse pair of pants, draw, name=a,
+    anchor=incoming boundary 1,    
+    boundary separation=1.5cm,
+    every incoming boundary component/.style={draw, fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder to prior, draw, anchor =incoming boundary, at=(a-outgoing boundary), offset=-.625, every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to next, name=b, draw, anchor=incoming boundary, at={(-1.5,0)}, 
+    every incoming boundary component/.style={draw, fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder to next, draw, anchor=incoming boundary, at=(b-outgoing boundary), offset=.625, every lower boundary component/.style={dashed, draw}];
+\end{tikzpicture}
+=
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline=-2pt]
+\pic[tqft reverse pair of pants, draw, name=a, anchor=incoming boundary 2,
+    boundary separation=1.5cm,
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder, draw, name=b, anchor=outgoing boundary, at=(a-incoming boundary 1),
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to prior, draw, name=c, anchor=outgoing boundary, at=(a-incoming boundary 2),
+    offset=-.75,
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder, draw, anchor=outgoing boundary, at=(c-incoming boundary), every incoming boundary component/.style={draw, fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder to prior, draw, anchor=outgoing boundary, at=(b-incoming boundary),
+    offset=-.75,
+    every incoming boundary component/.style={draw, fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder to prior, name=d, draw, anchor=incoming boundary, at={(1.5,0)},
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to next, draw, name=e, anchor=outgoing boundary, at=(d-incoming boundary),
+    offset=.75,
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to next, draw, anchor=outgoing boundary, at=(e-incoming boundary),
+    offset=.75,
+    every incoming boundary component/.style={draw, fill=gray, fill opacity=0.7}];
+\end{tikzpicture}
+\]
+\[
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft cylinder to next, draw, name=a, offset=.75, anchor=incoming boundary, 
+    every incoming boundary component/.style={draw, fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder, draw, name=b, anchor=incoming boundary, at=(a-outgoing boundary), every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to prior, draw, offset=-.75, anchor=incoming boundary, at=(b-outgoing boundary), every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to prior, draw, offset=-.75, name=c, anchor=incoming boundary, at={(1.5,0)}, every incoming boundary component/.style={draw, fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder to prior, draw, offset=-.75, name=d, anchor=incoming boundary, at=(c-outgoing boundary), every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder, draw, anchor=incoming boundary, at=(d-outgoing boundary), every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder, draw, name=e, anchor=incoming boundary, at={(-1.5,0)}, every incoming boundary component/.style={draw, fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder to next, draw, offset=.75, name=f, anchor=incoming boundary, at=(e-outgoing boundary), every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to next, draw, offset=.75, anchor=incoming boundary, at=(f-outgoing boundary), every lower boundary component/.style={dashed, draw}];
+\end{tikzpicture}
+=
+\begin{tikzpicture}
+    [every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft cylinder to prior, draw, name=a, offset=-.75, anchor=incoming boundary, 
+    every incoming boundary component/.style={draw, fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder, draw, name=b, anchor=incoming boundary, at=(a-outgoing boundary), every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to next, draw, offset=.75, anchor=incoming boundary, at=(b-outgoing boundary), every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to next, draw, offset=.75, name=c, anchor=incoming boundary, at={(-1.5,0)}, every incoming boundary component/.style={draw, fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder to next, draw, offset=.75, name=d, anchor=incoming boundary, at=(c-outgoing boundary), every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder, draw, anchor=incoming boundary, at=(d-outgoing boundary), every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder, draw, name=e, anchor=incoming boundary, at={(1.5,0)}, every incoming boundary component/.style={draw, fill=gray, fill opacity=0.7}];
+    \pic[tqft cylinder to prior, draw, offset=-.75, name=f, anchor=incoming boundary, at=(e-outgoing boundary), every lower boundary component/.style={dashed, draw}];
+    \pic[tqft cylinder to prior, draw, offset=-.75, anchor=incoming boundary, at=(f-outgoing boundary), every lower boundary component/.style={dashed, draw}];
+\end{tikzpicture}
+\]
+
 To show the sufficiency of these relations we will describe a procedure that converts any connected bordism already decomposed in elementary pieces into its normal form. 
 We proceed by induction on the number of twist bordisms, starting with the base case of zero twists.
 
@@ -851,18 +1051,54 @@ If instead we encounter a pair a copants, this can happen in two different ways:
     every incoming lower boundary component/.style={dashed,draw}
 ];
     \pic[tqft cylinder to prior, dashed, draw, anchor=incoming boundary 1, at=(a-outgoing boundary 2),
-    every outgoing lowerboundary component/.style={dashed,draw}];
+    every outgoing lower boundary component/.style={dashed,draw}];
 \end{tikzpicture}
 \]
 In the first case, we have no relation to apply and we produce a ``hole''. Being $M$ a surface of genus $g$, this will happen exactly $g$ times. In the second case by \hyperlink{rel:frobenius}{Frobenius relation} we can simply move $\bordpants$ to the left. 
 
 Since the first case we just treated produces a ``locked'' structure, we still have one last case to consider. If we have such structure to the left of $\bordpants$, we can use the \hyperlink{rel:ass}{associativity relation} and the \hyperlink{rel:frobenius}{Frobenius relation} to move the pair of pants to the left.
-\todo[inline]{immagine}
+
+\[
+\begin{tikzpicture}[every tqft/.style={transform shape}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline=-2pt, tqft/boundary separation=1.5cm]
+    \pic[tqft reverse pair of pants, draw, name=a, every lower boundary component/.style={dashed, draw}, bottom color=gray, top color=white, fill opacity=0.5, anchor=incoming boundary 2];
+    \pic[tqft pair of pants, draw, name=b, anchor=outgoing boundary 1, at=(a-incoming boundary 1), every lower boundary component/.style={dashed, draw}, bottom color=gray, top color=white, fill opacity=0.5];
+    \pic[tqft pair of pants, draw, name=c, anchor=outgoing boundary 1, at=(b-incoming boundary),incoming boundary component 1/.style={draw, fill=gray, fill opacity=0.7}, bottom color=gray, top color=white, fill opacity=0.5];
+    \pic[tqft cylinder to next, name=d, dashed, draw, anchor=incoming boundary, at=(c-outgoing boundary 2), every lower boundary component/.style={dashed,draw}];
+    \pic[tqft cylinder to prior, dashed, draw, anchor=incoming boundary, at=(d-outgoing boundary), every lower boundary component/.style={dashed,draw}];
+\end{tikzpicture}
+\overset{\text{ass.}}{=}
+\begin{tikzpicture}[every tqft/.style={transform shape}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline=-2pt, tqft/boundary separation=1.5cm]
+    \pic[tqft reverse pair of pants, draw, name=a, every lower boundary component/.style={dashed, draw}, bottom color=gray, top color=white, fill opacity=0.5, anchor=incoming boundary 2];
+    \pic[tqft cylinder to prior, draw, anchor=outgoing boundary, at=(a-incoming boundary 1), every lower boundary component/.style={dashed, draw}, bottom color=gray, top color=white, fill opacity=0.5];
+    \pic[tqft pair of pants, draw, name=b, anchor=outgoing boundary 1, at=(a-incoming boundary 2), bottom color=gray, top color=white, fill opacity=0.5];
+    \pic[tqft pair of pants, draw, anchor=outgoing boundary 2, at=(b-incoming boundary), incoming boundary component 1/.style={draw, fill=gray, fill opacity=0.7}, bottom color=gray, top color=white, fill opacity=0.5 ];
+    \pic[tqft cylinder to prior, dashed, draw, anchor=incoming boundary, at=(b-outgoing boundary 2), every lower boundary component/.style={dashed,draw}];
+\end{tikzpicture}
+\overset{\text{F}}{=}
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft pair of pants, draw, anchor=incoming boundary, name=a, every lower boundary component/.style={dashed, draw}];
+    \pic[tqft reverse pair of pants, draw, name=b, anchor=outgoing boundary, at=(a-incoming boundary), every lower boundary component/.style={dashed, draw}];
+    \pic[tqft pair of pants, draw, anchor=outgoing boundary 1, at=(b-incoming boundary 1), incoming boundary component 1/.style={draw, fill=gray, fill opacity=0.7}];
+\end{tikzpicture}
+\]
 
 An analogous process can be described for the copies of $\bordcopants$, of which $q$ will vanish, $g$ will lock with $g$ copies of pants and $n-1$ will move to the right to form the \emph{out-part} of the normal form. 
 
 Let us now consider a decomposition of a connected surface $M \colon (\mathbf{m}) \to (\mathbf{n})$ where twist bordisms appear. Pick any twist morphism $T$ and label its four boundaries. Without loss of generalities\footnote{Thanks to the \hyperlink{rel:id}{identity relations} we can always insert identities where needed.} we assume all pieces parallel to $T$ are cylinders. \todo{insert pic}
 Having assumed $M$ to be connected, some of these boundaries must be connected to each other. 
+
+\[
+\begin{tikzpicture}[every tqft/.style={transform shape}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft cylinder to prior, offset=-1, draw, every incoming boundary component/.style={draw, fill=gray, fill opacity=0.7}, bottom color=gray, top color=white, fill opacity=0.5];
+    \pic[tqft cylinder to next, offset=1, draw, anchor=incoming boudary, at={(-1.5,0)}, every incoming boundary component/.style={draw, fill=gray, fill opacity=0.7}, bottom color=gray, top color=white, fill opacity=0.5];
+    \pic[tqft cylinder, dashed, draw, anchor=incoming boundary, at={(1.5,0)}, every lower boundary component/.style={dashed,draw}];
+    \pic[tqft cylinder, dashed, draw, anchor=incoming boundary, at={(-3,0)}, every lower boundary component/.style={dashed,draw}];
+    \node at (0,0.75) {$D$};
+    \node at (-1.5,0.75) {$B$};
+    \node at (0, -2.75) {$A$};
+    \node at (-1.5, -2.75) {$C$};
+\end{tikzpicture}
+\]
 
 Suppose $A$ and $C$ are connected to each other. 
 Then, to the left of the twist, we have a connected surface with at least one less twist than the original bordism $M$. 
@@ -870,6 +1106,74 @@ By induction we can assume such surface can be brought to normal form and we can
 Clearly, by \hyperlink{rel:comm}{cocommutativity}, we are able to remove the twist.
 The same argument applies when assuming $B$ and $D$ are connected.
 
+\[
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft pair of pants, draw, name=a,     
+    boundary separation=1.5cm,
+    every incoming lower boundary component/.style={draw}, 
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7}];   
+    \pic[tqft,
+    incoming boundary components=1,
+    outgoing boundary components=1,
+    offset=-.75,
+    anchor=incoming boundary,
+    at=(a-outgoing boundary 2),
+    draw,
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft,
+    incoming boundary components=1,
+    outgoing boundary components=1,
+    offset=.75,
+    anchor=incoming boundary,
+    at=(a-outgoing boundary 1),
+    draw,
+    every lower boundary component/.style={dashed, draw}];
+    \node at (0,0) {$A$ and $C$ connected};
+\end{tikzpicture}
+=
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft pair of pants, draw, name=a,     
+    boundary separation=1.5cm,
+    every incoming lower boundary component/.style={draw}, 
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7},
+    every outgoing lower boundary component/.style={dashed, draw}]; 
+\end{tikzpicture}
+\hspace{3em}
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft reverse pair of pants, anchor=outgoing boundary, draw, name=a,     
+    boundary separation=1.5cm,
+    every lower boundary component/.style={dashed, draw}];
+    \pic[tqft,
+    incoming boundary components=1,
+    outgoing boundary components=1,
+    offset=-.75,
+    anchor=outgoing boundary,
+    at=(a-incoming boundary 1),
+    draw,
+    every incoming lower boundary component/.style={draw}, 
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7},
+    every outgoing lower boundary component/.style={dashed, draw}];
+    \pic[tqft,
+    incoming boundary components=1,
+    outgoing boundary components=1,
+    offset=.75,
+    anchor=outgoing boundary,
+    at=(a-incoming boundary 2),
+    draw,
+    every incoming lower boundary component/.style={draw}, 
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7},
+    every outgoing lower boundary component/.style={dashed, draw}];
+    \node at (0,0) {$B$ and $D$ connected}; 
+\end{tikzpicture}
+=
+\begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline=-2pt]
+    \pic[tqft reverse pair of pants, anchor=outgoing boundary, draw, name=a,     
+    boundary separation=1.5cm,
+    every incoming lower boundary component/.style={draw}, 
+    every incoming boundary component/.style={fill=gray, fill opacity=0.7},
+    every outgoing lower boundary component/.style={dashed, draw}]; 
+\end{tikzpicture}
+\]
 Suppose $A$ and $B$ are connected to each other and consider the (connected) surface connecting the two. 
 Having assumed all pieces parallel to the twist to be cylinders, we can disconnect such surface and separately consider the one to the left and the one to the right of the twist. 
 Again, such regions will be comprised of at least one less twist than $M$ and by induction they can be reduced to their normal forms.

@@ -7,7 +7,7 @@ We begin by recalling some useful notions from category theory, which we will en
 \label{sec:moncat}
 
 
-\todo[inline]{Perché servono le categorie monoidali per questo lavoro? Valutare se scriverlo qui o in introduzione.}
+% \todo[inline]{Perché servono le categorie monoidali per questo lavoro? Valutare se scriverlo qui o in introduzione.}
 
 
 
@@ -18,7 +18,6 @@ A (weak) \emph{monoidal category}\index{monoidal category} is a sextuple $(\cat{
 \item a bifuctor $\sq \colon \cat{C}\times\cat{C} \to \cat{C}$, 
 \item a functor $\eta \colon \mathbf{1} \to \cat{C}$ identifying an object $\eta(1) = I \in \obj{\cat{C}}$\footnotemark,
 \item a natural isomorphism called \emph{associator} $\alpha$,
-\item \fouche{Perché a rombo, perché non semplicemente un quadrato?}
 \[
 \begin{tikzcd}
 & \cat{C} \times \cat{C} \times \cat{C}  \arrow[ld, "\sq \times \id_\cat{C}",swap] \arrow[rd,"\id_\cat{C} \times \sq"] & \\
@@ -99,11 +98,11 @@ We call this structure a \emph{cocartesian} monoidal category.
     \begin{itemize}
         \item $(\mathbf{Set}, {\times}, \{\ast\})$, the cartesian monoidal category of sets and functions between them
         \item $(\mathbf{Cat}, {\times}, \mathbf{1})$, the cartesian monoidal category of categories and functors between them
-        \item $(\Delta, {+}, [0])$, the strict cocartesian monoidal simplicial category
+        \item $(\Delta, {+}, [0])$, the strict monoidal simplicial category
         \item $(\mathbf{Vect}_\Bbbk, {\tensor}, \Bbbk)$, the monoidal category of vector spaces over the field $\Bbbk$ and linear maps between them, with the monoidal structure given by the tensor product
     \end{itemize}
 \end{tcbex}
-\fouche{$(\Delta, {+}, [0])$ non è cocartesiana; la somma ordinale non è il coprodotto, sebbene agisca come l'unione disgiunta sugli oggetti... Also: ciascuna di queste categorie monoidali ha una proprietà universale, forse sarebbe meglio menzionarla e inserire anche un esempio di $\sq$ non universale?}
+%\fouche{$(\Delta, {+}, [0])$ non è cocartesiana; la somma ordinale non è il coprodotto, sebbene agisca come l'unione disgiunta sugli oggetti... Also: ciascuna di queste categorie monoidali ha una proprietà universale, forse sarebbe meglio menzionarla e inserire anche un esempio di $\sq$ non universale?}
 We'd now like to define morphisms between monoidal categories as functors that preserve the monoidal structure. However we need to precise to which ``degree'' such structure needs to be preserved. 
 As for monoidal categories, the weakest definition will also be the most intricate.
 % \fouche{Questo qua sotto è un funtore monoidale \emph{lax}; c'è anche la nozione di funtore \emph{oplax} dove le frecce sono tutte girate; dopo la definizione metti un esempio: [cazzopalle] è un funtore monoidale lax dalla categoria bau alla categoria miao; [pallecazzo] è oplax dalla categoria squit alla categoria muuu.}
