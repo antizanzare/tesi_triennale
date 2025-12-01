@@ -34,9 +34,10 @@ Each orientable connected smooth manifold admits two possible orientations.  An 
 \end{tcbdfn}
 
 \begin{example}
-  Take a circle $\mathbb{S}^1$ with the usual counterclockwise orientation and the interval $I \defeq [0,1]$ with its standard orientation. The products $\mathbb{S} \times I$ and $I \times \mathbb{S}$ then have opposite orientations. We hence need to be careful when choosing the order of such factors.
+  Take a circle $\mathbb{S}^1$ with the usual counterclockwise orientation and the interval $I \defeq [0,1]$ with its standard orientation. The products $\mathbb{S}^1 \times I$ and $I \times \mathbb{S}^1$ then have opposite orientations. We hence need to be careful when choosing the order of such factors.
+
   \[
-    \begin{tikzpicture}[every tqft/.style={transform shape}, rotate=90]
+    \begin{tikzpicture}[every tqft/.style={transform shape}, rotate=90, scale=1.5]
       \pic[tqft,
       incoming boundary components=1,
       outgoing boundary components=1,
@@ -46,7 +47,8 @@ Each orientable connected smooth manifold admits two possible orientations.  An 
       name=a,
       anchor={(0,0)}
       ];
-      \node at (1,-1) {$\mathbb{S} \times I$};
+      \node at (1,-1) {$\mathbb{S}^1 \times I$};
+      \node at (0.5,-1) {$\{s, e\}$ positive basis for $T_x(\mathbb{S}^1 \times I)$};
       \pic[tqft,
       incoming boundary components=1,
       outgoing boundary components=1,
@@ -54,12 +56,16 @@ Each orientable connected smooth manifold admits two possible orientations.  An 
       every outgoing lower boundary component/.style={draw},
       every incoming lower boundary component/.style={dashed,draw},
       name=b,
-      anchor={(0,-3)}
+      anchor={(0,-2.5)}
       ];
-      \node at (1,-7) {$I \times \mathbb{S}$};
-      \node at (a-between first incoming and first outgoing) [above=0.25em] {$\curvearrowleft$};
-      \node at (b-between first incoming and first outgoing) [above=0.25em] {$\curvearrowright$};
-      % \node at (2,-1) {$\xi$};
+      \node at (1,-6) {$I \times \mathbb{S}^1$};
+      \node at (0.5,-6) {$\{e, s\}$ positive basis for $T_x(I \times \mathbb{S}^1)$};
+      \draw [->] (2,-1) -- node [above=.15em,align=right] {$e$} (2,-1.5);      
+      \draw [->] (2,-1) -- node [left=.1em,align=center] {$s$} (1.5,-1);
+      \draw [->, ibmBlue] (1.75, -1) to[out=180,in=180] (2,-1.25);
+      \draw [->] (2,-6) -- node [above=.15em,align=right] {$e$} (2,-6.5);      
+      \draw [->] (2,-6) -- node [left=.15em,align=center] {$s$} (1.5,-6);
+      \draw [->, ibmBlue] (2,-6.25) to[out=180,in=-90] (1.75,-6);
     \end{tikzpicture}
   \]
 \end{example}
@@ -75,13 +81,14 @@ By considering some smooth chart $(U \ni p, \varphi = (x^i))$, we then have that
 
 % ref: dfn 15.24 Lee
 \begin{tcbdfn}[The induced orientation on a boundary]
-  Let $M$ be an oriented manifold with boundary. Its boundary $\partial M$ inherits a canonical orientation, defined as follows. Consider an outward pointing vector $n \in T_x M \setminus T_x (\partial M)$; for any basis $\{ t_1, \dots, t_n\}$ of $T_x (\partial M)$ we say it to be a $\emph{positive}$ (resp. \emph{negative}) if $\{n, t_1, \dots, t_n\}$ is a positive (resp. negative) basis for $T_x M$.
+  Let $M$ be an oriented manifold with boundary. Its boundary $\partial M$ inherits a canonical orientation\footnotemark, defined as follows. Consider an outward pointing vector $n \in T_x M \setminus T_x (\partial M)$; for any basis $\{ t_1, \dots, t_n\}$ of $T_x (\partial M)$ we say it to be a $\emph{positive}$ (resp. \emph{negative}) if $\{n, t_1, \dots, t_n\}$ is a positive (resp. negative) basis for $T_x M$.
 \end{tcbdfn}
-
-Following such convention, the oriented cylinders above will induce opposite orientations on the two components of the boundary.
+\footnotetext{This is just a matter of convention, which we refer to as \emph{outward normal first}. Equivalentely, one could define the induced orientation using the opposite convention, called \emph{outward normal last}.}
+\begin{example}\label{ex:orientation}
+  Following such convention, the oriented cylinders above will induce opposite orientations on the two components of the boundary.
 
 \[
-  \begin{tikzpicture}[every tqft/.style={transform shape}, rotate=90]
+  \begin{tikzpicture}[every tqft/.style={transform shape}, rotate=90, scale=1.5]
     \pic[tqft,
     incoming boundary components=1,
     outgoing boundary components=1,
@@ -110,13 +117,25 @@ Following such convention, the oriented cylinders above will induce opposite ori
       decoration={markings, mark=at position .5 with {\arrow{>}},},
     },
     name=b,
-    anchor={(0,-3)}
+    anchor={(0,-2.5)}
     ];
-    \node at (a-between first incoming and first outgoing) [above=0.25em] {$\curvearrowleft$};
-    \node at (b-between first incoming and first outgoing) [above=0.25em] {$\curvearrowright$};
-    % \node at (2,-1) {$\xi$};
+    \node at (2,-1) [color=ibmBlue] {$\circlearrowleft$};
+    \draw [->, color=ibmBlue] (2.35,0) -- node [above=.15em,align=right, color=ibmBlue] {$n$} (2.35,.5);
+    \draw [->, color=ibmBlue] (2.35,0) -- (2,.5);
+    \draw [->, color=ibmBlue] (2.35,-2) -- node [below=.15em,align=right, color=ibmBlue] {$n$} (2.35,-2.5);
+    \draw [->, color=ibmBlue] (2.35,-2) -- (2.7,-2.5);
+    \node at (1.25,0) {$\mathbb{S}^1$};
+    \node at (1.25,-2) {$-\mathbb{S}^1$};
+    \node at (2,-6) [color=ibmBlue] {$\circlearrowright$};
+    \draw [->, color=ibmBlue] (2.35,-5) -- node [above=.15em,align=right, color=ibmBlue] {$n$} (2.35,-4.5);
+    \draw [->, color=ibmBlue] (2.35,-5) -- (2.7,-5.5);
+    \draw [->, color=ibmBlue] (2.35,-7) -- node [above=.15em,align=right, color=ibmBlue] {$n$} (2.35,-7.5);
+    \draw [->, color=ibmBlue] (2.35,-7) -- (2,-6.5);
+    \node at (1.25,-7) {$\mathbb{S}^1$};
+    \node at (1.25,-5) {$-\mathbb{S}^1$};
   \end{tikzpicture}
 \]
+\end{example}
 
 We are finally ready to give the following definition.
 
@@ -134,121 +153,108 @@ We are finally ready to give the following definition.
   \end{itemize}
 \end{tcbdfn}
 
-\todo[inline]{importante! questo è scritto male/falso. i bordi hanno la loro orientazione. Devo poter definire il "duale"}
-\begin{example}
-Let us draw an example of a 2-dimensional bordism. We consider a 2-dimensional oriented manifold $M$ homeomorphic to a spere with three holes (also called a \emph{pair of pants}) and the corresponding maps $i_0$, $i_1$, defining its orientation as a bordism.
-\begin{figure}[ht]
+\begin{example}\label{ex:bordism-orientation}
+Let us draw an example of a 2-dimensional bordism $B \colon \mathbb{S}^1 \to \mathbb{S}^1$. We consider a 2-dimensional oriented cylinder $M= \mathbb{S}^1 \times I$ and the corresponding embeddings $i_0$, $i_1$, defining its orientation as a bordism. 
+
+Looking at the first picture in Example \ref{ex:orientation}, we notice how to define a bordism from $\mathbb{S}^1$ to itself, the cylinder we are considering has boundary equal to $\partial M = \mathbb{S}^1 \sqcup (-\mathbb{S}^1)$. 
+\begin{figure}[H]
   \centering
    \begin{tikzpicture}[every tqft/.style={transform shape}]
-    \pic[name=a, tqft, offset=-0.7, incoming boundary components=1,
-    outgoing boundary components=2, anchor=between outgoing 1 and 2, at={(0,-1.5)}, 
-    every upper boundary component/.style={draw, dashed},
+    % M central
+    \node at (1, -1) {$M = \mathbb{S}^1 \times I$};
+    \pic[name=a, tqft cylinder, rotate=90, anchor=between outgoing 1 and 2, at={(0,0)}, 
+    every outgoing boundary component/.style={draw, dashed},
+    every incoming upper boundary component/.style={draw, dashed},
     cobordism edge/.style={draw}];
-    \pic[tqft cylinder, anchor=outgoing boundary, at=(a-incoming boundary), 
+    \pic[tqft cylinder, rotate=90, anchor=outgoing boundary, at=(a-incoming boundary), 
     every incoming upper boundary component/.style={draw, decoration={markings, mark=at position .5 with {\arrow{<}},}, postaction=decorate},
     cobordism edge/.style={draw},
     cobordism height=0.2cm, fill=ibmYellow, fill opacity=.6];
-    \pic[tqft cylinder, anchor=incoming boundary, at=(a-outgoing boundary 1), 
+    \pic[tqft cylinder, rotate=90, anchor=incoming boundary, at=(a-outgoing boundary), 
     every outgoing lower boundary component/.style={draw},
     every outgoing upper boundary component/.style={draw, decoration={markings, mark=at position .5 with {\arrow{>}},}, postaction=decorate},    
     every outgoing boundary component/.style={fill=ibmBlue, fill opacity=.4},
     cobordism edge/.style={draw},
     cobordism height=0.2cm, fill=ibmBlue, fill opacity=.6];
-    \pic[tqft cylinder, anchor=incoming boundary, at=(a-outgoing boundary 2), 
-    every outgoing lower boundary component/.style={draw},
-    every outgoing upper boundary component/.style={draw, decoration={markings, mark=at position .5 with {\arrow{>}},}, postaction=decorate}, 
-    every outgoing boundary component/.style={fill=ibmBlue, fill opacity=.6},
-    every outgoing boundary component/.style={fill=ibmBlue, fill opacity=.4},
-    cobordism edge/.style={draw},
-    cobordism height=0.2cm, fill=ibmBlue, fill opacity=.6];
-    % \pic[tqft cylinder, rotate=90, at={(-5,-1)}, cobordism height=0.2cm,
-    % every incoming upper boundary component/.style={draw, decoration={markings, mark=at position .5 with {\arrow{<}},}, postaction=decorate},
-    % fill=ibmYellow, fill opacity=.4,
-    % every outgoing boundary component/.style={dashed, draw, fill=ibmYellow, fill opacity=.8},
-    % cobordism edge/.style={draw},
-    % ];
-    \draw [thick, right hook->, ibmYellow] (-3.5,-1) -- node [above=.5em,align=center, color=ibmYellow] {$i_0$} (-2,-1);
-    \pic[tqft cylinder, rotate=-90, at={(-4,-1)}, cobordism height=0.2cm,
-    every outgoing lower boundary component/.style={draw, decoration={markings, mark=at position .5 with {\arrow{<}},}, postaction=decorate},
-    every outgoing upper boundary component/.style={draw, decoration={markings, mark=at position .5 with {\arrow{>}},}, postaction=decorate},
+    % left
+    \draw [thick, right hook->, ibmYellow] (-3,0) -- node [above=.5em,align=center, color=ibmYellow] {$i_0$} (-1,0);
+    \pic[tqft cylinder, rotate=90, at={(-4,0)}, cobordism height=0.2cm,
+    every incoming upper boundary component/.style={draw, decoration={markings, mark=at position .5 with {\arrow{<}},}, postaction=decorate},
     fill=ibmYellow, fill opacity=.6,
-    every outgoing boundary component/.style={fill=ibmYellow, fill opacity=.4},
+    every incoming lower boundary component/.style={dashed, draw},
+    every outgoing boundary component/.style={fill=ibmYellow, fill opacity=.4, dashed, draw},
+    cobordism edge/.style={draw}];
+    \node at (-4, -1) {$\mathbb{S}^1 \times [0, \varepsilon)$};
+    % right
+    \draw [thick, left hook->, ibmBlue] (5,0) -- node [above=.5em,align=center, color=ibmBlue] {$i_1$} (3,0);
+    \pic[tqft cylinder, rotate=90, at={(6,0)}, cobordism height=0.2cm, fill=ibmBlue, fill opacity=.6,
     every incoming boundary component/.style={dashed, draw},
-    cobordism edge/.style={draw}];
-    \node at (-4, -2) {$\mathbb{S}^1 \times [0, \varepsilon)$};
-    \draw [thick, left hook->, ibmBlue] (3.5,-1) -- node [above=.5em,align=center, color=ibmBlue] {$i_1$} (2,-1);
-    \pic[tqft cylinder, rotate=90, at={(4,-1.5)}, cobordism height=0.2cm, fill=ibmBlue, fill opacity=.6,
-    every incoming lower boundary component/.style={dashed, draw},
-    every incoming upper boundary component/.style={dashed, draw, decoration={markings, mark=at position .5 with {\arrow{<}},}, postaction=decorate},
     every outgoing boundary component/.style={draw, fill=ibmBlue, fill opacity=.4},
     every outgoing upper boundary component/.style={draw, decoration={markings, mark=at position .5 with {\arrow{>}},}, postaction=decorate},
     cobordism edge/.style={draw}];
-    \pic[tqft cylinder, rotate=90, at={(4,-.5)}, cobordism height=0.2cm, fill=ibmBlue, fill opacity=.6,
-    every incoming lower boundary component/.style={dashed, draw},
-    every incoming upper boundary component/.style={dashed, draw, decoration={markings, mark=at position .5 with {\arrow{<}},}, postaction=decorate},
-    every outgoing boundary component/.style={draw, fill=ibmBlue, fill opacity=.4},
-    every outgoing upper boundary component/.style={draw, decoration={markings, mark=at position .5 with {\arrow{>}},}, postaction=decorate},
-    cobordism edge/.style={draw}];
-    \node at (4, -2.5) {$(\mathbb{S}^1 \sqcup \mathbb{S}^1) \times (1- \varepsilon, 1]$};
-    \draw [line width=1mm, -{Stealth[length=4mm]}](0.3,-.4) -- (.3,-1.3);
+    \node at (6, -1) {$\mathbb{S} \times (1- \varepsilon, 1]$};
   \end{tikzpicture}
 \end{figure}
 
-The figure shows how this choice of intervals we made in the definition assures that the inclusion maps are both orientation preserving.
+The figure shows how the choice of intervals we made in the definition assures that the inclusion maps are both orientation preserving.
 
-We can also see that in-boundaries and out-boundaries do not depend on the orientation of the manifold $M$, but only on the two inclusion maps. For example, we could consider the same manifold $M$ and equip it with two in-boundaries and one out-boundary, as depicted below. From now on we will draw in-boundaries on the left and out-boudaries on the right, to avoid further confusion.
+We can also see that the choice of in-boundaries and out-boundaries does not depend on the orientation of the manifold $M$, but on the ones of the copies of $\mathbb{S}^1$. For example, we could consider the same manifold $M$ and equip it with two in-boundaries and zero out-boundary, as depicted below. In this case $i_0$ will be defined as the obvious inclusion on the component $\mathbb{S}^1 \times [0,\varepsilon)$ and as $i_0(x,t) = (x, 1-t)$ on the component $\overline{\mathbb{S}^1} \times [0, \varepsilon)$.
 
 \begin{figure}[H]
   \centering
    \begin{tikzpicture}[every tqft/.style={transform shape}]
-    \pic[name=a, tqft, offset=-0.7, incoming boundary components=1,
-    outgoing boundary components=2, anchor=between outgoing 1 and 2, at={(0,-1.5)}, 
-    every upper boundary component/.style={draw, dashed},
+    % M central
+    \node at (1, -1) {$M = \mathbb{S}^1 \times I$};
+    \pic[name=a, tqft cylinder, rotate=90, anchor=between outgoing 1 and 2, at={(0,0)}, 
+    every outgoing boundary component/.style={draw, dashed},
+    every incoming upper boundary component/.style={draw, dashed},
     cobordism edge/.style={draw}];
-    \pic[tqft cylinder, anchor=outgoing boundary, at=(a-incoming boundary), 
+    \pic[tqft cylinder, rotate=90, anchor=outgoing boundary, at=(a-incoming boundary), 
     every incoming upper boundary component/.style={draw, decoration={markings, mark=at position .5 with {\arrow{<}},}, postaction=decorate},
     cobordism edge/.style={draw},
     cobordism height=0.2cm, fill=ibmYellow, fill opacity=.6];
-    \pic[tqft cylinder, anchor=incoming boundary, at=(a-outgoing boundary 1), 
+    \pic[tqft cylinder, rotate=90, anchor=incoming boundary, at=(a-outgoing boundary), 
     every outgoing lower boundary component/.style={draw},
     every outgoing upper boundary component/.style={draw, decoration={markings, mark=at position .5 with {\arrow{>}},}, postaction=decorate},    
     every outgoing boundary component/.style={fill=ibmYellow, fill opacity=.4},
     cobordism edge/.style={draw},
     cobordism height=0.2cm, fill=ibmYellow, fill opacity=.6];
-    \pic[tqft cylinder, anchor=incoming boundary, at=(a-outgoing boundary 2), 
-    every outgoing lower boundary component/.style={draw},
-    every outgoing upper boundary component/.style={draw, decoration={markings, mark=at position .5 with {\arrow{>}},}, postaction=decorate}, 
-    every outgoing boundary component/.style={fill=ibmBlue, fill opacity=.6},
-    every outgoing boundary component/.style={fill=ibmBlue, fill opacity=.4},
-    cobordism edge/.style={draw},
-    cobordism height=0.2cm, fill=ibmBlue, fill opacity=.6];
-    \draw [thick, right hook->, ibmYellow] (-3.5,-1) -- node [above=.5em,align=center, color=ibmYellow] {$i_0$} (-2,-1);
-    \pic[tqft cylinder, rotate=-90, at={(-4,-.5)}, cobordism height=0.2cm,
-    every outgoing lower boundary component/.style={draw, decoration={markings, mark=at position .5 with {\arrow{<}},}, postaction=decorate},
-    every outgoing upper boundary component/.style={draw, decoration={markings, mark=at position .5 with {\arrow{>}},}, postaction=decorate},
+    %left
+    \draw [thick, right hook->, ibmYellow] (-3,0) -- node [above=.5em,align=center, color=ibmYellow] {$i_0$} (-1,0);
+    \pic[tqft cylinder, rotate=90, at={(-4,0)}, cobordism height=0.2cm,
+    every incoming upper boundary component/.style={draw, decoration={markings, mark=at position .5 with {\arrow{>}},}, postaction=decorate},
     fill=ibmYellow, fill opacity=.6,
-    every outgoing boundary component/.style={fill=ibmYellow, fill opacity=.4},
-    every incoming boundary component/.style={dashed, draw},
-    cobordism edge/.style={draw}];
-    \pic[tqft cylinder, rotate=-90, at={(-4,-1.5)}, cobordism height=0.2cm,
-    every outgoing lower boundary component/.style={draw, decoration={markings, mark=at position .5 with {\arrow{<}},}, postaction=decorate},
-    every outgoing upper boundary component/.style={draw, decoration={markings, mark=at position .5 with {\arrow{>}},}, postaction=decorate},
-    fill=ibmYellow, fill opacity=.6,
-    every outgoing boundary component/.style={fill=ibmYellow, fill opacity=.4},
-    every incoming boundary component/.style={dashed, draw},
-    cobordism edge/.style={draw}];
-    \node at (-4, -2.5) {$(\mathbb{S}^1 \sqcup \mathbb{S}^1) \times [0, \varepsilon)$};
-    \draw [thick, left hook->, ibmBlue] (3.5,-1) -- node [above=.5em,align=center, color=ibmBlue] {$i_1$} (2,-1);
-    \pic[tqft cylinder, rotate=90, at={(4,-1)}, cobordism height=0.2cm, fill=ibmBlue, fill opacity=.6,
     every incoming lower boundary component/.style={dashed, draw},
-    every incoming upper boundary component/.style={dashed, draw, decoration={markings, mark=at position .5 with {\arrow{<}},}, postaction=decorate},
-    every outgoing boundary component/.style={draw, fill=ibmBlue, fill opacity=.4},
-    every outgoing upper boundary component/.style={draw, decoration={markings, mark=at position .5 with {\arrow{>}},}, postaction=decorate},
+    every outgoing boundary component/.style={fill=ibmYellow, fill opacity=.4, dashed, draw},
     cobordism edge/.style={draw}];
-    \node at (4, -2) {$\mathbb{S}^1 \times (1- \varepsilon, 1]$};
+    \pic[tqft cylinder, rotate=90, at={(-5,0)}, cobordism height=0.2cm,
+    every incoming upper boundary component/.style={draw, decoration={markings, mark=at position .5 with {\arrow{<}},}, postaction=decorate},
+    every incoming lower boundary component/.style={dashed, draw},
+    fill=ibmYellow, fill opacity=.6,
+    every outgoing boundary component/.style={fill=ibmYellow, fill opacity=.4, dashed, draw},
+    cobordism edge/.style={draw}];
+    \node at (-4.5, -1) {$(\mathbb{S}^1 \sqcup \overline{\mathbb{S}^1}) \times [0, \varepsilon)$};
+    % right
+    \draw [thick, left hook->, ibmBlue] (5,0) -- node [above=.5em,align=center, color=ibmBlue] {$i_1$} (3,0);
+    \node at (6, 0) {$\varnothing$};
+    \node at (6, -1) {$\varnothing \times (1-\varepsilon, 1]$};
   \end{tikzpicture}
 \end{figure}
 \end{example}
+
+\begin{remark}
+  These examples let us notice why we asked for both the $n$-dimensional manifold and the $(n-1)$-dimensional manifolds to be oriented. Indeed, by specifing orientations on all manifolds, we are, in a way, fixing an in/out boundary distinction. For example, given the manifold $M = \mathbb{S}^1 \times I$ equipped with the orientation above, it would not be possible to define a bordism from $\mathbb{S}^1$ to $\overline{\mathbb{S}^1}$, since we would need to have $\partial M = \mathbb{S}^1 \sqcup (-\overline{\mathbb{S}^1}) = \mathbb{S}^1 \sqcup \mathbb{S}^1$.
+\end{remark}
+From now on we will draw in-boundaries on the left and out-boudaries on the right, to avoid further confusion.
+Thus, the previous cylinder representing a bordism $M \colon \mathbb{S}^1 \sqcup \overline{\mathbb{S}^1} \to \varnothing$ will be depicted as follows:
+
+\[
+\begin{tikzpicture}[every tqft/.style={transform shape}]
+  \pic[tqft, incoming boundary components=2, outgoing boundary components=0, draw, rotate=90, every lower boundary component/.style={dashed, draw}, boundary separation=1.25cm, cobordism height=2.5cm, anchor=incoming boundary 1, at={(0,0)}];
+  \node at (-1,0) {$\overline{\mathbb{S}^1}$};
+  \node at (-1,1.25) {$\mathbb{S}^1$};
+\end{tikzpicture}
+\]
 
 The role of the embeddings $i_0$, $i_1$ in the above definition is to put some sort of ``collar'' around the in-boundary and the out-boundary. Let us state this properly.
 
@@ -520,7 +526,7 @@ satisfying the following axioms:
 
 \begin{remark}
 It seems natural to interpret these axioms in the language of category theory.
-Indeed, axiom \ref{tqft:a1} well defines a map form $\bord{n}$ to $\mathbf{Vect}_\Bbbk$ and axioms \ref{tqft:a2} and \ref{tqft:a3} guarantee such map is really a functor.
+Indeed, Axiom \ref{tqft:a1} well defines a map form $\bord{n}$ to $\mathbf{Vect}_\Bbbk$ and Axioms \ref{tqft:a2} and \ref{tqft:a3} guarantee such map is really a functor.
 Axioms \ref{tqft:a4} and \ref{tqft:a5} preserve the monoidal structure. To get a \emph{symmetric} monoidal functor, as defined in \ref{dfn:tqft}, we would have to add a sixth axiom:
 \begin{enumerate}
   \item[(A6)] The twist bordism is mapped to the twist map of vector spaces, meaning 
@@ -528,7 +534,6 @@ Axioms \ref{tqft:a4} and \ref{tqft:a5} preserve the monoidal structure. To get a
 \end{enumerate}  
 \end{remark}
 
-\todo[inline]{da sistemare}
 \begin{dfnx*}[A brief digression on dualizability]
   We now leave some space to discuss an important property regarding TQFTs, starting with what is known as the \emph{snake decomposition of a cylinder}.
 
@@ -537,27 +542,36 @@ Axioms \ref{tqft:a4} and \ref{tqft:a5} preserve the monoidal structure. To get a
   \begin{tikzpicture}[every tqft/.style={transform shape}, scale=0.75, tqft/boundary separation=1.5cm]
     \pic[tqft cylinder, name=a, draw, rotate=90, anchor=incoming boundary, draw, every lower boundary component/.style={dashed, draw}];
     \pic[tqft cylinder, name=b, draw, rotate=90, anchor=incoming boundary, at=(a-outgoing boundary), draw, every outgoing lower boundary component/.style={draw}];
-    \draw [line width=.5mm, -{Stealth[length=2mm]}, opacity=0.75](0.0,0) -- (.5,0);
+    \node at (-.5, 0) {$\Sigma$};
+    \node at (4.5, 0) {$\Sigma$};
+    %\draw [line width=.5mm, -{Stealth[length=2mm]}, opacity=0.75](0.0,0) -- (.5,0);
     % \draw [line width=.5mm, -{Stealth[length=2mm]}, opacity=0.75](2,0) -- (2.5,0);
-    \draw [line width=.5mm, -{Stealth[length=2mm]}, opacity=0.75](4,0) -- (4.5,0);
+    %\draw [line width=.5mm, -{Stealth[length=2mm]}, opacity=0.75](4,0) -- (4.5,0);
   \end{tikzpicture}
   \]
   or we can bend it before cutting it, obtaining something like
   \[
-  \begin{tikzpicture}[every tqft/.style={transform shape}, scale=0.75, baseline=-0.9375cm]
+  \begin{tikzpicture}[every tqft/.style={transform shape}, scale=0.75]
     \pic[tqft cylinder, name=a, draw, rotate=90, anchor=incoming boundary, every lower boundary component/.style={dashed, draw}];
     \pic[tqft, name=b, incoming boundary components=2, outgoing boundary components=0, draw, rotate=90,
     anchor=incoming boundary 2, at=(a-outgoing boundary), every lower boundary component/.style={dashed, draw}, boundary separation=1.25cm, cobordism height=2.5cm];
     \pic[tqft, name=c, incoming boundary components=0, outgoing boundary components=2, draw, rotate=90,
     anchor=outgoing boundary 2, at=(b-incoming boundary 1), every lower boundary component/.style={dashed, draw}, boundary separation=1.25cm, cobordism height=2.5cm];
     \pic[tqft cylinder, draw, rotate=90, anchor=incoming boundary, at=(c-outgoing boundary 1), every outgoing lower boundary component/.style={draw}];
-    \draw [line width=.5mm, -{Stealth[length=2mm]}, opacity=0.75](0,0) -- (.5,0);
-    % \draw [line width=.5mm, -{Stealth[length=2mm]}, opacity=0.75](2,0) -- (2.5,0);
-    % \draw [line width=.5mm, -{Stealth[length=2mm]}, opacity=0.75](2,-1.25) -- (1.5,-1.25);
-    % \draw [line width=.5mm, -{Stealth[length=2mm]}, opacity=0.75](2,-2.5) -- (2.5,-2.5);
-    \draw [line width=.5mm, -{Stealth[length=2mm]}, opacity=0.75](4,-2.5) -- (4.5, -2.5);
+    \node at (-.5, 0) {$\Sigma$};
+    \node at (4.5, -2.5) {$\Sigma$};
   \end{tikzpicture}
-  \hspace{3em}\text{or}\hspace{3em}
+  \]
+  Notice how, after the cutting, the middle copy of $\Sigma$ is equipped with its opposite orientation for reasons we discussed in Example \ref{ex:bordism-orientation}. We will denote it as $\overline{\Sigma}$. This type of decomposition is called the \emph{snake decomposition} and can be written as a composition of arrows as
+  \[
+  \Sigma \iso \Sigma \sqcup \varnothing \xrightarrow{\id_\Sigma \sqcup H} \Sigma \sqcup \overline{\Sigma} \sqcup \Sigma \xrightarrow{N \sqcup \id_\Sigma} \varnothing \sqcup \Sigma \iso \Sigma 
+  \]
+  where $N \colon \Sigma \sqcup \overline{\Sigma} \to \varnothing$ and $H \colon \varnothing \to \overline{\Sigma} \sqcup \Sigma$ are the ``bent cylinders''. We can then state that:
+  \[
+  \id_\Sigma \iso (N \sqcup \id_\Sigma) \circ (id_\Sigma \sqcup H)
+  \]
+  The same is true when taking the dual snake (i.e. the one obtained from a bordism $\overline{M} \colon \overline{\Sigma} \to \overline{\Sigma}$). In that case we'd have that $\id_{\overline{\Sigma}}$ is isomorphic to:
+  \[
   \begin{tikzpicture}[every tqft/.style={transform shape}, scale=0.75, baseline=0.9375cm]
     \pic[tqft cylinder, name=a, draw, rotate=90, anchor=incoming boundary, every lower boundary component/.style={dashed, draw}];
     \pic[tqft, name=b, incoming boundary components=2, outgoing boundary components=0, draw, rotate=90,
@@ -565,50 +579,64 @@ Axioms \ref{tqft:a4} and \ref{tqft:a5} preserve the monoidal structure. To get a
     \pic[tqft, name=c, incoming boundary components=0, outgoing boundary components=2, draw, rotate=90,
     anchor=outgoing boundary 1, at=(b-incoming boundary 2), every lower boundary component/.style={dashed, draw}, boundary separation=1.25cm, cobordism height=2.5cm];
     \pic[tqft cylinder, draw, rotate=90, anchor=incoming boundary, at=(c-outgoing boundary 2), every outgoing lower boundary component/.style={draw}];
-    \draw [line width=.5mm, -{Stealth[length=2mm]}, opacity=0.75](0,0) -- (.5,0);
+    % \draw [line width=.5mm, -{Stealth[length=2mm]}, opacity=0.75](0,0) -- (.5,0);
     % \draw [line width=.5mm, -{Stealth[length=2mm]}, opacity=0.75](2,0) -- (2.5,0);
-    % \draw [line width=.5mm, -{Stealth[length=2mm]}, opacity=0.75](2,1.25) -- (1.5,1.25);
-    % \draw [line width=.5mm, -{Stealth[length=2mm]}, opacity=0.75](2,2.5) -- (2.5,2.5);
-    \draw [line width=.5mm, -{Stealth[length=2mm]}, opacity=0.75](4,2.5) -- (4.5,2.5);
+    % \draw [line width=.5mm, -{Stealth[length=2mm]}, opacity=0.75](2,-1.25) -- (1.5,-1.25);
+    % \draw [line width=.5mm, -{Stealth[length=2mm]}, opacity=0.75](2,-2.5) -- (2.5,-2.5);
+    % \draw [line width=.5mm, -{Stealth[length=2mm]}, opacity=0.75](4,-2.5) -- (4.5, -2.5);
+    \node at (-.5, 0) {$\overline{\Sigma}$};
+    \node at (4.5, 2.5) {$\overline{\Sigma}$};
   \end{tikzpicture}
-  \]
-  Notice how, after the cutting, the circle in the middle won't be equipped with the usual orientation induced by the product, but the opposite one \footnote{More precisely, we should say that, considering the bordism $\beta$ we have }.
-  \todo[inline]{Sistemare orientazione} 
-  We will denote it as $\overline{\Sigma}$.
-  This type of decomposition is called the \emph{snake decomposition} and can be written as compositions of arrows as
-  \[
-  \Sigma \iso \Sigma \sqcup \varnothing \xrightarrow{\id_\Sigma \sqcup \gamma} \Sigma \sqcup \overline{\Sigma} \sqcup \Sigma \xrightarrow{\beta \sqcup \id_\Sigma} \varnothing \sqcup \Sigma \iso \Sigma 
-  \]
-  \[
-  \Sigma \iso \varnothing \sqcup \Sigma \xrightarrow{\gamma \sqcup \id_\Sigma} \Sigma \sqcup \overline{\Sigma} \sqcup \Sigma \xrightarrow{\id_\Sigma \sqcup \beta} \Sigma \sqcup \varnothing \iso \Sigma 
-  \]
-  where $\beta \colon \Sigma \sqcup \overline{\Sigma} \to \varnothing$ and $\gamma \colon \varnothing \to \overline{\Sigma} \sqcup \Sigma$ are the ``bent cylinders''. We can then state that:
-  \[
-  \id_\Sigma \iso (\beta \sqcup \id_\Sigma) \circ (id_\Sigma \sqcup \gamma) 
-  \hspace{3em} \text{and} \hspace{3em}
-  \id_\Sigma \iso (\id_\Sigma \sqcup \beta) \circ (\gamma \sqcup \id_\Sigma)
+  \hspace{2em}
+  (\id_{\overline{\Sigma}} \sqcup N) \circ (H \sqcup \id_{\overline{\Sigma}}) \colon \overline{\Sigma} \to \overline{\Sigma} \sqcup \Sigma \sqcup \overline{\Sigma} \to \overline{\Sigma}
   \]
   An interesting result appears when evaluating a TQFT on these bordisms. Considering any $Z \colon \bord{n} \to \mathbf{Vect}_\Bbbk$ and naming $V = Z(\Sigma)$, $\overline{V} = Z(\overline{\Sigma})$ we have 
   \[
   Z(\id_\Sigma) = \id_V \colon V \to V 
   \hspace{3em}   
-  Z(\beta) \colon V \tensor \overline{V} \to \Bbbk
+  Z(N) = \beta \colon V \tensor \overline{V} \to \Bbbk
   \hspace{3em}
-  Z(\gamma) \colon \Bbbk \to \overline{V} \tensor V
+  Z(H) = \gamma \colon \Bbbk \to \overline{V} \tensor V
   \]
-  \begin{tcblemma}
-    The image vector space of a TQFT is of finite dimension.
-  \end{tcblemma}
-  \begin{tcblemma}
+Through functoriality of $Z$, the isomorphisms above define the following linear maps:
+\[
+\id_V = (\beta \tensor \id_V) \circ (\id_V \tensor \gamma) \colon V \iso V \tensor \Bbbk \to V \tensor \overline{V} \tensor V \to \Bbbk \tensor V \iso V
+\]
+\[
+\id_{\overline{V}} = (\id_{\overline{V}} \tensor \beta) \circ (\gamma \tensor \id_{\overline{V}}) \colon \overline{V} \iso \Bbbk \tensor \overline{V} \to \overline{V} \tensor V \tensor \overline{V} \to \overline{V} \tensor \Bbbk \iso \overline{V}
+\]
+with which we can state and prove the following proposition.
+\begin{tcbprp}\label{prp:finite-dimension}
+    The image vector spaces in a TQFT are necessarily of finite dimension.
+\end{tcbprp}
+\begin{proof}
+  Let $\gamma(1_\Bbbk) = \sum_{i=1}^n \overline{v}_i \tensor v_i$ for $\overline{v}_i \in \overline{V}$ and $v_i \in V$. 
+  Evaluating the composition $(\beta \tensor \id_V) \circ (\id_V \tensor \gamma)$ on a vector $v \in V$ gives:
+  \[
+  v \mapsto v \tensor \sum_{i=1}^n \overline{v}_i \tensor v_i \mapsto \sum_{i=1}^n \beta(v \tensor \overline{v}_i) v_i
+  \]
+ Since this composition is equal to $\id_V$ we have, for every $v \in V$, the equivalence $v = \sum_{i=1}^n \beta(v \tensor \overline{v}_i) v_i$. This is equal to say that every $v \in V$ can be written as a $\Bbbk$-linear combination of $\{v_1, \dots, v_n\}$, hence $V$ is a vector space of finite dimension.
+By evaluating the other composition in $\overline{v}$ and applying the same argument we conclude that $\overline{V}$ is also finite dimensional.
+\end{proof}
+
+These maps further imply a canonical duality between the two spaces. One can prove that $\overline{V}$ can be identified with the dual of $V$.
+\begin{tcbprp}
     Let $\Sigma$ be a closed $(n-1)$-manifold and $Z \colon \bord{n} \to \mathbf{Vect}_\Bbbk$ a TQFT. Let $V = Z(\Sigma)$ and $\overline{V} = Z(\overline{\Sigma})$. Then:
     \begin{enumerate}
       \item $\overline{V}$ is canonically isomorphic to $V^\ast$
       \item $V$ is canonically isomorphic to $\overline{V}^\ast$
     \end{enumerate}
-  \end{tcblemma}
+\end{tcbprp}
 \end{dfnx*}
+We omit the proof of such result. Instead, we notice how in Atiyah's original axiomatization this was an explicit axiom:
+\begin{enumerate}
+  \item[(A7)]  The image vector space $V$ of a closed manifold $\Sigma$ comes equipped with a nondegenerate pairing with $\overline{V} = Z (\overline{\Sigma})$ 
+\end{enumerate}  
+These observations are fundamental for understanding the core structure of the category we are working within. Indeed, they are a concrete instance of the categorical concept of \emph{dualizability}.
 
-We now give a couple example of some simple TQFTs.
+\todo[inline]{ha senso scopiazzare due definizioni qui?}
+
+We now give a couple examples of some simple TQFTs.
 
 \begin{tcbex}[A trivial TQFT]
   We can define a \emph{trivial TQFT} by assigning a field $\Bbbk$ to every $(n-1)$-dimensional closed manifold and $\id_\Bbbk$ to every $n$-dimensional bordism.  
@@ -663,7 +691,7 @@ We now give a couple example of some simple TQFTs.
   We see how we have defined a mapping $Z$ that assigns to each closed two-dimensional surface $\Sigma$ a linear map $Z(\Sigma) \colon \Bbbk \to \Bbbk$ that evaluated at $1_\Bbbk$ returns $2^g$, where $g$ is the genus of the surface $\Sigma$.
 \end{tcbex}
 
-\subsection{A category of n-TQFTs}
+\subsection{A category of $n$-TQFTs}
 
 Remembering how we ended our first chapter and having just seen how $n$-TQFT correspond to symmetric monoidal functors from $(\bord{n}, \disj, \varnothing, T)$ to $(\mathbf{Vect}_\Bbbk, \tensor, \Bbbk, \sigma)$, we can define a category of $n$-dimensional topological quantum field theories as follows.
 

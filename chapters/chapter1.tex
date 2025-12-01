@@ -50,7 +50,6 @@ This maps must satisfy the so called coherence requirements, depicted in \ref{fi
 \caption{Associativity coherence}
 \label{fig:coherence_pentagon}
 \end{figure}
-\fouche{Anche piu piccolo sto pentagono ziobon}
 \begin{figure}
 \centering
 \begin{tikzcd}
@@ -61,8 +60,8 @@ This maps must satisfy the so called coherence requirements, depicted in \ref{fi
 \label{fig:coherence_unit}
 \end{figure}
 
-It is important to notice how, by definition, the naturality of such transformations means that all these isomorphisms are compatible with the arrows in $\cat{C}$.
-\fouche{Direi piuttosto: it is important to notice that naturality of such transformations has to be assumed / is not for free, as some proofs (quali, boh?) depend on naturality to work. Poi puoi divertirti a trovare un esempio stupido di una cosa che non si può dimostrare senza la naturalità o gli assiomi di moncatta.}
+It is important to notice that naturality of such transformations is not for free, as some proof depend on naturality to work.
+% \fouche{Direi piuttosto: it is important to notice that naturality of such transformations has to be assumed / is not for free, as some proofs (quali, boh?) depend on naturality to work. Poi puoi divertirti a trovare un esempio stupido di una cosa che non si può dimostrare senza la naturalità o gli assiomi di moncatta.}
 \begin{tcbdfn}[Strict monoidal categories]
 A monoidal category is \emph{strict}\index{monoidal category!strict monoidal category} if all the natural transformations $\alpha$, $l$, $r$ are identities.
 \end{tcbdfn} 
@@ -91,12 +90,14 @@ We call this structure a \emph{cartesian} monoidal category. The dual statement 
     Let $\cat{C}$ be a category that admits coproducts. Then $(\cat{C}, +, 0)$, where $+$ denotes the coproduct and $0$ the initial object, is a monoidal category.
 \end{tcbprp}
 We call this structure a \emph{cocartesian} monoidal category.
-\fouche{Una importante differenza con le cat monoidali generiche però è che `Being cartesian or cocartesian monoidal' è una proprietà, non una struttura: c'è un solo modo di avere i prodotti (soddisfare la prop univ), ma non c'è un solo modo di definire $\sq$ e $I$ (del resto, $I$ è unico up to iso quando la struttura monoidale è specificata, analogo a `l'unità di un monoide è unica'). E' uno dei primi teoremini in EGNO, la cui dimostrazione è un parto.}
-\fouche{Capisci, questo è il genere di dettagli che ti avrei fatto studiare: sono al tuo livello e sono educativi.}
+% \fouche{Una importante differenza con le cat monoidali generiche però è che `Being cartesian or cocartesian monoidal' è una proprietà, non una struttura: c'è un solo modo di avere i prodotti (soddisfare la prop univ), ma non c'è un solo modo di definire $\sq$ e $I$ (del resto, $I$ è unico up to iso quando la struttura monoidale è specificata, analogo a `l'unità di un monoide è unica'). E' uno dei primi teoremini in EGNO, la cui dimostrazione è un parto.}
+% \fouche{Capisci, questo è il genere di dettagli che ti avrei fatto studiare: sono al tuo livello e sono educativi.}
 \begin{tcbex}
-    Examples of monoidal categories are:
+    Examples of monoidal categories, which we will encounter throughout this thesis, are:
     \begin{itemize}
+        \item $(M, \mu, 1_M)$, the discrete monoidal category on a monoid $M$
         \item $(\mathbf{Set}, {\times}, \{\ast\})$, the cartesian monoidal category of sets and functions between them
+        \item $(\mathbf{Set}, \disj, \varnothing)$, the cocartesian monoidal category of sets and functions between them
         \item $(\mathbf{Cat}, {\times}, \mathbf{1})$, the cartesian monoidal category of categories and functors between them
         \item $(\Delta, {+}, [0])$, the strict monoidal simplicial category
         \item $(\mathbf{Vect}_\Bbbk, {\tensor}, \Bbbk)$, the monoidal category of vector spaces over the field $\Bbbk$ and linear maps between them, with the monoidal structure given by the tensor product
@@ -106,7 +107,7 @@ We call this structure a \emph{cocartesian} monoidal category.
 We'd now like to define morphisms between monoidal categories as functors that preserve the monoidal structure. However we need to precise to which ``degree'' such structure needs to be preserved. 
 As for monoidal categories, the weakest definition will also be the most intricate.
 % \fouche{Questo qua sotto è un funtore monoidale \emph{lax}; c'è anche la nozione di funtore \emph{oplax} dove le frecce sono tutte girate; dopo la definizione metti un esempio: [cazzopalle] è un funtore monoidale lax dalla categoria bau alla categoria miao; [pallecazzo] è oplax dalla categoria squit alla categoria muuu.}
-\begin{tcbdfn}[Monoidal functors]
+\begin{tcbdfn}[Monoidal functors]\label{dfn:monoidal-functor}
     Let $(\cat{C}, \sq, I, \alpha^\cat{C}, l^\cat{C}, r^\cat{C})$ and $(\cat{D}, \varsq , J, \alpha^\cat{D}, l^\cat{D}, r^\cat{D})$ be two (weak) monoidal categories. A monoidal functor is a triple $(F, \varphi, \varepsilon)$ consisting of
     \begin{itemize}
         \item a functor \[ F \colon \cat{C} \to \cat{D} \]
@@ -156,8 +157,8 @@ As for monoidal categories, the weakest definition will also be the most intrica
     This notion can be found in the literature as \emph{lax monoidal functor}. 
     \fouche{add cit?}
     We can also define an \emph{oplax monoidal functor} between two categories $\cat{C}$ and $\cat{D}$ as a lax monoidal functor $\cat{C}^{op} \to \cat{D}^{op}$. 
-    \fouche{no, questa non è la definizione di oplax monoidal functor: un conto è rovesciare l'ordine del prodotto $\sq$ definendo $\sq^* : \cat{C}\times\cat{C} \to \cat{C}$ come $(A,B)\mapsto B\sq A$ invece che $A\sq B$ (per esempio questi due sono diversi quando...), e un altro conto del tutto diverso è considerare la categoria $\cat{C}^{op}$ col prodotto monoidale $\sq^{op} : (\cat{C}\times\cat{C})^{op} = \cat{C}^{op} \times \cat{C}^{op} \to \cat{C}^{op}$; purtroppo c'è un clash di notazione in questo contesto, perché $(\cat{C}, \sq^*)$ consiste della bicategoria con un solo oggetto $(\Sigma\cat{C})^{1op}$ dove è stata rovesciata la direzione di composizione delle 1-celle (cioè degli oggetti di $\cat{C}$, che si compongono via $\sq$), mentre $(\cat{C}^{op}, \sq^{op})$ consiste della bicategoria con un solo oggetto $(\Sigma\cat{C})^{2op}=\Sigma(\cat{C}^{op})$ ---molto più spesso chiamata $(\Sigma\cat{C})^{co}$--- dove è stata rovesciata la direzione di composizione delle 2-celle (cioè delle frecce di $\cat{C}$). Le due non sono la stessa cosa.}
-    In this case we will have natural transformations $\varphi_{A, B} \colon F(A \sq B) \to F(A) \varsq F(B)$ and $\varepsilon \colon F(I) \to J$. The idea behind these two notions is that a \emph{lax} monoidal functor is the one preserving the structure of internal monoid, while an \emph{oplax} monoidal functor preserves the internal comonoid structre. The definition of an internal monoid (resp. comonoid) will be properly given in \ref{dfn:internal-monoid} (resp. \ref{dfn:internal-comonoid}).
+    % \fouche{no, questa non è la definizione di oplax monoidal functor: un conto è rovesciare l'ordine del prodotto $\sq$ definendo $\sq^* : \cat{C}\times\cat{C} \to \cat{C}$ come $(A,B)\mapsto B\sq A$ invece che $A\sq B$ (per esempio questi due sono diversi quando...), e un altro conto del tutto diverso è considerare la categoria $\cat{C}^{op}$ col prodotto monoidale $\sq^{op} : (\cat{C}\times\cat{C})^{op} = \cat{C}^{op} \times \cat{C}^{op} \to \cat{C}^{op}$; purtroppo c'è un clash di notazione in questo contesto, perché $(\cat{C}, \sq^*)$ consiste della bicategoria con un solo oggetto $(\Sigma\cat{C})^{1op}$ dove è stata rovesciata la direzione di composizione delle 1-celle (cioè degli oggetti di $\cat{C}$, che si compongono via $\sq$), mentre $(\cat{C}^{op}, \sq^{op})$ consiste della bicategoria con un solo oggetto $(\Sigma\cat{C})^{2op}=\Sigma(\cat{C}^{op})$ ---molto più spesso chiamata $(\Sigma\cat{C})^{co}$--- dove è stata rovesciata la direzione di composizione delle 2-celle (cioè delle frecce di $\cat{C}$). Le due non sono la stessa cosa.}
+    In this case we will have natural transformations $\varphi_{A, B} \colon F(A \sq B) \to F(A) \varsq F(B)$ and $\varepsilon \colon F(I) \to J$. The idea behind these two notions is that a \emph{lax} monoidal functor is the one preserving the structure of internal monoid, while an \emph{oplax} monoidal functor preserves the internal comonoid structure. The definition of an internal monoid (resp. comonoid) will be properly given in \ref{dfn:internal-monoid} (resp. \ref{dfn:internal-comonoid}).
 \end{remark}
 
 \begin{tcbdfn}[Strong monoidal functors]
@@ -209,7 +210,7 @@ As the reader can imagine, working with weak monoidal categories can become a re
 \begin{tcbthm}[Strictification]\label{thm:strictification}
 \emph{(See \cite{maclane}, Chapter XI, Section 3)} Every monoidal category is categorically equivalent, via strong monoidal functors, to a strict monoidal category. 
 \end{tcbthm}
-Essentially, what follows is that from now on we can assume, without loss of generalities, that monoidal categories \emph{are} strict. This is possible because the equivalence provided by the above theorem ensures that all coherence diagram commute up to unique canonical isomorphism, as long as we don't require functors between such categories to be strict.
+Essentially, what follows is that from now on we can assume, without loss of generalities, that monoidal categories \emph{are} strict. This is possible because the equivalence provided by the above theorem ensures that all coherence diagram commute up to unique canonical isomorphism, as long as we don't require functors between such categories to be strict. To do so, from now on, when considering the functor category $\mathbf{MonCat}$ we will referring to $\mathbf{MonCat}_{\textup{strong}}$.
 
 \todo[inline]{idee: inserire esempio costruzione tensore n esimo. inserire esempio strictificazione di Vect}
 
@@ -323,6 +324,42 @@ for every $A, B \in \obj{\cat{C}}$, called the \emph{braiding}, such that the fo
     \[\beta_{B,A} \circ \beta_{A,B} = \id_{A \sq B}\]
     for every $A, B \in \obj{\cat{C}}$.
 \end{tcbdfn}
+
+Let us show some example of symmetric monoidal categories.
+
+\begin{tcbex}
+    The monoidal category $(\mathbf{Vect}_\Bbbk, \tensor, \Bbbk)$ is equipped with a canonical symmetry defined by 
+    \begin{align*}
+        \sigma \colon V \tensor W & \to W \tensor V \\ v \tensor w & \mapsto w \tensor v
+    \end{align*}
+\end{tcbex}
+
+\begin{tcbex}[Free symmetric monoidal category on a single object]
+    We define the \emph{symmetric monoidal category} $\mathbf{Sym}$ by considering 
+    \begin{itemize}
+        \item the sets of natural numbers $[n] = {0 ,\dots, n-1}$ as objects. We also define $[0] = \varnothing$.
+        \item the elements of the symmetric group $\text{Sym}(n)$ as morphism $\Hom([n], [n])$. When $[n] \neq [m]$, we have $\Hom([m],[n]) = \varnothing$.
+    \end{itemize}
+    The monoidal operation $+$ is defined by juxtapposition\footnotemark, with the empty set $\varnothing = [0]$ as the unit object. The symmetric structure is defined by interchanging factors (we define the \emph{twist} from $[m]+[n]$ to $[n]+[m]$ by the association $\{0_m, \dots, (m-1)_m, 0_n, \dots,  (n-1)_n\} \mapsto \{0_n, \dots, (n-1)_n, 0_m, \dots, (m-1)_m\}$).
+\end{tcbex}
+\footnotetext{We can see an explicit definition of such operation in \ref{dfn:ordinal sum}, for the case of $\Delta$}
+
+\begin{tcbex}[Free braided monoidal category on a single object]
+    Similarly to the previous case, we define the \emph{braided monoidal category} $(\mathbf{Braid}, +, [0])$ by taking the braid groups $\text{Braid}(n)$ as morphisms.
+\end{tcbex}
+
+It is important to understand that being a symmetric monoidal category involves defining a strucutre, not merely posssessing a property. This distinction is clearly shown by the following example.
+\begin{tcbex}[A category with more than one symmetric structure]
+    Let $\mathbf{grVect}_\Bbbk$ be the category of \emph{graded vector spaces} (i.e. direct sums of vector spaces $V = \bigoplus_{n \in \mathbb{Z}} V_n$ together with linear maps $f = \bigoplus_{n \in \mathbb{Z}}f_n$ respecting the grading)\footnotemark. The monoidal structure defined for $\mathbf{Vect}$ restricts to the graded setting and defines the monoidal category $(\mathbf{grVect}_\Bbbk, \tensor, \Bbbk)$. 
+
+    In this setting we have a canonical symmetry $v \tensor w \mapsto w \tensor v$, but we can also define a different isomorphism, known as the \emph{Koszul's sign change}
+    \begin{align*}
+        \kappa \colon V \tensor W & \to W \tensor V \\
+        v \tensor w & \mapsto (-1)^{\mathrm{deg}(v)\mathrm{deg}(w)} w \tensor v
+    \end{align*}
+    Both $(\mathbf{grVect}_\Bbbk, \tensor, \Bbbk, \sigma)$ and $(\mathbf{grVect}_\Bbbk, \tensor, \Bbbk, \kappa)$ are symmetric monoidal categories, yet they are distinct and carry different internal structures.
+\end{tcbex}
+\footnotetext{What we are describing are actually $\mathbb{Z}$-graded vector spaces. In general, we can define $G$-graded vector spaces as $V = \bigoplus_{g \in G} V_g$ for any group $G$.}
 
 \begin{tcbdfn}[Braided monoidal functors]
     Let $(\cat{C}, \sq, I, \beta)$ and $(\cat{D}, \varsq, J, \gamma)$ be two braided monoidal categories. A monoidal functor $(F, \varphi, \varepsilon)$ from $\cat{C}$ to $\cat{D}$ is a \emph{braided monoidal functor}\index{braided monoidal category!braided monoidal functor} if the diagram
