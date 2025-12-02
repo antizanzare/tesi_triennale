@@ -280,17 +280,17 @@ Essentially, what follows is that from now on we can assume, without loss of gen
     \]
 \end{tcbdfn}
 
-The definition implies compatibility with the unital structure:
+The definition implies compatibility with the unital structure. For a proof of the following result we refer to [kock]. \todo{cite:cocco}
 \begin{tcbprp}
     Let $(\cat{C}, \sq, I, \beta)$ be a braided monoidal category. Then the following diagrams commute for every $A \in \obj{\cat{C}}$.
     \[
     \begin{tikzcd}
-        A \sq I \arrow[rr, "\beta_{A,I}"] \arrow[dr, "r_A"] && I \sq A \arrow[dl, "l_A"] \\
+        A \sq I \arrow[rr, "\beta_{A,I}"] \arrow[dr, "r_A", swap] && I \sq A \arrow[dl, "l_A"] \\
         & A &
     \end{tikzcd}
     \qquad
     \begin{tikzcd}
-        I \sq A \arrow[rr, "\beta_{I,A}"] \arrow[dr, "l_A"] && A \sq I \arrow[dl, "r_A"] \\
+        I \sq A \arrow[rr, "\beta_{I,A}"] \arrow[dr, "l_A", swap] && A \sq I \arrow[dl, "r_A"] \\
         & A &
     \end{tikzcd}
     \]
@@ -299,7 +299,7 @@ The definition implies compatibility with the unital structure:
 Again, by \ref{thm:strictification}, when considering braided monoidal categories we can restrict to the following definition.
 
 \begin{tcbdfn}[(Semi)strict braided monoidal categories]
-A (semi)strict \emph{braided monoidal category}\index{braided monoidal category!semistrict braided monoidal category} is a (strict) monoidal category $(\cat{C}, \sq, I)$ equipped with a natural isomorphism
+A semistrict \emph{braided monoidal category}\index{braided monoidal category!semistrict braided monoidal category} is a strict monoidal category $(\cat{C}, \sq, I)$ equipped with a natural isomorphism
 \[
 \beta_{A,B} \colon A \sq B \to B \sq A
 \]
@@ -322,7 +322,7 @@ for every $A, B \in \obj{\cat{C}}$, called the \emph{braiding}, such that the fo
 \end{remark}
 
 \begin{tcbdfn}[Symmetric monoidal categories]
-    A \emph{symmetric monoidal category}\index{symmetric monoidal category} is a braided monoidal category $(\cat{C}, \sq, I, \beta)$ where the braiding $\beta$ is symmetric, that is if
+    A \emph{symmetric monoidal category}\index{symmetric monoidal category} is a braided monoidal category $(\cat{C}, \sq, I, \beta)$ where the braiding $\beta$ is symmetric, that is
     \[\beta_{B,A} \circ \beta_{A,B} = \id_{A \sq B}\]
     for every $A, B \in \obj{\cat{C}}$.
 \end{tcbdfn}
@@ -347,10 +347,10 @@ Let us show some example of symmetric monoidal categories.
 \footnotetext{We can see an explicit definition of such operation in \ref{dfn:ordinal sum}, for the case of $\Delta$}
 
 \begin{tcbex}[Free braided monoidal category on a single object]
-    Similarly to the previous case, we define the \emph{braided monoidal category} $(\mathbf{Braid}, +, [0])$ by taking the braid groups $\text{Braid}(n)$ as morphisms.
+    Similarly to the previous case, we define the \emph{braided monoidal category} $(\mathbf{Braid}, +, [0])$ by taking the Artin braid groups $\text{Braid}(n)$ as morphisms.
 \end{tcbex}
 
-It is important to understand that being a symmetric monoidal category involves defining a strucutre, not merely posssessing a property. This distinction is clearly shown by the following example.
+It is important to understand that being a symmetric monoidal category involves defining a structure, not merely posssessing a property. This distinction is clearly shown by the following example.
 \begin{tcbex}[A category with more than one symmetric structure]
     Let $\mathbf{grVect}_\Bbbk$ be the category of \emph{graded vector spaces} (i.e. direct sums of vector spaces $V = \bigoplus_{n \in \mathbb{Z}} V_n$ together with linear maps $f = \bigoplus_{n \in \mathbb{Z}}f_n$ respecting the grading)\footnotemark. The monoidal structure defined for $\mathbf{Vect}$ restricts to the graded setting and defines the monoidal category $(\mathbf{grVect}_\Bbbk, \tensor, \Bbbk)$. 
 
