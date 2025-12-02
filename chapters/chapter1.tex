@@ -41,7 +41,7 @@ We begin by recalling some useful notions from category theory, which we will en
 \footnotetext{We will hence equivalentely refer to a monoidal category as $(\cat{C}, \sq, I, \alpha, l, r)$}
 \begin{figure}
  \centering
- \begin{tikzcd}[column sep=-2.5em, row sep=5em]
+ \begin{tikzcd}[column sep=-2.75em, row sep=5em]
   &&(A \sq B) \sq (C \sq D) \arrow[rrd, "\alpha_{A, B, C \sq D}"] && \\
   ((A \sq B) \sq C) \sq D \arrow[rru, "\alpha_{A \sq B, C, D}"] \arrow[rdd, "\alpha_{A,B,C} \sq \id_D",swap] &&&& A \sq (B \sq (C \sq D)) \\
   &&&& \\
@@ -85,7 +85,7 @@ From now on, when considering a weak monoidal category $(\cat{C}, \sq, I, \alpha
   \end{tikzcd}
  \]
  defines a product for $1$ and $A$. The uniqueness of the product provides an isomorphism $1 \times A \iso A$ and, similarly, $A \times 1 \iso A$. Through such maps, we define \emph{left} and \emph{right unitors}. Using such isomorphisms one can also check that coherence holds.
- \fouche{Lo hai fatto? Cioè, sei capace di spiegare a parole perché il pentagono commuta? Come sono definiti associatore e unitore, è veramente naturale?}
+%  \fouche{Lo hai fatto? Cioè, sei capace di spiegare a parole perché il pentagono commuta? Come sono definiti associatore e unitore, è veramente naturale?}
 \end{proof}
 We call this structure a \emph{cartesian} monoidal category. The dual statement also holds.
 \begin{tcbprp}\label{prp:cocartesian-monoidal}
@@ -214,7 +214,7 @@ The composition of two (lax, oplax, strong, strict) monoidal functors is again a
 \end{tcbthm}
 Essentially, what follows is that from now on we can assume, without loss of generality, that monoidal categories \emph{are} strict. This is possible because the equivalence provided by the above theorem ensures that all coherence diagrams commute up to a unique canonical isomorphism, as long as we do not require functors between such categories to be strict. To do so, from now on, when considering the functor category $\mathbf{MonCat}$, we are referring to $\mathbf{MonCat}_{\textup{strong}}$.
 
-\todo[inline]{idee: inserire esempio costruzione tensore n esimo. inserire esempio strictificazione di Vect}
+% \todo[inline]{idee: inserire esempio costruzione tensore n esimo. inserire esempio strictificazione di Vect}
 
 % \begin{tcbex}
 %     Consider the (weak) monoidal category $(\mathbf{Vect}_\Bbbk, \tensor, \Bbbk)$. By taking 
@@ -305,12 +305,12 @@ Again, by \ref{thm:strictification}, when considering braided monoidal categorie
  \]
  for every $A, B \in \obj{\cat{C}}$, called the \emph{braiding}, such that the following diagrams commute
  \[
-  \begin{tikzcd}[column sep=0em]
+  \begin{tikzcd}[column sep=-.5em]
    A \sq B \sq C \arrow[rr, "\beta_{A, B \sq C}"] \arrow[dr, "\beta_{A, B} \sq \id_C", swap] & & B \sq C \sq A \\
    & B \sq A \sq C \arrow[ur, "\id_B \sq \beta_{A, C}", swap] &
   \end{tikzcd}
   \qquad
-  \begin{tikzcd}[column sep=0em]
+  \begin{tikzcd}[column sep=-.5em]
    A \sq B \sq C \arrow[rr, "\beta_{A \sq B, C}"] \arrow[dr, "\id_A \sq \beta_{B, C}", swap] && C \sq A \sq B \\
    & A \sq C \sq B \arrow[ur, "\beta_{A, C} \sq \id_A", swap] &
   \end{tikzcd}

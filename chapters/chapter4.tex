@@ -30,6 +30,7 @@ Through the chapter, we let $\Bbbk$ denote a field.
    \Bbbk \tensor A \arrow[ru, "\eta \tensor \id_A"] \arrow[rr, "\sim", swap]& & A & & A \tensor \Bbbk \arrow[lu, "\id_A \tensor \eta", swap] \arrow[ll,"\sim"]
   \end{tikzcd}
  \]
+ Note that, in the above diagram, the maps $\Bbbk \tensor A \to A$ and $A \tensor \Bbbk \to A$ represent the canonical scalar multiplication.
  We call $\mu$ the \emph{multiplication} and $\eta$ the \emph{unit map}.
 \end{tcbdfn}
 
@@ -924,7 +925,7 @@ We now prove the counit axioms:
   \draw[fill=black] (0,0) circle (3pt);
   \draw[fill=black] (1,1) circle (3pt);
  \end{tikzpicture}
- \quad\overset{unit}{=}\quad
+ \quad\overset{\text{unit}}{=}\quad
  \begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
   \draw[rounded corners=0.4cm] (2,-1) -- (0,-1) -- (0,0);
   \draw[rounded corners=0.4cm] (1,1) -- (0,1) -- (0,0);
@@ -957,7 +958,7 @@ We now prove the counit axioms:
   \draw[fill=black] (0,0) circle (3pt);
   \draw[fill=black] (1,-1) circle (3pt);
  \end{tikzpicture}
- \quad\overset{unit}{=}\quad
+ \quad\overset{\text{unit}}{=}\quad
  \begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
   \draw[rounded corners=0.4cm] (2,1) -- (0,1) -- (0,0);
   \draw[rounded corners=0.4cm] (1,-1) -- (0,-1) -- (0,0);
@@ -1009,7 +1010,7 @@ Lastly, we show that the Frobenius relation is satisfied.
   \draw[fill=white] (1,1) circle (3pt);
   \draw[fill=white] (-.5,3) circle (3pt);
  \end{tikzpicture}
- \quad\overset{ass.}{=}\quad
+ \quad\overset{\text{ass.}}{=}\:
  \begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
   \draw[rounded corners=0.4cm] (1,1) -- (1,0) -- (0,0);
   \draw[rounded corners=0.4cm] (1,1) -- (1,2) -- (0,2);
@@ -1022,7 +1023,7 @@ Lastly, we show that the Frobenius relation is satisfied.
   \draw[fill=white] (-.5,3) circle (3pt);
   \draw[fill=white] (2,0) circle (3pt);
  \end{tikzpicture}
- \quad=\quad
+ \quad=\:
  \begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
   \draw[rounded corners=0.4cm] (0,2) -- (0,1) -- (.5,1);
   \draw[rounded corners=0.4cm] (0,2) -- (0,3) -- (1.5,3);
@@ -1058,7 +1059,7 @@ Lastly, we show that the Frobenius relation is satisfied.
   \draw[fill=white] (1,-1) circle (3pt);
   \draw[fill=white] (-.5,-3) circle (3pt);
  \end{tikzpicture}
- \quad\overset{ass.}{=}\quad
+ \quad\overset{\text{ass.}}{=}\:
  \begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
   \draw[rounded corners=0.4cm] (1,-1) -- (1,0) -- (0,0);
   \draw[rounded corners=0.4cm] (1,-1) -- (1,-2) -- (0,-2);
@@ -1071,7 +1072,7 @@ Lastly, we show that the Frobenius relation is satisfied.
   \draw[fill=white] (-.5,-3) circle (3pt);
   \draw[fill=white] (2,0) circle (3pt);
  \end{tikzpicture}
- \quad=\quad
+ \quad=\:
  \begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
   \draw[rounded corners=0.4cm] (0,-2) -- (0,-1) -- (.5,-1);
   \draw[rounded corners=0.4cm] (0,-2) -- (0,-3) -- (1.5,-3);
@@ -1100,7 +1101,7 @@ To simplify some of the next drawings, we notice that the relation between $\gam
   \draw[rounded corners=0.4cm] (1,-1) -- (0,-1) -- (0,0);
   \draw[fill=white] (0,0) circle (3pt);
  \end{tikzpicture}
- \quad\text{and}\quad
+ \qquad\text{and}\qquad
  \begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
   \draw[rounded corners=0.4cm] (1,1) -- (0,1) -- (0,0);
   \draw[rounded corners=0.4cm] (1,-1) -- (0,-1) -- (0,0);
@@ -1123,8 +1124,7 @@ To simplify some of the next drawings, we notice that the relation between $\gam
  \end{tikzpicture}
 \]
 (The first follows from the definition of comultiplication and unit axioms. The second from the counit axiom.)
-\todo[inline]{show??}
-
+\par
 Suppose there exists another comultiplication $\omega \colon A \to A \tensor A$, with $\varepsilon$ as counit and satisfying the Frobenius relation. We distinguish it from $\delta$ by representing it with a black square.
 
 \[
@@ -1331,7 +1331,7 @@ such that the following three relations are satisfied.
   \draw[fill=white] (0,2) circle (3pt);
   \draw[fill=black] (-1,0) circle (3pt);
  \end{tikzpicture}
- \hspace{3em}
+ \hspace{2.25em}
  \text{(Frobenius relation)}
 \]
 \[
@@ -1534,7 +1534,7 @@ proving the non-degeneracy of $\beta \colon A \tensor A \to \Bbbk$.
   \draw[fill=black] (1,0) circle (3pt);
   \draw[fill=black] (2,-1) circle (3pt);
  \end{tikzpicture}
- \quad\overset{F}{=}\quad
+ \quad\overset{\text{F}}{=}\quad
  \begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline,yshift=-0.25cm]
   \draw[rounded corners=0.4cm] (0,2) -- (0,1) -- (.5,1);
   \draw[rounded corners=0.4cm] (0,2) -- (0,3) -- (2,3);
@@ -1582,7 +1582,7 @@ Through this equivalent representation of $\mu$, we are now able to prove associ
   \draw[fill=white] (-1,1) circle (3pt);
   \draw[fill=white] (1,-1) circle (3pt);
  \end{tikzpicture}
- \quad\overset{F}{=}\quad
+ \quad\overset{\text{F}}{=}\quad
  \begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
   \draw (-1.5,1)--(-.5,1);
   \draw[rounded corners=0.4cm] (0,2) -- (-.5,2) -- (-.5,1);

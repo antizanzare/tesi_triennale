@@ -84,22 +84,22 @@ In the case of 2-dimensional bordisms, for example, the identity over the disjoi
    \pic[tqft cap, rotate=90, draw, at={(0,0)},
     every outgoing lower boundary component/.style={draw},  every incoming lower boundary component/.style={dashed, draw}
    ];
-   \pic[tqft pair of pants, rotate=90, draw, at={(7,0)},
+   \pic[tqft pair of pants, rotate=90, draw, at={(6.75,0)},
     every outgoing lower boundary component/.style={draw},  every incoming lower boundary component/.style={dashed, draw}
    ];
-   \pic[tqft cup, rotate=90, draw, at={(5.9,0)},
+   \pic[tqft cup, rotate=90, draw, at={(5.65,0)},
     every outgoing lower boundary component/.style={draw},  every incoming lower boundary component/.style={dashed, draw}
    ];
-   \pic[tqft reverse pair of pants, rotate=90, draw, at={(3,-1)},
+   \pic[tqft reverse pair of pants, rotate=90, draw, at={(2.75,-1)},
     every outgoing lower boundary component/.style={draw},  every incoming lower boundary component/.style={dashed, draw}
    ];
-   \pic[tqft cylinder to prior, rotate=90, draw, at={(10,.5)},
+   \pic[tqft cylinder to prior, rotate=90, draw, at={(9.75,.5)},
     every outgoing lower boundary component/.style={draw},  every incoming lower boundary component/.style={dashed, draw}
    ];
-   \pic[tqft cylinder to next, rotate=90, draw, at={(10,-0.5)},
+   \pic[tqft cylinder to next, rotate=90, draw, at={(9.75,-0.5)},
     every outgoing lower boundary component/.style={draw},  every incoming lower boundary component/.style={dashed, draw}
    ];
-   \pic[tqft cylinder, rotate=90, draw, at={(13,0)},
+   \pic[tqft cylinder, rotate=90, draw, at={(12.75,0)},
     every outgoing lower boundary component/.style={draw},  every incoming lower boundary component/.style={dashed, draw}
    ];
   \end{tikzpicture}
@@ -144,8 +144,8 @@ We now recall the classical classification of surfaces without boundary.
 \par
 \emph{Two connected compact oriented surfaces without boundary are diffeomorphic if and only if they have the same genus (or equivalentely the same Euler characteristic).}
 \par
-Since bordisms are surfaces \emph{with} boundary we require an adapted version of the result.
-\begin{tcblemma}[Topological calssification of surfaces with boundary]
+Since bordisms are surfaces \emph{with} boundary we need an adapted version of the result.
+\begin{tcblemma}[Topological classification of surfaces with boundary]
  \label{lem:classification}
  Two connected compact oriented surfaces with oriented boundary are diffeomorphic if and only if they have the same genus (or equivalentely the same Euler characteristic), the same number of in-boundaries and the same number of out-boundaries.
 \end{tcblemma}
@@ -222,6 +222,7 @@ We can then decompose it to obtain its normal form as:
   \pic[tqft cylinder to next, draw, name=b6, bottom color=ibmBlue, top color=white, fill opacity=0.5, anchor=outgoing boundary, at=(o3-incoming boundary 1), every incoming boundary component/.style={draw, fill=ibmBlue, fill opacity=0.7}];
  \end{tikzpicture}
 \end{figure}
+The above definition leads to the following statement.
 %bottom color=gray, top color=white, fill opacity=0.5
 \begin{tcblemma}
  \label{lem:connected-decomposition}
@@ -604,7 +605,7 @@ Since the bordisms on both side of each relation have genus 0 and equal number o
 \end{dfnx*}
 
 \begin{dfnx*}[Frobenius relation] \label{rel:frobenius}
- We composing a pair of pants and a pair of copants, the following equivalences hold.
+ When composing a pair of pants and a pair of copants, the following equivalences hold.
  \[
   \begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
    \pic[tqft pair of pants, name=a, draw, anchor=outgoing boundary 1,
@@ -1153,7 +1154,7 @@ Through \hyperlink{rel:comm}{cocommutativity} and the \hyperlink{rel:frobenius}{
   \pic[tqft cylinder to prior, draw, offset=-.75, anchor=outgoing boundary, at=(a-incoming boundary 2), every incoming boundary component/.style={draw, fill=gray, fill opacity=0.7}];
   \pic[tqft cylinder to next, draw, offset=.75, anchor=incoming boundary, at=(b-outgoing boundary 2), every lower boundary component/.style={dashed, draw}];
  \end{tikzpicture}
- \, \overset{cocomm.}{=} \,
+ \, \overset{\text{cocomm.}}{=} \,
  \begin{tikzpicture}[every tqft/.style={transform shape}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
   \pic[tqft reverse pair of pants, draw, name=a, anchor=incoming boundary 2, every lower boundary component/.style={dashed, draw}, bottom color=gray, top color=white, fill opacity=0.5];
   \pic[tqft cylinder to prior, offset=-1, draw, name=d, anchor=outgoing boundary, at=(a-incoming boundary 1), every lower boundary component/.style={dashed, draw}, bottom color=gray, top color=white, fill opacity=0.5];
@@ -1165,7 +1166,7 @@ Through \hyperlink{rel:comm}{cocommutativity} and the \hyperlink{rel:frobenius}{
   \pic[tqft cylinder to next, offset=.6, dashed, draw, anchor=outgoing boundary, at=(f-incoming boundary), every lower boundary component/.style={dashed, draw}];
   \pic[tqft cylinder, dashed, draw, anchor=incoming boundary, at=(g-outgoing boundary), every lower boundary component/.style={dashed, draw}];
  \end{tikzpicture}
- \, \overset{nat.}{=} \,
+ \, \overset{\text{nat.}}{=} \,
  \begin{tikzpicture}[every tqft/.style={transform shape}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
   \pic[tqft reverse pair of pants, name=a, draw, anchor=incoming boundary 2, every lower boundary component/.style={dashed, draw}, bottom color=gray, top color=white, fill opacity=0.5];
   \pic[tqft cylinder to prior, name=b, draw, anchor=outgoing boundary, at=(a-incoming boundary 1), every lower boundary component/.style={dashed, draw}, bottom color=gray, top color=white, fill opacity=0.5];
@@ -1174,17 +1175,17 @@ Through \hyperlink{rel:comm}{cocommutativity} and the \hyperlink{rel:frobenius}{
   \pic[tqft cylinder to next, draw, anchor=outgoing boundary, at=(c-incoming boundary), every incoming boundary component/.style={draw, fill=gray, fill opacity=0.7}, bottom color=gray, top color=white, fill opacity=0.5, offset=1];
   \pic[tqft cylinder to prior, dashed, draw, anchor=incoming boundary, at=(c-outgoing boundary 2), every lower boundary component/.style={dashed, draw}];
  \end{tikzpicture}
- \, \overset{F}{=}
+ \, \overset{\text{F}}{=}
 \]
 \[
- \overset{F}{=} \,
+ \overset{\text{F}}{=} \,
  \begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
   \pic[tqft pair of pants, name=a, draw ,anchor=incoming boundary, every lower boundary component/.style={dashed, draw}];
   \pic[tqft reverse pair of pants, name=b, draw, anchor=outgoing boundary, at=(a-incoming boundary), every lower boundary component/.style={dashed, draw}];
   \pic[tqft cylinder to prior, offset=-1, draw, anchor=outgoing boundary, at=(b-incoming boundary 1), every incoming boundary component/.style={draw, fill=gray, fill opacity=0.7}];
   \pic[tqft cylinder to next, offset=1, draw, anchor=outgoing boundary, at=(b-incoming boundary 2), every incoming boundary component/.style={draw, fill=gray, fill opacity=0.7}];
  \end{tikzpicture}
- \, \overset{cocomm.}{=} \,
+ \, \overset{\text{cocomm.}}{=} \,
  \begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
   \pic[tqft pair of pants, name=a, draw ,anchor=incoming boundary, every lower boundary component/.style={dashed, draw}];
   \pic[tqft reverse pair of pants, name=b, draw, anchor=outgoing boundary, at=(a-incoming boundary), every incoming boundary component/.style={draw, fill=gray, fill opacity=0.7}];
@@ -1282,7 +1283,7 @@ By the preceding argument for connected surfaces we can now reduce each connecte
    % anchor=incoming boundary, at=(c-outgoing boundary), 
    % every lower boundary component/.style={dashed, draw}];
   \end{tikzpicture}
-  \, \overset{counit}{=} \,
+  \, \overset{\text{counit}}{=} \,
   \begin{tikzpicture}[every tqft/.style={transform shape}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
    \pic[tqft pair of pants, draw, name=a,
     every incoming lower boundary component/.style={draw},
@@ -1322,10 +1323,10 @@ By the preceding argument for connected surfaces we can now reduce each connecte
     anchor=incoming boundary, at=(b-outgoing boundary 2),
     every lower boundary component/.style={dashed, draw}];
   \end{tikzpicture}
-  \, \overset{F}{=}
+  \, \overset{\text{F}}{=}
  \]
  \[
-  \overset{F}{=} \,
+  \overset{\text{F}}{=} \,
   \begin{tikzpicture}[every tqft/.style={transform shape}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
    \pic[tqft pair of pants, draw, name=a, anchor=outgoing boundary 1,
     every incoming lower boundary component/.style={draw},
@@ -1371,7 +1372,7 @@ By the preceding argument for connected surfaces we can now reduce each connecte
    \pic[tqft cap, draw, anchor=outgoing boundary, at=(d-incoming boundary),
     bottom color=gray, top color=white, fill opacity=0.5];
   \end{tikzpicture}
-  \, \overset{F}{=} \,
+  \, \overset{\text{F}}{=} \,
   \begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
    \pic[tqft pair of pants, draw, name=a, anchor=outgoing boundary 1,
     every lower boundary component/.style={dashed, draw}];
@@ -1393,7 +1394,7 @@ By the preceding argument for connected surfaces we can now reduce each connecte
     anchor=incoming boundary, at=(d-outgoing boundary),
     every lower boundary component/.style={dashed, draw}];
   \end{tikzpicture}
-  \, \overset{F}{=} \,
+  \, \overset{\text{F}}{=} \,
   \begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
    \pic[tqft pair of pants, draw, name=a, anchor=outgoing boundary 1,
     every lower boundary component/.style={dashed, draw}];
@@ -1413,7 +1414,7 @@ By the preceding argument for connected surfaces we can now reduce each connecte
   \, =
  \]
  \[
-  \overset{counit}{=} \,
+  \overset{\text{counit}}{=} \,
   \begin{tikzpicture}[every tqft/.style={transform shape}, tqft/view from=incoming, tqft/boundary separation=1.5cm, rotate=-90, scale=0.4, baseline=-2pt]
    \pic[tqft pair of pants, draw, name=a,
     every incoming lower boundary component/.style={draw},
