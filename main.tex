@@ -52,7 +52,7 @@
 %\usepackage{ebproof} % inference trees
 \usepackage{epigraph}  % quotations at the start (or end) of a chapter
 \usepackage{todonotes}
-\newcommand{\fouche}[1]{\todo[inline, caption=0,color=red!10,bordercolor=red!10]{\textbf{fouche said}: #1}}
+\newcommand{\fouche}[1]{\relax}%{\todo[inline, caption=0,color=red!10,bordercolor=red!10]{\textbf{fouche said}: #1}}
 \setuptodonotes{color=blue!30}
 \usepackage{wasysym} % some symbols such as \sqsubset, \sqsupset, \lightning , \paragraph, notes, polygons
 %\usepackage{xfrac} % split levels fractions
@@ -78,6 +78,10 @@
 
 %tikz
 \usepackage{tikz}
+% \usepackage[active,tightpage]{preview}
+% \PreviewEnvironment{tikzpicture}
+% \usetikzlibrary{external}
+% \tikzexternalize[prefix=tikz-cache/]
 \usetikzlibrary{babel}
 \usetikzlibrary{cd} % tikz-cd
 \usetikzlibrary{graphs} % for simple graphs
