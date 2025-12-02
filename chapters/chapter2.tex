@@ -406,8 +406,8 @@ By taking the pushout of the two diffeomorphisms in the category of continuous m
 Through such homeomorphism we can define a new smooth structure on $M'N'$, which by the previous theorem \ref{th:collar_diffeo} is diffeomorphic to the one induced by the gluing.
 \end{proof}
 
-\begin{tcbdfn}
-The category of oriented n-dimensional bordisms $\bord{n}$ \index{$\bord{n}$, the category of oriented $n$-bordisms} is defined as follows.
+\begin{tcbdfn}[A category of oriented bordisms]
+The category of oriented n-dimensional bordisms $\bord{n}$ \index{\bord{n}, the category of oriented $n$-bordisms} is defined as follows.
 \begin{itemize}
   \item The objects are closed oriented $(n-1)$-dimensional manifolds
   \item For any $\Sigma_0, \Sigma_1 \in \obj{\bord{n}}$, morphisms are the equivalence classes of bordisms $M \colon \Sigma_0 \to \Sigma_1$
@@ -534,8 +534,8 @@ Axioms \ref{tqft:a4} and \ref{tqft:a5} preserve the monoidal structure. To get a
 \end{enumerate}  
 \end{remark}
 
-\begin{dfnx*}[A brief digression on dualizability]
-  We now leave some space to discuss an important property regarding TQFTs, starting with what is known as the \emph{snake decomposition of a cylinder}.
+\begin{dfnx*}[A brief digression on dualizability\index{dualizability}]
+  We now leave some space to discuss an important property regarding TQFTs, starting with what is known as the \emph{snake decomposition of a cylinder}\index{snake decomposition}.
 
   Take any closed $(n-1)$-dimensional manifold $\Sigma$ and consider the correspondig bordism $\Sigma \times I$. There are various ways in which we can decompose it. We can just cut it in the center
   \[
@@ -691,12 +691,12 @@ We now give a couple examples of some simple TQFTs.
   We see how we have defined a mapping $Z$ that assigns to each closed two-dimensional surface $\Sigma$ a linear map $Z(\Sigma) \colon \Bbbk \to \Bbbk$ that evaluated at $1_\Bbbk$ returns $2^g$, where $g$ is the genus of the surface $\Sigma$.
 \end{tcbex}
 
-\subsection{A category of $n$-TQFTs}
+\subsection{A category of $n$TQFTs}
 
-Remembering how we ended our first chapter and having just seen how $n$-TQFT correspond to symmetric monoidal functors from $(\bord{n}, \disj, \varnothing, T)$ to $(\mathbf{Vect}_\Bbbk, \tensor, \Bbbk, \sigma)$, we can define a category of $n$-dimensional topological quantum field theories as follows.
+Remembering how we ended our first chapter and having just seen how $n$TQFT correspond to symmetric monoidal functors from $(\bord{n}, \disj, \varnothing, T)$ to $(\mathbf{Vect}_\Bbbk, \tensor, \Bbbk, \sigma)$, we can define a category of $n$-dimensional topological quantum field theories as follows.
 
 \begin{tcbdfn}
-  The category of $n$-dimensional TQFTs is the functor category
+  The category of $n$-dimensional TQFTs\index{$n\mathbf{TQFT}_\Bbbk$, the category of $n$-dimensional TQFTs} is the functor category
   \[
   \mathbf{nTQFT}_\Bbbk \coloneq \mathbf{SymMonCat}(\bord{n},\mathbf{Vect}_\Bbbk)
   \]

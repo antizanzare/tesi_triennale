@@ -73,7 +73,7 @@ The relations in $\bord{2}$ then become relations between these $\Bbbk$-linear m
 By ``slimming'' all the relations in $\bord{2}$, it should becomes obvious there exists some kind of relation between topological quantum field theories and the Frobenius structure we studied in the previous chapter. 
 These considerations lead us to the main theorem regarding the classification of 2-dimensional TQFTs.
 \begin{tcbthm} \label{thm:equiv}
-    There is a canonical equivalence of categories between 2-dimensional TQFTs taking values in $\mathbf{Vect}_\Bbbk$ and commutative Frobenius $\Bbbk$-algebras.
+    There is a canonical equivalence of categories between 2-dimensional TQFTs taking values in $\mathbf{Vect}_\Bbbk$ and commutative Frobenius $\Bbbk$-algebras.\index{$\mathbf{2TQFT}_\Bbbk$, a category of two dimensional TQFTs}\index{$\mathbf{cFAlg}_\Bbbk$, a category of commutative Frobenius algebras}
     \[
     \mathbf{2TQFT}_\Bbbk \iso \mathbf{cFAlg}_\Bbbk
     \]
@@ -339,7 +339,7 @@ By applying the same argument backwards we reach the converse implication, thus 
 
 \begin{tcbdfn}[Internal monoids]
     \label{dfn:internal-monoid}
-    Let $(\cat{C}, \sq, I)$ be a monoidal category. An \emph{internal comonoid} in $\cat{C}$ is an object $M$ equipped with two morphisms
+    Let $(\cat{C}, \sq, I)$ be a monoidal category. An \emph{internal comonoid}\index{internal monoid} in $\cat{C}$ is an object $M$ equipped with two morphisms
     \[
     \mu \colon M \sq M \to M \quad\text{(multiplication)} 
     \hspace{3em}
@@ -390,7 +390,7 @@ By reversing the arrows, we also give the definition of \emph{internal comonoid}
 
 \begin{tcbdfn}[Internal comonoids]
     \label{dfn:internal-comonoid}
-    Let $(\cat{C}, \sq, I)$ be a monoidal category. An \emph{internal comonoid} in $\cat{C}$ is an object $M$ equipped with two morphisms
+    Let $(\cat{C}, \sq, I)$ be a monoidal category. An \emph{internal comonoid}\index{internal comonoid} in $\cat{C}$ is an object $M$ equipped with two morphisms
     \[
     \delta \colon M \to M \sq M \quad\text{(comultiplication)} 
     \hspace{3em}
@@ -415,7 +415,7 @@ By reversing the arrows, we also give the definition of \emph{internal comonoid}
 Both these structures can be grafically represented, similarly to what we did in the case of $\Bbbk$-Frobenius algebras.
 
 \begin{dfnx*}[Internal monoids]
-Let $(\cat{C}, \sq, I)$ be a monoidal category. An \emph{internal monoid} in $\cat{C}$ is an object $M$ equipped with two morphisms
+Let $(\cat{C}, \sq, I)$ be a monoidal category. An \emph{internal monoid}\index{internal monoid!in terms of wires} in $\cat{C}$ is an object $M$ equipped with two morphisms
     \[ 
     \begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
     \draw[rounded corners=0.4cm] (-1,1) -- (0,1) -- (0,0);
@@ -482,7 +482,7 @@ such that the following relations hold
 \end{dfnx*}
 
 \begin{dfnx*}[Internal comonoids]
-Let $(\cat{C}, \sq, I)$ be a monoidal category. An \emph{internal comonoid} in $\cat{C}$ is an object $M$ equipped with two morphisms
+Let $(\cat{C}, \sq, I)$ be a monoidal category. An \emph{internal comonoid}\index{internal comonoid!in terms of wires} in $\cat{C}$ is an object $M$ equipped with two morphisms
     \[ 
     \begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
     \draw[rounded corners=0.4cm] (1,1) -- (0,1) -- (0,0);
@@ -591,7 +591,7 @@ Let $(\cat{C}, \sq, I)$ be a monoidal category. An \emph{homomorphisms of intern
 \]
 \end{tcbdfn}
 
-It is rather easy to check how composition of two morphisms of internal monoids (resp. comonoids) is again a morphism of internal monoids (resp. comonoids). Given a monoidal category $(\cat{C}, \sq, I)$, we can define a new category $\mathbf{Mon}(\cat{C})$ where objects are internal monoids in $\cat{C}$ and arrows are the homomorphisms between them.
+It is rather easy to check how composition of two morphisms of internal monoids (resp. comonoids) is again a morphism of internal monoids (resp. comonoids). Given a monoidal category $(\cat{C}, \sq, I)$, we can define a new category $\mathbf{Mon}(\cat{C})$\index{$\mathbf{Mon}(\cat{C})$, a category of internal monoids} where objects are internal monoids in $\cat{C}$ and arrows are the homomorphisms between them.
 
 \begin{tcblemma}\label{lem:product-of-monoids}
     Let $(\cat{C}, \sq, I, \beta)$ be a symmetric monoidal category. Then $\mathbf{Mon}(\cat{C})$ can be canonically equipped with a monoidal structure.
@@ -753,7 +753,7 @@ We hence have the associativity.
 \end{proof}
 
 \begin{tcbdfn}[Commutative internal monoids]
-Let $(\cat{C}, \sq, I, \beta)$ be a symmetric monoidal category. An internal monoid $(M, \mu, \eta)$ in $\cat{C}$ is \emph{commutative} if its multiplication is compatible with the twist map. Equivalentely we are asking for the following diagram to commute.
+Let $(\cat{C}, \sq, I, \beta)$ be a symmetric monoidal category. An internal monoid $(M, \mu, \eta)$ in $\cat{C}$ is \emph{commutative}\index{internal monoids!commutative internal monoids} if its multiplication is compatible with the twist map. Equivalentely we are asking for the following diagram to commute.
 \[
 \begin{tikzcd}
     M \sq M \arrow[rr, "\mu"] \arrow[dr, "\beta", swap] & & M \\
@@ -790,8 +790,8 @@ The proof of this statement follows by applying Definition \ref{dfn:monoidal-fun
 
 We can now construct an equivalence relation in some way analogous to our main one. This will help us generalize it later on.
 
-\begin{tcbdfn}[The simplex category]
-    The \emph{simplex category\footnotemark} $\Delta$ is the category defined by taking
+\begin{tcbdfn}[The simplex category]\label{dfn:delta-cat}
+    The \emph{simplex category\footnotemark} $\Delta$\index{simplex category} is the category defined by taking
     \begin{itemize}
         \item finite totally ordered sets $[n] \coloneq \{ 0, 1, 2, \dots, n-1 \}$ as objects
         \item order preserving maps as arrows
@@ -1126,7 +1126,7 @@ These arrows can be drawn as
 
 We can hence rewrite the above lemma in the following way:
 \begin{tcblemma}\label{lem:graphical-delta}
-The monoidal category $(\Delta, +, [0])$ is completely generated in the sense of Definition \ref{dfn:generators} by the morphisms 
+The monoidal category $(\Delta, +, [0])$ is completely generated\index{simplex category!generating set} in the sense of Definition \ref{dfn:generators} by the morphisms 
     % \[ 
     % \mu^{(0)} \colon [0] \to [1] 
     % \quad \text{and} \quad 
@@ -1330,7 +1330,7 @@ We still have not highlighted the connection between these general results and t
 \[
 \moncat(\Delta, \mathbf{Vect}_\Bbbk) \iso \mathbf{Mon}(\mathbf{Vect}_\Bbbk) = \mathbf{Alg}_\Bbbk
 \] 
-where algebras finally appear. 
+where algebras finally appear. \index{$\mathbf{Alg}_\Bbbk$, the category of $\Bbbk$-algebras}
 % Define $\Phi$.
 % We have an equivalence of categories 
 % \[
@@ -1343,7 +1343,7 @@ where algebras finally appear.
 In this case we are still considering \emph{all} algebras. To restrict to the category $\mathbf{cFAlg}_\Bbbk$ we need to define some more internal structures.
 
 \begin{tcbdfn}[Internal Frobenius objects]
-Let $(\cat{C}, \sq, I)$ be a monoidal category. An \emph{internal Frobenius object} in $\cat{C}$ is an object $M$ equipped with four morphisms
+Let $(\cat{C}, \sq, I)$ be a monoidal category. An \emph{internal Frobenius object}\index{internal Frobenius object} in $\cat{C}$ is an object $M$ equipped with four morphisms
     \[
     \mu \colon M \sq M \to M \quad\text{(multiplication)} 
     \hspace{3em}
@@ -1378,7 +1378,7 @@ such that the following diagrams commute
 
 As we did for monoids and comonoids we can give a graphical representation of these objects.
 \begin{dfnx*}[Internal Frobenius objects]
-Let $(\cat{C}, \sq, I)$ be a monoidal category. An \emph{internal Frobenius object} in $\cat{C}$ is an object $M$ equipped with four morphisms
+Let $(\cat{C}, \sq, I)$ be a monoidal category. An \emph{internal Frobenius object}\index{internal Frobenius object!in terms of wires} in $\cat{C}$ is an object $M$ equipped with four morphisms
     \[ 
     \begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
     \draw[rounded corners=0.4cm] (-1,1) -- (0,1) -- (0,0);
@@ -1500,7 +1500,7 @@ such that the following relations hold
     Let $(M, \mu, \eta, \delta, \varepsilon)$ be a Frobenius object. By proving $\mu$ and $\delta$ are associatives, we obtain an internal monoid $(M, \mu, \eta)$ and an internal comonoid $(M, \delta, \varepsilon)$. The proof of this fact is equivalent to the graphical proof of the equivalence of Frobenius algebras we gave in the previous chapter (see Proposition \ref{prp:Frobenius-equivalence}).
 \end{proof}
 
-Following this lemma, we define \emph{homomorphisms of internal Frobenius objects} to be morphisms $\varphi \colon (M, \mu, \eta, \delta, \varepsilon) \to (M', \mu', \eta', \delta', \varepsilon')$ that are homomorphisms of both the underlying monoid structure and the comonoid one. In this way, given any monoidal category $(\cat{C}, \sq, I)$, we obtain a category $\mathbf{Frob}(\cat{C})$ whose objects are internal Frobenius objects in $\cat{C}$ and arrows are the homomorphisms between them.
+Following this lemma, we define \emph{homomorphisms of internal Frobenius objects} to be morphisms $\varphi \colon (M, \mu, \eta, \delta, \varepsilon) \to (M', \mu', \eta', \delta', \varepsilon')$ that are homomorphisms of both the underlying monoid structure and the comonoid one. In this way, given any monoidal category $(\cat{C}, \sq, I)$, we obtain a category $\mathbf{Frob}(\cat{C})$\index{$\mathbf{Frob}(\cat{C})$, a category of internal Frobenius objects} whose objects are internal Frobenius objects in $\cat{C}$ and arrows are the homomorphisms between them.
 
 \begin{tcblemma}\label{lem:product-of-frobenius}
     Let $(\cat{C}, \sq, I, \beta)$ be a symmetric monoidal category. Then $\mathbf{Frob}(\cat{C})$ can be canonically equipped with a monoidal structure.
@@ -1801,10 +1801,10 @@ We this definition we are able to extend theorem \ref{thm:delta-eq} to the Frobe
 Since we are interested in symmetric monoidal categories, it makes sense to understand how the Frobenius structure interacts with the given twist.
 
 \begin{tcbdfn}[Commutative Frobenius objects]
-    An internal Frobenius object $(M, \mu, \eta, \delta, \varepsilon)$ in a symmetric monoidal category $(\cat{C}, \sq, I, \beta)$ is \emph{commutative} if the twist commutes with the multiplication $\mu$.
+    An internal Frobenius object $(M, \mu, \eta, \delta, \varepsilon)$ in a symmetric monoidal category $(\cat{C}, \sq, I, \beta)$ is \emph{commutative}\index{internal Frobenius object!commutative internal Frobenius object} if the twist commutes with the multiplication $\mu$.
 \end{tcbdfn}
 \begin{tcbdfn}[Cocommutative Frobenius objects]
-    An internal Frobenius object $(M, \mu, \eta, \delta, \varepsilon)$ in a symmetric monoidal category $(\cat{C}, \sq, I, \beta)$ is \emph{cocommutative} if the twist cocommutes with the comultiplication $\delta$.
+    An internal Frobenius object $(M, \mu, \eta, \delta, \varepsilon)$ in a symmetric monoidal category $(\cat{C}, \sq, I, \beta)$ is \emph{cocommutative}\index{internal Frobenius object!cocommutative internal Frobenius object} if the twist cocommutes with the comultiplication $\delta$.
 \end{tcbdfn}
 
 \begin{tcblemma}
@@ -1978,8 +1978,8 @@ Finally we prove the Frobenius relation holds.
 \]
 \end{proof}
 
-Having defined commutative internal Frobenius objects, we observe that they form a subcategory $\mathbf{cFrob}$.
-At this point we notice that when trying to extend the equivalence to the commutative Frobenius case, the required relations are exactly the ones we enumerated in Section \ref{sec:relations}: $\mathbf{Bord}(2)$ is the free symmetric monoidal category on a commutative Frobenius object. We therefore conclude by stating the following equivalence.
+Having defined commutative internal Frobenius objects, we observe that they form a subcategory $\mathbf{cFrob}(\cat{C})$.\index{$\mathbf{cFrob}(\cat{C})$, a category of commutative internal Frobenius objects}
+At this point we notice that when trying to extend the equivalence to the commutative Frobenius case, the required relations are exactly the ones we enumerated in Section \ref{sec:relations}: $\mathbf{Bord}(2)$\index{$\bord{2}$, the category of oriented $2$-bordisms} is the free symmetric monoidal category on a commutative Frobenius object. We therefore conclude by stating the following equivalence.
 
 \begin{tcbthm}
     Given a monoidal category $(\cat{C}, \sq, I)$ there is a canonical equivalence of categories

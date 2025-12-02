@@ -1,7 +1,7 @@
 \chapter{The two dimensional case}
 \label{chap:bord2}
 
-We now consider the category $\bord{2}$.
+We now consider the category $\bord{2}$.\index{\bord{2}, the category of oriented $2$-bordisms}
 Recall that its objects are closed oriented 1-dimensional manifolds  and its arrows are the equivalence classes of oriented 2-dimensional bordisms.
 Our goal is to describe its elementary pieces and how they interact with each other. 
 To do so, we are going to define a \emph{normal form} of such bordisms, which will facilitate their comparison.
@@ -48,11 +48,11 @@ Let $M \colon \Sigma_0 \to \Sigma_1$ be an $n$-dimensional oriented bordism. The
 \begin{tcblemma}
     Let $\Sigma_0$, $\Sigma_1$ be two closed oriented 1-dimensional manifolds. We have that $\Sigma_0$ and $\Sigma_1$ are diffeomorphic if and only if there exists an invertible morphism between them.
 \end{tcblemma}
-\begin{proof}
-    Given a diffeomorphism $f \colon \Sigma_0 \to \Sigma_1$ we can define an invertible bordism between the two through the cylinder construcion (i.e. by considering the bordism $\Sigma \times I$, for $\Sigma \iso \Sigma_0 \iso \Sigma_1$). 
-    To prove the converse, suppose there exists an invertible bordism $M \colon \Sigma_0 \to \Sigma_1$. To prove there exists a diffeomorphism between the two, it is enough to check they have the same number of connected components. We start with a simple case in which we assume $M$ to be connected
-\end{proof}
-\todo[inline]{sta proof è molto lunga, valutare se finirla o toglierla}
+% \begin{proof}
+%     Given a diffeomorphism $f \colon \Sigma_0 \to \Sigma_1$ we can define an invertible bordism between the two through the cylinder construcion (i.e. by considering the bordism $\Sigma \times I$, for $\Sigma \iso \Sigma_0 \iso \Sigma_1$). 
+%     To prove the converse, suppose there exists an invertible bordism $M \colon \Sigma_0 \to \Sigma_1$. To prove there exists a diffeomorphism between the two, it is enough to check they have the same number of connected components. We start with a simple case in which we assume $M$ to be connected
+% \end{proof}
+% \todo[inline]{sta proof è molto lunga, valutare se finirla o toglierla}
 
 Again, we recall that every object of $\bord{2}$ is diffeomorphic to a disjoint union of circles, where each components carries its own orientation (either clockwise or counter-clockwise). 
 However, given two copies of $\mathbb{S}^1$ with opposite orientations we can always define, by reflection, an orientation preserving diffeomorphism between them. This implies they belong to the same iso class.
@@ -64,7 +64,7 @@ Let $(\mathbf{n})$ denote the disjoint union of $n$ copies of $\mathbb{S}^1$. Th
 \[
 \{(\mathbf{0}), (\mathbf{1}), (\mathbf{2}), (\mathbf{3}), \dots\} = \{\varnothing, \mathbb{S}^1, \mathbb{S}^1 \disj \mathbb{S}^1, \mathbb{S}^1 \disj \mathbb{S}^1 \disj \mathbb{S}^1, \dots\} %= \{\varnothing, \Circle, \Circle \disj \Circle, \Circle \disj \Circle \disj \Circle, \dots\}
 \]
-together with all the possible morphisms between them, form a skeleton of $\bord{2}$. By abuse of notation, from now on, we we'll refer to this category as $\bord{2}$.
+together with all the possible morphisms between them, form a skeleton of $\bord{2}$\index{skeleton!skeleton of \bord{2}}. By abuse of notation, from now on, we we'll refer to this category as $\bord{2}$.
 \end{tcbdfn}
 
 \section{Generators}
@@ -72,7 +72,7 @@ We now analyze the morphisms in detail.
 
 
 \begin{tcbdfn}[Generators for a monoidal category]\label{dfn:generators}
-    A \emph{generating set} for a monoidal category $(\cat{C}, \square, I)$ is a set of arrows $S \subset \arr{\cat{C}}$ such that every arrow in $\cat{C}$ can be obtained from the ones in $S$ by composition or through the monoidal product $\square$.
+    A \emph{generating set} for a monoidal category\index{generating set} $(\cat{C}, \square, I)$ is a set of arrows $S \subset \arr{\cat{C}}$ such that every arrow in $\cat{C}$ can be obtained from the ones in $S$ by composition or through the monoidal product $\square$.
 \end{tcbdfn}
 
 In the case of 2-dimensional bordisms, for example, the identity over the disjoint union of two circles ($\id_{(\mathbf{2})}$) is not a generator, since it decomposes as the disjoint union of two identities over a circle ($\id_{(\mathbf{1})}\disj\id_{(\mathbf{1})}$). On the contrary, the twist bordism $T$ cannot be described as a disjoint union of identity boridsms. The exchange of components described by the twist makes it impossible to define a diffeomorphism to the identity on $\mathbb{S}^1 \disj \mathbb{S}^1$.
@@ -105,7 +105,7 @@ every outgoing lower boundary component/.style={draw},  every incoming lower bou
 ];
 \end{tikzpicture}
 \]
-form a generating set for the monoidal category $(\bord{2}, \disj, \varnothing)$.
+form a generating set for the monoidal category $(\bord{2}, \disj, \varnothing)$\index{generating set!generating set of \bord{2}}.
 \end{tcbthm}
 
 %The proof of this theorem relies on Morse theory. 
@@ -155,7 +155,7 @@ To keep track of such invariants we define the normal form in the following way.
 
 \begin{tcbdfn}[Normal form of connected bordisms]
     \label{dfn:normal-form}
-We define the normal form of a connected bordism $M \colon (\mathbf{m}) \to (\mathbf{n})$ with $g$ holes as the composition of
+We define the normal form of a connected bordism\index{normal form (for a connected bordism)} $M \colon (\mathbf{m}) \to (\mathbf{n})$ with $g$ holes as the composition of
 \begin{itemize}
     \item an \emph{in-part} $M_{in} \colon (\mathbf{m}) \to (\mathbf{1})$, consisting of $m-1$ copies of pair of pants $\bordpants$. If $m = 0$, the in-part consists of a single cap $\bordcap$.
     \item a \emph{topological part} $M_{mid} \colon (\mathbf{1}) \to (\mathbf{1})$, consisting of $g$ pair of copants and $g$ pair of pants, arranged together to define $g$ holes $\bordcopants \bordpants$.
@@ -306,7 +306,7 @@ On the other hand, permutation bordisms can be obtained through composition and 
 
 
 \section{Relations}\label{sec:relations}
-We descrive the interactions between the generators by giving a set of relations. 
+We descrive the interactions between the generators by giving a set of relations\index{relations in \bord{2}}. 
 Their validity follows from the classification lemma \ref{lem:classification}. 
 Since the bordisms on both side of each relation have genus 0 and equal number of in and out boundaries, they are diffeomorphic hence equal in the $\bord{2}$ category.
 
@@ -955,7 +955,7 @@ Given a pair of pants (equivalentely a pair of copants), sewing a cap (equivalen
 \]
 \end{dfnx*}
 
-To show the sufficiency of these relations we will describe a procedure that converts any connected bordism already decomposed in elementary pieces into its normal form. 
+To show the sufficiency of these relations we will describe a procedure that converts any connected bordism already decomposed in elementary pieces into its normal form.\index{relations in \bord{2}!sufficiency of relations} 
 We proceed by induction on the number of twist bordisms, starting with the base case of zero twists.
 
 Consider a decomposition of a connected surface $M$ with $m$ in-boundaries, $n$ out-boudaries and of genus $g$. Its Euler characteristic is given by

@@ -8,7 +8,7 @@ We begin by recalling the essential algebraic notions, which will be necessary t
 Through the chapter, we let $\Bbbk$ denote a field.
 
 \begin{tcbdfn}[Algebras over a field]
-    A \emph{$\Bbbk$-algebra} (i.e. an algebra over a field $\Bbbk$) is a $\Bbbk$-vector space $A$ equipped with two $\Bbbk$-linear maps 
+    A \emph{$\Bbbk$-algebra}\index{$\Bbbk$-algebra} (i.e. an algebra over a field $\Bbbk$) is a $\Bbbk$-vector space $A$ equipped with two $\Bbbk$-linear maps 
     \[ \mu \colon A \tensor A \to A \qquad \eta \colon \Bbbk \to A  \]
     such that the following diagrams commute.
 \[
@@ -63,7 +63,7 @@ Concretely, we can see that:
     \]
 \end{tcbdfn}
 
-We can then denote with $\mathbf{Alg}_\Bbbk$ the category of $\Bbbk$-algebras and $\Bbbk$-algebra homomorphisms.
+We can then denote with $\mathbf{Alg}_\Bbbk$ the category of $\Bbbk$-algebras and $\Bbbk$-algebra homomorphisms\index{$\mathbf{Alg}_\Bbbk$, the category of $\Bbbk$-algebras}.
 
 %%% eventuali def relative a spazi vettoriali
 
@@ -96,7 +96,7 @@ We can then denote with $\mathbf{Alg}_\Bbbk$ the category of $\Bbbk$-algebras an
 We are now ready to state our first definition of a Frobenius algebras.
 
 \begin{tcbdfn} \label{dfn:frobenius-algebra-a}
-    A \emph{Frobenius algebra} is a finite dimensional $\Bbbk$-algebra $A$ equipped with a linear form $\varepsilon \colon A \to \Bbbk$, called the \emph{Frobenius form}, whose kernel $\{ x \in A \mid \varepsilon(a) = 0\}$ contains no nontrivial left ideals (i.e. only contains trivial ideals).
+    A \emph{Frobenius algebra}\index{Frobenius algebra} is a finite dimensional $\Bbbk$-algebra $A$ equipped with a linear form $\varepsilon \colon A \to \Bbbk$, called the \emph{Frobenius form}, whose kernel $\{ x \in A \mid \varepsilon(a) = 0\}$ contains no nontrivial left ideals (i.e. only contains trivial ideals).
 \end{tcbdfn}
 
 Being a Frobenius algebra is a structure, not a property. That is, a given algebra can admit multiple Frobenius structures which must be specified. With an abuse of notation we will sometimes say $A$ is a Frobenius algebra; what we mean is we are assuming a Frobenius structure has been (or can be) chosen on A.
@@ -121,7 +121,7 @@ Let A be a finite dimensional $\Bbbk$-algebra. An associative pairing $A \tensor
 This directly leads to an equivalent characterization of a Frobenius algebra.
 
 \begin{tcbdfn}\label{dfn:frobenius-algebra-b}
-    A \emph{Frobenius algebra} is a finite dimensional $\Bbbk$-algebra $A$ equipped with a non-degenerate associative pairing $\beta \colon A \tensor A \to \Bbbk$, called the \emph{Frobenius pairing}.
+    A \emph{Frobenius algebra}\index{Frobenius algebra} is a finite dimensional $\Bbbk$-algebra $A$ equipped with a non-degenerate associative pairing $\beta \colon A \tensor A \to \Bbbk$, called the \emph{Frobenius pairing}.
 \end{tcbdfn}
 
 
@@ -136,13 +136,13 @@ A non-degenerate pairing $\beta \colon A \tensor A \to \Bbbk$ induces canonical 
 \end{tcbdfn}
 
 \begin{remark}
-    In these three definitions above, we required $A$ to be finite dimensional. This is actually redundant, since with an argument analogous to the one provided in \ref{prp:finite-dimensional} we can show that the existence of a non-degenerate associative pairing implies the finite-dimensionality of $A$. The existence of a copairing $\gamma$ is indeed another instance of the notion of \emph{dualizability}. 
+    In these three definitions above, we required $A$ to be finite dimensional. This is actually redundant, since with an argument analogous to the one provided in \ref{prp:finite-dimensional} we can show that the existence of a non-degenerate associative pairing implies the finite-dimensionality of $A$. The existence of a copairing $\gamma$ is indeed another instance of the notion of \emph{dualizability}\index{dualizability}. 
 \end{remark}
 
 Our discussion has so far focused on algebras. We now introduce their dual concept by reversing all the arrows.
 
 \begin{tcbdfn}[Coalgebras over a field]
-A $\Bbbk$-coalgebra (i.e. a coalgebra over a field $\Bbbk$) is a $\Bbbk$-vector space $A$ equipped with two $\Bbbk$-linear maps
+A $\Bbbk$-coalgebra\index{$\Bbbk$-coalgebra} (i.e. a coalgebra over a field $\Bbbk$) is a $\Bbbk$-vector space $A$ equipped with two $\Bbbk$-linear maps
 \[
 \delta \colon A \to A \tensor A \qquad \varepsilon \colon A \to \Bbbk
 \]
@@ -182,7 +182,7 @@ Concretely, the following diagrams are required to commute.
 We can hence state the last equivalent characterization.
 
 \begin{tcbdfn}\label{dfn:frobenius-algebra-c}
-A \emph{Frobenius algebra} is a $\Bbbk$-vector space $A$ equipped with both an algebra $(A, \mu, \eta)$ and a coalgebra $(A, \delta, \varepsilon)$ structure, such that the Frobenius relation, which corresponds to the commutativity of the diagrams below, holds.
+A \emph{Frobenius algebra}\index{Frobenius algebra} is a $\Bbbk$-vector space $A$ equipped with both an algebra $(A, \mu, \eta)$ and a coalgebra $(A, \delta, \varepsilon)$ structure, such that the Frobenius relation, which corresponds to the commutativity of the diagrams below, holds.
 \[
 \begin{tikzcd}
     A \tensor A \arrow[d,"\mu"] \arrow[r, "\delta \tensor \id_A"] & A \tensor A \tensor A \arrow[d, "\id_A \tensor \mu"] \\
@@ -202,7 +202,7 @@ Finally, we define what it means to ask a Frobenius algebra to be symmetric. To 
 
 \begin{tcbdfn}[Frobenius algebras]
     \label{dfn:Frobenius-algebra-all}
-    A \emph{Frobenius algebra} is a (finite dimensional) $\Bbbk$-algebra $A$ equippped with either:
+    A \emph{Frobenius algebra}\index{Frobenius algebra} is a (finite dimensional) $\Bbbk$-algebra $A$ equippped with either:
     \begin{enumerate}[label=(\roman*), parsep=0pt]
         \item A linear form $\varepsilon \colon A \to \Bbbk$ whose kernel contains no nontrivial (left) ideals. \par [See definition \ref{dfn:frobenius-algebra-a}]
         \item A non-degenerate associative pairing $\beta \colon A \tensor A \to \Bbbk$ (and a copairing $\gamma \colon \Bbbk\to A \tensor A$). \par [See definition \ref{dfn:frobenius-algebra-b}]
@@ -211,13 +211,13 @@ Finally, we define what it means to ask a Frobenius algebra to be symmetric. To 
 \end{tcbdfn}
 
 \begin{tcbdfn}[Commutative Frobenius algebras]
-    A Frobenius algebra $A$ is \emph{commutative} if its underlying algebra structure is commutative.
+    A Frobenius algebra $A$ is \emph{commutative}\index{Frobenius algebra!commutative Frobenius algebra} if its underlying algebra structure is commutative.
 \end{tcbdfn}
 
 For completeness, and to make sure the reader does not confuse the two structures, we define another important class of Frobenius algebras.
 
 \begin{tcbdfn}[Symmetric Frobenius algebras]
-    A Frobenius algebra $A$ is \emph{symmetric} if one of the following (equivalent) conditions holds:
+    A Frobenius algebra $A$ is \emph{symmetric}\index{Frobenius algebra!symmetric Frobenius algebra} if one of the following (equivalent) conditions holds:
     \begin{enumerate}
         \item The Frobenius form $\varepsilon \colon A \to \Bbbk$ is central, meaning that $\varepsilon(ab)=\varepsilon(ba)$ for every $a, b \in A$.
         \item The pairing $\beta \colon A \tensor A \to \Bbbk$ is symmetric, meaning $\beta(a \tensor b) = \beta(b \tensor a)$ for every $a, b \in A$.
@@ -246,7 +246,7 @@ Through this section, we'll adopt these drawings as formal notations correspondi
 \subsection{From pairing to Frobenius relation} \label{subsec:equiv}
 Let us start by ``translating'' the definition through copairing of a Frobenius algebra using such \emph{wires} notation.
 \begin{dfnx*}[Frobenius algebra]
-A \emph{Frobenius algebra} is a finite dimensional $\Bbbk$-algebra $A$ equipped with a non-degenerate associative pairing $\beta \colon A \tensor A \to \Bbbk$, called the \emph{Frobenius pairing}.
+A \emph{Frobenius algebra}\index{Frobenius algebra!in terms of wires} is a finite dimensional $\Bbbk$-algebra $A$ equipped with a non-degenerate associative pairing $\beta \colon A \tensor A \to \Bbbk$, called the \emph{Frobenius pairing}.
 \end{dfnx*} 
 We start by drawing the maps defining a $\Bbbk$-algebra:
 \[
@@ -1259,7 +1259,7 @@ which corresponds to the definition of $\delta$. We have proved the comultiplica
 Again, we begin by rephrasing the following definition of Frobenius algebra in terms of \emph{wires}.
 
 \begin{dfnx*}[Frobenius algebra]
-A \emph{Frobenius algebra} is a $\Bbbk$-vector space $A$ equipped with both an algebra $(A, \mu, \eta)$ and a coalgebra $(A, \delta, \varepsilon)$ structure, such that the Frobenius relation, which corresponds to the commutativity of the diagrams below, holds.
+A \emph{Frobenius algebra}\index{Frobenius algebra!in terms of wires} is a $\Bbbk$-vector space $A$ equipped with both an algebra $(A, \mu, \eta)$ and a coalgebra $(A, \delta, \varepsilon)$ structure, such that the Frobenius relation, which corresponds to the commutativity of the diagrams below, holds.
 \[
 \begin{tikzcd}
     A \tensor A \arrow[d,"\mu"] \arrow[r, "\delta \tensor \id_A"] & A \tensor A \tensor A \arrow[d, "\id_A \tensor \mu"] \\
@@ -1757,7 +1757,7 @@ Having established various characterizations of Frobenius algebras in Section $\
     Let $(A, \eta, \mu, \varepsilon, \delta)$ and $(A', \eta', \mu', \varepsilon', \delta')$ be two Frobenius algebra. A \emph{Frobenius algebra homomorphism} $\varphi \colon A \to A'$ is a $\Bbbk$-linear map which is both a $\Bbbk$-algebra homomorphism and a $\Bbbk$-coalgebra homomorphism.
 \end{tcbdfn}
 
-In particular, a Frobenius algebra homomorphism preserves the Frobenius form (i.e. $\varepsilon' = \varphi(\varepsilon)$). Together with such morphisms, Frobenius algebras then form a category, which we name $\mathbf{FAlg}_\Bbbk$.
+In particular, a Frobenius algebra homomorphism preserves the Frobenius form (i.e. $\varepsilon' = \varphi(\varepsilon)$). Together with such morphisms, Frobenius algebras then form a category, which we name $\mathbf{FAlg}_\Bbbk$\index{$\mathbf{FAlg}_\Bbbk$, a category of Frobenius algebras}.
 
 We now investigate the structure of this category.
 
@@ -1768,4 +1768,4 @@ The tensor product of two Frobenius algebra is again a Frobenius algebra, giving
 
 For a proof of this result we refer to the general statements given further in the text in Lemmas \ref{lem:product-of-monoids} and \ref{lem:product-of-frobenius}.
 
-Commutative Frobenius algebras form a full subcategory, which we denote as $\mathbf{cFAlg}_\Bbbk$.
+Commutative Frobenius algebras form a full subcategory, which we denote as $\mathbf{cFAlg}_\Bbbk$\index{$\mathbf{cFAlg}_\Bbbk$, a category of commutative Frobenius algebras}.
