@@ -364,8 +364,30 @@ We can hence define the categories $\brmoncat$ and $\symmoncat$. % where objects
 Again, similarly to the plain monoidal case, given two braided (resp. symmetric) monoidal categories $(\cat{C}, \sq, I, \beta)$, $(\cat{D}, \varsq, J, \gamma)$ we can consider the category $\brmoncat(\cat{C},\cat{D})$\index{braided monoidal category!braided monoidal functor category} (resp. $\symmoncat(\cat{C}, \cat{D})$\index{symmetric monoidal category!symmetric monoidal functor category}) where objects are braided (resp. symmetric) monoidal functors form $\cat{C}$ to $\cat{D}$ and arrows are monoidal natural transformations between such functors.
 %\section{Monoidal functor category}
 %It is easy to see that the definitions just given let us define the categories
-%    \begin{itemize}
-%    \item \moncat
-%    \item \brmoncat
-%    \item \symmoncat
-%    \end{itemize}
+
+\section{Rigid categories}\label{sec:rigid}
+
+We include a brief treatment of the concept of duals in a monoidal category, a notion that will recur again throughout this thesis. We refer to \cite{Selinger2010}.
+
+\begin{tcbdfn}[Exact pairing, left and right duals]
+      Let $(\cat{C}, \sq, I)$ be a (without loss of generalities, strict) monoidal category. An \emph{exact pairing}\index{exact pairing} between two objects $A$ and $B$ is given by a pair of morphisms $\eta \colon I \to B \tensor A$ and $\varepsilon \colon A \tensor B \to I$, such that the following triangles commutes
+      \[
+      \begin{tikzcd}
+            A \arrow[r, "\id_A \tensor \eta"] \arrow[dr, "\id_A", swap] & A \tensor B \tensor A \arrow[d, "\varepsilon \tensor \id_A"]\\
+            & A
+      \end{tikzcd}
+      \hspace{5em}
+      \begin{tikzcd}
+            B \arrow[r, "\eta \tensor \id_B"] \arrow[dr, "\id_B", swap] & B \tensor A \tensor B \arrow[d, "\id_B \tensor \varepsilon"] \\
+            & B
+      \end{tikzcd}
+      \]
+      In such exact pairing, the object $B$ is called \emph{right dual} of $A$ and $A$ is called \emph{left dual} of $B$.
+\end{tcbdfn}
+
+When the monoidal category is symmetric, left and right duals coincide; we refer to either as the \emph{dual}\index{dualizability!dualizable objects}.We call every object that admits categorical duals \emph{fully dualizable}.
+
+\begin{tcbdfn}[Rigid categories]
+      A monoidal category $(\cat{C}, \sq, I)$ is called \emph{rigid}\index{rigid category} if every of its object has both left and right duals.
+\end{tcbdfn}
+

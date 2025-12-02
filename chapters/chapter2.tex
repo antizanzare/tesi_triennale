@@ -273,12 +273,9 @@ This guarantees that the notion of an oriented bordism is well defined.
 
 \begin{remark}
  While we do not give a formal proof of such a result, we observe that the smooth structure on the topological pushout is not unique and relies on the choice of collars.
- Our definition of bordisms with fixed collars is given precisely to specify this choice, making the glueing to be exactly the pushout in the proper category (which we can imagine as the category of ``manifolds with defined collars'').
- However, different choices of collars give rise to diffeomorphic smooth structures. %This follows from a broader theorem we state below. \todo{find a reference. (sennò metti cock)}
+ Our definition of bordisms with fixed collars, taken from \cite{moore2025tasi} and \cite{freed2019lectures}, is given precisely to specify this choice, making the glueing to be exactly the pushout in the proper category (which we can imagine as the category of ``manifolds with defined collars'').
+ However, different choices of collars give rise to diffeomorphic smooth structures. 
 \end{remark}
-
-\todo[inline, color=yellow]{{\bfseries Marco cattivo}: Nn hai citato TASI lectures.}
-%\todo[inline, color=yellow]{{\bfseries Marco cattivo}: Potresti citare la tesi di phd ti Tizio.}
 
 \begin{example}
  We illustrate such a procedure with the following example, considering bordisms of dimension 2. We take a bordism $(X, i_0, i_1)$ from $\Sigma_0 = \mathbb{S}^1 \sqcup \mathbb{S}^1$ to $\Sigma_1 = \mathbb{S}^1$ and a bordism $(X', i'_0, i'_1)$ from $\Sigma_1 = \mathbb{S}^1$ to $\Sigma_2 = \mathbb{S}^1$ and glue them along the common boundary $\Sigma_1$. Since our goal is to define a sort of ``composition'' we will always glue an out-boundary to an in-boundary.
@@ -606,7 +603,7 @@ We here give a slightly refined version (which can be found in \cite{kock2003fro
   \id_{\overline{V}} = (\id_{\overline{V}} \tensor \beta) \circ (\gamma \tensor \id_{\overline{V}}) \colon \overline{V} \iso \Bbbk \tensor \overline{V} \to \overline{V} \tensor V \tensor \overline{V} \to \overline{V} \tensor \Bbbk \iso \overline{V}
  \]
  with which we can state and prove the following proposition.
- \begin{tcbprp}\label{prp:finite-dimension}
+ \begin{tcbprp}\label{prp:finite-dimensional}
   The image vector spaces in a TQFT are necessarily of finite dimension.
  \end{tcbprp}
  \begin{proof}
@@ -632,9 +629,7 @@ We omit the proof of such a result. Instead, we notice how in Atiyah's original 
 \begin{enumerate}
  \item[(A7)] The image vector space $V$ of a closed manifold $\Sigma$ comes equipped with a nondegenerate pairing with $\overline{V} = Z (\overline{\Sigma})$
 \end{enumerate}
-These observations are fundamental for understanding the core structure of the category we are working within. Indeed, they are a concrete instance of the categorical concept of \emph{dualizability}.
-
-\todo[inline]{ha senso scopiazzare due definizioni qui?}
+These observations are fundamental for understanding the core structure of the category we are working within. Indeed, they are a concrete instance of the categorical concept of \emph{dualizability}, the main definitions of which where given in Section \ref{sec:rigid}.
 
 We now give a couple of examples of some simple TQFTs.
 
