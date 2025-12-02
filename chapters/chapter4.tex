@@ -49,7 +49,7 @@ Concretely, we can see that:
 \end{remark}
 
 \begin{tcbdfn}[Homomorphisms of $\Bbbk$-algebras]
- Let $(A, \mu, \eta)$, $(A', \mu',\eta')$ be $\Bbbk$-algebras. A \emph{$\Bbbk$-algebra homomorphism} $\varphi \colon A \to A'$ is a $\Bbbk$-linear map that preserves the multiplication and unit structures. Concretely, the following diagrams are required to commute.
+ Let $(A, \mu, \eta)$, $(A', \mu',\eta')$ be $\Bbbk$-algebras. A \emph{$\Bbbk$-algebra homomorphism} $\varphi \colon A \to A'$ is a $\Bbbk$-linear map that preserves the multiplication and unit structures. Specifically, the following diagrams are required to commute:
  \[
   \begin{tikzcd}
    A \tensor A \arrow[d, "\mu"] \arrow[r, "\varphi \tensor \varphi"] & A' \tensor A' \arrow[d, "\mu'"] \\
@@ -93,50 +93,50 @@ We can then denote with $\mathbf{Alg}_\Bbbk$ the category of $\Bbbk$-algebras an
 % \begin{tcbdfn}[Right (left) A-modules]
 % \end{tcbdfn}
 
-We are now ready to state our first definition of a Frobenius algebras.
+We are now ready to state our first definition of a Frobenius algebra.
 
 \begin{tcbdfn} \label{dfn:frobenius-algebra-a}
  A \emph{Frobenius algebra}\index{Frobenius algebra} is a finite dimensional $\Bbbk$-algebra $A$ equipped with a linear form $\varepsilon \colon A \to \Bbbk$, called the \emph{Frobenius form}, whose kernel $\{ x \in A \mid \varepsilon(a) = 0\}$ contains no nontrivial left ideals (i.e. only contains trivial ideals).
 \end{tcbdfn}
 
-Being a Frobenius algebra is a structure, not a property. That is, a given algebra can admit multiple Frobenius structures which must be specified. With an abuse of notation we will sometimes say $A$ is a Frobenius algebra; what we mean is we are assuming a Frobenius structure has been (or can be) chosen on A.
+Being a Frobenius algebra is a structure, not a property. That is, a given algebra can admit multiple Frobenius structures, which must be specified each time to avoid ambiguity. Thus, it is a slight abuse of notation to say ``$A$ is a Frobenius algebra''; nevertheless, we will do so from time to time, and what we mean is that we are assuming a Frobenius structure has been (or can be) chosen on $A$.
 
 \begin{remark}
  The condition that $\ker(\varepsilon)$ has no nontrivial left ideal is equivalent to it not containing nontrivial \emph{principal} left ideals.
  This is equivalent to saying that $\varepsilon(Ax) = 0$ implies $x=0$ for every $x \in A$.
 
- Moreover, this condition can be expressed equivalentely for right (principal) ideals.
+ Moreover, this condition can be expressed equivalently for right (principal) ideals.
 \end{remark}
 
-We now remember that any linear form $\Lambda \colon A \to \Bbbk$ canonically defines a bilinear pairing $p \colon A \tensor A \to \Bbbk$ by composing with the multiplication on $A$. More precisely we can send each $x \tensor y \in A \tensor A$ into $(\Lambda \circ \mu) (x \tensor y) = \Lambda(xy)$. By associativity of $\mu$, the pairing is itself associative, meaning $p(xy \tensor z) = p(x \tensor yz)$ for all $x, y, z \in A$.
+We now remember that any linear form $\Lambda \colon A \to \Bbbk$ canonically defines a bilinear pairing $p \colon A \tensor A \to \Bbbk$ by composing with the multiplication on $A$. More precisely, we can send each $x \tensor y \in A \tensor A$ into $(\Lambda \circ \mu) (x \tensor y) = \Lambda(xy)$. By associativity of $\mu$, the pairing is itself associative, meaning $p(xy \tensor z) = p(x \tensor yz)$ for all $x, y, z \in A$.
 
-On the other hand, given an associative pairing $p \colon A \tensor A \to \Bbbk$ we can always canonically define a linear form $\Lambda \colon A \to \Bbbk$ by fixing $1_A$ as one of the entries. More precisely, we set $\Lambda(a) = p(1_A \tensor a) = p(a \tensor 1_A)$.
+On the other hand, given an associative pairing $p \colon A \tensor A \to \Bbbk$, we can always canonically define a linear form $\Lambda \colon A \to \Bbbk$ by fixing $1_A$ as one of the entries. More precisely, we set $\Lambda(a) = p(1_A \tensor a) = p(a \tensor 1_A)$.
 
-One can easily check these constructions are inverse to each other, giving a one-to-one correspondence between the two. A less obvious result is the following.
+One can easily check that these constructions are inverse to each other, giving a one-to-one correspondence between the two. A less obvious result is the following.
 
 \begin{tcblemma}
- Let A be a finite dimensional $\Bbbk$-algebra. An associative pairing $A \tensor A \to \Bbbk$ is non-degenerate if and only if the corresponding linear form $A \to \Bbbk$ is a Frobenius form.
+ Let A be a finite-dimensional $\Bbbk$-algebra. An associative pairing $A \tensor A \to \Bbbk$ is non-degenerate if and only if the corresponding linear form $A \to \Bbbk$ is a Frobenius form.
 \end{tcblemma}
 
-This directly leads to an equivalent characterization of a Frobenius algebra.
+This directly leads to an equivalent characterisation of a Frobenius algebra.
 
 \begin{tcbdfn}\label{dfn:frobenius-algebra-b}
- A \emph{Frobenius algebra}\index{Frobenius algebra} is a finite dimensional $\Bbbk$-algebra $A$ equipped with a non-degenerate associative pairing $\beta \colon A \tensor A \to \Bbbk$, called the \emph{Frobenius pairing}.
+ A \emph{Frobenius algebra}\index{Frobenius algebra} is a finite-dimensional $\Bbbk$-algebra $A$ equipped with a non-degenerate associative pairing $\beta \colon A \tensor A \to \Bbbk$, called the \emph{Frobenius pairing}.
 \end{tcbdfn}
 
 
-A non-degenerate pairing $\beta \colon A \tensor A \to \Bbbk$ induces canonical $\Bbbk$-linear isomorphisms $A \xrightarrow{\sim} A^*$ and $A^* \xrightarrow{\sim} A$. The associativity of $\beta$ is equivalent to the A-linearity of these isomorphisms (with respect to the appropriate left or right module structure). The two equivalent characterizations following from such properties won't be of use for our thesis, nonetheless we include them for completeness.
+A non-degenerate pairing $\beta \colon A \tensor A \to \Bbbk$ induces canonical $\Bbbk$-linear isomorphisms $A \xrightarrow{\sim} A^*$ and $A^* \xrightarrow{\sim} A$. The associativity of $\beta$ is equivalent to the A-linearity of these isomorphisms (with respect to the appropriate left or right module structure). The two equivalent characterisations following from such properties won't be of use for our thesis; nonetheless, we include them for completeness.
 
 \begin{tcbdfn}\label{dfn:Frobenius-useless}
- A \emph{Frobenius algebra} is a finite dimensional $\Bbbk$-algebra $A$ equipped with a left $A$-linear isomorphism to its dual.
+ A \emph{Frobenius algebra} is a finite-dimensional $\Bbbk$-algebra $A$ equipped with a left $A$-linear isomorphism to its dual.
 \end{tcbdfn}
 
 \begin{tcbdfn}
- A \emph{Frobenius algebra} is a finite dimensional $\Bbbk$-algebra $A$ equipped with a right $A$-linear isomorphism to its dual.
+ A \emph{Frobenius algebra} is a finite-dimensional $\Bbbk$-algebra $A$ equipped with a right $A$-linear isomorphism to its dual.
 \end{tcbdfn}
 
 \begin{remark}
- In these three definitions above, we required $A$ to be finite dimensional. This is actually redundant, since with an argument analogous to the one provided in \ref{prp:finite-dimensional} we can show that the existence of a non-degenerate associative pairing implies the finite-dimensionality of $A$. The existence of a copairing $\gamma$ is indeed another instance of the notion of \emph{dualizability}\index{dualizability}.
+ In these three definitions above, we required $A$ to be finite-dimensional. This is actually redundant, since with an argument analogous to the one provided in \ref{prp:finite-dimensional} we can show that the existence of a non-degenerate associative pairing implies the finite-dimensionality of $A$. The existence of a copairing $\gamma$ is indeed another instance of the notion of \emph{dualizability}\index{dualizability}.
 \end{remark}
 
 Our discussion has so far focused on algebras. We now introduce their dual concept by reversing all the arrows.
@@ -179,7 +179,7 @@ Our discussion has so far focused on algebras. We now introduce their dual conce
  \]
 \end{tcbdfn}
 
-We can hence state the last equivalent characterization.
+We can hence state the last equivalent characterisation.
 
 \begin{tcbdfn}\label{dfn:frobenius-algebra-c}
  A \emph{Frobenius algebra}\index{Frobenius algebra} is a $\Bbbk$-vector space $A$ equipped with both an algebra $(A, \mu, \eta)$ and a coalgebra $(A, \delta, \varepsilon)$ structure, such that the Frobenius relation, which corresponds to the commutativity of the diagrams below, holds.
@@ -196,9 +196,9 @@ We can hence state the last equivalent characterization.
  \]
 \end{tcbdfn}
 
-Proving the equivalence of this last definition is not immediate when using this notation. To help ourselves in handling this proof we will introduce \emph{graphical calculus} in section \ref{sec:doodles}.
+Proving the equivalence of this last definition is not immediate when using this notation. To help ourselves in handling this proof, we will introduce \emph{graphical calculus} in section \ref{sec:doodles}.
 
-Finally, we define what it means to ask a Frobenius algebra to be symmetric. To do so we recall the three characterizations (even if we've not proved their equivalence yet) we'll work with from now on and state the notion of symmetry for each of these frameworks.
+Finally, we define what it means to ask a Frobenius algebra to be symmetric. To do so, we recall the three characterisations (even if we've not proved their equivalence yet) we'll work with from now on and state the notion of symmetry for each of these frameworks.
 
 \begin{tcbdfn}[Frobenius algebras]
  \label{dfn:Frobenius-algebra-all}
@@ -223,11 +223,11 @@ For completeness, and to make sure the reader does not confuse the two structure
   \item The pairing $\beta \colon A \tensor A \to \Bbbk$ is symmetric, meaning $\beta(a \tensor b) = \beta(b \tensor a)$ for every $a, b \in A$.
  \end{enumerate}
 \end{tcbdfn}
-The difference between a commutative and a symmetric Frobenius algebra becomes clear: a \emph{commutative Frobenius algebra} is indeed just a Frobenius algebra whose underlying algebra is commutative. We then have that all commutative Frobenius algebras are symmetric, while the viceversa does not hold.
+The difference between a commutative and a symmetric Frobenius algebra becomes clear: a \emph{commutative Frobenius algebra} is indeed just a Frobenius algebra whose underlying algebra is commutative. We then have that all commutative Frobenius algebras are symmetric, while the converse does not hold.
 \par
 We remind that since being a Frobenius algebra is a structure, the property of symmetry relates to such structure. We could then have two Frobenius structure on an algebra $A$ and have only one of them to be symmetric.
 \begin{remark}
- We previously mentioned a fourth characterization of Frobenius algebra [See Definition \ref{dfn:Frobenius-useless}]. The notion of symmetry can also be formulated in that context by asking for the left (resp. right) $A$-linear isomorphism to be also right (resp. left) $A$-linear.
+ We previously mentioned a fourth characterisation of Frobenius algebra [See Definition \ref{dfn:Frobenius-useless}]. The notion of symmetry can also be formulated in that context by asking for the left (resp. right) $A$-linear isomorphism to be also right (resp. left) $A$-linear.
 \end{remark}
 
 \section{Rigorous doodles}
@@ -237,8 +237,8 @@ We remind that since being a Frobenius algebra is a structure, the property of s
 % "Drawing conclusions"?? (ma non sto concludendo nulla)
 % "Reading between the lines"
 
-The aim of this section is to define a graphical language that will help us see more clearly the equivalence between the various definitions of Frobenius algebras.
-\todo[inline]{add a note about such choice. kock used bordisms, why do we like wires?}
+This section aims to define a graphical language that will help us see more clearly the equivalence between the various definitions of Frobenius algebras.
+\todo[inline]{add a note about such a choice. kock used bordisms, why do we like wires?}
 
 Through this section, we'll adopt these drawings as formal notations corresponding to $\Bbbk$-linear maps $A^m \to A^n$. The tensor product of two maps will correspond to placing the diagrams \emph{in parallel} (one above the other), while the composition will be represented by connecting them \emph{in series} (by simply connecting the wires).
 
@@ -342,7 +342,7 @@ We now need to define a Frobenius form $\varepsilon \colon A \to \Bbbk$, which w
  \end{tikzpicture}
 \]
 
-Their relation can be explaned graphically as follows.
+Their relation can be explained graphically as follows.
 
 \[
  \begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
@@ -413,8 +413,7 @@ Combining the associativity of the multiplication and the first of the above rel
  \hspace{3em}
  \text{(associativity of $\beta$)}
 \]
-
-Finally to obtain a Frobenius algebra we need the pairing to be non-degenerate. This means asking  for the existence of a \emph{copairing} $\gamma \colon \Bbbk \to A \tensor A$ such that the compositions $(\id_A \tensor \beta) \circ (\gamma \tensor \id_A)$ and $(\beta \tensor \id_A) \circ (\id_A \tensor \gamma)$ equal the identity. We can translate such requirements in graphical terms.
+Finally to obtain a Frobenius algebra, we need the pairing to be non-degenerate. This means asking  for the existence of a \emph{copairing} $\gamma \colon \Bbbk \to A \tensor A$ such that the compositions $(\id_A \tensor \beta) \circ (\gamma \tensor \id_A)$ and $(\beta \tensor \id_A) \circ (\id_A \tensor \gamma)$ equal the identity. We can translate such requirements in graphical terms.
 \[
  \begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
   \draw[rounded corners=0.4cm] (0,0)--(-1,0)--(-1,1);
@@ -449,7 +448,7 @@ Finally to obtain a Frobenius algebra we need the pairing to be non-degenerate. 
 \]
 
 \begin{dfnx*}[Uniqueness of the copairing]
- We can prove that the copairing $\gamma$ is unique, just through graphical calculus (we'll still include the commutative diagrams on the side, to emphasize how the two approaches corresponds). Suppose there exist two different copairings $\gamma$, $\xi$ satisfying such non-degeneracy condition.
+ We can prove that the copairing $\gamma$ is unique, just through graphical calculus (we'll still include the commutative diagrams on the side, to emphasise how the two approaches correspond). Suppose there exist two different copairings $\gamma$, $\xi$ satisfying such a non-degeneracy condition.
  We distinguish them graphically by drawing a white circle for $\gamma$ and a white square for $\xi$.
  %$\copairing$, $\varcopairing$
  We then have:
@@ -509,7 +508,7 @@ Finally to obtain a Frobenius algebra we need the pairing to be non-degenerate. 
   \end{tikzcd}
  \]
 
- By considering the tensor of the the two copairings and composing it with $\id_A \tensor \beta \tensor \id_A$, we obtain through the above relations, the following:
+ By considering the tensor of the two copairings and composing it with $\id_A \tensor \beta \tensor \id_A$, we obtain, through the above relations, the following:
 
  \[
   \begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
@@ -538,7 +537,7 @@ Finally to obtain a Frobenius algebra we need the pairing to be non-degenerate. 
    \draw[fill=white] (0,0) circle (3pt);
   \end{tikzpicture}
  \]
- and the correspondig commutative diagram below.
+ and the corresponding commutative diagram below.
  \[
   \begin{tikzcd}[column sep=5em, row sep=3em]
    & A \tensor A \arrow[d, "\textcolor{red}{\gamma \tensor \id_A} \tensor \id_A"] \arrow[dr, "\textcolor{red}{\id_A} \tensor \id_A", bend left=30] & \\
@@ -547,7 +546,7 @@ Finally to obtain a Frobenius algebra we need the pairing to be non-degenerate. 
   \end{tikzcd}
  \]
  We conclude $\gamma = \xi$, proving uniqueness.
- We can see, just by this small example, how the graphical approach is way more straightforward, compared to the diagrammatic one, which easily becomes messy.
+ We can see, just by this small example, how the graphical approach is way more straightforward compared to the diagrammatic one, which easily becomes messy.
 \end{dfnx*}
 
 
@@ -592,7 +591,7 @@ Looking at its graphical representation, we'll call it the \emph{trident map}.
  \text{(trident map)}
 \]
 
-We then show how we are able to express the multiplication through the \emph{trident map} (and the copairing):
+We then show how we can express the multiplication through the \emph{trident map} (and the copairing):
 
 \[
  \begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
@@ -689,7 +688,6 @@ and
   \draw[fill=white] (0,0) circle (3pt);
  \end{tikzpicture}
 \]
-
 This gives the following equivalence
 \[
  \begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
@@ -772,7 +770,7 @@ The converse also holds: the multiplication can be written in terms of comultipl
 \]
 
 
-\textbf{(Defining a coalgebra).} To show that this map, together with the Frobenius form $\varepsilon \colon A \to \Bbbk$, defines a coalgebra we need to prove the coassociativity and counit axioms.
+\textbf{(Defining a coalgebra).} To show that this map, together with the Frobenius form $\varepsilon \colon A \to \Bbbk$, defines a coalgebra, we need to prove the coassociativity and counit axioms.
 
 For the coassociativity, we start by unwinding the two comultiplications
 \[
@@ -823,7 +821,7 @@ For the coassociativity, we start by unwinding the two comultiplications
  \quad=
 \]
 
-Then, using the associativity of the multiplication, we get
+Then, using the associativity of multiplication, we get
 \[
  =\quad
  \begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
@@ -867,9 +865,7 @@ Then, using the associativity of the multiplication, we get
  \end{tikzpicture}
  \quad=
 \]
-
-in which we can identify the definition of comultiplication hence rewrite it as
-
+in which we can identify the definition of comultiplication, hence rewrite it as
 \[
  =\quad
  \begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
@@ -988,7 +984,7 @@ We now prove the counit axioms:
 \]
 
 \textbf{(Frobenius relation).}
-Lastly, we show the Frobenius relation is satisfied.
+Lastly, we show that the Frobenius relation is satisfied.
 
 \[
  \begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
@@ -1126,7 +1122,7 @@ To simplify some of the next drawings, we notice that the relation between $\gam
   \draw[fill=black] (1,-1) circle (3pt);
  \end{tikzpicture}
 \]
-(The first follows from the definition of comultiplication and unit axioms. The second from counit axioms.)
+(The first follows from the definition of comultiplication and unit axioms. The second from the counit axiom.)
 \todo[inline]{show??}
 
 Suppose there exists another comultiplication $\omega \colon A \to A \tensor A$, with $\varepsilon$ as counit and satisfying the Frobenius relation. We distinguish it from $\delta$ by representing it with a black square.
@@ -1251,8 +1247,7 @@ By uniqueness of the copairing we can say that $\begin{tikzpicture}[x=0.4cm, y=0
   \draw[fill=white] (0,2) circle (3pt);
  \end{tikzpicture}
 \]
-
-which corresponds to the definition of $\delta$. We have proved the comultiplication is unique.
+which corresponds to the definition of $\delta$. We have proved that the comultiplication is unique.
 
 \subsection{From Frobenius relation to pairing}
 
@@ -1520,7 +1515,7 @@ By definition of $\beta$ and $\gamma$ and applying the unit and counit axioms we
 \]
 proving the non-degeneracy of $\beta \colon A \tensor A \to \Bbbk$.
 
-\textbf{(Algebra and coalgebra structure).} By proving the associativity and coassociativity axioms we can state $A$ is equipped with both an algebra and a coalgebra structure. We begin by proving $\mu \colon A \tensor A \to A$ is associative. From the Frobenius relation we have the following equivalences.
+\textbf{(Algebra and coalgebra structure).} By proving the associativity and coassociativity axioms, we can state $A$ is equipped with both an algebra and a coalgebra structure. We begin by proving $\mu \colon A \tensor A \to A$ is associative. From the Frobenius relation, we have the following equivalences.
 \[
  \begin{tikzpicture}[x=0.8cm, y=0.4cm, baseline]
   \draw[rounded corners=0.4cm] (0,0)--(0,1)--(-1,1);
@@ -1751,7 +1746,7 @@ The associativity of $\mu$ is key for proving $\beta$ is associative too.
 
 \section{A category of Frobenius algebras}
 
-Having established various characterizations of Frobenius algebras in Section $\ref{sec:char-Frobenius}$, we now focus on the morphisms between them. To do so, we will refer to the third (see \ref{dfn:Frobenius-algebra-all}) characterization of a Frobenius algebra.
+Having established various characterisations of Frobenius algebras in Section $\ref{sec:char-Frobenius}$, we now focus on the morphisms between them. To do so, we will refer to the third (see \ref{dfn:Frobenius-algebra-all}) characterisation of a Frobenius algebra.
 
 \begin{tcbdfn}[Frobenius algebra homomorphisms]
  Let $(A, \eta, \mu, \varepsilon, \delta)$ and $(A', \eta', \mu', \varepsilon', \delta')$ be two Frobenius algebra. A \emph{Frobenius algebra homomorphism} $\varphi \colon A \to A'$ is a $\Bbbk$-linear map which is both a $\Bbbk$-algebra homomorphism and a $\Bbbk$-coalgebra homomorphism.
@@ -1763,9 +1758,9 @@ We now investigate the structure of this category.
 
 
 \begin{tcbprp}\label{prp:monoidal-falg}
- The tensor product of two Frobenius algebra is again a Frobenius algebra, giving $\mathbf{FAlg}_\Bbbk$ a monoidal structure.
+ The tensor product of two Frobenius algebras is again a Frobenius algebra, giving $\mathbf{FAlg}_\Bbbk$ a monoidal structure.
 \end{tcbprp}
 
-For a proof of this result we refer to the general statements given further in the text in Lemmas \ref{lem:product-of-monoids} and \ref{lem:product-of-frobenius}.
+For a proof of this result, we refer to the general statements given further in the text in Lemmas \ref{lem:product-of-monoids} and \ref{lem:product-of-frobenius}.
 
 Commutative Frobenius algebras form a full subcategory, which we denote as $\mathbf{cFAlg}_\Bbbk$\index{$\mathbf{cFAlg}_\Bbbk$, a category of commutative Frobenius algebras}.
