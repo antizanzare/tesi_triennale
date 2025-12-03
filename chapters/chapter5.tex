@@ -79,7 +79,7 @@ These considerations lead us to the main theorem regarding the classification of
  \]
 \end{tcbthm}
 
-Thanks to our journey through the previous chapters the proof becomes straightforward. We can now explicitly bulid the correspondence, for both objects and arrows.
+Thanks to our journey through the previous chapters the proof becomes straightforward. We can now explicitly build the correspondence, for both objects and arrows.
 
 Indeed, given an object $Z$ in $\textbf{2TQFT}_\Bbbk$ we get the axioms defining a structure of commutative Frobenius algebra on the vector space $Z((\mathbf{1})) = A$.
 
@@ -296,7 +296,7 @@ Conversely, given a commutative Frobenius algebra $(A, \eta, \mu, \varepsilon, \
 These assignments define a bijection. Starting with a symmetric monoidal functor $Z$ we obtain a commutative Frobenius algebra $A = Z((\mathbf{1}))$. From such algebra we then define a TQFT by mapping $(\mathbf{1})$ onto it, which exactly corresponds to the monoidal functor we started with.
 
 To check this defines an equivalence between the two categories we must also consider what happens to morphisms. By definition, an arrow $u \colon Z \to Z'$ between two 2-dimensional TQFTs is a monoidal natural transformations between the two functors. In particular, the structure of $\bord{2}$, implies that these natural transformations consist of $\Bbbk$-linear maps $A^{\tensor n} \to A'^{\tensor n}$, where $A = Z((\mathbf{1}))$, $A' = Z'((\mathbf{1}))$, compatible with all the arrows in $\bord{2}$. Furthermore, by asking $u$ to be monoidal, these arrows are just the $n$-th tensor power of the $\Bbbk$-linear arrow $u_1 \colon A \to A'$.
-Since every arrow in $\bord{2}$ is built by tesoring and gluing the generators, the compatibility of $u$ with the arrows in $\bord{2}$ is entirly determined by the corresponding diagrams.
+Since every arrow in $\bord{2}$ is built by tensoring and gluing the generators, the compatibility of $u$ with the arrows in $\bord{2}$ is entirly determined by the corresponding diagrams.
 
 \[
  \begin{tikzcd}
@@ -339,7 +339,7 @@ By applying the same argument backwards we reach the converse implication, thus 
 
 \begin{tcbdfn}[Internal monoids]
  \label{dfn:internal-monoid}
- Let $(\cat{C}, \sq, I)$ be a monoidal category. An \emph{internal comonoid}\index{internal monoid} in $\cat{C}$ is an object $M$ equipped with two morphisms
+ Let $(\cat{C}, \sq, I)$ be a strict monoidal category. An \emph{internal monoid}\index{internal monoid} in $\cat{C}$ is an object $M$ equipped with two morphisms
  \[
   \mu \colon M \sq M \to M \quad\text{(multiplication)}
   \hspace{3em}
@@ -386,11 +386,11 @@ The attentive reader has surely noticed that this definition is given on a stric
  \]
 \end{dfnx*}
 
-By reversing the arrows, we also give the definition of \emph{internal comonoid}.
+By reversing the arrows, we also give the definition of \emph{internal comonoid}. The definition extends analogously to the case of weak monoidal categories.
 
 \begin{tcbdfn}[Internal comonoids]
  \label{dfn:internal-comonoid}
- Let $(\cat{C}, \sq, I)$ be a monoidal category. An \emph{internal comonoid}\index{internal comonoid} in $\cat{C}$ is an object $M$ equipped with two morphisms
+ Let $(\cat{C}, \sq, I)$ be a strict monoidal category. An \emph{internal comonoid}\index{internal comonoid} in $\cat{C}$ is an object $M$ equipped with two morphisms
  \[
   \delta \colon M \to M \sq M \quad\text{(comultiplication)}
   \hspace{3em}
@@ -555,13 +555,13 @@ Both these structures can be grafically represented, similarly to what we did in
  \par
  An internal monoid in $(\mathbf{Vect}_\Bbbk, \tensor, \Bbbk)$ is a $\Bbbk$-algebra. An internal comonoid in $(\mathbf{Vect}_\Bbbk, \tensor, \Bbbk)$ is a $\Bbbk$-coalgebra.
  \par
- An  internal monoid in $(\mathbf{Cat}, \times, \mathbf{1})$, where $\mathbf{1}$ is the category with only one object, is a monoidal category. Although we have not done so, we can also define a comonoidal category, which will exactly be the comonoid in $(\mathbf{Cat}, \times, \mathbf{1})$
+ An  internal monoid in $(\mathbf{Cat}, \times, \mathbf{1})$, where $\mathbf{1}$ is a category with only one object, is a monoidal category. Although we have not done so, we can also define a comonoidal category, which will exactly be the comonoid in $(\mathbf{Cat}, \times, \mathbf{1})$
 \end{tcbex}
 
 As we did for monoidal categories and $\Bbbk$-algebras we are able to define morphisms between internal monoids and comonoids.
 
 \begin{tcbdfn}[Homomorphisms of internal monoids]
- Let $(\cat{C}, \sq, I)$ be a monoidal category. An \emph{homomorphisms of internal monoids} $\varphi \colon (M, \mu, \eta) \to (M', \mu', \eta')$ is a morphism from $M$ to $M'$ such that the following diagrams commute.
+ Let $(\cat{C}, \sq, I)$ be a strict monoidal category. An \emph{homomorphisms of internal monoids} $\varphi \colon (M, \mu, \eta) \to (M', \mu', \eta')$ is a morphism from $M$ to $M'$ such that the following diagrams commute.
  \[
   \begin{tikzcd}
    M \sq M \arrow[d, "\mu"] \arrow[r, "\varphi"] & M' \sq M' \arrow[d, "\mu'"] \\
@@ -577,7 +577,7 @@ As we did for monoidal categories and $\Bbbk$-algebras we are able to define mor
 
 
 \begin{tcbdfn}[Homomorphisms of internal comonoids]
- Let $(\cat{C}, \sq, I)$ be a monoidal category. An \emph{homomorphisms of internal comonoids} $\phi \colon (M, \delta, \varepsilon) \to (M', \delta', \varepsilon')$ is a morphism from $M$ to $M'$ such that the following diagrams commute.
+ Let $(\cat{C}, \sq, I)$ be a strict monoidal category. An \emph{homomorphisms of internal comonoids} $\phi \colon (M, \delta, \varepsilon) \to (M', \delta', \varepsilon')$ is a morphism from $M$ to $M'$ such that the following diagrams commute.
  \[
   \begin{tikzcd}
    M \sq M \arrow[r, "\phi"] & M' \sq M' \\
