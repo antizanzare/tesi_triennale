@@ -229,7 +229,7 @@ The above definition leads to the following statement.
  Every connected 2-dimensional bordism can be obtained through composition and disjoint union of the elementary bordisms $\bordcap$, $\bordcocap$, $\bordpants$, $\bordcopants$, $\bordcylinder$.
 \end{tcblemma}
 
-Let us now consider the case of non connected bordisms. While it is true that a non connected manifold is the disjoint union of connected surfaces, this fact alone is not enough to prove theorem \ref{thm:generators}.
+Let us now consider the case of non connected bordisms. While it is true that a non connected manifold is the disjoint union of connected surfaces, this fact alone is not enough to prove Theorem~\ref{thm:generators}.
 The category of bordisms considers not only the topology of bordisms but also the permutations on their boundary components.
 \par
 The main example of this fact can be seen by considering the twist. As a smooth manifold, the twist is the disjoint union of two cylinders. However, as a bordism, it is not isomorphic to the disjoint union of two identity morphisms since it flips the two boundaries.
@@ -299,15 +299,15 @@ The intial bordism $M$ then factors as $S^{-1} (SMT) T^{-1}$, leading to the fol
  Every 2-dimensional bordism factors as a permutation bordism, followed by a disjoint union of connected bordisms, followed by a permutation bordism.
 \end{tcblemma}
 
-We are now ready to assemble these lemmas into a complete proof of Theorem $\ref{thm:generators}$.
-By Lemma $\ref{lem:non-connected-decomposition}$, we can factor any bordism into two permutation bordisms and a disjoint union of connected bordism.
-Each of these connected components, by Lemma $\ref{lem:connected-decomposition}$, can then be written in terms of the elementary bordisms $\bordcap$, $\bordcocap$, $\bordpants$, $\bordcopants$, $\bordcylinder$.
+We are now ready to assemble these lemmas into a complete proof of Theorem~$\ref{thm:generators}$.
+By Lemma~$\ref{lem:non-connected-decomposition}$, we can factor any bordism into two permutation bordisms and a disjoint union of connected bordism.
+Each of these connected components, by Lemma~$\ref{lem:connected-decomposition}$, can then be written in terms of the elementary bordisms $\bordcap$, $\bordcocap$, $\bordpants$, $\bordcopants$, $\bordcylinder$.
 On the other hand, permutation bordisms can be obtained through composition and disjoint union of twist bordisms $\bordtwist$ (and, again, cylinders).
 
 
 \section{Relations}\label{sec:relations}
 We descrive the interactions between the generators by giving a set of relations\index{relations in \bord{2}}.
-Their validity follows from the classification lemma \ref{lem:classification}.
+Their validity follows from the Classification~Lemma~\ref{lem:classification}.
 Since the bordisms on both side of each relation have genus 0 and equal number of in and out boundaries, they are diffeomorphic hence equal in the $\bord{2}$ category.
 
 \begin{dfnx*}[Identity relations] \label{rel:id}
@@ -1192,7 +1192,7 @@ Through \hyperlink{rel:comm}{cocommutativity} and the \hyperlink{rel:frobenius}{
  \end{tikzpicture}
 \]
 
-So far, we have only considered connected surfaces. We now adress the non-connected case. As we already did when proving Lemma \ref{lem:non-connected-decomposition} we now that given any bordism $M$  we are able to define a normal form as the composition of a permutation bordism ($S^{-1}$), a disjoint union of connected components ($SMT$) and another permutation bordism ($T^{-1}$). Starting from $M$ and observing that $S^{-1}S = \id$ and $TT^{-1} = id$, we can get $M = S^{-1}SMTT^{-1}$ through naturality of the twist and it being its own inverse.
+So far, we have only considered connected surfaces. We now adress the non-connected case. As we already did when proving Lemma~\ref{lem:non-connected-decomposition} we now that given any bordism $M$  we are able to define a normal form as the composition of a permutation bordism ($S^{-1}$), a disjoint union of connected components ($SMT$) and another permutation bordism ($T^{-1}$). Starting from $M$ and observing that $S^{-1}S = \id$ and $TT^{-1} = id$, we can get $M = S^{-1}SMTT^{-1}$ through naturality of the twist and it being its own inverse.
 \[
  \begin{tikzpicture}[every tqft/.style={transform shape, bottom color=gray, top color=white, fill opacity=0.5}, tqft/view from=incoming, rotate=-90, scale=0.4, baseline]
   \pic[tqft cylinder to next, name=a, draw, anchor=between last incoming and last outgoing,

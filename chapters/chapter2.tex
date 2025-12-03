@@ -156,7 +156,7 @@ We are finally ready to give the following definition.
 \begin{example}\label{ex:bordism-orientation}
  Let us draw an example of a 2-dimensional bordism $B \colon \mathbb{S}^1 \to \mathbb{S}^1$. We consider a 2-dimensional oriented cylinder $M= \mathbb{S}^1 \times I$ and the corresponding embeddings $i_0$, $i_1$, defining its orientation as a bordism.
 
- Looking at the first picture in Example \ref{ex:orientation}, we notice how to define a bordism from $\mathbb{S}^1$ to itself, the cylinder we are considering has boundary equal to $\partial M = \mathbb{S}^1 \sqcup (-\mathbb{S}^1)$.
+ Looking at the first picture in Example~\ref{ex:orientation}, we notice how to define a bordism from $\mathbb{S}^1$ to itself, the cylinder we are considering has boundary equal to $\partial M = \mathbb{S}^1 \sqcup (-\mathbb{S}^1)$.
  \begin{figure}[H]
   \centering
   \begin{tikzpicture}[every tqft/.style={transform shape}]
@@ -400,7 +400,7 @@ This clearly defines an equivalence relation between bordisms. We can then consi
  We can then consider the gluings $(MN, i_0, j_1)$ and $(M'N', i'_0, j'_1)$.
  By taking the pushout of the two diffeomorphisms in the category of continuous maps, we get a homeomorphism $\psi \colon MN \to M'N'$.
  %\todo[inline]{come si comporta? preserva la struttura liscia? Se lo fa sistema il finale}
- Through such a homeomorphism, we can define a new smooth structure on $M'N'$, which by the previous theorem \ref{th:collar_diffeo} is diffeomorphic to the one induced by the glueing.
+ Through such a homeomorphism, we can define a new smooth structure on $M'N'$, which by Theorem~\ref{th:collar_diffeo} is diffeomorphic to the one induced by the glueing.
 \end{proof}
 
 \begin{tcbdfn}[A category of oriented bordisms]
@@ -424,7 +424,7 @@ This clearly defines an equivalence relation between bordisms. We can then consi
 \end{tcbprp}
 
 \begin{proof}
- Since the disjoint union is the coproduct in the category $\bord{n}$, the result follows from lemma \ref{prp:cocartesian-monoidal}.
+ Since the disjoint union is the coproduct in the category $\bord{n}$, the result follows from Proposition~\ref{prp:cocartesian-monoidal}.
 \end{proof}
 
 \begin{tcbprp}[Embedding diffeomorphisms in the bordism category]
@@ -559,7 +559,7 @@ We here give a slightly refined version (which can be found in \cite{kock2003fro
    \node at (4.5, -2.5) {$\Sigma$};
   \end{tikzpicture}
  \]
- Notice how, after the cutting, the middle copy of $\Sigma$ is equipped with its opposite orientation for reasons we discussed in Example \ref{ex:bordism-orientation}. We will denote it as $\overline{\Sigma}$. This type of decomposition is called the \emph{snake decomposition} and can be written as a composition of arrows as
+ Notice how, after the cutting, the middle copy of $\Sigma$ is equipped with its opposite orientation for reasons we discussed in Example~\ref{ex:bordism-orientation}. We will denote it as $\overline{\Sigma}$. This type of decomposition is called the \emph{snake decomposition} and can be written as a composition of arrows as
  \[
   \Sigma \iso \Sigma \sqcup \varnothing \xrightarrow{\id_\Sigma \sqcup H} \Sigma \sqcup \overline{\Sigma} \sqcup \Sigma \xrightarrow{N \sqcup \id_\Sigma} \varnothing \sqcup \Sigma \iso \Sigma
  \]
@@ -629,7 +629,7 @@ We omit the proof of such a result. Instead, we notice how in Atiyah's original 
 \begin{enumerate}
  \item[(A7)] The image vector space $V$ of a closed manifold $\Sigma$ comes equipped with a nondegenerate pairing with $\overline{V} = Z (\overline{\Sigma})$
 \end{enumerate}
-These observations are fundamental for understanding the core structure of the category we are working within. Indeed, they are a concrete instance of the categorical concept of \emph{dualizability}, the main definitions of which where given in Section \ref{sec:rigid}.
+These observations are fundamental for understanding the core structure of the category we are working within. Indeed, they are a concrete instance of the categorical concept of \emph{dualizability}, the main definitions of which where given in Section~\ref{sec:rigid}.
 
 We now give a couple of examples of some simple TQFTs.
 

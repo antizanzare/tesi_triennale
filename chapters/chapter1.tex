@@ -30,7 +30,7 @@ We begin by recalling some useful notions from category theory, which we will en
         \]
         so that $l_A \colon I \sq A  \overset{\cong}\to A$ and $r_A \colon A \sq I  \overset{\cong}\to A$ for every $A \in \obj{\cat{C}}$.
  \end{itemize}
- These maps must satisfy the so-called coherence requirements, depicted in \ref{fig:coherence_pentagon} and \ref{fig:coherence_unit}, for every $A,B,C,D \in \obj{\cat{C}}$.
+ These maps must satisfy the so-called coherence requirements, depicted in Figure~\ref{fig:coherence_pentagon} and Figure~\ref{fig:coherence_unit}, for every $A,B,C,D \in \obj{\cat{C}}$.
 \end{tcbdfn}
 \footnotetext{We will hence equivalentely refer to a monoidal category as $(\cat{C}, \sq, I, \alpha, l, r)$}
 \begin{figure}
@@ -87,7 +87,7 @@ We call this structure a \emph{cocartesian} monoidal category.
   \item $(\mathbf{Set}, {\times}, \{\ast\})$, the cartesian monoidal category of sets and functions between them
   \item $(\mathbf{Set}, \disj, \varnothing)$, the cocartesian monoidal category of sets and functions between them
   \item $(\mathbf{Cat}, {\times}, \mathbf{1})$, the cartesian monoidal category of categories and functors between them
-  \item $(\Delta, {+}, [0])$, the strict monoidal simplicial category. A more in-depth description of it can be found in \ref{dfn:delta-cat}.
+  \item $(\Delta, {+}, [0])$, the strict monoidal simplicial category. A more in-depth description of it can be found in Definition~\ref{dfn:delta-cat}.
   \item $(\mathbf{Vect}_\Bbbk, {\tensor}, \Bbbk)$, the monoidal category of vector spaces over the field $\Bbbk$ and linear maps between them, with the monoidal structure given by the tensor product
  \end{itemize}
 \end{tcbex}
@@ -279,7 +279,7 @@ The definition implies compatibility with the unital structure. For a proof of t
  \]
 \end{tcbprp}
 
-Again, by \ref{thm:strictification}, when considering braided monoidal categories, we can restrict to the following definition.
+Again, by Theorem~\ref{thm:strictification}, when considering braided monoidal categories, we can restrict to the following definition.
 
 \begin{tcbdfn}[(Semi)strict braided monoidal categories]
  A semistrict \emph{braided monoidal category}\index{braided monoidal category!semistrict braided monoidal category} is a strict monoidal category $(\cat{C}, \sq, I)$ equipped with a natural isomorphism
@@ -327,7 +327,7 @@ Let us show some examples of symmetric monoidal categories.
  \end{itemize}
  The monoidal operation $+$ is defined by juxtaposition\footnotemark, with the empty set $\varnothing = [0]$ as the unit object. The symmetric structure is defined by interchanging factors (we define the \emph{twist} from $[m]+[n]$ to $[n]+[m]$ by the association $\{0_m, \dots, (m-1)_m, 0_n, \dots,  (n-1)_n\} \mapsto \{0_n, \dots, (n-1)_n, 0_m, \dots, (m-1)_m\}$).
 \end{tcbex}
-\footnotetext{We can see an explicit definition of such operation in \ref{dfn:ordinal-sum}, for the case of $\Delta$}
+\footnotetext{We can see an explicit definition of such operation in Definition~\ref{dfn:ordinal-sum}, for the case of $\Delta$}
 
 \begin{tcbex}[Free braided monoidal category on a single object]
  Similarly to the previous case, we define the \emph{braided monoidal category} $(\mathbf{Braid}, +, [0])$ by taking the Artin braid groups $\text{Braid}(n)$ (see \cite{Kassel2008})a s morphisms.

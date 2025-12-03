@@ -46,7 +46,7 @@ Concretely, we can see that:
 \begin{remark}
  It is no coincidence that these diagrams seem similar to the ones appearing at the beginning of our thesis in \ref{dfn:monoidal_category}.
  $\Bbbk$-algebras are indeed internal monoids in the monoidal category $(\mathbf{Vect}_\Bbbk, \tensor, \Bbbk)$, while (strict) monoidal categories are monoids in $(\mathbf{Cat}, \times, \mathbf{1})$.
- We'll define what this means in the next chapter. (See \ref{dfn:internal-monoid})
+ We'll define what this means in the next chapter. (See Definition~\ref{dfn:internal-monoid})
 \end{remark}
 
 \begin{tcbdfn}[Homomorphisms of $\Bbbk$-algebras]\label{dfn:hom-algebra}
@@ -137,7 +137,7 @@ A non-degenerate pairing $\beta \colon A \tensor A \to \Bbbk$ induces canonical 
 \end{tcbdfn}
 
 \begin{remark}
- In these three definitions above, we required $A$ to be finite-dimensional. This is actually redundant, since with an argument analogous to the one provided in \ref{prp:finite-dimensional} we can show that the existence of a non-degenerate associative pairing implies the finite-dimensionality of $A$. The existence of a copairing $\gamma$ is indeed another instance of the notion of \emph{dualizability}\index{dualizability}.
+ In these three definitions above, we required $A$ to be finite-dimensional. This is actually redundant, since with an argument analogous to the one provided in Proposition~\ref{prp:finite-dimensional} we can show that the existence of a non-degenerate associative pairing implies the finite-dimensionality of $A$. The existence of a copairing $\gamma$ is indeed another instance of the notion of \emph{dualizability}\index{dualizability}.
 \end{remark}
 
 Our discussion has so far focused on algebras. We now introduce their dual concept by reversing all the arrows.
@@ -197,7 +197,7 @@ We can hence state the last equivalent characterisation.
  \]
 \end{tcbdfn}
 
-Proving the equivalence of this last definition is not immediate when using this notation. To help ourselves in handling this proof, we will introduce \emph{graphical calculus} in section \ref{sec:doodles}.
+Proving the equivalence of this last definition is not immediate when using this notation. To help ourselves in handling this proof, we will introduce \emph{graphical calculus} in Section~\ref{sec:doodles}.
 
 Finally, we define what it means to ask a Frobenius algebra to be symmetric. To do so, we recall the three characterisations (even if we've not proved their equivalence yet) we'll work with from now on and state the notion of symmetry for each of these frameworks.
 
@@ -205,9 +205,9 @@ Finally, we define what it means to ask a Frobenius algebra to be symmetric. To 
  \label{dfn:Frobenius-algebra-all}
  A \emph{Frobenius algebra}\index{Frobenius algebra} is a (finite dimensional) $\Bbbk$-algebra $A$ equippped with either:
  \begin{enumerate}[label=(\roman*), parsep=0pt]
-  \item A linear form $\varepsilon \colon A \to \Bbbk$ whose kernel contains no nontrivial (left) ideals. \par [See definition \ref{dfn:frobenius-algebra-a}]
-  \item A non-degenerate associative pairing $\beta \colon A \tensor A \to \Bbbk$ (and a copairing $\gamma \colon \Bbbk\to A \tensor A$). \par [See definition \ref{dfn:frobenius-algebra-b}]
-  \item A coalgebra structure $(A, \delta, \varepsilon)$ satisfying the Frobenius relation. \par [See definition \ref{dfn:frobenius-algebra-c}]
+  \item A linear form $\varepsilon \colon A \to \Bbbk$ whose kernel contains no nontrivial (left) ideals. \par [See Definition~\ref{dfn:frobenius-algebra-a}]
+  \item A non-degenerate associative pairing $\beta \colon A \tensor A \to \Bbbk$ (and a copairing $\gamma \colon \Bbbk\to A \tensor A$). \par [See Definition~\ref{dfn:frobenius-algebra-b}]
+  \item A coalgebra structure $(A, \delta, \varepsilon)$ satisfying the Frobenius relation. \par [See Definition~\ref{dfn:frobenius-algebra-c}]
  \end{enumerate}
 \end{tcbdfn}
 
@@ -228,7 +228,7 @@ The difference between a commutative and a symmetric Frobenius algebra becomes c
 \par
 We remind that since being a Frobenius algebra is a structure, the property of symmetry relates to such structure. We could then have two Frobenius structure on an algebra $A$ and have only one of them to be symmetric.
 \begin{remark}
- We previously mentioned a fourth characterisation of Frobenius algebra [See Definition \ref{dfn:Frobenius-useless}]. The notion of symmetry can also be formulated in that context by asking for the left (resp. right) $A$-linear isomorphism to be also right (resp. left) $A$-linear.
+ We previously mentioned a fourth characterisation of Frobenius algebra [See Definition~\ref{dfn:Frobenius-useless}]. The notion of symmetry can also be formulated in that context by asking for the left (resp. right) $A$-linear isomorphism to be also right (resp. left) $A$-linear.
 \end{remark}
 
 \section{Rigorous doodles}
@@ -1746,7 +1746,7 @@ The associativity of $\mu$ is key for proving $\beta$ is associative too.
 
 \section{A category of Frobenius algebras}
 
-Having established various characterisations of Frobenius algebras in Section $\ref{sec:char-Frobenius}$, we now focus on the morphisms between them. To do so, we will refer to the third (see \ref{dfn:Frobenius-algebra-all}) characterisation of a Frobenius algebra.
+Having established various characterisations of Frobenius algebras in Section~$\ref{sec:char-Frobenius}$, we now focus on the morphisms between them. To do so, we will refer to the third (see \ref{dfn:Frobenius-algebra-all}) characterisation of a Frobenius algebra.
 
 \begin{tcbdfn}[Frobenius algebra homomorphisms]
  Let $(A, \eta, \mu, \varepsilon, \delta)$ and $(A', \eta', \mu', \varepsilon', \delta')$ be two Frobenius algebra. A \emph{Frobenius algebra homomorphism} $\varphi \colon A \to A'$ is a $\Bbbk$-linear map which is both a $\Bbbk$-algebra homomorphism and a $\Bbbk$-coalgebra homomorphism.
@@ -1761,6 +1761,6 @@ We now investigate the structure of this category.
  The tensor product of two Frobenius algebras is again a Frobenius algebra, giving $\mathbf{FAlg}_\Bbbk$ a monoidal structure.
 \end{tcbprp}
 
-For a proof of this result, we refer to the general statements given further in the text in Lemmas \ref{lem:product-of-monoids} and \ref{lem:product-of-frobenius}.
+For a proof of this result, we refer to the general statements given further in the text in Lemma~\ref{lem:product-of-monoids} and Lemma~\ref{lem:product-of-frobenius}.
 
 Commutative Frobenius algebras form a full subcategory, which we denote as $\mathbf{cFAlg}_\Bbbk$\index{$\mathbf{cFAlg}_\Bbbk$, a category of commutative Frobenius algebras}.
