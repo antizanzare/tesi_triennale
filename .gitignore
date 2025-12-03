@@ -1,3 +1,6 @@
+
+flake.lock
+flake.nix
 .envrc
 
 ## Core latex/pdflatex auxiliary files:
