@@ -10,7 +10,6 @@ flake.nix
 *.log
 *.lot
 Makefile
-*.pdf
 *.fls
 *.out
 *.bbl
