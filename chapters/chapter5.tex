@@ -296,7 +296,7 @@ Conversely, given a commutative Frobenius algebra $(A, \eta, \mu, \varepsilon, \
 These assignments define a bijection. Starting with a symmetric monoidal functor $Z$ we obtain a commutative Frobenius algebra $A = Z((\mathbf{1}))$. From such algebra we then define a TQFT by mapping $(\mathbf{1})$ onto it, which exactly corresponds to the monoidal functor we started with.
 
 To check this defines an equivalence between the two categories we must also consider what happens to morphisms. By definition, an arrow $u \colon Z \to Z'$ between two 2-dimensional TQFTs is a monoidal natural transformations between the two functors. In particular, the structure of $\bord{2}$, implies that these natural transformations consist of $\Bbbk$-linear maps $A^{\tensor n} \to A'^{\tensor n}$, where $A = Z((\mathbf{1}))$, $A' = Z'((\mathbf{1}))$, compatible with all the arrows in $\bord{2}$. Furthermore, by asking $u$ to be monoidal, these arrows are just the $n$-th tensor power of the $\Bbbk$-linear arrow $u_1 \colon A \to A'$.
-Since every arrow in $\bord{2}$ is built by tensoring and gluing the generators, the compatibility of $u$ with the arrows in $\bord{2}$ is entirly determined by the corresponding diagrams.
+Since every arrow in $\bord{2}$ is built by tensoring and gluing the generators, the compatibility of $u$ with the arrows in $\bord{2}$ is entirely determined by the corresponding diagrams.
 
 \[
  \begin{tikzcd}
@@ -411,7 +411,7 @@ By reversing the arrows, we also give the definition of \emph{internal comonoid}
  \]
 \end{tcbdfn}
 
-Both these structures can be grafically represented, similarly to what we did in the case of $\Bbbk$-Frobenius algebras.
+Both these structures can be graphically represented, similarly to what we did in the case of $\Bbbk$-Frobenius algebras.
 
 \begin{dfnx*}[Internal monoids]
  Let $(\cat{C}, \sq, I)$ be a monoidal category. An \emph{internal monoid}\index{internal monoid!in terms of wires} in $\cat{C}$ is an object $M$ equipped with two morphisms
@@ -751,7 +751,7 @@ It is rather easy to check how composition of two morphisms of internal monoids 
 \end{proof}
 
 \begin{tcbdfn}[Commutative internal monoids]
- Let $(\cat{C}, \sq, I, \beta)$ be a symmetric monoidal category. An internal monoid $(M, \mu, \eta)$ in $\cat{C}$ is \emph{commutative}\index{internal monoids!commutative internal monoids} if its multiplication is compatible with the twist map. Equivalentely we are asking for the following diagram to commute.
+ Let $(\cat{C}, \sq, I, \beta)$ be a symmetric monoidal category. An internal monoid $(M, \mu, \eta)$ in $\cat{C}$ is \emph{commutative}\index{internal monoids!commutative internal monoids} if its multiplication is compatible with the twist map. Equivalently we are asking for the following diagram to commute.
  \[
   \begin{tikzcd}
    M \sq M \arrow[rr, "\mu"] \arrow[dr, "\beta", swap] & & M \\
@@ -780,7 +780,7 @@ The above requirement can be represented through wires as
 
 Similarly, we can define an analogous notion for internal comonoids.
 \begin{tcbdfn}[Cocommutative internal comonoids]
- Let $(\cat{C}, \sq, I, \beta)$ be a symmetric monoidal category. An internal comonoid $(M, \delta, \varepsilon)$ in $\cat{C}$ is \emph{cocommutative}\index{internal comonoids!cocommutative internal comonoids} if its comultiplication is compatible with the twist map. Equivalentely we are asking for the following diagram to commute.
+ Let $(\cat{C}, \sq, I, \beta)$ be a symmetric monoidal category. An internal comonoid $(M, \delta, \varepsilon)$ in $\cat{C}$ is \emph{cocommutative}\index{internal comonoids!cocommutative internal comonoids} if its comultiplication is compatible with the twist map. Equivalently we are asking for the following diagram to commute.
  \[
   \begin{tikzcd}
    M \arrow[rr, "\delta"] \arrow[dr, "\delta", swap] & & M \sq M \\
@@ -846,7 +846,7 @@ We will then have $[0] = \varnothing$, $[1] = \{0\}$, $[2] = \{0, 1\}$ and so on
  \]
 \end{tcbdfn}
 
-Similarly to the sum we are accostumed to, the ordinal sum we just defined has $[0] = \varnothing$ as the neutral element.
+Similarly to the sum we are accustomed to, the ordinal sum we just defined has $[0] = \varnothing$ as the neutral element.
 
 Furthermore, this operation defines a monoidal structure $(\Delta, +, [0])$. We hence investigate generators and relations starting from some known properties of $\Delta$
 \footnote{Alternatively we could completely define $\Delta$ graphically, without reliying on simplicial relations. Such approach can be found in \cite{kock2003frobenius}}. We again refer the reader to \cite{maclane}.
@@ -1303,7 +1303,7 @@ More is actually true.
  We start from left to right, defining a functor $\phi \colon\mathbf{MonCat}(\Delta, \cat{C}) \to \mathbf{Mon}(\cat{C})$.
  Given a monoidal functor $F \colon \Delta \to \cat{C}$, we can just evaluate it on the monoid $([1], \mu^{(2)}, \mu^{(0)})$. By Lemma~$\ref{lem:monoid_image}$, we obtain an internal monoid $(F([1]), F(\mu^{(2)}), F(\mu^{(0)}))$ in $\cat{C}$. Now, let $u \colon F \Rightarrow G$ be a monoidal natural transformation and consider its component $u_{[1]} \colon F([1]) \to G([1])$. The naturality of $u$ with respect to the generating maps of $\Delta$, ensures the compatibility of $u_{[1]}$ with the monoid structure. This means that $u_{[1]}$ defines a morphism of internal monoids in $\cat{C}$.
 
- Conversly, given a monoid $(M, \mu, \eta)$ in $\cat{C}$, we define a monoidal functor $F_M \colon \Delta \to \cat{C}$ as follows
+ Conversely, given a monoid $(M, \mu, \eta)$ in $\cat{C}$, we define a monoidal functor $F_M \colon \Delta \to \cat{C}$ as follows
  \begin{align*}
   F_M \colon \Delta              & \to \cat{C}                        \\
   [1]                            & \mapsto M                          \\
@@ -1522,7 +1522,7 @@ As we did for monoids and comonoids we can give a graphical representation of th
  An internal Frobenius object $M$ is both an internal monoid and an internal comonoid.
 \end{tcblemma}
 \begin{proof}
- Let $(M, \mu, \eta, \delta, \varepsilon)$ be a Frobenius object. By proving $\mu$ and $\delta$ are associatives, we obtain an internal monoid $(M, \mu, \eta)$ and an internal comonoid $(M, \delta, \varepsilon)$. The proof of this fact is equivalent to the graphical proof of the equivalence of Frobenius algebras we gave in the previous chapter (see Proposition~\ref{prp:Frobenius-equivalence}).
+ Let $(M, \mu, \eta, \delta, \varepsilon)$ be a Frobenius object. By proving $\mu$ and $\delta$ are associative, we obtain an internal monoid $(M, \mu, \eta)$ and an internal comonoid $(M, \delta, \varepsilon)$. The proof of this fact is equivalent to the graphical proof of the equivalence of Frobenius algebras we gave in the previous chapter (see Proposition~\ref{prp:Frobenius-equivalence}).
 \end{proof}
 
 Following this lemma, we define \emph{homomorphisms of internal Frobenius objects} to be morphisms $\varphi \colon (M, \mu, \eta, \delta, \varepsilon) \to (M', \mu', \eta', \delta', \varepsilon')$ that are homomorphisms of both the underlying monoid structure and the comonoid one. In this way, given any monoidal category $(\cat{C}, \sq, I)$, we obtain a category $\mathbf{Frob}(\cat{C})$\index{$\mathbf{Frob}(\cat{C})$, a category of internal Frobenius objects} whose objects are internal Frobenius objects in $\cat{C}$ and arrows are the homomorphisms between them.
@@ -1532,7 +1532,7 @@ Following this lemma, we define \emph{homomorphisms of internal Frobenius object
 \end{tcblemma}
 
 \begin{proof}
- Let us take two internal Frobenius object $(M, \mu, \eta, \delta, \varepsilon)$, $(M', \mu', \eta', \delta', \varepsilon')$ and prove the multiplication defined in Lemmma~\ref{lem:product-of-monoids} together with the analogous comultiplication define an internal Frobenius object $M \sq M'$. What we need to do is proving the Frobenius relation holds.
+ Let us take two internal Frobenius object $(M, \mu, \eta, \delta, \varepsilon)$, $(M', \mu', \eta', \delta', \varepsilon')$ and prove the multiplication defined in Lemma~\ref{lem:product-of-monoids} together with the analogous comultiplication define an internal Frobenius object $M \sq M'$. What we need to do is proving the Frobenius relation holds.
  \[
   \begin{tikzpicture}[x=0.6cm, y=0.3cm, baseline]
    \draw (0,-5) -- (4,-5);

@@ -149,7 +149,7 @@ We are finally ready to give the following definition.
           \qquad
           i_1 \colon \Sigma_1 \times (1-\varepsilon, 1] \to M
         \]
-        definining an \emph{in-boundary} $(\partial M)_0 \defeq i_0(\Sigma_0, 0)$ and an \emph{out-boundary} $(\partial M)_1 \defeq i_1(\Sigma_1, 1)$, such that $\partial M = (\partial M)_0 \sqcup (\partial M)_1$.
+        defining an \emph{in-boundary} $(\partial M)_0 \defeq i_0(\Sigma_0, 0)$ and an \emph{out-boundary} $(\partial M)_1 \defeq i_1(\Sigma_1, 1)$, such that $\partial M = (\partial M)_0 \sqcup (\partial M)_1$.
  \end{itemize}
 \end{tcbdfn}
 
@@ -259,10 +259,10 @@ Thus, the previous cylinder representing a bordism $M \colon \mathbb{S}^1 \sqcup
 The role of the embeddings $i_0$, $i_1$ in the above definition is to put some sort of ``collar'' around the in-boundary and the out-boundary. Let us state this properly.
 
 \begin{tcbdfn}[Collars \cite{smooth}]
- Let $M$ be a manifold with boundary. A neighbourhood of $\partial M$ is called a \emph{collar neighbourhood}\index{collar neighbourhood} if it is the image of a smooth embedding $\partial M \times [0, \varepsilon) \to M$ that restricts to the identification $\partial M \times \{0\} \to \partial M$.
+ Let $M$ be a manifold with boundary. A neighborhood of $\partial M$ is called a \emph{collar neighborhood}\index{collar neighborhood} if it is the image of a smooth embedding $\partial M \times [0, \varepsilon) \to M$ that restricts to the identification $\partial M \times \{0\} \to \partial M$.
 \end{tcbdfn}
-\begin{tcbthm}[Collar neighbourhood theorem]
- Let $M$ be a smooth manifold with nonempty boundary. Then $\partial M$ has a collar neighbourhood.
+\begin{tcbthm}[Collar neighborhood theorem]
+ Let $M$ be a smooth manifold with nonempty boundary. Then $\partial M$ has a collar neighborhood.
 \end{tcbthm}
 
 This guarantees that the notion of an oriented bordism is well defined.
@@ -273,7 +273,7 @@ This guarantees that the notion of an oriented bordism is well defined.
 
 \begin{remark}
  While we do not give a formal proof of such a result, we observe that the smooth structure on the topological pushout is not unique and relies on the choice of collars.
- Our definition of bordisms with fixed collars, taken from \cite{moore2025tasi} and \cite{freed2019lectures}, is given precisely to specify this choice, making the glueing to be exactly the pushout in the proper category (which we can imagine as the category of ``manifolds with defined collars'').
+ Our definition of bordisms with fixed collars, taken from \cite{moore2025tasi} and \cite{freed2019lectures}, is given precisely to specify this choice, making the gluing to be exactly the pushout in the proper category (which we can imagine as the category of ``manifolds with defined collars'').
  However, different choices of collars give rise to diffeomorphic smooth structures. 
 \end{remark}
 
@@ -347,15 +347,15 @@ This guarantees that the notion of an oriented bordism is well defined.
  \end{figure}
 \end{example}
 
-More is actually true when considering the glueing of two oriented bordisms.
+More is actually true when considering the gluing of two oriented bordisms.
 
 \begin{tcbthm}\label{th:collar_diffeo}
  Let $\Sigma$ be an out-boundary of a bordism $M_0$ and an in-boundary of a bordism $M_1$, and consider $M_0 \sqcup_\Sigma M_1$ the pushout through $\Sigma$ of the two topological manifolds. Let $\alpha$, $\beta$ be two smooth structures on $M_0 \sqcup_\Sigma M_1$, which both induce the original smooth structures on $M_0$ and $M_1$ (via pullback along the inclusion maps). Then there is a diffeomorphism $\phi \colon (M_0 \sqcup_\Sigma M_1, \alpha) \to (M_0 \sqcup_\Sigma M_1, \beta)$ such that its restriction on $\Sigma$ is the identity $\id_\Sigma$.
 \end{tcbthm}
 
-\section{A category of oriented boridsms}
+\section{A category of oriented bordisms}
 
-Our goal is now to construct a category of oriented $n$-dimensional bordisms. The intuitive idea behind it is to take closed oriented $(n-1)$-dimensional manifolds as objects and oriented bordisms between them as morphisms. The proper definition, however, requires some more refinement.  We begin by addressing some technical issues. While equipping each bordism with an explicit choice of a collar allows us to properly define a glueing, this approach fails when trying to define a strict identity morphism. Given a closed oriented $(n-1)$-dimensional manifold $\Sigma$, a candidate for $\id_\Sigma$ is given by the cylinder $\Sigma \times [0,1]$ with some choice of collars. However, glueing it to a bordism $M$ with one of the boundaries equal to $\Sigma$ only gives us a manifold \emph{diffeomorphic} to $M$. By considering the underlying topological spaces, we easily understand that the only way to define a strict identity in this setting is to consider $\Sigma$ itself as a bordism, but this would not satisfy our definition, which requires it to be an $n$-dimensional manifold. Finally, we recall how, when glueing manifolds, different choices of collars give rise to different but diffeomorphic smooth structures. This motivates the following framework: we define the bordism category by taking as morphisms bordisms ``up to diffeomorphism''.
+Our goal is now to construct a category of oriented $n$-dimensional bordisms. The intuitive idea behind it is to take closed oriented $(n-1)$-dimensional manifolds as objects and oriented bordisms between them as morphisms. The proper definition, however, requires some more refinement.  We begin by addressing some technical issues. While equipping each bordism with an explicit choice of a collar allows us to properly define a gluing, this approach fails when trying to define a strict identity morphism. Given a closed oriented $(n-1)$-dimensional manifold $\Sigma$, a candidate for $\id_\Sigma$ is given by the cylinder $\Sigma \times [0,1]$ with some choice of collars. However, gluing it to a bordism $M$ with one of the boundaries equal to $\Sigma$ only gives us a manifold \emph{diffeomorphic} to $M$. By considering the underlying topological spaces, we easily understand that the only way to define a strict identity in this setting is to consider $\Sigma$ itself as a bordism, but this would not satisfy our definition, which requires it to be an $n$-dimensional manifold. Finally, we recall how, when gluing manifolds, different choices of collars give rise to different but diffeomorphic smooth structures. This motivates the following framework: we define the bordism category by taking as morphisms bordisms ``up to diffeomorphism''.
 
 \begin{tcbdfn}[Equivalent bordisms]
  Let $(M, i_0, i_1)$, $(M', i'_0, i'_1)$ be two oriented bordisms, both from $\Sigma_0$ to $\Sigma_1$.
@@ -383,7 +383,7 @@ This clearly defines an equivalence relation between bordisms. We can then consi
 \end{remark}
 
 \begin{tcblemma}[Composition of cobordism classes]
- Given a bordism $M$ from $\Sigma_0$ to $\Sigma_1$ and a bordism $N$ from $\Sigma_1$ to $\Sigma_2$, we define their composition $MN$ from $\Sigma_0$ to $\Sigma_2$ as follows: we take any representative from each class, glue them and consider the equivalence class of the resulting glueing.
+ Given a bordism $M$ from $\Sigma_0$ to $\Sigma_1$ and a bordism $N$ from $\Sigma_1$ to $\Sigma_2$, we define their composition $MN$ from $\Sigma_0$ to $\Sigma_2$ as follows: we take any representative from each class, glue them and consider the equivalence class of the resulting gluing.
  This composition is well defined.
 \end{tcblemma}
 
@@ -400,7 +400,7 @@ This clearly defines an equivalence relation between bordisms. We can then consi
  We can then consider the gluings $(MN, i_0, j_1)$ and $(M'N', i'_0, j'_1)$.
  By taking the pushout of the two diffeomorphisms in the category of continuous maps, we get a homeomorphism $\psi \colon MN \to M'N'$.
  %\todo[inline]{come si comporta? preserva la struttura liscia? Se lo fa sistema il finale}
- Through such a homeomorphism, we can define a new smooth structure on $M'N'$, which by Theorem~\ref{th:collar_diffeo} is diffeomorphic to the one induced by the glueing.
+ Through such a homeomorphism, we can define a new smooth structure on $M'N'$, which by Theorem~\ref{th:collar_diffeo} is diffeomorphic to the one induced by the gluing.
 \end{proof}
 
 \begin{tcbdfn}[A category of oriented bordisms]
@@ -408,7 +408,7 @@ This clearly defines an equivalence relation between bordisms. We can then consi
  \begin{itemize}
   \item The objects are closed oriented $(n-1)$-dimensional manifolds
   \item For any $\Sigma_0, \Sigma_1 \in \obj{\bord{n}}$, morphisms are the equivalence classes of bordisms $M \colon \Sigma_0 \to \Sigma_1$
-  \item Composition of morphisms is obtained by glueing
+  \item Composition of morphisms is obtained by gluing
   \item For each object $\Sigma$, the identity map $\id_\Sigma$ is given by the bordism $\Sigma \times [0,1]$
  \end{itemize}
 \end{tcbdfn}
@@ -513,7 +513,7 @@ We here give a slightly refined version (which can be found in \cite{kock2003fro
   \item \label{tqft:a1} Two equivalent bordisms $M \iso N$ have the same image through $Z$, namely $Z(M)=Z(N)$
   \item \label{tqft:a2} The cylinder bordism $M = \Sigma \times I \colon \Sigma \to \Sigma$ is mapped to the identity
         \[ Z(\Sigma \times I) = \id_{Z(\Sigma)} \colon Z(\Sigma) \to Z(\Sigma) \]
-  \item \label{tqft:a3} The glueing of two bordisms is mapped to the composition of their images, meaning that for two composable morphisms $M$, $N$, we have
+  \item \label{tqft:a3} The gluing of two bordisms is mapped to the composition of their images, meaning that for two composable morphisms $M$, $N$, we have
         \[ Z(MN) = Z(N) \circ Z(M) \]
   \item \label{tqft:a4} The disjoint union of two bordisms is mapped to the tensor product of their images, meaning
         \[Z(M \disj N) = Z(M) \tensor Z(N) \]
@@ -534,7 +534,7 @@ We here give a slightly refined version (which can be found in \cite{kock2003fro
 \begin{dfnx*}[A brief digression on dualizability\index{dualizability}]
  We now leave some space to discuss an important property regarding TQFTs, starting with what is known as the \emph{snake decomposition of a cylinder}\index{snake decomposition}.
 
- Take any closed $(n-1)$-dimensional manifold $\Sigma$ and consider the correspondig bordism $\Sigma \times I$. There are various ways in which we can decompose it. We can just cut it in the center
+ Take any closed $(n-1)$-dimensional manifold $\Sigma$ and consider the corresponding bordism $\Sigma \times I$. There are various ways in which we can decompose it. We can just cut it in the center
  \[
   \begin{tikzpicture}[every tqft/.style={transform shape}, scale=0.75, tqft/boundary separation=1.5cm]
    \pic[tqft cylinder, name=a, draw, rotate=90, anchor=incoming boundary, draw, every lower boundary component/.style={dashed, draw}];
@@ -638,7 +638,7 @@ We now give a couple of examples of some simple TQFTs.
 \end{tcbex}
 
 \begin{tcbex}[A 2-dimensional TQFT computing the genus]
- Consider a $\Bbbk$-vector space $V = \langle v_1, v_2 \rangle$ generated by two vectors. We can define a 2-dimensional TQFT $Z \colon \bord{2} \to \mathbf{Vect}_\Bbbk$ by the following assigments:
+ Consider a $\Bbbk$-vector space $V = \langle v_1, v_2 \rangle$ generated by two vectors. We can define a 2-dimensional TQFT $Z \colon \bord{2} \to \mathbf{Vect}_\Bbbk$ by the following assignments:
  \par
  The circle $\mathbb{S}^1$ is sent to the vector space $V$.
  \par
@@ -672,7 +672,7 @@ We now give a couple of examples of some simple TQFTs.
  \[
   Z(\mathbb{T}) \colon 1_\Bbbk \mapsto v_1 \mapsto v_0 \tensor v_0 + v_1 \tensor v_1 \mapsto v_1 + v_1 \mapsto 2 \, (= 2^1)
  \]
- Consider now a surface with two holes $2\mathbb{T}^2$ which we can draw by glueing the above bordisms as $\begin{tikzpicture}[every tqft/.style={transform shape}, scale=0.35, baseline=-.25ex, tqft/boundary separation=1.5cm]
+ Consider now a surface with two holes $2\mathbb{T}^2$ which we can draw by gluing the above bordisms as $\begin{tikzpicture}[every tqft/.style={transform shape}, scale=0.35, baseline=-.25ex, tqft/boundary separation=1.5cm]
    \pic[tqft cap, name=a, rotate=90, draw, every outgoing lower boundary component/.style={dashed, draw}];
    \pic[tqft pair of pants, name=b, rotate=90, draw, anchor= incoming boundary, at=(a-outgoing boundary), every outgoing lower boundary component/.style={dashed, draw}];
    \pic[tqft reverse pair of pants, name=c, rotate=90, draw, anchor= incoming boundary 1, at=(b-outgoing boundary 1), every outgoing lower boundary component/.style={dashed, draw}];
