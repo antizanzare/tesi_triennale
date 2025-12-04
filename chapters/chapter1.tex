@@ -6,199 +6,199 @@ We begin by recalling some useful notions from category theory, which we will en
 \section{Monoidal Categories}
 \label{sec:moncat}
 \begin{tcbdfn}[Monoidal categories] \label{dfn:monoidal_category}
- A (weak) \emph{monoidal category}\index{monoidal category} is a sextuple $(\cat{C}, \sq, \eta, \alpha, l, r)$ consisting of:
- \begin{itemize}
+  A (weak) \emph{monoidal category}\index{monoidal category} is a sextuple $(\cat{C}, \sq, \eta, \alpha, l, r)$ consisting of:
+  \begin{itemize}
   \item a category $\cat{C}$,
   \item a bifuctor $\sq \colon \cat{C}\times\cat{C} \to \cat{C}$,
   \item a functor $\eta \colon \mathbf{1} \to \cat{C}$ identifying an object $\eta(1) = I \in \obj{\cat{C}}$\footnotemark,
   \item a natural isomorphism called \emph{associator} $\alpha$,
-        \[
-         \begin{tikzcd}
-          & \cat{C} \times \cat{C} \times \cat{C}  \arrow[ld, "\sq \times \id_\cat{C}",swap] \arrow[rd,"\id_\cat{C} \times \sq"] & \\
-          \cat{C} \times \cat{C} \arrow[rd, "\sq", swap] \arrow[rr, Rightarrow, "\alpha", shorten <=8ex, shorten >=8ex] & & \cat{C} \times \cat{C} \arrow[ld, "\sq"] \\
-          & \cat{C} &
-         \end{tikzcd}
-        \]
-        so that $\alpha_{A,B,C} \colon (A \sq B) \sq C \overset{\cong}\to A \sq (B \sq C)$ for every $A, B, C \in \obj{\cat{C}}$
+    \[
+    \begin{tikzcd}
+      & \cat{C} \times \cat{C} \times \cat{C} \arrow[ld, "{\sq \times \id_\cat{C}}", swap] \arrow[rd,"{\id_\cat{C} \times \sq}"] & \\
+      \cat{C} \times \cat{C} \arrow[rd, "\sq", swap] \arrow[rr, Rightarrow, "\alpha", shorten <=8ex, shorten >=8ex] & & \cat{C} \times \cat{C} \arrow[ld, "\sq"] \\
+      & \cat{C} &
+    \end{tikzcd}
+    \]
+    so that $\alpha_{A,B,C} \colon (A \sq B) \sq C \overset{\cong}\to A \sq (B \sq C)$ for every $A, B, C \in \obj{\cat{C}}$
   \item and two natural isomorphisms called \emph{left} and \emph{right unitors} $l$ and $r$
-        \[
-         \begin{tikzcd}
-          & \cat{C} \times \cat{C} \arrow[rd, "\sq"] & & \cat{C}\times \cat{C} \arrow[ld, "\sq", swap]& \\
-          \mathbf{1} \times \cat{C} \arrow[ru, "\eta \times \id_\cat{C}"] \arrow[rr, "\pi"{name=foot1}, swap]& & \cat{C} & & \cat{C} \times \mathbf{1} \arrow[lu, "\id_\cat{C} \times \eta", swap] \arrow[ll,"\pi"{name=foot2}]
-          \arrow[Rightarrow, from=1-2, to=foot1, "l", shorten <=1ex, shorten >=1ex]  \arrow[Rightarrow, from=1-4, to=foot2, "r",shorten <=1ex,  shorten >=1ex]
-         \end{tikzcd}
-        \]
-        so that $l_A \colon I \sq A  \overset{\cong}\to A$ and $r_A \colon A \sq I  \overset{\cong}\to A$ for every $A \in \obj{\cat{C}}$.
- \end{itemize}
- These maps must satisfy the so-called coherence requirements, depicted in Figure~\ref{fig:coherence_pentagon} and Figure~\ref{fig:coherence_unit}, for every $A,B,C,D \in \obj{\cat{C}}$.
+    \[
+    \begin{tikzcd}
+      & \cat{C} \times \cat{C} \arrow[rd, "\sq"] & & \cat{C}\times \cat{C} \arrow[ld, "\sq", swap]& \\
+      \mathbf{1} \times \cat{C} \arrow[ru, "\eta \times \id_\cat{C}"] \arrow[rr, "\pi"{name=foot1}, swap]& & \cat{C} & & \cat{C} \times \mathbf{1} \arrow[lu, "\id_\cat{C} \times \eta", swap] \arrow[ll,"\pi"{name=foot2}]
+      \arrow[Rightarrow, from=1-2, to=foot1, "l", shorten <=1ex, shorten >=1ex]  \arrow[Rightarrow, from=1-4, to=foot2, "r",shorten <=1ex,  shorten >=1ex]
+    \end{tikzcd}
+    \]
+    so that $l_A \colon I \sq A  \overset{\cong}\to A$ and $r_A \colon A \sq I  \overset{\cong}\to A$ for every $A \in \obj{\cat{C}}$.
+  \end{itemize}
+  These maps must satisfy the so-called coherence requirements, depicted in Figure~\ref{fig:coherence_pentagon} and Figure~\ref{fig:coherence_unit}, for every $A,B,C,D \in \obj{\cat{C}}$.
 \end{tcbdfn}
 \footnotetext{We will hence equivalentely refer to a monoidal category as $(\cat{C}, \sq, I, \alpha, l, r)$}
 \begin{figure}
- \centering
- \begin{tikzcd}[column sep=-2.75em, row sep=5em]
-  &&(A \sq B) \sq (C \sq D) \arrow[rrd, "\alpha_{A, B, C \sq D}"] && \\
-  ((A \sq B) \sq C) \sq D \arrow[rru, "\alpha_{A \sq B, C, D}"] \arrow[rdd, "\alpha_{A,B,C} \sq \id_D",swap] &&&& A \sq (B \sq (C \sq D)) \\
-  &&&& \\
-  & (A \sq (B \sq C)) \sq D \arrow[rr, "\alpha_{A, B \sq C, D}"] && A \sq((B \sq C) \sq D) \arrow[ruu, "\id_A \sq \alpha_{B, C, D}",swap] &
- \end{tikzcd}
- \caption{Associativity coherence}
- \label{fig:coherence_pentagon}
+  \centering
+  \begin{tikzcd}[column sep=-2.75em, row sep=5em]
+    &&(A \sq B) \sq (C \sq D) \arrow[rrd, "\alpha_{A, B, C \sq D}"] && \\
+    ((A \sq B) \sq C) \sq D \arrow[rru, "\alpha_{A \sq B, C, D}"] \arrow[rdd, "\alpha_{A,B,C} \sq \id_D",swap] &&&& A \sq (B \sq (C \sq D)) \\
+    &&&& \\
+    & (A \sq (B \sq C)) \sq D \arrow[rr, "\alpha_{A, B \sq C, D}"] && A \sq((B \sq C) \sq D) \arrow[ruu, "\id_A \sq \alpha_{B, C, D}",swap] &
+  \end{tikzcd}
+  \caption{Associativity coherence}
+  \label{fig:coherence_pentagon}
 \end{figure}
 \begin{figure}
- \centering
- \begin{tikzcd}
-  (A \sq I) \sq B \arrow[rr, "\alpha_{A,I,B}"] \arrow[dr, "r_A \sq \id_B",swap] && A \sq(I \sq B) \arrow[dl, "\id_A \sq l_B"] \\
-  & A \sq B &
- \end{tikzcd}
- \caption{Unit coherence}
- \label{fig:coherence_unit}
+  \centering
+  \begin{tikzcd}
+    (A \sq I) \sq B \arrow[rr, "\alpha_{A,I,B}"] \arrow[dr, "r_A \sq \id_B",swap] && A \sq(I \sq B) \arrow[dl, "\id_A \sq l_B"] \\
+    & A \sq B &
+  \end{tikzcd}
+  \caption{Unit coherence}
+  \label{fig:coherence_unit}
 \end{figure}
 
 It is important to notice that naturality of such transformations is not for free, as some proof depend on naturality to work.
 \begin{tcbdfn}[Strict monoidal categories]
- A monoidal category is \emph{strict}\index{monoidal category!strict monoidal category} if all the natural transformations $\alpha$, $l$, $r$ are identities.
+  A monoidal category is \emph{strict}\index{monoidal category!strict monoidal category} if all the natural transformations $\alpha$, $l$, $r$ are identities.
 \end{tcbdfn}
 
 We can say that a strict monoidal category is a category $\cat{C}$ equipped with an associative bifunctor $\sq \colon \cat{C} \times \cat{C} \to \cat{C}$ and an object $I \in \obj{\cat{C}}$ which is a left and a right unit for $\sq$. In fancy words, a strict monoidal category is a (strict) monoid \emph{internal} to the category of categories and functors.
 \par
 From now on, when considering a weak monoidal category $(\cat{C}, \sq, I, \alpha^\cat{C}, l^\cat{C}, r^\cat{C})$, we will refer to it with using the notation $(\cat{C}, \sq, I)$. This is an abuse of notation that allows for brevity.
 \begin{tcbprp}\label{prp:cartesian-monoidal}
- Let $\cat{C}$ be a category that admits products. Then $(\cat{C}, \times, 1)$, where $\times$ denotes the product and $1$ the terminal object, is a (weak) monoidal category.
+  Let $\cat{C}$ be a category that admits products. Then $(\cat{C}, \times, 1)$, where $\times$ denotes the product and $1$ the terminal object, is a (weak) monoidal category.
 \end{tcbprp}
 \begin{proof}
- Consider $A, B , C \in \obj{\cat{C}}$. By the universal property of the product, we can define an isomorphism $\alpha_{A, B, C}$ between $(A \times B) \times C$ and $A \times (B \times C)$, with which we can define the \emph{associator} $\alpha$. Then, since for any $A \in \obj{\cat{C}}$ there exists a unique arrow to the terminal object $1$, we have that
- \[
+  Consider $A, B , C \in \obj{\cat{C}}$. By the universal property of the product, we can define an isomorphism $\alpha_{A, B, C}$ between $(A \times B) \times C$ and $A \times (B \times C)$, with which we can define the \emph{associator} $\alpha$. Then, since for any $A \in \obj{\cat{C}}$ there exists a unique arrow to the terminal object $1$, we have that
+  \[
   \begin{tikzcd}
-   1 & A \arrow[l, "\text{!}",swap] \arrow[r, "\id_A"] & A
+    1 & A \arrow[l, "\text{!}",swap] \arrow[r, "\id_A"] & A
   \end{tikzcd}
- \]
- defines a product for $1$ and $A$. The uniqueness of the product provides an isomorphism $1 \times A \iso A$ and, similarly, $A \times 1 \iso A$. Through such maps, we define \emph{left} and \emph{right unitors}. Using such isomorphisms one can also check that coherence holds.
-%  \fouche{Lo hai fatto? Cioè, sei capace di spiegare a parole perché il pentagono commuta? Come sono definiti associatore e unitore, è veramente naturale?}
+  \]
+  defines a product for $1$ and $A$. The uniqueness of the product provides an isomorphism $1 \times A \iso A$ and, similarly, $A \times 1 \iso A$. Through such maps, we define \emph{left} and \emph{right unitors}. Using such isomorphisms one can also check that coherence holds.
+  %  \fouche{Lo hai fatto? Cioè, sei capace di spiegare a parole perché il pentagono commuta? Come sono definiti associatore e unitore, è veramente naturale?}
 \end{proof}
 We call this structure a \emph{cartesian} monoidal category. The dual statement also holds.
 \begin{tcbprp}\label{prp:cocartesian-monoidal}
- Let $\cat{C}$ be a category that admits coproducts. Then $(\cat{C}, +, 0)$, where $+$ denotes the coproduct and $0$ the initial object, is a (weak) monoidal category.
+  Let $\cat{C}$ be a category that admits coproducts. Then $(\cat{C}, +, 0)$, where $+$ denotes the coproduct and $0$ the initial object, is a (weak) monoidal category.
 \end{tcbprp}
 We call this structure a \emph{cocartesian} monoidal category.
 \begin{tcbex}
- Examples of monoidal categories, which we will encounter throughout this thesis, are:
- \begin{itemize}
+  Examples of monoidal categories, which we will encounter throughout this thesis, are:
+  \begin{itemize}
   \item $(M, \mu, 1_M)$, the discrete monoidal category on a monoid $M$
   \item $(\mathbf{Set}, {\times}, \{\ast\})$, the cartesian monoidal category of sets and functions between them
   \item $(\mathbf{Set}, \disj, \varnothing)$, the cocartesian monoidal category of sets and functions between them
   \item $(\mathbf{Cat}, {\times}, \mathbf{1})$, the cartesian monoidal category of categories and functors between them
   \item $(\Delta, {+}, [0])$, the strict monoidal simplicial category. A more in-depth description of it can be found in Definition~\ref{dfn:delta-cat}.
   \item $(\mathbf{Vect}_\Bbbk, {\tensor}, \Bbbk)$, the monoidal category of vector spaces over the field $\Bbbk$ and linear maps between them, with the monoidal structure given by the tensor product
- \end{itemize}
+  \end{itemize}
 \end{tcbex}
 We'd now like to define morphisms between monoidal categories as functors that preserve the monoidal structure. However, we need to be precise about the degree to which such a structure needs to be preserved.
 As for monoidal categories, the weakest definition will also be the most intricate.
 
 \begin{tcbdfn}[Monoidal functors]\label{dfn:monoidal-functor}
- Let $(\cat{C}, \sq, I)$ and $(\cat{D}, \varsq , J)$ be two (weak) monoidal categories. A monoidal functor is a triple $(F, \varphi, \varepsilon)$ consisting of
- \begin{itemize}
+  Let $(\cat{C}, \sq, I)$ and $(\cat{D}, \varsq , J)$ be two (weak) monoidal categories. A monoidal functor is a triple $(F, \varphi, \varepsilon)$ consisting of
+  \begin{itemize}
   \item a functor \[ F \colon \cat{C} \to \cat{D} \]
   \item a natural transformation
-        %       \[
-        %        \begin{tikzcd}
-        %        & \cat{C} \times \cat{C} \arrow[ld, "F \times F",swap] \arrow[rd,"\sq"] & \\
-        %        \cat{D} \times \cat{D} \arrow[rd, "\varsq", swap] \arrow[rr, Rightarrow, "\varphi", shorten <=6ex, shorten >=6ex] & & \cat{C} \arrow[ld, "F"] \\
-        %        & \cat{D} &
-        %        \end{tikzcd}
-        %        \]
-        %        which gives us 
-        \[ \varphi_{A,B} \colon F(A) \varsq F(B) \to F(A \sq B)\] for every $A,B \in \obj{\cat{C}}$
+    %       \[
+    %        \begin{tikzcd}
+    %        & \cat{C} \times \cat{C} \arrow[ld, "F \times F",swap] \arrow[rd,"\sq"] & \\
+    %        \cat{D} \times \cat{D} \arrow[rd, "\varsq", swap] \arrow[rr, Rightarrow, "\varphi", shorten <=6ex, shorten >=6ex] & & \cat{C} \arrow[ld, "F"] \\
+    %        & \cat{D} &
+    %        \end{tikzcd}
+    %        \]
+    %        which gives us 
+    \[ \varphi_{A,B} \colon F(A) \varsq F(B) \to F(A \sq B)\] for every $A,B \in \obj{\cat{C}}$
   \item a morphism \[ \varepsilon \colon J \to F(I) \]
- \end{itemize}
- making the following diagrams commute
- \begin{enumerate}
+  \end{itemize}
+  making the following diagrams commute
+  \begin{enumerate}
   \item \emph{(Associativity)}
-        \[
-         \begin{tikzcd}[column sep=6em]
-          (F(A) \varsq F(B)) \varsq F(C) \arrow[r, "\alpha^\cat{D}_{F(A), F(B),F(C)}"]  \arrow[d, "\varphi_{A,B} \varsq \id_{F(C)}"]
-          & F(A) \varsq (F(B) \varsq F(C)) \arrow[d, "\id_{F(A)} \varsq \varphi_{B,C}"] \\
-          F(A \sq B) \varsq F(C) \arrow[d] \arrow[d, "\varphi_{A \sq B, C}"]
-          & F(A) \varsq F(B \sq C) \arrow[d, "\varphi_{A, B \sq C}"]
-          \\
-          F((A \sq B) \sq C) \arrow[r, "F(\alpha^\cat{C}_{A,B,C})"]
-          & F(A \sq (B \sq C))
-         \end{tikzcd}
-        \]
+    \[
+    \begin{tikzcd}[column sep=6em]
+      (F(A) \varsq F(B)) \varsq F(C) \arrow[r, "\alpha^\cat{D}_{F(A), F(B),F(C)}"]  \arrow[d, "\varphi_{A,B} \varsq \id_{F(C)}"]
+      & F(A) \varsq (F(B) \varsq F(C)) \arrow[d, "\id_{F(A)} \varsq \varphi_{B,C}"] \\
+      F(A \sq B) \varsq F(C) \arrow[d] \arrow[d, "\varphi_{A \sq B, C}"]
+      & F(A) \varsq F(B \sq C) \arrow[d, "\varphi_{A, B \sq C}"]
+      \\
+      F((A \sq B) \sq C) \arrow[r, "F(\alpha^\cat{C}_{A,B,C})"]
+      & F(A \sq (B \sq C))
+    \end{tikzcd}
+    \]
   \item \emph{(Unitality)}
-        \[
-         \begin{tikzcd}
-          F(A) \varsq J \arrow[r, "r^\cat{D}_{F(A)}"] \arrow[d, "\id_{F(A)} \varsq \varepsilon",swap] & F(A) \\
-          F(A) \varsq F(I) \arrow[r, "\varphi_{A,I}"] & F(A \sq I) \arrow[u, "F \circ r^\cat{C}_A",swap]
-         \end{tikzcd}
-         \qquad
-         \begin{tikzcd}
-          J \varsq F(A) \arrow[r, "l^\cat{D}_{F(A)}"] \arrow[d, "\varepsilon\varsq \id_{F(A)}",swap] & F(A) \\
-          F(I) \varsq F(A) \arrow[r, "\varphi_{I,A}"] & F(I \sq A) \arrow[u, "F \circ l^\cat{C}_A",swap]
-         \end{tikzcd}
-        \]
- \end{enumerate}
- for every $A,B,C \in \obj{\cat{C}}$
+    \[
+    \begin{tikzcd}
+      F(A) \varsq J \arrow[r, "r^\cat{D}_{F(A)}"] \arrow[d, "\id_{F(A)} \varsq \varepsilon",swap] & F(A) \\
+      F(A) \varsq F(I) \arrow[r, "\varphi_{A,I}"] & F(A \sq I) \arrow[u, "F \circ r^\cat{C}_A",swap]
+    \end{tikzcd}
+    \qquad
+    \begin{tikzcd}
+      J \varsq F(A) \arrow[r, "l^\cat{D}_{F(A)}"] \arrow[d, "\varepsilon\varsq \id_{F(A)}",swap] & F(A) \\
+      F(I) \varsq F(A) \arrow[r, "\varphi_{I,A}"] & F(I \sq A) \arrow[u, "F \circ l^\cat{C}_A",swap]
+    \end{tikzcd}
+    \]
+  \end{enumerate}
+  for every $A,B,C \in \obj{\cat{C}}$
 \end{tcbdfn}
 
 \begin{remark}
- This notion can be found in the literature as \emph{lax monoidal functor}.
- \fouche{add cit?}
- We can also define an \emph{oplax monoidal functor} between two categories $\cat{C}$ and $\cat{D}$ as a lax monoidal functor $\cat{C}^{op} \to \cat{D}^{op}$.
- In this case, we will have natural transformations $\varphi_{A, B} \colon F(A \sq B) \to F(A) \varsq F(B)$ and $\varepsilon \colon F(I) \to J$. The idea behind these two notions is that a \emph{lax} monoidal functor is the one preserving the structure of an internal monoid, while an \emph{oplax} monoidal functor preserves the internal comonoid structure. The definition of an internal monoid (resp. comonoid) will be properly given in \ref{dfn:internal-monoid} (resp. \ref{dfn:internal-comonoid}).
+  This notion can be found in the literature as \emph{lax monoidal functor}.
+  \fouche{add cit?}
+  We can also define an \emph{oplax monoidal functor} between two categories $\cat{C}$ and $\cat{D}$ as a lax monoidal functor $\cat{C}^{op} \to \cat{D}^{op}$.
+  In this case, we will have natural transformations $\varphi_{A, B} \colon F(A \sq B) \to F(A) \varsq F(B)$ and $\varepsilon \colon F(I) \to J$. The idea behind these two notions is that a \emph{lax} monoidal functor is the one preserving the structure of an internal monoid, while an \emph{oplax} monoidal functor preserves the internal comonoid structure. The definition of an internal monoid (resp. comonoid) will be properly given in \ref{dfn:internal-monoid} (resp. \ref{dfn:internal-comonoid}).
 \end{remark}
 
 \begin{tcbdfn}[Strong monoidal functors]
- Let $(\cat{C}, \sq, I)$ and $(\cat{D}, \varsq , J)$ be two (weak) monoidal categories. A monoidal functor $(F, \varphi, \varepsilon)$ from $\cat{C}$ to $\cat{D}$ is \emph{strong monoidal}\index{monoidal category!strong monoidal functor} if $\varphi$ and $\varepsilon$ are isomorphisms.
+  Let $(\cat{C}, \sq, I)$ and $(\cat{D}, \varsq , J)$ be two (weak) monoidal categories. A monoidal functor $(F, \varphi, \varepsilon)$ from $\cat{C}$ to $\cat{D}$ is \emph{strong monoidal}\index{monoidal category!strong monoidal functor} if $\varphi$ and $\varepsilon$ are isomorphisms.
 \end{tcbdfn}
 
 We hence have $F(A) \varsq F(B) \iso F(A \sq B)$ and $J \iso F(I)$.
 
 \begin{tcbdfn}[Strict monoidal functors]
- Let $(\cat{C}, \sq, I)$ and $(\cat{D}, \varsq , J)$ be two (weak) monoidal categories. A monoidal functor $(F, \varphi, \varepsilon)$ from $\cat{C}$ to $\cat{D}$ is \emph{strict monoidal}\index{monoidal category!strict monoidal functor} if $\varphi$ and $\varepsilon$ are identities.
+  Let $(\cat{C}, \sq, I)$ and $(\cat{D}, \varsq , J)$ be two (weak) monoidal categories. A monoidal functor $(F, \varphi, \varepsilon)$ from $\cat{C}$ to $\cat{D}$ is \emph{strict monoidal}\index{monoidal category!strict monoidal functor} if $\varphi$ and $\varepsilon$ are identities.
 \end{tcbdfn}
 
 The conditions for a strict monoidal functor are asking that
 \[
- F (A \sq B) = F(A) \varsq F(B) \text{,} \qquad F(I) = J
+F (A \sq B) = F(A) \varsq F(B) \text{,} \qquad F(I) = J
 \]
 \[
- F(f \sq g) = F(f) \varsq F(g)
+F(f \sq g) = F(f) \varsq F(g)
 \]
 \[
- F(\alpha^\cat{C}_{A,B,C}) = \alpha^\cat{D}_{F(A), F(B), F(C)} \qquad F(l^\cat{C}_A) = l^\cat{D}_{F(A)} \qquad F(r^\cat{C}_A) = r^\cat{D}_{F(A)}
+F(\alpha^\cat{C}_{A,B,C}) = \alpha^\cat{D}_{F(A), F(B), F(C)} \qquad F(l^\cat{C}_A) = l^\cat{D}_{F(A)} \qquad F(r^\cat{C}_A) = r^\cat{D}_{F(A)}
 \]
 for every $A, B, C \in \obj{\cat{C}}$ and $f, g \in \arr{\cat{C}}$.
 
 \begin{remark}
- Let $(\cat{C}, \times_\cat{C}, 1_\cat{C})$, $(\cat{D}, \times_\cat{D}, 1_\cat{D})$ be two cartesian monoidal categories and $F \colon \cat{C} \to \cat{D}$ a functor between them. By the universal property of the terminal object, there exists a unique arrow $\varepsilon \colon F(1_\cat{C}) \to 1_\cat{D}$, and by the universal property of the product, we have
- \[
+  Let $(\cat{C}, \times_\cat{C}, 1_\cat{C})$, $(\cat{D}, \times_\cat{D}, 1_\cat{D})$ be two cartesian monoidal categories and $F \colon \cat{C} \to \cat{D}$ a functor between them. By the universal property of the terminal object, there exists a unique arrow $\varepsilon \colon F(1_\cat{C}) \to 1_\cat{D}$, and by the universal property of the product, we have
+  \[
   \begin{tikzcd}[column sep=large]
-   F(A) & F(A) \times_\cat{D} F(B) \arrow[l, "\pi_{F(A)}", swap] \arrow[r, "\pi_{F(B)}"] & F(B) \\
-   & F(A \times_\cat{C} B) \arrow[ul, "F(\pi_A)"] \arrow[ur, "F(\pi_B)", swap] \arrow[u, dashed, "\exists !"] &
+    F(A) & F(A) \times_\cat{D} F(B) \arrow[l, "\pi_{F(A)}", swap] \arrow[r, "\pi_{F(B)}"] & F(B) \\
+    & F(A \times_\cat{C} B) \arrow[ul, "F(\pi_A)"] \arrow[ur, "F(\pi_B)", swap] \arrow[u, dashed, "\exists !"] &
   \end{tikzcd}
- \]
- Again, by relying on universal properties, we are able to prove that associativity and unitality hold. We hence have that $F \colon \cat{C} \to \cat{D}$ is \emph{oplax} monoidal without further requirements. Similarly, every functor $F \colon \cat{C}^{op} \to \cat{D}^{op}$ is automatically \emph{lax} monoidal.
+  \]
+  Again, by relying on universal properties, we are able to prove that associativity and unitality hold. We hence have that $F \colon \cat{C} \to \cat{D}$ is \emph{oplax} monoidal without further requirements. Similarly, every functor $F \colon \cat{C}^{op} \to \cat{D}^{op}$ is automatically \emph{lax} monoidal.
 
- Conversely, let $(\cat{C}, +_\cat{C}, 0_\cat{C})$, $(\cat{D}, +_\cat{D}, 0_\cat{D})$ be two cocartesian monoidal categories and $F \colon \cat{C} \to \cat{D}$ a functor between them. Then $F$ is a \emph{lax} monoidal functor. Similarly, every functor $F \colon \cat{C}^{op} \to \cat{D}^{op}$ is automatically \emph{oplax} monoidal.
+  Conversely, let $(\cat{C}, +_\cat{C}, 0_\cat{C})$, $(\cat{D}, +_\cat{D}, 0_\cat{D})$ be two cocartesian monoidal categories and $F \colon \cat{C} \to \cat{D}$ a functor between them. Then $F$ is a \emph{lax} monoidal functor. Similarly, every functor $F \colon \cat{C}^{op} \to \cat{D}^{op}$ is automatically \emph{oplax} monoidal.
 \end{remark}
 
 
 The composition of two (lax, oplax, strong, strict) monoidal functors is again a (lax, oplax, strong, strict) monoidal functor, and identity functors are monoidal. We hence have a category $\moncat_{\textup{lax}}$ where objects are (weak) monoidal categories and arrows are lax monoidal functors. Similarly, $\moncat_{\textup{strong}}$ defines the category whose objects are (weak) monoidal categories and arrows are strong monoidal functors. There is also a full subcategory where objects are strict monoidal categories and arrows are strong monoidal functors.
 
 \begin{remark}\label{rmk:strictification}
- As the reader can imagine, working with weak monoidal categories can become a really tedious process. The following result mitigates this difficulty, justifying working with monoidal categories \emph{as if they were strict}, forgetting about associators and unitors without losing generality. Its proof and a more in-depth explanation can be found in \cite{maclane} and \cite{coherence}.
+  As the reader can imagine, working with weak monoidal categories can become a really tedious process. The following result mitigates this difficulty, justifying working with monoidal categories \emph{as if they were strict}, forgetting about associators and unitors without losing generality. Its proof and a more in-depth explanation can be found in \cite{maclane} and \cite{coherence}.
 \end{remark}
 \begin{tcbthm}[Strictification]\label{thm:strictification}
- \emph{(See \cite{maclane}, Chapter XI, Section 3)} Every monoidal category is categorically equivalent, via strong monoidal functors, to a strict monoidal category.
+  \emph{(See \cite{maclane}, Chapter XI, Section 3)} Every monoidal category is categorically equivalent, via strong monoidal functors, to a strict monoidal category.
 \end{tcbthm}
 Essentially, what follows is that from now on we can assume, without loss of generality, that monoidal categories \emph{are} strict. This is possible because the equivalence provided by the above theorem ensures that all coherence diagrams commute up to a unique canonical isomorphism, as long as we do not require functors between such categories to be strict. To do so, from now on, when considering the functor category $\mathbf{MonCat}$, we are referring to $\mathbf{MonCat}_{\textup{strong}}$.
 \begin{remark}
- The strictification of the monoidal category of finite dimensional vectors spaces over a field $k$ is the category (cf. \cite[2.§2]{Walters1992}) $\mathbb{N}[k]$ whose objects are iterated powers $k^n$ of $k$ with itself; the monoidal structure is given by product of natural numbers, i.e. as the strict equality 
- \[k^n\oplus k^m = k^{nm}\]
- Note that $\mathbb{N}[k]$ is a PROP in the sense of \cite[Ch. V, §24]{MacLane1965}; the sum of natural numbers gives $\mathbb{N}[k]$ another monoidal structure $\oplus$, in that 
- \[k^n \oplus k^m = k^{n+m}\]
- and moreover $\mathbb{N}[k]$ is a categorified version of a \emph{semiring}, in that `product distributes over sum', 
- \[k^{n(p+q)} = k^{np}\oplus k^{nq}.\]
+  The strictification of the monoidal category of finite dimensional vectors spaces over a field $k$ is the category (cf. \cite[2.§2]{Walters1992}) $\mathbb{N}[k]$ whose objects are iterated powers $k^n$ of $k$ with itself; the monoidal structure is given by product of natural numbers, i.e. as the strict equality 
+  \[k^n\oplus k^m = k^{nm}\]
+  Note that $\mathbb{N}[k]$ is a PROP in the sense of \cite[Ch. V, §24]{MacLane1965}; the sum of natural numbers gives $\mathbb{N}[k]$ another monoidal structure $\oplus$, in that 
+  \[k^n \oplus k^m = k^{n+m}\]
+  and moreover $\mathbb{N}[k]$ is a categorified version of a \emph{semiring}, in that `product distributes over sum', 
+  \[k^{n(p+q)} = k^{np}\oplus k^{nq}.\]
 \end{remark}
 % \todo[inline]{idee: inserire esempio costruzione tensore n esimo. inserire esempio strictificazione di Vect}
 
@@ -207,154 +207,154 @@ Essentially, what follows is that from now on we can assume, without loss of gen
 % \end{tcbex}
 
 \begin{tcbdfn}[Monoidal natural transformations]
- Let $(\cat{C}, \sq, I)$ and $(\cat{D}, \varsq, J)$ be two monoidal categories and let $(F, \varphi, \varepsilon)$ and $(G, \phi, e)$ be two monoidal functors from $\cat{C}$ to $\cat{D}$. A \emph{monoidal natural transformation}\index{monoidal category!monoidal natural transformation} is a natural transformation $u \colon F \to G$ such that the following diagrams commute
- \[
+  Let $(\cat{C}, \sq, I)$ and $(\cat{D}, \varsq, J)$ be two monoidal categories and let $(F, \varphi, \varepsilon)$ and $(G, \phi, e)$ be two monoidal functors from $\cat{C}$ to $\cat{D}$. A \emph{monoidal natural transformation}\index{monoidal category!monoidal natural transformation} is a natural transformation $u \colon F \to G$ such that the following diagrams commute
+  \[
   \begin{tikzcd}
-   F(A) \varsq F(B) \arrow[r, "u_A \varsq u_B"] \arrow[d, "\varphi_{A,B}"] & G(A) \varsq G(B) \arrow[d, "\phi_{A,B}"] \\
-   F(A \sq B) \arrow[r, "u_{A \sq B}"] & G(A \sq B)
+    F(A) \varsq F(B) \arrow[r, "u_A \varsq u_B"] \arrow[d, "\varphi_{A,B}"] & G(A) \varsq G(B) \arrow[d, "\phi_{A,B}"] \\
+    F(A \sq B) \arrow[r, "u_{A \sq B}"] & G(A \sq B)
   \end{tikzcd}
   \qquad
   \begin{tikzcd}
-   J \arrow[r, "\varepsilon"] \arrow[dr, "e", swap] & F(I) \arrow[d, "u_I"] \\
-   & G(I)
+    J \arrow[r, "\varepsilon"] \arrow[dr, "e", swap] & F(I) \arrow[d, "u_I"] \\
+    & G(I)
   \end{tikzcd}
- \]
- for every $A,B \in \obj{\cat{C}}$.
+  \]
+  for every $A,B \in \obj{\cat{C}}$.
 \end{tcbdfn}
 
 \begin{remark}
- Let $(\cat{C}, \times_\cat{C}, 1_\cat{C})$, $(\cat{D}, \times_\cat{D}, 1_\cat{D})$ be two cartesian monoidal categories and let $F \colon \cat{C} \to \cat{D}$, $G \colon \cat{C} \to \cat{D}$ be two functors between them. Consider any natural transformation $u \colon F \Rightarrow G$ and the diagrams
- \[
+  Let $(\cat{C}, \times_\cat{C}, 1_\cat{C})$, $(\cat{D}, \times_\cat{D}, 1_\cat{D})$ be two cartesian monoidal categories and let $F \colon \cat{C} \to \cat{D}$, $G \colon \cat{C} \to \cat{D}$ be two functors between them. Consider any natural transformation $u \colon F \Rightarrow G$ and the diagrams
+  \[
   \begin{tikzcd}
-   F(A) \times_\cat{D} F(B) \arrow[r, "u_A \times_\cat{D} u_B"] & G(A) \times_\cat{D} G(B) \\
-   F(A \times_\cat{C} B) \arrow[u, "\varphi_{A,B}"] \arrow[r, "u_{A \times_\cat{C} B}"] & G(A \times_\cat{C} B) \arrow[u, "\phi_{A,B}"]
+    F(A) \times_\cat{D} F(B) \arrow[r, "u_A \times_\cat{D} u_B"] & G(A) \times_\cat{D} G(B) \\
+    F(A \times_\cat{C} B) \arrow[u, "\varphi_{A,B}"] \arrow[r, "u_{A \times_\cat{C} B}"] & G(A \times_\cat{C} B) \arrow[u, "\phi_{A,B}"]
   \end{tikzcd}
   \qquad
   \begin{tikzcd}
-   1_\cat{C} & F(1_\cat{C}) \arrow[l, "\varepsilon", swap] \arrow[d, "u_I"] \\
-   & G(1_\cat{C}) \arrow[ul, "e"]
+    1_\cat{C} & F(1_\cat{C}) \arrow[l, "\varepsilon", swap] \arrow[d, "u_I"] \\
+    & G(1_\cat{C}) \arrow[ul, "e"]
   \end{tikzcd}
- \]
- By naturality of $u$, one checks the two diagrams commute without asking further conditions to hold. We hence have that every natural transformation between two functors defined on cartesian monoidal categories is monoidal. The same holds when the two categories are cocartesian monoidal.
+  \]
+  By naturality of $u$, one checks the two diagrams commute without asking further conditions to hold. We hence have that every natural transformation between two functors defined on cartesian monoidal categories is monoidal. The same holds when the two categories are cocartesian monoidal.
 \end{remark}
 
 \section{Adding a twist}
 \label{sec:twist}
 
 \begin{tcbdfn}[Braided monoidal categories]
- A \emph{braided monoidal category}\index{braided monoidal category} is a monoidal category $(\cat{C}, \sq, I)$ equipped with a natural isomorphisms
- \[
+  A \emph{braided monoidal category}\index{braided monoidal category} is a monoidal category $(\cat{C}, \sq, I)$ equipped with a natural isomorphisms
+  \[
   \beta_{A,B} \colon A \sq B \to B \sq A
- \]
- for every $A,B \in \obj{\cat{C}}$, called the \emph{braiding}, such that the following diagrams commute
- \[
+  \]
+  for every $A,B \in \obj{\cat{C}}$, called the \emph{braiding}, such that the following diagrams commute
+  \[
   \begin{tikzcd}
-   & A \sq (B \sq C) \arrow[r, "\beta_{A, B \sq C}"] & (B \sq C) \sq A \arrow[dr, "\alpha_{B, C, A}"] & \\
-   (A \sq B) \sq C \arrow[ur, "\alpha_{A, B, C}"] \arrow[dr, "\beta_{A, B} \sq \id_{C}", swap] &&& B \sq (C \sq A) \\
-   & (B \sq A) \sq C \arrow[r, "\alpha_{B, A, C}"] & B \sq (A \sq C) \arrow[ur, "\id_B \sq \beta_{A, C}", swap]
+    & A \sq (B \sq C) \arrow[r, "\beta_{A, B \sq C}"] & (B \sq C) \sq A \arrow[dr, "\alpha_{B, C, A}"] & \\
+    (A \sq B) \sq C \arrow[ur, "\alpha_{A, B, C}"] \arrow[dr, "\beta_{A, B} \sq \id_{C}", swap] &&& B \sq (C \sq A) \\
+    & (B \sq A) \sq C \arrow[r, "\alpha_{B, A, C}"] & B \sq (A \sq C) \arrow[ur, "\id_B \sq \beta_{A, C}", swap]
   \end{tikzcd}
- \]
- \[
+  \]
+  \[
   \begin{tikzcd}
-   & (A \sq B) \sq C \arrow[r, "\beta_{A \sq B, C}"] & C \sq (A \sq B) \arrow[dr, "\alpha^{-1}_{C,A,B}"] & \\
-   A \sq (B \sq C) \arrow[ur, "\alpha^{-1}_{A,B,C}"] \arrow[dr, "\id_A \sq \beta_{B, C}", swap] &&& (C \sq A) \sq B \\
-   & A \sq (C \sq B) \arrow[r, "\alpha^{-1}_{A, C, B}"] & (A \sq C) \sq B \arrow[ur, "\beta_{A, C} \sq \id_A", swap]
+    & (A \sq B) \sq C \arrow[r, "\beta_{A \sq B, C}"] & C \sq (A \sq B) \arrow[dr, "\alpha^{-1}_{C,A,B}"] & \\
+    A \sq (B \sq C) \arrow[ur, "\alpha^{-1}_{A,B,C}"] \arrow[dr, "\id_A \sq \beta_{B, C}", swap] &&& (C \sq A) \sq B \\
+    & A \sq (C \sq B) \arrow[r, "\alpha^{-1}_{A, C, B}"] & (A \sq C) \sq B \arrow[ur, "\beta_{A, C} \sq \id_A", swap]
   \end{tikzcd}
- \]
+  \]
 \end{tcbdfn}
 
 The definition implies compatibility with the unital structure. For a proof of the following result, we refer to \cite{kock2003frobenius}.
 \begin{tcbprp}
- Let $(\cat{C}, \sq, I, \beta)$ be a braided monoidal category. Then the following diagrams commute for every $A \in \obj{\cat{C}}$.
- \[
+  Let $(\cat{C}, \sq, I, \beta)$ be a braided monoidal category. Then the following diagrams commute for every $A \in \obj{\cat{C}}$.
+  \[
   \begin{tikzcd}
-   A \sq I \arrow[rr, "\beta_{A,I}"] \arrow[dr, "r_A", swap] && I \sq A \arrow[dl, "l_A"] \\
-   & A &
+    A \sq I \arrow[rr, "\beta_{A,I}"] \arrow[dr, "r_A", swap] && I \sq A \arrow[dl, "l_A"] \\
+    & A &
   \end{tikzcd}
   \qquad
   \begin{tikzcd}
-   I \sq A \arrow[rr, "\beta_{I,A}"] \arrow[dr, "l_A", swap] && A \sq I \arrow[dl, "r_A"] \\
-   & A &
+    I \sq A \arrow[rr, "\beta_{I,A}"] \arrow[dr, "l_A", swap] && A \sq I \arrow[dl, "r_A"] \\
+    & A &
   \end{tikzcd}
- \]
+  \]
 \end{tcbprp}
 
 Again, by Theorem~\ref{thm:strictification}, when considering braided monoidal categories, we can restrict to the following definition.
 
 \begin{tcbdfn}[(Semi)strict braided monoidal categories]
- A semistrict \emph{braided monoidal category}\index{braided monoidal category!semistrict braided monoidal category} is a strict monoidal category $(\cat{C}, \sq, I)$ equipped with a natural isomorphism
- \[
+  A semistrict \emph{braided monoidal category}\index{braided monoidal category!semistrict braided monoidal category} is a strict monoidal category $(\cat{C}, \sq, I)$ equipped with a natural isomorphism
+  \[
   \beta_{A,B} \colon A \sq B \to B \sq A
- \]
- for every $A, B \in \obj{\cat{C}}$, called the \emph{braiding}, such that the following diagrams commute
- \[
+  \]
+  for every $A, B \in \obj{\cat{C}}$, called the \emph{braiding}, such that the following diagrams commute
+  \[
   \begin{tikzcd}[column sep=-.5em]
-   A \sq B \sq C \arrow[rr, "\beta_{A, B \sq C}"] \arrow[dr, "\beta_{A, B} \sq \id_C", swap] & & B \sq C \sq A \\
-   & B \sq A \sq C \arrow[ur, "\id_B \sq \beta_{A, C}", swap] &
+    A \sq B \sq C \arrow[rr, "\beta_{A, B \sq C}"] \arrow[dr, "\beta_{A, B} \sq \id_C", swap] & & B \sq C \sq A \\
+    & B \sq A \sq C \arrow[ur, "\id_B \sq \beta_{A, C}", swap] &
   \end{tikzcd}
   \qquad
   \begin{tikzcd}[column sep=-.5em]
-   A \sq B \sq C \arrow[rr, "\beta_{A \sq B, C}"] \arrow[dr, "\id_A \sq \beta_{B, C}", swap] && C \sq A \sq B \\
-   & A \sq C \sq B \arrow[ur, "\beta_{A, C} \sq \id_A", swap] &
+    A \sq B \sq C \arrow[rr, "\beta_{A \sq B, C}"] \arrow[dr, "\id_A \sq \beta_{B, C}", swap] && C \sq A \sq B \\
+    & A \sq C \sq B \arrow[ur, "\beta_{A, C} \sq \id_A", swap] &
   \end{tikzcd}
- \]
+  \]
 \end{tcbdfn}
 
 \begin{remark}
- It would be misleading to name these categories ``strict braided monoidal''. While the underlying monoidal structure is strict, we are not asking for the braiding itself to be strict.
+  It would be misleading to name these categories ``strict braided monoidal''. While the underlying monoidal structure is strict, we are not asking for the braiding itself to be strict.
 \end{remark}
 
 \begin{tcbdfn}[Symmetric monoidal categories]
- A \emph{symmetric monoidal category}\index{symmetric monoidal category} is a braided monoidal category $(\cat{C}, \sq, I, \beta)$ where the braiding $\beta$ is symmetric, that is
- \[\beta_{B,A} \circ \beta_{A,B} = \id_{A \sq B}\]
- for every $A, B \in \obj{\cat{C}}$.
+  A \emph{symmetric monoidal category}\index{symmetric monoidal category} is a braided monoidal category $(\cat{C}, \sq, I, \beta)$ where the braiding $\beta$ is symmetric, that is
+  \[\beta_{B,A} \circ \beta_{A,B} = \id_{A \sq B}\]
+  for every $A, B \in \obj{\cat{C}}$.
 \end{tcbdfn}
 
 Let us show some examples of symmetric monoidal categories.
 
 \begin{tcbex}
- The monoidal category $(\mathbf{Vect}_\Bbbk, \tensor, \Bbbk)$ is equipped with a canonical symmetry defined by
- \begin{align*}
-  \sigma \colon V \tensor W & \to W \tensor V \\ v \tensor w & \mapsto w \tensor v
- \end{align*}
+  The monoidal category $(\mathbf{Vect}_\Bbbk, \tensor, \Bbbk)$ is equipped with a canonical symmetry defined by
+  \begin{align*}
+    \sigma \colon V \tensor W & \to W \tensor V \\ v \tensor w & \mapsto w \tensor v
+  \end{align*}
 \end{tcbex}
 
 \begin{tcbex}[Free symmetric monoidal category on a single object]
- We define the \emph{symmetric monoidal category} $\mathbf{Sym}$ by considering
- \begin{itemize}
+  We define the \emph{symmetric monoidal category} $\mathbf{Sym}$ by considering
+  \begin{itemize}
   \item the sets of natural numbers $[n] = {0 ,\dots, n-1}$ as objects. We also define $[0] = \varnothing$.
   \item the elements of the symmetric group $\text{Sym}(n)$ as morphism $\Hom([n], [n])$. When $[n] \neq [m]$, we have $\Hom([m],[n]) = \varnothing$.
- \end{itemize}
- The monoidal operation $+$ is defined by juxtaposition\footnotemark, with the empty set $\varnothing = [0]$ as the unit object. The symmetric structure is defined by interchanging factors (we define the \emph{twist} from $[m]+[n]$ to $[n]+[m]$ by the association $\{0_m, \dots, (m-1)_m, 0_n, \dots,  (n-1)_n\} \mapsto \{0_n, \dots, (n-1)_n, 0_m, \dots, (m-1)_m\}$).
+  \end{itemize}
+  The monoidal operation $+$ is defined by juxtaposition\footnotemark, with the empty set $\varnothing = [0]$ as the unit object. The symmetric structure is defined by interchanging factors (we define the \emph{twist} from $[m]+[n]$ to $[n]+[m]$ by the association $\{0_m, \dots, (m-1)_m, 0_n, \dots,  (n-1)_n\} \mapsto \{0_n, \dots, (n-1)_n, 0_m, \dots, (m-1)_m\}$).
 \end{tcbex}
 \footnotetext{We can see an explicit definition of such operation in Definition~\ref{dfn:ordinal-sum}, for the case of $\Delta$}
 
 \begin{tcbex}[Free braided monoidal category on a single object]
- Similarly to the previous case, we define the \emph{braided monoidal category} $(\mathbf{Braid}, +, [0])$ by taking the Artin braid groups $\text{Braid}(n)$ (see \cite{Kassel2008})a s morphisms.
+  Similarly to the previous case, we define the \emph{braided monoidal category} $(\mathbf{Braid}, +, [0])$ by taking the Artin braid groups $\text{Braid}(n)$ (see \cite{Kassel2008})a s morphisms.
 \end{tcbex}
 
 It is important to understand that being a symmetric monoidal category involves defining a structure, not merely possessing a property. This distinction is clearly shown by the following example.
 \begin{tcbex}[A category with more than one symmetric structure]
- Let $\mathbf{grVect}_\Bbbk$ be the category of \emph{graded vector spaces} (i.e. direct sums of vector spaces $V = \bigoplus_{n \in \mathbb{Z}} V_n$ together with linear maps $f = \bigoplus_{n \in \mathbb{Z}}f_n$ respecting the grading)\footnotemark. The monoidal structure defined for $\mathbf{Vect}$ restricts to the graded setting and defines the monoidal category $(\mathbf{grVect}_\Bbbk, \tensor, \Bbbk)$.
+  Let $\mathbf{grVect}_\Bbbk$ be the category of \emph{graded vector spaces} (i.e. direct sums of vector spaces $V = \bigoplus_{n \in \mathbb{Z}} V_n$ together with linear maps $f = \bigoplus_{n \in \mathbb{Z}}f_n$ respecting the grading)\footnotemark. The monoidal structure defined for $\mathbf{Vect}$ restricts to the graded setting and defines the monoidal category $(\mathbf{grVect}_\Bbbk, \tensor, \Bbbk)$.
 
- In this setting, we have a canonical symmetry $v \tensor w \mapsto w \tensor v$, but we can also define a different isomorphism, known as the \emph{Koszul's sign change}
- \begin{align*}
-  \kappa \colon V \tensor W & \to W \tensor V                                           \\
-  v \tensor w               & \mapsto (-1)^{\mathrm{deg}(v)\mathrm{deg}(w)} w \tensor v
- \end{align*}
- Both $(\mathbf{grVect}_\Bbbk, \tensor, \Bbbk, \sigma)$ and $(\mathbf{grVect}_\Bbbk, \tensor, \Bbbk, \kappa)$ are symmetric monoidal categories, yet they are distinct and carry different internal structures.
+  In this setting, we have a canonical symmetry $v \tensor w \mapsto w \tensor v$, but we can also define a different isomorphism, known as the \emph{Koszul's sign change}
+  \begin{align*}
+    \kappa \colon V \tensor W & \to W \tensor V                                           \\
+    v \tensor w               & \mapsto (-1)^{\mathrm{deg}(v)\mathrm{deg}(w)} w \tensor v
+  \end{align*}
+  Both $(\mathbf{grVect}_\Bbbk, \tensor, \Bbbk, \sigma)$ and $(\mathbf{grVect}_\Bbbk, \tensor, \Bbbk, \kappa)$ are symmetric monoidal categories, yet they are distinct and carry different internal structures.
 \end{tcbex}
 \footnotetext{What we are describing are actually $\mathbb{Z}$-graded vector spaces. In general, we can define $G$-graded vector spaces as $V = \bigoplus_{g \in G} V_g$ for any group $G$.}
 
 \begin{tcbdfn}[Braided monoidal functors]
- Let $(\cat{C}, \sq, I, \beta)$ and $(\cat{D}, \varsq, J, \gamma)$ be two braided monoidal categories. A monoidal functor $(F, \varphi, \varepsilon)$ from $\cat{C}$ to $\cat{D}$ is a \emph{braided monoidal functor}\index{braided monoidal category!braided monoidal functor} if the diagram
- \[
+  Let $(\cat{C}, \sq, I, \beta)$ and $(\cat{D}, \varsq, J, \gamma)$ be two braided monoidal categories. A monoidal functor $(F, \varphi, \varepsilon)$ from $\cat{C}$ to $\cat{D}$ is a \emph{braided monoidal functor}\index{braided monoidal category!braided monoidal functor} if the diagram
+  \[
   \begin{tikzcd}[column sep=huge]
-   F(A) \varsq F(B) \arrow[r, "\gamma_{F(A), F(B)}"] \arrow[d, "\varphi_{A,B}"] & F(B) \varsq F(A) \arrow[d, "\varphi_{B,A}"] \\
-   F(A \sq B) \arrow[r, "F \circ \beta_{A,B}"] & F(B \sq A)
+    F(A) \varsq F(B) \arrow[r, "\gamma_{F(A), F(B)}"] \arrow[d, "\varphi_{A,B}"] & F(B) \varsq F(A) \arrow[d, "\varphi_{B,A}"] \\
+    F(A \sq B) \arrow[r, "F \circ \beta_{A,B}"] & F(B \sq A)
   \end{tikzcd}
- \]
- commutes for every $A, B \in \obj{\cat{C}}$.
+  \]
+  commutes for every $A, B \in \obj{\cat{C}}$.
 \end{tcbdfn}
 
 When the braiding $\beta$ is symmetric, we say the functor is \emph{symmetric monoidal}.
@@ -370,24 +370,24 @@ Again, similarly to the plain monoidal case, given two braided (resp. symmetric)
 We include a brief treatment of the concept of duals in a monoidal category, a notion that will recur again throughout this thesis. We refer to \cite{Selinger2010}.
 
 \begin{tcbdfn}[Exact pairing, left and right duals]
-      Let $(\cat{C}, \sq, I)$ be a (without loss of generalities, strict) monoidal category. An \emph{exact pairing}\index{exact pairing} between two objects $A$ and $B$ is given by a pair of morphisms $\eta \colon I \to B \tensor A$ and $\varepsilon \colon A \tensor B \to I$, such that the following triangles commutes
-      \[
-      \begin{tikzcd}
-            A \arrow[r, "\id_A \tensor \eta"] \arrow[dr, "\id_A", swap] & A \tensor B \tensor A \arrow[d, "\varepsilon \tensor \id_A"]\\
-            & A
-      \end{tikzcd}
-      \hspace{5em}
-      \begin{tikzcd}
-            B \arrow[r, "\eta \tensor \id_B"] \arrow[dr, "\id_B", swap] & B \tensor A \tensor B \arrow[d, "\id_B \tensor \varepsilon"] \\
-            & B
-      \end{tikzcd}
-      \]
-      In such exact pairing, the object $B$ is called \emph{right dual} of $A$ and $A$ is called \emph{left dual} of $B$.
+  Let $(\cat{C}, \sq, I)$ be a (without loss of generalities, strict) monoidal category. An \emph{exact pairing}\index{exact pairing} between two objects $A$ and $B$ is given by a pair of morphisms $\eta \colon I \to B \tensor A$ and $\varepsilon \colon A \tensor B \to I$, such that the following triangles commutes
+  \[
+  \begin{tikzcd}
+    A \arrow[r, "\id_A \tensor \eta"] \arrow[dr, "\id_A", swap] & A \tensor B \tensor A \arrow[d, "\varepsilon \tensor \id_A"]\\
+    & A
+  \end{tikzcd}
+  \hspace{5em}
+  \begin{tikzcd}
+    B \arrow[r, "\eta \tensor \id_B"] \arrow[dr, "\id_B", swap] & B \tensor A \tensor B \arrow[d, "\id_B \tensor \varepsilon"] \\
+    & B
+  \end{tikzcd}
+  \]
+  In such exact pairing, the object $B$ is called \emph{right dual} of $A$ and $A$ is called \emph{left dual} of $B$.
 \end{tcbdfn}
 
 When the monoidal category is symmetric, left and right duals coincide; we refer to either as the \emph{dual}\index{dualizability!dualizable objects}.We call every object that admits categorical duals \emph{fully dualizable}.
 
 \begin{tcbdfn}[Rigid categories]
-      A monoidal category $(\cat{C}, \sq, I)$ is called \emph{rigid}\index{rigid category} if every of its object has both left and right duals.
+  A monoidal category $(\cat{C}, \sq, I)$ is called \emph{rigid}\index{rigid category} if every of its object has both left and right duals.
 \end{tcbdfn}
 

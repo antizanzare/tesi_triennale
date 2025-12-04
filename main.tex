@@ -2,6 +2,11 @@
 \documentclass[a4paper,11pt]{book}
 
 
+
+
+
+%\usepackage{accessibility}
+
 % lingue
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -41,7 +46,7 @@
 \usepackage{graphicx} % Pacchetto per immagini
 
 % Per produrre un pdf/a, de-commentare la prossima riga
-%\usepackage[a-1b]{pdfx}
+\usepackage[a-1b]{pdfx}
 
 % miscellanea
 \usepackage{lipsum}
@@ -586,7 +591,14 @@ every lower boundary component/.style={draw}
 
 \newcommand{\varsq}{\mathbin \boxtimes}
 
-\usepackage[colorlinks=true, allcolors=black]{hyperref}
+%\usepackage[a-3u]{pdfx}
+%\usepackage[colorlinks=true, allcolors=black]{hyperref}
+\hypersetup{
+  pdftitle={An Introduction to Frobenius Algebras and 2D TQFTs},
+  pdfauthor={Chiara Poles},
+  colorlinks=true,
+  allcolors=black,
+}
 
 % %\includeonly{chapters/introduction}
 
